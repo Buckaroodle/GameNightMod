@@ -1,0 +1,9 @@
+{
+    "id": "BucksGameNightMod",
+    "name": "Buck's Game Night",
+    "author": ["Buckaroodle"],
+    "description": "A Balatro modpack with board game-inspired Jokers",
+    "prefix": "bgn",
+    "main_file": "main.lua",
+    "version": "0.0.1"
+}
