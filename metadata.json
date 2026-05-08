@@ -5,5 +5,8 @@
     "description": "A Balatro modpack with board game-inspired Jokers",
     "prefix": "bgn",
     "main_file": "main.lua",
-    "version": "0.0.1"
+    "version": "0.0.1",
+    "badge_colour": "FFAC53",
+    "icon_path": "bgn_icon.png",
+    "icon_width": 32
 }
