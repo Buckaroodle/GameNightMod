@@ -35,6 +35,10 @@ SMODS.Joker {
                     if card.ability.extra.num_of_cards >= 10 then
                         card.ability.extra.chips = card.ability.extra.chips + card.ability.extra.chips_gain
                         card.ability.extra.num_of_cards = card.ability.extra.num_of_cards - 10
+                        return {
+                            message = localize('k_upgrade_ex'),
+                            colour = G.C.CHIPS,
+                        }
                     end
                 end
             end

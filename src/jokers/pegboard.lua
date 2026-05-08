@@ -49,6 +49,10 @@ SMODS.Joker {
 
             check_sum(1, 0)
             card.ability.extra.chips = card.ability.extra.chips + (card.ability.extra.chips_gain * total_combos)
+            return {
+                message = localize('k_upgrade_ex'),
+                colour = G.C.CHIPS,
+            }
         end
 
         if context.joker_main then

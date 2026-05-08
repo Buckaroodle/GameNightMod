@@ -19,7 +19,7 @@ SMODS.Joker {
         -- if the hand played is EXACTLY a pair
         if context.after and context.scoring_hand then
             if context.poker_hands and next(context.poker_hands['Pair']) then
-                if #context.scoring_hand == 2 then
+                if #context.full_hand == 2 then
                     G.E_MANAGER:add_event(Event({
                     trigger = 'after',
                     delay = 0.4,
