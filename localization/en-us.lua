@@ -170,6 +170,21 @@ return {
                     }
                 }   
             }]]--
+        },
+
+        Back = {
+            b_bgn_pinochle = {
+                name = 'Pinochle Deck',
+                text = {
+                    "Start run with",
+                    "{C:attention}2{} copies of only",
+                    "the ranks {C:attention}9 - Ace",
+                    "",
+                    "{C:blue}#1#{} hand",
+                    "{C:red}#2#{} discard",
+                    "every round",
+                }
+            }
         }
     }
 }
