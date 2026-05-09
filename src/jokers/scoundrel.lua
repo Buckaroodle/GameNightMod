@@ -8,7 +8,7 @@ SMODS.Joker {
     config = {
         extra = {
             Xmult = 5,
-            poker_hand = 'Five of a Kind'
+            poker_hand = 'Flush Five'
         }
     },
     rarity = 2,

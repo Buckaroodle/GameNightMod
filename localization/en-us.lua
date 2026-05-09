@@ -28,9 +28,12 @@ return {
             j_bgn_stand = {
                 name = 'Stand',
                 text = {
-                    '{C:mult}+#1#{} Mult if all cards',
-                    '{C:attention}held in hand{} have',
-                    '{C:attention}different{} ranks'
+                    'If all cards {C:attention}held in hand',
+                    'are {C:attention}different ranks,',
+                    'each card held in hand',
+                    'scores Mult equal to',
+                    'the number of cards',
+                    'held in hand'
                 }
             },
             j_bgn_assassin = {
@@ -66,7 +69,7 @@ return {
                     {
                         '{X:mult,C:white}X#1#{} Mult if',
                         'played hand is {C:attention}weaker',
-                        'than a #2#.',
+                        'than a {C:attention}#2#.',
                         'Poker hand decreases',
                         'after each successful trigger'
                     },{
@@ -174,7 +177,7 @@ return {
 
         Back = {
             b_bgn_pinochle = {
-                name = 'Pinochle Deck',
+                name = 'Frontloaded Deck',
                 text = {
                     "Start run with",
                     "{C:attention}2{} copies of only",
