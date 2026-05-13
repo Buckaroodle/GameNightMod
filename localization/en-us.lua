@@ -131,7 +131,7 @@ return {
                     {
                       '{X:mult,C:white}X#1#{} Mult'
                     },{
-                        'All Jokers in your hand',
+                        'All Jokers gain',
                         'Eternal stickers'
                     }
                 }

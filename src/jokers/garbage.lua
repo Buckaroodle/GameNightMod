@@ -1,9 +1,9 @@
 SMODS.Joker {
     key = 'garbage',
-    atlas = 'placeholders',
+    atlas = 'bgn_joker_sprites',
     pos = {
-        x = 0,
-        y = 0
+        x = 4,
+        y = 2
     },
     config = {
         extra = {

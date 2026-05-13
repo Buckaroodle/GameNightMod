@@ -1,7 +1,7 @@
 SMODS.Back {
     key = "pinochle",
-    atlas = 'placeholders',
-    pos = { x = 4, y = 2 },
+    atlas = 'bgn_joker_sprites',
+    pos = { x = 4, y = 3 },
     config = { hands = -1, discards = -1 },
     unlocked = true,
     loc_vars = function(self, info_queue, back)
