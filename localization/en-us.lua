@@ -4,16 +4,22 @@ return {
             j_bgn_bettelmann = {
                 name = 'Bettelmann',
                 text = {
-                    '{C:green}#1# in #2#{} chance',
-                    'to give {C:chips}+#3#{} chips'
+                    {
+                        '{C:green}#1# in #2#{} chance',
+                        'to give {C:chips}+#3#{} chips'
+                    },{
+                        '{C:inactive}Art by VoxDaFox'
+                    }
                 }
             },
             j_bgn_draw4wild = {
                 name = 'Draw 4 Wild',
                 text = {
                     '{C:attention}+#1#{} hand size',
-                    'for every {C:attention}4{} wild cards',
+                    'for every {C:attention}#2#{} Wild{} cards',
                     'in your full deck',
+                    "{C:inactive}(Currently {C:attention}+#3#{C:inactive} hand size){}",
+                    '{C:inactive}(Max of {C:attention}+#4#{C:inactive}){}'
                 }
             },
             j_bgn_applestoapples = {
@@ -30,10 +36,9 @@ return {
                 text = {
                     'If all cards {C:attention}held in hand',
                     'are {C:attention}different ranks,',
-                    'each card held in hand',
-                    'scores Mult equal to',
-                    'the number of cards',
-                    'held in hand'
+                    'each one scores {C:mult}Mult{}',
+                    'equal to the number of',
+                    'cards held in hand'
                 }
             },
             j_bgn_assassin = {
@@ -102,7 +107,7 @@ return {
                     },{
                         'A {C:attention}#4#{} must be',
                         'played to turn light',
-                        'back to green'
+                        'back to {C:attention}green'
                     }
                 }
             },
@@ -151,15 +156,16 @@ return {
                     '{C:dark_edition}+#1#{} Joker slot',
                     'when a {C:dark_edition}Negative{} Joker',
                     'is sold or destroyed',
-                    '{C:inactive}(Currently {C:dark_edition}+#2#{C:inactive} slots)'
+                    '{C:inactive}(Currently {C:dark_edition}+#2#{C:inactive} slots)',
+                    '{C:inactive}(Max of {C:dark_edition}+#3#{C:inactive}){}'
                 }
             },
             j_bgn_palace = {
                 name = "Palace",
                 text = {
                     'After scoring,',
-                    'all cards held in hand',
-                    'move to your discards'
+                    'all cards {C:attention}held in hand',
+                    'move to your {C:attention}discards'
                 }
             }
             --[[j_bgn_ajjoker = {
@@ -179,13 +185,25 @@ return {
             b_bgn_pinochle = {
                 name = 'Frontloaded Deck',
                 text = {
-                    "Start run with",
-                    "{C:attention}2{} copies of only",
-                    "the ranks {C:attention}9 - Ace",
+                    "Start run with {C:attention}2{} copies",
+                    "of the ranks {C:attention}9 - Ace",
                     "",
                     "{C:blue}#1#{} hand",
                     "{C:red}#2#{} discard",
                     "every round",
+                    "",
+                    '{C:inactive,s:0.85}Art by mintycreamfluff'
+                }
+            },
+            b_bgn_stocked = {
+                name = 'Stocked Deck',
+                text = {
+                    '{C:attention}+1{} card slot in shop',
+                    '{C:attention}+1{} voucher slot in shop',
+                    '{C:attention}+1{} pack slot in shop',
+                    '',
+                    'Reroll cost starts at {C:money}$#1#{}',
+                    'and does not reset each shop'
                 }
             }
         }
