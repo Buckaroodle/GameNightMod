@@ -24,6 +24,7 @@ SMODS.Back {
         change_shop_size(1)
         SMODS.change_voucher_limit(1)
         SMODS.change_booster_limit(1)
+        self.config.current_reroll_cost = 0
     end,
     calculate = function(self, back, context)
         if context.reroll_shop then

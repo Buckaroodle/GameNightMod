@@ -202,7 +202,7 @@ return {
                     '{C:attention}+1{} voucher slot in shop',
                     '{C:attention}+1{} pack slot in shop',
                     '',
-                    'Reroll cost starts at {C:money}$#1#{}',
+                    'Reroll cost starts at {C:money}$0{}',
                     'and does not reset each shop'
                 }
             }
