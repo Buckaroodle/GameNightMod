@@ -1,9 +1,9 @@
 SMODS.Joker {
     key = 'bettelmann',
-    atlas = 'placeholders',
+    atlas = 'bgn_joker_sprites',
     pos = {
-        x = 0,
-        y = 0
+        x = 1,
+        y = 3
     },
     config = {
         extra = {

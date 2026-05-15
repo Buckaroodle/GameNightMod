@@ -168,17 +168,14 @@ return {
                     'move to your {C:attention}discards'
                 }
             }
-            --[[j_bgn_ajjoker = {
-                name = 'AJ Joker',
+            --[[,j_bgn_tripleletterscore = {
+                name = "Triple Letter Score",
                 text = {
-                    {
-                        '{X:mult,C:white}x#1# Mult{}',
-                    },{
-                    'Debuffs random Joker',
-                    'at start of round'
-                    }
-                }   
-            }]]--
+                    '+#2# chips for each',
+                    'letter in all Joker names',
+                    '{C:inactive}(Currently {C:chips}+#1#{C:inactive} chips)'
+                }
+            }]]
         },
 
         Back = {
@@ -194,8 +191,8 @@ return {
                     "",
                     '{C:inactive,s:0.85}Art by mintycreamfluff'
                 }
-            },
-            b_bgn_stocked = {
+            }
+            --[[,b_bgn_stocked = {
                 name = 'Stocked Deck',
                 text = {
                     '{C:attention}+1{} card slot in shop',
@@ -205,7 +202,7 @@ return {
                     'Reroll cost starts at {C:money}$0{}',
                     'and does not reset each shop'
                 }
-            }
+            }]]
         }
     }
 }
