@@ -168,12 +168,43 @@ return {
                     'move to your {C:attention}discards'
                 }
             },
-            j_bgn_tripleletterscore = {
-                name = "Triple Letter Score",
+            j_bgn_doubleletterscore = {
+                name = "Double Letter Score",
                 text = {
-                    '+#2# chips for each',
-                    'letter in all Joker names',
+                    '{C:chips}+#2#{} chips for each',
+                    '{C:attention}letter{} in all Joker {C:attention}names',
                     '{C:inactive}(Currently {C:chips}+#1#{C:inactive} chips)'
+                }
+            },
+            j_bgn_foundationpile = {
+                name = "Foundation Pile",
+                text = {
+                    'If a single {C:attention}#3#{} is discarded,',
+                    'this Joker gains {C:mult}+#2#{} Mult',
+                    '{C:inactive}(Currently {C:mult}+#1#{C:inactive} Mult)',
+                    '{s:0.8}Rank increases every successful discard'
+                }
+            },
+            j_bgn_parkplace = {
+                name = "Park Place",
+                text = {
+                    {
+                        '{C:mult}+#1#{} Mult',
+                    },{
+                        '{X:mult,C:white}X#2#{} Mult',
+                        'if {C:attention}Boardwalk{} is owned'
+                    }
+                }
+            },
+            j_bgn_boardwalk = {
+                name = "Boardwalk",
+                text = {
+                    {
+                        '{C:mult}+#1#{} Mult',
+                    },{
+                        '{X:mult,C:white}X#2#{} Mult',
+                        'if {C:attention}Park Place{} is owned'
+                    }
                 }
             }
         },
