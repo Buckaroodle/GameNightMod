@@ -167,15 +167,15 @@ return {
                     'all cards {C:attention}held in hand',
                     'move to your {C:attention}discards'
                 }
-            }
-            --[[,j_bgn_tripleletterscore = {
+            },
+            j_bgn_tripleletterscore = {
                 name = "Triple Letter Score",
                 text = {
                     '+#2# chips for each',
                     'letter in all Joker names',
                     '{C:inactive}(Currently {C:chips}+#1#{C:inactive} chips)'
                 }
-            }]]
+            }
         },
 
         Back = {
@@ -191,8 +191,8 @@ return {
                     "",
                     '{C:inactive,s:0.85}Art by mintycreamfluff'
                 }
-            }
-            --[[,b_bgn_stocked = {
+            },
+            b_bgn_stocked = {
                 name = 'Stocked Deck',
                 text = {
                     '{C:attention}+1{} card slot in shop',
@@ -202,7 +202,7 @@ return {
                     'Reroll cost starts at {C:money}$0{}',
                     'and does not reset each shop'
                 }
-            }]]
+            }
         }
     }
 }
