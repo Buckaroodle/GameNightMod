@@ -206,6 +206,45 @@ return {
                         'if {C:attention}Park Place{} is owned'
                     }
                 }
+            },
+            j_bgn_tilejoker = {
+                name = "Tile Joker",
+                text = {
+                    'If the scored cards',
+                    'in the {C:attention}first hand{} of round',
+                    'total {C:attention}#1# or greater,',
+                    'level up {C:attention}#2#'
+                }
+            },
+            j_bgn_blindnil = {
+                name = 'Blind Nil',
+                text = {
+                    {
+                        '{C:chips}+#1#{} chips'
+                    },{
+                        'First hand each round',
+                        'is {C:attention}drawn face down'
+                    }
+                }
+            },
+            j_bgn_routecard = {
+                name = 'Route Card',
+                text = {
+                    'This Joker gains {X:mult,C:white}X#2#{} Mult',
+                    'if played hand contains a {C:attention}Straight',
+                    'and contains the ranks {C:attention}#5#{} and {C:attention}#6#{}',
+                    '{C:inactive}(Currently {X:mult,C:white}X#1#{C:inactive} Mult)',
+                    '{s:0.8}Ranks change every round'
+                }
+            },
+            j_bgn_dobble = {
+                name = 'Dobble',
+                text = {
+                    'Cards drawn from the deck',
+                    'will be different ranks',
+                    'from cards held in hand',
+                    '{s:0.8,C:inactive}(if possible)'
+                }
             }
         },
 
