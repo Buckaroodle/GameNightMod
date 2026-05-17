@@ -245,6 +245,14 @@ return {
                     'from cards held in hand',
                     '{s:0.8,C:inactive}(if possible)'
                 }
+            },
+            j_bgn_cardczar = {
+                name = 'Card Czar',
+                text = {
+                    'Gives 1 random scored card',
+                    'a random edition',
+                    'at end of round'
+                }
             }
         },
 
