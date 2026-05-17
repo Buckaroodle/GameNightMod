@@ -253,6 +253,14 @@ return {
                     'a random edition',
                     'at end of round'
                 }
+            },
+            j_bgn_cardsleeve = {
+                name = 'Card Sleeve',
+                text = {
+                    'Debuffs Joker on the right,',
+                    'Gives {C:mult}Mult{} equal to',
+                    'triple its sell value'
+                }
             }
         },
 
