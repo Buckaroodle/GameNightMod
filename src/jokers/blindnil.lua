@@ -33,3 +33,5 @@ SMODS.Joker {
         end
     end
 }
+
+-- context.other_card.facing == "back"

@@ -71,17 +71,11 @@ return {
             j_bgn_scoundrel = {
                 name = "Scoundrel",
                 text = {
-                    {
-                        '{X:mult,C:white}X#1#{} Mult if',
-                        'played hand is {C:attention}weaker',
-                        'than a {C:attention}#2#.',
-                        'Poker hand decreases',
-                        'after each successful trigger'
-                    },{
-                        'If played hand is a',
-                        '{C:attention}High Card{}, this Joker',
-                        'is destroyed'
-                    }
+                    'This Joker gains {X:mult,C:white}X#2#{} Mult',
+                    'per {C:attention}consecutive{} hand played',
+                    '{C:attention}weaker{} than your last played hand',
+                    '{C:inactive}(Currently {X:mult,C:white}X#1#{C:inactive} Mult)',
+                    '{C:inactive}Last played hand was a #3#'
                 }
             },
             j_bgn_garbage = {
@@ -260,6 +254,22 @@ return {
                     'Debuffs Joker on the right,',
                     'Gives {C:mult}Mult{} equal to',
                     'triple its sell value'
+                }
+            },
+            j_bgn_memory = {
+                name = 'Memory',
+                text = {
+                    'All scoring cards',
+                    'played {C:attention}face down',
+                    'gain a {C:attention}random edition'
+                }
+            },
+            j_bgn_hungryhippo = {
+                name = 'Hungry Hippo',
+                text = {
+                    'If a Food Joker is destroyed,',
+                    'this Joker gains {X:mult,C:white}X#2#{C:inactive} Mult',
+                    '{C:inactive}(Currently {X:mult,C:white}X#1#{C:inactive} Mult)'
                 }
             }
         },
