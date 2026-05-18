@@ -8,11 +8,11 @@ local contains = function (tbl, item)
 end
 
 SMODS.Joker {
-    key = 'cardsleeve',
+    key = 'gradedcard',
     atlas = 'bgn_joker_sprites',
     pos = {
-        x = 0,
-        y = 0
+        x = 4,
+        y = 4
     },
     config = {
         extra = {

@@ -5,8 +5,9 @@ SMODS.Joker {
     atlas = 'bgn_joker_sprites',
     pos = {
         x = 0,
-        y = 0
+        y = 5
     },
+    pixel_size = { h = 71 },
     config = {
         extra = {
             flipped_cards = {}

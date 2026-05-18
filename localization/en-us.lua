@@ -248,8 +248,8 @@ return {
                     'at end of round'
                 }
             },
-            j_bgn_cardsleeve = {
-                name = 'Card Sleeve',
+            j_bgn_gradedcard = {
+                name = 'Graded Card',
                 text = {
                     'Debuffs Joker on the right,',
                     'Gives {C:mult}Mult{} equal to',
@@ -270,6 +270,13 @@ return {
                     'If a Food Joker is destroyed,',
                     'this Joker gains {X:mult,C:white}X#2#{C:inactive} Mult',
                     '{C:inactive}(Currently {X:mult,C:white}X#1#{C:inactive} Mult)'
+                }
+            },
+            j_bgn_mancala = {
+                name = 'Mancala',
+                text = {
+                    'Stone cards do not count',
+                    'towards your hand size'
                 }
             }
         },
