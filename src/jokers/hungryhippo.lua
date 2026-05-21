@@ -2,8 +2,8 @@ SMODS.Joker {
     key = 'hungryhippo',
     atlas = 'bgn_joker_sprites',
     pos = {
-        x = 0,
-        y = 0
+        x = 1,
+        y = 6
     },
     config = {
         extra = {
