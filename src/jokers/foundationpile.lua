@@ -2,8 +2,8 @@ SMODS.Joker {
     key = 'foundationpile',
     atlas = 'bgn_joker_sprites',
     pos = {
-        x = 0,
-        y = 0
+        x = 3,
+        y = 5
     },
     config = {
         extra = {

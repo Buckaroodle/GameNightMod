@@ -20,7 +20,7 @@ SMODS.Joker {
         }
     },
     rarity = 2,
-    cost = 5,
+    cost = 6,
     loc_vars = function(self, info_queue, card)
         local sell_cost = 0
         if G.jokers ~= nil then

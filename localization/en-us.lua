@@ -46,10 +46,10 @@ return {
                 text = {
                     'This Joker gains {C:mult}+#2#{} Mult',
                     "per {C:attention}consecutive{} hand",
-                    "played without scoring a",
-                    "{C:attention}#3#{} of {V:1}#4#{}",
+                    "played without",
+                    "a scoring {C:attention}#3#{}",
                     "{C:inactive}(Currently {C:mult}+#1#{C:inactive} Mult)",
-                    "{s:0.8}Card changes every round"
+                    "{s:0.8}Rank changes every round"
                 }
             },
             j_bgn_pegboard = {
@@ -204,10 +204,17 @@ return {
             j_bgn_tilejoker = {
                 name = "Tile Joker",
                 text = {
-                    'If the scored cards',
-                    'in the {C:attention}first hand{} of round',
-                    'total {C:attention}#1# or greater,',
-                    'level up {C:attention}#2#'
+                    {
+                        'If the scored cards',
+                        'in the {C:attention}first hand{} of round',
+                        'total {C:attention}#1# or greater,',
+                        'level up {C:attention}#2#'
+                    },{ 
+                        '{C:attention}Jacks, Queens, and',
+                        '{C:attention}Kings{}{C:inactive} are each worth {C:attention}10,',
+                        '{C:attention}Aces{}{C:inactive} are worth {C:attention}1'
+                    }
+                    
                 }
             },
             j_bgn_blindnil = {
@@ -235,7 +242,7 @@ return {
                 name = 'Dobble',
                 text = {
                     'Cards drawn from the deck',
-                    'will be different ranks',
+                    'will be {C:attention}different{} ranks',
                     'from cards held in hand',
                     '{s:0.8,C:inactive}(if possible)'
                 }
@@ -243,15 +250,15 @@ return {
             j_bgn_cardczar = {
                 name = 'Card Czar',
                 text = {
-                    'Gives 1 random scored card',
-                    'a random edition',
+                    'Gives 1 random {C:attention}scored card',
+                    'a random {C:attention}edition',
                     'at end of round'
                 }
             },
             j_bgn_gradedcard = {
                 name = 'Graded Card',
                 text = {
-                    'Debuffs Joker on the right,',
+                    'Debuffs Joker on the {C:attention}right,',
                     'Gives {C:mult}Mult{} equal to',
                     'triple its sell value'
                 }
@@ -267,7 +274,7 @@ return {
             j_bgn_hungryhippo = {
                 name = 'Hungry Hippo',
                 text = {
-                    'If a Food Joker is destroyed,',
+                    'If a {C:attention}Food Joker{} is destroyed,',
                     'this Joker gains {X:mult,C:white}X#2#{C:inactive} Mult',
                     '{C:inactive}(Currently {X:mult,C:white}X#1#{C:inactive} Mult)'
                 }
@@ -275,8 +282,26 @@ return {
             j_bgn_mancala = {
                 name = 'Mancala',
                 text = {
-                    'Stone cards do not count',
-                    'towards your hand size'
+                    'Each {C:attention}Stone Card',
+                    'held in hand',
+                    'gives {C:chips}+#1#{} chips'
+                }
+            },
+            j_bgn_detective = {
+                name = 'Detective',
+                text = {
+                    'Each played {C:attention}#2#',
+                    'of {C:attention}#3#{} gives',
+                    '{X:mult,C:white}X#1#{} Mult if poker',
+                    'hand is a {C:attention}#4#'
+                }
+            },
+            j_bgn_taboo = {
+                name = 'Taboo',
+                text = {
+                    'Each {C:attention}debuffed',
+                    'playing card scored',
+                    'gives {X:mult,C:white}X#1#{} Mult'
                 }
             }
         },

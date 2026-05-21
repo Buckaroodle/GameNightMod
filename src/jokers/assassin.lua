@@ -20,8 +20,8 @@ SMODS.Joker {
                 card.ability.extra.mult,
                 card.ability.extra.mult_gain,
                 localize(assassin_card.rank, 'ranks'),
-                localize(assassin_card.suit, 'suits_plural'),
-                colours = { G.C.SUITS[assassin_card.suit] }
+                --localize(assassin_card.suit, 'suits_plural'),
+                --colours = { G.C.SUITS[assassin_card.suit] }
             }
         }
     end,
@@ -30,8 +30,8 @@ SMODS.Joker {
         if context.before and not context.blueprint then -- check to see if assassin_card was scored BEFORE cards score
         local assassin_triggered = false
         for _, playing_card in ipairs(context.scoring_hand) do
-            if playing_card:get_id() == G.GAME.current_round.assassin_card.id and -- NOTE: get_id() returns a rank, and we're doing a rank == rank comparison
-            playing_card:is_suit(G.GAME.current_round.assassin_card.suit)then -- HOWEVER here, we're asking "is the card's suit the same as the other suit), returning a true/false value"
+            if playing_card:get_id() == G.GAME.current_round.assassin_card.id --[[and -- NOTE: get_id() returns a rank, and we're doing a rank == rank comparison
+            playing_card:is_suit(G.GAME.current_round.assassin_card.suit)]] then -- HOWEVER here, we're asking "is the card's suit the same as the other suit), returning a true/false value"
                 assassin_triggered = true
                 break
             end
@@ -67,7 +67,7 @@ local function reset_assassin_card()
     local assassin_card = pseudorandom_element(valid_assassin_cards, 'assassin' .. G.GAME.round_resets.ante)
     if assassin_card then
         G.GAME.current_round.assassin_card.rank = assassin_card.base.value
-        G.GAME.current_round.assassin_card.suit = assassin_card.base.suit
+        --G.GAME.current_round.assassin_card.suit = assassin_card.base.suit
         G.GAME.current_round.assassin_card.id = assassin_card.base.id
     end
 end
