@@ -38,7 +38,7 @@ SMODS.Joker {
     end,
     update = function(self, card, dt)
         if G.jokers then
-            local sleeves = SMODS.find_card("j_bgn_cardsleeve")
+            local sleeves = SMODS.find_card("j_bgn_gradedcard")
             if #sleeves > 0 then
                 for i = 1, #G.jokers.cards do
                     if G.jokers.cards[i] == card and not G.jokers.cards[i].debuff then
