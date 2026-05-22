@@ -8,7 +8,7 @@ return {
                         '{C:green}#1# in #2#{} chance',
                         'to give {C:chips}+#3#{} chips'
                     },{
-                        '{C:inactive}Art by VoxDaFox'
+                        '{C:inactive}Art by voxdafox'
                     }
                 }
             },
@@ -290,10 +290,14 @@ return {
             j_bgn_detective = {
                 name = 'Detective',
                 text = {
-                    'Each played {C:attention}#2#',
-                    'of {C:attention}#3#{} gives',
-                    '{X:mult,C:white}X#1#{} Mult if poker',
-                    'hand is a {C:attention}#4#'
+                    {
+                        'Each played {C:attention}#2#',
+                        'of {C:attention}#3#{} gives',
+                        '{X:mult,C:white}X#1#{} Mult if poker',
+                        'hand is a {C:attention}#4#'
+                    },{
+                        '{C:inactive}Art by voxdafox'
+                    }
                 }
             },
             j_bgn_taboo = {
