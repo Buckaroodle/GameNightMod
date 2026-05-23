@@ -47,7 +47,7 @@ SMODS.Joker {
             --card.ability.extra.mult = #G.hand.cards
             if context.other_card and bust == false then
                 return {
-                    mult = card.ability.extra.mult * #G.hand.cards
+                    mult = card.ability.extra.mult
                 }
             end
         end
