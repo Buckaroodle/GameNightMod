@@ -36,9 +36,9 @@ return {
                 text = {
                     'If all cards {C:attention}held in hand',
                     'are {C:attention}different ranks,',
-                    'each one scores {C:mult}Mult{}',
-                    'equal to the number of',
-                    'cards held in hand'
+                    'each one scores {C:mult}+#1#{} Mult',
+                    --'equal to the number of',
+                    --'cards held in hand'
                 }
             },
             j_bgn_assassin = {

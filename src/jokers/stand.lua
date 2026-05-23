@@ -8,6 +8,7 @@ SMODS.Joker {
     config = {
         extra = {
             --mult = 15
+            mult = 3
         }
     },
     rarity = 1,
@@ -43,10 +44,10 @@ SMODS.Joker {
                 end
                 ranks[v:get_id()] = true -- now we add it to the dictionary
             end
-            card.ability.extra.mult = #G.hand.cards
+            --card.ability.extra.mult = #G.hand.cards
             if context.other_card and bust == false then
                 return {
-                    mult = card.ability.extra.mult
+                    mult = card.ability.extra.mult * #G.hand.cards
                 }
             end
         end

@@ -26,7 +26,7 @@ SMODS.Joker {
     end,
 
     calculate = function(self, card, context)
-        if context.card_added then
+        if context.card_added or context.buying_self then
             G.E_MANAGER:add_event(Event({
             func = function() 
                 for _, jokers in ipairs(G.jokers.cards) do
