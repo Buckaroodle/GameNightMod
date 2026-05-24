@@ -157,7 +157,8 @@ return {
             j_bgn_palace = {
                 name = "Palace",
                 text = {
-                    'After scoring,',
+                    'If only {C:attention}1{} card',
+                    'is discarded,',
                     'all cards {C:attention}held in hand',
                     'move to your {C:attention}discards'
                 }

@@ -19,7 +19,7 @@ SMODS.Joker {
         }
     end,
     calculate = function(self, card, context)
-        if context.after then
+        if context.pre_discard and #context.full_hand == 1 then
             for _, playing_card in ipairs(G.hand.cards) do
                 draw_card(G.hand, G.discard, 90, 'up', nil, playing_card)
             end
