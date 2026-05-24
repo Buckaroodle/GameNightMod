@@ -67,13 +67,14 @@ SMODS.Joker {
             local random = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11}
             local first_number = pseudorandom_element(random, 'bgn_routecard')
             local second_number = first_number + 3
+            card.ability.extra.rank_2 = second_number
             if first_number == 1 then
                 card.ability.extra.rank_1 = 14
+                card.ability.extra.rank_1_string = 'Ace'
             else
                 card.ability.extra.rank_1 = first_number
+                card.ability.extra.rank_1_string = integer_to_rank(first_number)
             end
-            card.ability.extra.rank_2 = second_number
-            card.ability.extra.rank_1_string = integer_to_rank(first_number)
             card.ability.extra.rank_2_string = integer_to_rank(second_number)
             return {
                 message = "New Route!",

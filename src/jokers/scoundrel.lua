@@ -12,7 +12,7 @@ SMODS.Joker {
             poker_hand = 'N/A'
         }
     },
-    rarity = 3,
+    rarity = 2,
     cost = 8,
     eternal_compat = false,
     loc_vars = function(self, info_queue, card)
