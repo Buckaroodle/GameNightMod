@@ -308,6 +308,14 @@ return {
                     'playing card scored',
                     'gives {X:mult,C:white}X#1#{} Mult'
                 }
+            },
+            j_bgn_storedenergy = {
+                name = 'Stored Energy',
+                text = {
+                    '{C:chips}+#1#{} chips for',
+                    'each {C:attention}played{} card',
+                    'that does not score'
+                }
             }
         },
 
