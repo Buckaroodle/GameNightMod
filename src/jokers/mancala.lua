@@ -7,7 +7,7 @@ SMODS.Joker {
     },
     config = {
         extra = {
-            chips = 50
+            chips = 40
         }
     },
     rarity = 2,
@@ -22,9 +22,15 @@ SMODS.Joker {
     end,
     calculate = function(self, card, context)
         if context.individual and context.cardarea == G.hand and not context.end_of_round then
+            local stone_cards = 0
+            for _, playing_card in ipairs(G.hand.cards) do
+                if SMODS.has_enhancement(playing_card, 'm_stone') then
+                    stone_cards = stone_cards + 1
+                end
+            end
             if SMODS.has_enhancement(context.other_card, 'm_stone') then
                 return {
-                    chips = card.ability.extra.chips
+                    chips = card.ability.extra.chips * stone_cards
                 }
             end
         end

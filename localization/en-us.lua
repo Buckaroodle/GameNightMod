@@ -58,8 +58,7 @@ return {
                     {
                         'This Joker gains {C:chips}+#2#{} chips',
                         'for every {C:attention}combination{} of',
-                        'scoring cards',
-                        '{C:attention}totaling 15',
+                        'played cards {C:attention}totaling 15',
                         '{C:inactive}(Currently {C:chips}+#1#{C:inactive} chips)'
                     },{
                         '{C:attention}Jacks, Queens, and',
@@ -213,7 +212,7 @@ return {
                     },{ 
                         '{C:attention}Jacks, Queens, and',
                         '{C:attention}Kings{}{C:inactive} are each worth {C:attention}10,',
-                        '{C:attention}Aces{}{C:inactive} are worth {C:attention}1'
+                        '{C:attention}Aces{}{C:inactive} are worth {C:attention}11'
                     }
                     
                 }
@@ -283,9 +282,10 @@ return {
             j_bgn_mancala = {
                 name = 'Mancala',
                 text = {
-                    'Each {C:attention}Stone Card',
-                    'held in hand',
-                    'gives {C:chips}+#1#{} chips'
+                    'Each {C:attention}Stone Card{} held in hand',
+                    'gives {C:chips}+#1#{} chips {C:attention}multiplied',
+                    'by the total number of',
+                    '{C:attention}Stone Cards{} held in hand',
                 }
             },
             j_bgn_detective = {
@@ -304,9 +304,9 @@ return {
             j_bgn_taboo = {
                 name = 'Taboo',
                 text = {
-                    'Each {C:attention}debuffed',
-                    'playing card scored',
-                    'gives {X:mult,C:white}X#1#{} Mult'
+                    '{C:attention}Debuffed Jokers',
+                    'and scoring playing cards',
+                    'give {X:mult,C:white}X#1#{} Mult'
                 }
             },
             j_bgn_storedenergy = {

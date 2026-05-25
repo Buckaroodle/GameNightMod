@@ -22,14 +22,14 @@ SMODS.Joker {
         }
     end,
     calculate = function(self, card, context)
-        if context.joker_type_destroyed then
-            if context.card:has_attribute('food') then
+        if context.joker_type_destroyed and context.card:has_attribute('food') then
+            --if context.card:has_attribute('food') then
                 card.ability.extra.Xmult = card.ability.extra.Xmult + card.ability.extra.Xmult_gain
                 return {
                     message = localize('k_upgrade_ex'),
                     colour = G.C.MULT,
                 }
-            end
+            --end
         end
         if context.joker_main then
             return {

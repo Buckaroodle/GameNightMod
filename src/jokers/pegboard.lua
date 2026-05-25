@@ -25,7 +25,7 @@ SMODS.Joker {
         if context.before and not context.blueprint then
             local total_combos = 0
             local values = {}
-            for _, scoring_card in ipairs(context.scoring_hand) do
+            for _, scoring_card in ipairs(context.full_hand) do
                 local rank_number = scoring_card:get_id()
                 if rank_number == 14 then
                     values[#values + 1] = 1

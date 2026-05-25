@@ -27,7 +27,7 @@ SMODS.Joker {
             for _, scoring_card in ipairs(context.scoring_hand) do
                 local rank_number = scoring_card:get_id()
                 if scoring_card:get_id() == 14 then
-                    card_total = card_total + 1
+                    card_total = card_total + 11
                 elseif scoring_card:get_id() == 13 or scoring_card:get_id() == 12 or scoring_card:get_id() == 11 then
                     card_total = card_total + 10
                 else
