@@ -117,9 +117,9 @@ return {
                 name = "Mermaid",
                 text = {
                     'Earn {C:money}$#1#{} for each',
-                    'card held in hand',
-                    'of the suit you have',
-                    'the most of in your hand',
+                    'card {C:attention}held in hand',
+                    'of the {C:attention}suit{} you have',
+                    'the {C:attention}most{} of in your hand',
                     'at the end of round'
                 }
             },
@@ -304,8 +304,8 @@ return {
             j_bgn_taboo = {
                 name = 'Taboo',
                 text = {
-                    '{C:attention}Debuffed Jokers',
-                    'and scoring playing cards',
+                    '{C:attention}Debuffed{} Jokers',
+                    'and playing cards',
                     'give {X:mult,C:white}X#1#{} Mult'
                 }
             },
@@ -315,6 +315,16 @@ return {
                     '{C:chips}+#1#{} chips for',
                     'each {C:attention}played{} card',
                     'that does not score'
+                }
+            },
+            j_bgn_slamwich = {
+                name = 'Slamwich',
+                text = {
+                    'If played hand is a {C:attention}Pair,',
+                    'both scoring cards',
+                    'retrigger additional times',
+                    '{C:attention}equal{} to the number of',
+                    '{C:attention}unscoring cards{} between them'
                 }
             }
         },
