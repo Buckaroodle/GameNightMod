@@ -8,7 +8,7 @@ return {
                         '{C:green}#1# in #2#{} chance',
                         'to give {C:chips}+#3#{} chips'
                     },{
-                        '{C:inactive}Art by VoxDaFox'
+                        '{C:inactive}Art by voxdafox'
                     }
                 }
             },
@@ -36,9 +36,9 @@ return {
                 text = {
                     'If all cards {C:attention}held in hand',
                     'are {C:attention}different ranks,',
-                    'each one scores {C:mult}Mult{}',
-                    'equal to the number of',
-                    'cards held in hand'
+                    'each one scores {C:mult}+#1#{} Mult',
+                    --'equal to the number of',
+                    --'cards held in hand'
                 }
             },
             j_bgn_assassin = {
@@ -46,10 +46,10 @@ return {
                 text = {
                     'This Joker gains {C:mult}+#2#{} Mult',
                     "per {C:attention}consecutive{} hand",
-                    "played without scoring a",
-                    "{C:attention}#3#{} of {V:1}#4#{}",
+                    "played without",
+                    "a scoring {C:attention}#3#{}",
                     "{C:inactive}(Currently {C:mult}+#1#{C:inactive} Mult)",
-                    "{s:0.8}Card changes every round"
+                    "{s:0.8}Rank changes every round"
                 }
             },
             j_bgn_pegboard = {
@@ -58,8 +58,7 @@ return {
                     {
                         'This Joker gains {C:chips}+#2#{} chips',
                         'for every {C:attention}combination{} of',
-                        'scoring cards',
-                        '{C:attention}totaling 15',
+                        'played cards {C:attention}totaling 15',
                         '{C:inactive}(Currently {C:chips}+#1#{C:inactive} chips)'
                     },{
                         '{C:attention}Jacks, Queens, and',
@@ -71,17 +70,11 @@ return {
             j_bgn_scoundrel = {
                 name = "Scoundrel",
                 text = {
-                    {
-                        '{X:mult,C:white}X#1#{} Mult if',
-                        'played hand is {C:attention}weaker',
-                        'than a {C:attention}#2#.',
-                        'Poker hand decreases',
-                        'after each successful trigger'
-                    },{
-                        'If played hand is a',
-                        '{C:attention}High Card{}, this Joker',
-                        'is destroyed'
-                    }
+                    'This Joker gains {X:mult,C:white}X#2#{} Mult',
+                    'per {C:attention}consecutive{} hand played',
+                    '{C:attention}weaker{} than your last played hand',
+                    '{C:inactive}(Currently {X:mult,C:white}X#1#{C:inactive} Mult)',
+                    '{C:inactive}Last played hand was a #3#'
                 }
             },
             j_bgn_garbage = {
@@ -124,9 +117,9 @@ return {
                 name = "Mermaid",
                 text = {
                     'Earn {C:money}$#1#{} for each',
-                    'card held in hand',
-                    'of the suit you have',
-                    'the most of in your hand',
+                    'card {C:attention}held in hand',
+                    'of the {C:attention}suit{} you have',
+                    'the {C:attention}most{} of in your hand',
                     'at the end of round'
                 }
             },
@@ -163,19 +156,177 @@ return {
             j_bgn_palace = {
                 name = "Palace",
                 text = {
-                    'After scoring,',
+                    'If only {C:attention}1{} card',
+                    'is discarded,',
                     'all cards {C:attention}held in hand',
                     'move to your {C:attention}discards'
                 }
-            }
-            --[[,j_bgn_tripleletterscore = {
-                name = "Triple Letter Score",
+            },
+            j_bgn_doubleletterscore = {
+                name = "Double Letter Score",
                 text = {
-                    '+#2# chips for each',
-                    'letter in all Joker names',
+                    '{C:chips}+#2#{} chips for each',
+                    '{C:attention}letter{} in all Joker {C:attention}names',
                     '{C:inactive}(Currently {C:chips}+#1#{C:inactive} chips)'
                 }
-            }]]
+            },
+            j_bgn_foundationpile = {
+                name = "Foundation Pile",
+                text = {
+                    'If a single {C:attention}#3#{} is discarded,',
+                    'this Joker gains {C:mult}+#2#{} Mult',
+                    '{C:inactive}(Currently {C:mult}+#1#{C:inactive} Mult)',
+                    '{s:0.8}Rank increases every successful discard'
+                }
+            },
+            j_bgn_parkplace = {
+                name = "Park Place",
+                text = {
+                    {
+                        '{C:mult}+#1#{} Mult',
+                    },{
+                        '{X:mult,C:white}X#2#{} Mult',
+                        'if {C:attention}Boardwalk{} is owned'
+                    }
+                }
+            },
+            j_bgn_boardwalk = {
+                name = "Boardwalk",
+                text = {
+                    {
+                        '{C:mult}+#1#{} Mult',
+                    },{
+                        '{X:mult,C:white}X#2#{} Mult',
+                        'if {C:attention}Park Place{} is owned'
+                    }
+                }
+            },
+            j_bgn_tilejoker = {
+                name = "Tile Joker",
+                text = {
+                    {
+                        'If the scored cards',
+                        'in the {C:attention}first hand{} of round',
+                        'total {C:attention}#1# or greater,',
+                        'level up {C:attention}#2#'
+                    },{ 
+                        '{C:attention}Jacks, Queens, and',
+                        '{C:attention}Kings{}{C:inactive} are each worth {C:attention}10,',
+                        '{C:attention}Aces{}{C:inactive} are worth {C:attention}11'
+                    }
+                    
+                }
+            },
+            j_bgn_blindnil = {
+                name = 'Blind Nil',
+                text = {
+                    {
+                        '{C:chips}+#1#{} chips'
+                    },{
+                        'First hand each round',
+                        'is {C:attention}drawn face down'
+                    }
+                }
+            },
+            j_bgn_routecard = {
+                name = 'Route Card',
+                text = {
+                    'This Joker gains {X:mult,C:white}X#2#{} Mult',
+                    'if played hand contains a {C:attention}Straight',
+                    'and contains the ranks {C:attention}#5#{} and {C:attention}#6#{}',
+                    '{C:inactive}(Currently {X:mult,C:white}X#1#{C:inactive} Mult)',
+                    '{s:0.8}Ranks change every round'
+                }
+            },
+            j_bgn_dobble = {
+                name = 'Dobble',
+                text = {
+                    'Cards drawn from the deck',
+                    'will be {C:attention}different{} ranks',
+                    'from cards held in hand',
+                    '{s:0.8,C:inactive}(if possible)'
+                }
+            },
+            j_bgn_cardczar = {
+                name = 'Card Czar',
+                text = {
+                    'Gives 1 random {C:attention}scored card',
+                    'a random {C:attention}edition',
+                    'at end of round'
+                }
+            },
+            j_bgn_gradedcard = {
+                name = 'Graded Card',
+                text = {
+                    'Debuffs Joker on the {C:attention}right,',
+                    'Gives {C:mult}Mult{} equal to',
+                    'triple its sell value'
+                }
+            },
+            j_bgn_memory = {
+                name = 'Memory',
+                text = {
+                    'All scoring cards',
+                    'played {C:attention}face down',
+                    'gain a {C:attention}random edition'
+                }
+            },
+            j_bgn_hungryhippo = {
+                name = 'Hungry Hippo',
+                text = {
+                    'If a {C:attention}Food Joker{} is destroyed,',
+                    'this Joker gains {X:mult,C:white}X#2#{C:inactive} Mult',
+                    '{C:inactive}(Currently {X:mult,C:white}X#1#{C:inactive} Mult)'
+                }
+            },
+            j_bgn_mancala = {
+                name = 'Mancala',
+                text = {
+                    'Each {C:attention}Stone Card{} held in hand',
+                    'gives {C:chips}+#1#{} chips {C:attention}multiplied',
+                    'by the total number of',
+                    '{C:attention}Stone Cards{} held in hand',
+                }
+            },
+            j_bgn_detective = {
+                name = 'Detective',
+                text = {
+                    {
+                        'Each played {C:attention}#2#',
+                        'of {C:attention}#3#{} gives',
+                        '{X:mult,C:white}X#1#{} Mult if poker',
+                        'hand is a {C:attention}#4#'
+                    },{
+                        '{C:inactive}Art by voxdafox'
+                    }
+                }
+            },
+            j_bgn_taboo = {
+                name = 'Taboo',
+                text = {
+                    '{C:attention}Debuffed{} Jokers',
+                    'and playing cards',
+                    'give {X:mult,C:white}X#1#{} Mult'
+                }
+            },
+            j_bgn_storedenergy = {
+                name = 'Stored Energy',
+                text = {
+                    '{C:chips}+#1#{} chips for',
+                    'each {C:attention}played{} card',
+                    'that does not score'
+                }
+            },
+            j_bgn_slamwich = {
+                name = 'Slamwich',
+                text = {
+                    'If played hand is a {C:attention}Pair,',
+                    'both scoring cards',
+                    'retrigger additional times',
+                    '{C:attention}equal{} to the number of',
+                    '{C:attention}unscoring cards{} between them'
+                }
+            }
         },
 
         Back = {
@@ -191,18 +342,17 @@ return {
                     "",
                     '{C:inactive,s:0.85}Art by mintycreamfluff'
                 }
-            }
-            --[[,b_bgn_stocked = {
+            },
+            b_bgn_stocked = {
                 name = 'Stocked Deck',
                 text = {
                     '{C:attention}+1{} card slot in shop',
                     '{C:attention}+1{} voucher slot in shop',
                     '{C:attention}+1{} pack slot in shop',
                     '',
-                    'Reroll cost starts at {C:money}$0{}',
-                    'and does not reset each shop'
+                    'Reroll cost does not reset each shop'
                 }
-            }]]
+            }
         }
     }
 }
