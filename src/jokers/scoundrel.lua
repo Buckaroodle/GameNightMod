@@ -14,7 +14,7 @@ SMODS.Joker {
     },
     rarity = 2,
     cost = 8,
-    eternal_compat = false,
+    --eternal_compat = false,
     loc_vars = function(self, info_queue, card)
         return {
             vars = {
@@ -49,6 +49,10 @@ SMODS.Joker {
         end
     end,
     set_ability = function(self, card, initial, delay_sprites)
-        card.ability.extra.poker_hand = SMODS.last_hand.scoring_name
+        if not SMODS.last_hand == nil then
+            card.ability.extra.poker_hand = SMODS.last_hand.scoring_name
+        else
+            card.ability.extra.poker_hand = 'N/A'
+        end
     end
 }
