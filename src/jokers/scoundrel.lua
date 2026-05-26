@@ -30,19 +30,25 @@ SMODS.Joker {
             if card.ability.extra.poker_hand ~= nil and card.ability.extra.poker_hand ~= 'N/A' then
                 if G.GAME.hands[context.scoring_name].order > G.GAME.hands[card.ability.extra.poker_hand].order then
                     card.ability.extra.Xmult = card.ability.extra.Xmult + card.ability.extra.Xmult_gain
+                    card.ability.extra.poker_hand = context.scoring_name
                 else--if G.GAME.hands[context.scoring_name].order <= G.GAME.hands[SMODS.last_hand.scoring_name].order then
                     card.ability.extra.Xmult = 1
+                    card.ability.extra.poker_hand = context.scoring_name
                     return {
                         message = localize('k_reset')
                     }
                 end
+            else
+                card.ability.extra.poker_hand = context.scoring_name
             end
-            card.ability.extra.poker_hand = context.scoring_name
         end
         if context.joker_main then
             return {
                 xmult = card.ability.extra.Xmult,
             }
         end
+    end,
+    set_ability = function(self, card, initial, delay_sprites)
+        card.ability.extra.poker_hand = SMODS.last_hand.scoring_name
     end
 }
