@@ -1,6 +1,10 @@
 SMODS.Joker {
     key = 'bettelmann',
     atlas = 'bgn_joker_sprites',
+    attributes = {
+        'chips',
+        'chance'
+    },
     pos = {
         x = 1,
         y = 3

@@ -326,6 +326,45 @@ return {
                     '{C:attention}equal{} to the number of',
                     '{C:attention}unscoring cards{} between them'
                 }
+            },
+            j_bgn_ur = {
+                name = 'Ur',
+                text = {
+                    'This Joker has a',
+                    '{C:green}#1# in #2#{} chance',
+                    'to gain {X:mult,C:white}X#3#{} Mult',
+                    'at end of round',
+                    '{C:inactive}(Currently {X:mult,C:white}X#4#{C:inactive} Mult)'
+                }
+            },
+            j_bgn_bananasplit = {
+                name = 'Banana Split',
+                text = {
+                    '{C:mult}+#3#{} Mult',
+                    '{C:green}#1# in #2#{} chance to {C:attention}halve{}',
+                    '{C:mult}Mult{} at end of round'
+                }
+            },
+            j_bgn_chutesandladders = {
+                name = 'Chutes & Ladders',
+                text = {
+                    'This Joker gains {C:chips}+#4#{} chips',
+                    'per card scored,',
+                    '',
+                    '{C:green}#1# in #2#{} chance to {C:attention}halve',
+                    'chips each hand played',
+                    '{C:inactive}(Currently {C:chips}+#3#{C:inactive} chips)'
+                }
+            },
+            j_bgn_othello = {
+                name = 'Othello',
+                text = {
+                    'If the {C:attention}first{} and {C:attention}last{} card',
+                    'of the scoring hand',
+                    'are the {C:attention}same suit,',
+                    '{C:attention}convert{} all scoring cards',
+                    'to that suit'
+                }
             }
         },
 

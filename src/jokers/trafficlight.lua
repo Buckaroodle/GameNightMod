@@ -1,6 +1,11 @@
 SMODS.Joker {
     key = 'trafficlight',
     atlas = 'bgn_joker_sprites',
+    attributes = {
+        'xmult',
+        'hand_type',
+        'chance'
+    },
     pos = {
         x = 0,
         y = 1

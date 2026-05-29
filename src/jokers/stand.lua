@@ -1,6 +1,10 @@
 SMODS.Joker {
     key = 'stand',
     atlas = 'bgn_joker_sprites',
+    attributes = {
+        'mult',
+        'rank'
+    },
     pos = {
         x = 2,
         y = 0

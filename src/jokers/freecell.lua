@@ -1,6 +1,10 @@
 SMODS.Joker {
     key = 'freecell',
     atlas = 'bgn_joker_sprites',
+    attributes = {
+        'joker_slot',
+        'joker'
+    },
     pos = {
         x = 3,
         y = 2

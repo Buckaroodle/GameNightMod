@@ -1,6 +1,9 @@
 SMODS.Joker {
     key = 'storedenergy',
     atlas = 'bgn_joker_sprites',
+    attributes = {
+        'chips',
+    },
     pos = {
         x = 2,
         y = 6

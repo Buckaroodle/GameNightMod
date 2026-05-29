@@ -1,6 +1,9 @@
 SMODS.Joker {
     key = 'scoutandshow',
     atlas = 'bgn_joker_sprites',
+    attributes = {
+        'passive'
+    },
     pos = {
         x = 1,
         y = 2

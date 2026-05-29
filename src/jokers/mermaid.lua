@@ -1,6 +1,10 @@
 SMODS.Joker {
     key = 'mermaid',
     atlas = 'bgn_joker_sprites',
+    attributes = {
+        'economy',
+        'suit'
+    },
     pos = {
         x = 4,
         y = 1

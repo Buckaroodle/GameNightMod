@@ -1,6 +1,10 @@
 SMODS.Joker {
     key = 'parkplace',
     atlas = 'bgn_joker_sprites',
+    attributes = {
+        'mult',
+        'xmult'
+    },
     pos = {
         x = 1,
         y = 4

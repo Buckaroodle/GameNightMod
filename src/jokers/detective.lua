@@ -11,6 +11,12 @@ end
 SMODS.Joker {
     key = 'detective',
     atlas = 'bgn_joker_sprites',
+    attributes = {
+        'xmult',
+        'rank',
+        'suit',
+        'hand_type',
+    },
     pos = {
         x = 0,
         y = 6

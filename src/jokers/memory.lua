@@ -3,6 +3,9 @@
 SMODS.Joker {
     key = 'memory',
     atlas = 'bgn_joker_sprites',
+    attributes = {
+        'editions'
+    },
     pos = {
         x = 0,
         y = 5

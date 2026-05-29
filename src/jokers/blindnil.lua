@@ -1,6 +1,9 @@
 SMODS.Joker {
     key = 'blindnil',
     atlas = 'bgn_joker_sprites',
+    attributes = {
+        'chips'
+    },
     pos = {
         x = 1,
         y = 5

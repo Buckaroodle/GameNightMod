@@ -1,6 +1,10 @@
 SMODS.Joker {
     key = 'mancala',
     atlas = 'bgn_joker_sprites',
+    attributes = {
+        'chips',
+        'enhancements',
+    },
     pos = {
         x = 4,
         y = 5

@@ -1,6 +1,13 @@
 SMODS.Joker {
     key = 'garbage',
     atlas = 'bgn_joker_sprites',
+    attributes = {
+        'chips',
+        'discard',
+        'face',
+        'scaling'
+
+    },
     pos = {
         x = 4,
         y = 2

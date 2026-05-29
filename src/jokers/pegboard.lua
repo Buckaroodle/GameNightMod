@@ -1,6 +1,11 @@
 SMODS.Joker {
     key = 'pegboard',
     atlas = 'bgn_joker_sprites',
+    attributes = {
+        'chips',
+        'scaling',
+        'rank'
+    },
     pos = {
         x = 3,
         y = 0

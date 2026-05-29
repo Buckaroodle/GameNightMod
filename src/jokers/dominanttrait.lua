@@ -1,6 +1,9 @@
 SMODS.Joker {
     key = 'dominanttrait',
     atlas = 'bgn_joker_sprites',
+    attributes = {
+        'xmult'
+    },
     pos = {
         x = 0,
         y = 2

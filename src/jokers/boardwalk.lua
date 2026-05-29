@@ -1,6 +1,10 @@
 SMODS.Joker {
     key = 'boardwalk',
     atlas = 'bgn_joker_sprites',
+    attributes = {
+        'mult',
+        'xmult',
+    },
     pos = {
         x = 0,
         y = 4

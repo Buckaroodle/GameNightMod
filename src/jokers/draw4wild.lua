@@ -1,6 +1,10 @@
 SMODS.Joker {
     key = 'draw4wild',
     atlas = 'bgn_joker_sprites',
+    attributes = {
+        'enhancements',
+        'hand_size'
+    },
     pos = {
         x = 1,
         y = 0

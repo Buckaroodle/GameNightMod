@@ -1,6 +1,10 @@
 SMODS.Joker {
     key = 'newrule',
     atlas = 'bgn_joker_sprites',
+    attributes = {
+        'mod_chance',
+        'passive'
+    },
     pos = {
         x = 2,
         y = 1

@@ -10,6 +10,10 @@ end
 SMODS.Joker {
     key = 'gradedcard',
     atlas = 'bgn_joker_sprites',
+    attributes = {
+        'mult',
+        'sell_value'
+    },
     pos = {
         x = 4,
         y = 4
