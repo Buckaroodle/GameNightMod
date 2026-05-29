@@ -45,7 +45,7 @@ SMODS.Joker {
             }
         end
         if context.after and SMODS.pseudorandom_probability(card, 'bgn_chutesandladders', card.ability.extra.numerator, card.ability.extra.denominator) and not context.blueprint then
-            card.ability.extra.chips = card.ability.extra.chips / 2
+            card.ability.extra.chips = math.ceil(card.ability.extra.chips / 2)
             math.ceil(card.ability.extra.chips)
             return {
                 message = "Halved!",

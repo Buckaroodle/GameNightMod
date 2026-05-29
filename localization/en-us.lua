@@ -365,6 +365,22 @@ return {
                     '{C:attention}convert{} all scoring cards',
                     'to that suit'
                 }
+            },
+            j_bgn_phase = {
+                name = 'Phase',
+                text = {
+                    'This Joker gains {C:mult}+#2#{} Mult',
+                    'for each {C:attention}unique{} poker hand',
+                    'played this ante, resets',
+                    'when Boss Blind is defeated'
+                }
+            },
+            j_bgn_tacocat = {
+                name = 'Taco Cat',
+                text = {
+                    'Played cards with #1#',
+                    'score {X:mult,C:white}X#2#{} Mult'
+                }
             }
         },
 
