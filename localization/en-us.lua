@@ -359,11 +359,15 @@ return {
             j_bgn_othello = {
                 name = 'Othello',
                 text = {
-                    'If the {C:attention}first{} and {C:attention}last{} card',
-                    'of the scoring hand',
-                    'are the {C:attention}same suit,',
-                    '{C:attention}convert{} all scoring cards',
-                    'to that suit'
+                    {
+                        'If the {C:attention}first{} and {C:attention}last{} card',
+                        'of the scoring hand',
+                        'are the {C:attention}same suit,',
+                        '{C:attention}convert{} all scoring cards',
+                        'to that suit'
+                    },{
+                        '{C:inactive}Art by Hackakat'
+                    }
                 }
             },
             j_bgn_phase = {
@@ -375,11 +379,13 @@ return {
                     'when Boss Blind is defeated'
                 }
             },
-            j_bgn_tacocat = {
-                name = 'Taco Cat',
+            j_bgn_chancellor = {
+                name = 'Chancellor',
                 text = {
-                    'Played cards with #1#',
-                    'score {X:mult,C:white}X#2#{} Mult'
+                    'This Joker gains {C:chips}+#2#{} chips',
+                    'for each card taken or used',
+                    'from a {C:attention}Booster Pack{} this Ante',
+                    '{C:inactive}(Currently {C:chips}+#1#{C:inactive} chips)'
                 }
             }
         },

@@ -7,8 +7,8 @@ SMODS.Joker {
         'hand_type'
     },
     pos = {
-        x = 0,
-        y = 0
+        x = 3,
+        y = 7
     },
     config = {
         extra = {
