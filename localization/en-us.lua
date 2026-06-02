@@ -83,8 +83,7 @@ return {
                     'This Joker gains {C:chips}+#2#{} chips',
                     'for every {C:attention}consecutive{}',
                     '{C:attention}10{} {C:inactive}[#4#]{} cards discarded',
-                    'without a discarded',
-                    '{C:attention}face card',
+                    'without a {C:attention}face card',
                     '{C:inactive}(Currently {C:chips}+#1#{C:inactive} chips)'
                 }
             },
@@ -130,7 +129,8 @@ return {
                       '{X:mult,C:white}X#1#{} Mult'
                     },{
                         'All Jokers gain',
-                        'Eternal stickers'
+                        'Eternal stickers',
+                        '{s:0.8}(restrictions apply)'
                     }
                 }
             },
@@ -376,7 +376,8 @@ return {
                     'This Joker gains {C:mult}+#2#{} Mult',
                     'for each {C:attention}unique{} poker hand',
                     'played this ante, resets',
-                    'when Boss Blind is defeated'
+                    'when Boss Blind is defeated',
+                    '{C:inactive}(Currently {C:mult}+#1#{C:inactive} Mult)',
                 }
             },
             j_bgn_chancellor = {

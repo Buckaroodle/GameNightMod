@@ -19,6 +19,7 @@ SMODS.Joker {
     },
     rarity = 1,
     cost = 5,
+    eternal_compat = false,
     loc_vars = function(self, info_queue, card)
         local num, denom = SMODS.get_probability_vars(card, card.ability.extra.numerator, card.ability.extra.denominator)
         return {
