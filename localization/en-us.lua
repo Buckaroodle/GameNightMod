@@ -383,9 +383,32 @@ return {
                 name = 'Chancellor',
                 text = {
                     'This Joker gains {C:chips}+#2#{} chips',
-                    'for each card taken or used',
-                    'from a {C:attention}Booster Pack{} this Ante',
+                    'for each card {C:attention}taken{} or {C:attention}used{}',
+                    'from a {C:attention}Booster Pack{}, resets',
+                    'when a pack is {C:attention}skipped',
                     '{C:inactive}(Currently {C:chips}+#1#{C:inactive} chips)'
+                }
+            },
+            j_bgn_yacht = {
+                name = 'Yacht',
+                text = {
+                    'Earn {C:money}$#1#{} if shop',
+                    'is not rerolled'
+                }
+            },
+            j_bgn_genrebonus = {
+                name = 'Genre Bonus',
+                text = {
+                    'Scored cards with the',
+                    'same {C:attention}enhancement{} give {C:money}$#1#{}'
+                }
+            },
+            j_bgn_patolli = {
+                name = 'Patolli',
+                text = {
+                    'Earn {C:money}money{} equal to',
+                    'the base {C:mult}Mult{} of',
+                    'your played hand'
                 }
             }
         },
