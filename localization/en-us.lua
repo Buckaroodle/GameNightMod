@@ -232,7 +232,7 @@ return {
                 name = 'Route Card',
                 text = {
                     'This Joker gains {X:mult,C:white}X#2#{} Mult',
-                    'if played hand contains a {C:attention}Straight',
+                    'if played hand contains a {C:attention}#7#',
                     'and contains the ranks {C:attention}#5#{} and {C:attention}#6#{}',
                     '{C:inactive}(Currently {X:mult,C:white}X#1#{C:inactive} Mult)',
                     '{s:0.8}Ranks change every round'
