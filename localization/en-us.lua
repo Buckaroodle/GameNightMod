@@ -83,8 +83,7 @@ return {
                     'This Joker gains {C:chips}+#2#{} chips',
                     'for every {C:attention}consecutive{}',
                     '{C:attention}10{} {C:inactive}[#4#]{} cards discarded',
-                    'without a discarded',
-                    '{C:attention}face card',
+                    'without a {C:attention}face card',
                     '{C:inactive}(Currently {C:chips}+#1#{C:inactive} chips)'
                 }
             },
@@ -130,7 +129,8 @@ return {
                       '{X:mult,C:white}X#1#{} Mult'
                     },{
                         'All Jokers gain',
-                        'Eternal stickers'
+                        'Eternal stickers',
+                        '{s:0.8}(restrictions apply)'
                     }
                 }
             },
@@ -325,6 +325,91 @@ return {
                     'retrigger additional times',
                     '{C:attention}equal{} to the number of',
                     '{C:attention}unscoring cards{} between them'
+                }
+            },
+            j_bgn_ur = {
+                name = 'Ur',
+                text = {
+                    'This Joker has a',
+                    '{C:green}#1# in #2#{} chance',
+                    'to gain {X:mult,C:white}X#3#{} Mult',
+                    'at end of round',
+                    '{C:inactive}(Currently {X:mult,C:white}X#4#{C:inactive} Mult)'
+                }
+            },
+            j_bgn_bananasplit = {
+                name = 'Banana Split',
+                text = {
+                    '{C:mult}+#3#{} Mult',
+                    '{C:green}#1# in #2#{} chance to {C:attention}halve{}',
+                    '{C:mult}Mult{} at end of round'
+                }
+            },
+            j_bgn_chutesandladders = {
+                name = 'Chutes & Ladders',
+                text = {
+                    'This Joker gains {C:chips}+#4#{} chips',
+                    'per card scored,',
+                    '',
+                    '{C:green}#1# in #2#{} chance to {C:attention}halve',
+                    'chips each hand played',
+                    '{C:inactive}(Currently {C:chips}+#3#{C:inactive} chips)'
+                }
+            },
+            j_bgn_othello = {
+                name = 'Othello',
+                text = {
+                    {
+                        'If the {C:attention}first{} and {C:attention}last{} card',
+                        'of the scoring hand',
+                        'are the {C:attention}same suit,',
+                        '{C:attention}convert{} all scoring cards',
+                        'to that suit'
+                    },{
+                        '{C:inactive}Art by Hackakat'
+                    }
+                }
+            },
+            j_bgn_phase = {
+                name = 'Phase',
+                text = {
+                    'This Joker gains {C:mult}+#2#{} Mult',
+                    'for each {C:attention}unique{} poker hand',
+                    'played this ante, resets',
+                    'when Boss Blind is defeated',
+                    '{C:inactive}(Currently {C:mult}+#1#{C:inactive} Mult)',
+                }
+            },
+            j_bgn_chancellor = {
+                name = 'Chancellor',
+                text = {
+                    'This Joker gains {C:chips}+#2#{} chips',
+                    'for each card {C:attention}taken{} or {C:attention}used{}',
+                    'from a {C:attention}Booster Pack{}, resets',
+                    'when a pack is {C:attention}skipped',
+                    '{C:inactive}(Currently {C:chips}+#1#{C:inactive} chips)'
+                }
+            },
+            j_bgn_yacht = {
+                name = 'Yacht',
+                text = {
+                    'Earn {C:money}$#1#{} if shop',
+                    'is not rerolled'
+                }
+            },
+            j_bgn_genrebonus = {
+                name = 'Genre Bonus',
+                text = {
+                    'Scored cards with the',
+                    'same {C:attention}enhancement{} give {C:money}$#1#{}'
+                }
+            },
+            j_bgn_patolli = {
+                name = 'Patolli',
+                text = {
+                    'Earn {C:money}money{} equal to',
+                    'the base {C:mult}Mult{} of',
+                    'your played hand'
                 }
             }
         },
