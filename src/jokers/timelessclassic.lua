@@ -1,5 +1,5 @@
 SMODS.Joker {
-    key = 'genrebonus',
+    key = 'timelessclassic',
     atlas = 'bgn_joker_sprites',
     attributes = {
         'economy',
@@ -7,7 +7,7 @@ SMODS.Joker {
     },
     pos = {
         x = 0,
-        y = 0
+        y = 8
     },
     config = {
         extra = {

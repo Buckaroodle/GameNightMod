@@ -232,7 +232,7 @@ return {
                 name = 'Route Card',
                 text = {
                     'This Joker gains {X:mult,C:white}X#2#{} Mult',
-                    'if played hand contains a {C:attention}Straight',
+                    'if played hand contains a {C:attention}#7#',
                     'and contains the ranks {C:attention}#5#{} and {C:attention}#6#{}',
                     '{C:inactive}(Currently {X:mult,C:white}X#1#{C:inactive} Mult)',
                     '{s:0.8}Ranks change every round'
@@ -370,8 +370,8 @@ return {
                     }
                 }
             },
-            j_bgn_phase = {
-                name = 'Phase',
+            j_bgn_phases = {
+                name = 'Phases',
                 text = {
                     'This Joker gains {C:mult}+#2#{} Mult',
                     'for each {C:attention}unique{} poker hand',
@@ -397,11 +397,12 @@ return {
                     'is not rerolled'
                 }
             },
-            j_bgn_genrebonus = {
-                name = 'Genre Bonus',
+            j_bgn_timelessclassic = {
+                name = 'Timeless Classic',
                 text = {
-                    'Scored cards with the',
-                    'same {C:attention}enhancement{} give {C:money}$#1#{}'
+                    'Scoring cards with the',
+                    'same {C:attention}enhancement{}',
+                    'each give {C:money}$#1#{}'
                 }
             },
             j_bgn_patolli = {

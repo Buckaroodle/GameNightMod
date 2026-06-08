@@ -27,6 +27,7 @@ SMODS.Joker {
             Xmult_gain = 0.25,
             rank_1_string = 'Ace',
             rank_2_string = 'Four',
+            type = 'Straight'
         }
     },
     rarity = 2,
@@ -39,12 +40,13 @@ SMODS.Joker {
                 card.ability.extra.rank_1,
                 card.ability.extra.rank_2,
                 card.ability.extra.rank_1_string,
-                card.ability.extra.rank_2_string
+                card.ability.extra.rank_2_string,
+                localize(card.ability.extra.type, 'poker_hands')
             }
         }
     end,
     calculate = function(self, card, context)
-        if context.before and not context.blueprint then
+        if context.before and next(context.poker_hands[card.ability.extra.type]) and not context.blueprint then
             local first_rank = false
             local second_rank = false
             for _, scoring_card in ipairs(context.scoring_hand) do

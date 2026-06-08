@@ -5,13 +5,13 @@ SMODS.Joker {
         'economy'
     },
     pos = {
-        x = 0,
-        y = 0
+        x = 1,
+        y = 8
     },
-    --[[soul_pos = {
+    soul_pos = {
         x = 2,
-        y = 7
-    },]]
+        y = 8
+    },
     config = {
         extra = {
         }

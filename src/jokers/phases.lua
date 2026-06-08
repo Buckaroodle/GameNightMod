@@ -1,5 +1,5 @@
 SMODS.Joker {
-    key = 'phase',
+    key = 'phases',
     atlas = 'bgn_joker_sprites',
     attributes = {
         'mult',
@@ -8,8 +8,8 @@ SMODS.Joker {
         'hand_type'
     },
     pos = {
-        x = 0,
-        y = 0
+        x = 3,
+        y = 8
     },
     config = {
         extra = {
