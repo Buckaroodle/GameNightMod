@@ -282,10 +282,9 @@ return {
             j_bgn_mancala = {
                 name = 'Mancala',
                 text = {
-                    'Each {C:attention}Stone Card{} held in hand',
-                    'gives {C:chips}+#1#{} chips {C:attention}multiplied',
-                    'by the total number of',
-                    '{C:attention}Stone Cards{} held in hand',
+                    'All {C:attention}Stone Cards{}',
+                    'held in hand count',
+                    'in scoring'
                 }
             },
             j_bgn_detective = {
