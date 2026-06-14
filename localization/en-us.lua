@@ -411,6 +411,14 @@ return {
                     'the base {C:mult}Mult{} of',
                     'your played hand'
                 }
+            },
+            j_bgn_crazyeights = {
+                name = 'Crazy 8s',
+                text = {
+                    'Each scoring {C:attention}8{} adds a random',
+                    '{C:attention}playing card{} with a random',
+                    '{C:attention}enhancement{} to your deck',
+                }
             }
         },
 
