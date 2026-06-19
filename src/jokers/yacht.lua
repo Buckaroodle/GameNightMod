@@ -6,8 +6,8 @@ SMODS.Joker {
         'economy'
     },
     pos = {
-        x = 0,
-        y = 0
+        x = 4,
+        y = 8
     },
     config = {
         extra = {

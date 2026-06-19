@@ -79,17 +79,31 @@ SMODS.Joker {
     end,
 
     set_ability = function(self, card, initial, delay_sprites)
-        local detective_hands = {}
-        local detective_suits = {'Spades', 'Hearts', 'Clubs', 'Diamonds'}
-        local detective_ranks = {2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14}
-        for handname, _ in pairs(G.GAME.hands) do
-            if SMODS.is_poker_hand_visible(handname) then
-                detective_hands[#detective_hands + 1] = handname
+        if not G.playing_cards == nil then
+            for _, playing_card in ipairs(G.playing_cards) do
+                if not SMODS.has_no_suit(playing_card) and not SMODS.has_no_rank(playing_card) then
+                    valid_detective_cards[#valid_detective_cards + 1] = playing_card
+                end
             end
+            local detective_card = pseudorandom_element(valid_detective_cards, 'bgn_detective')
+            if detective_card then
+                card.extra.chosen_rank = detective_card.rank
+                card.extra.chosen_suit = detective_card.suit
+            end
+            local detective_hands = {}
+            for handname, _ in pairs(G.GAME.hands) do
+                if SMODS.is_poker_hand_visible(handname) then
+                    detective_hands[#detective_hands + 1] = handname
+                end
+            end
+            card.ability.extra.chosen_hand_type = pseudorandom_element(detective_hands, 'bgn_detective')
+        else
+            card.ability.extra.chosen_rank = 14
+            card.ability.extra.chosen_suit = 'Spades'
+            card.ability.extra.chosen_hand_type = 'High Card'
         end
-        card.ability.extra.chosen_hand_type = pseudorandom_element(detective_hands, 'bgn_detective')
-        card.ability.extra.chosen_rank = pseudorandom_element(detective_ranks, 'bgn_detective')
-        card.ability.extra.chosen_suit = pseudorandom_element(detective_suits, 'bgn_detective')
+        --card.ability.extra.chosen_rank = pseudorandom_element(detective_ranks, 'bgn_detective')
+        --card.ability.extra.chosen_suit = pseudorandom_element(detective_suits, 'bgn_detective')
         --card.ability.extra.rank_string = '???'
         --card.ability.extra.suit_string = '???'
         --card.ability.extra.

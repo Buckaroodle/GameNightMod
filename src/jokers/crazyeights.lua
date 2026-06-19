@@ -2,10 +2,12 @@ SMODS.Joker {
     key = 'crazyeights',
     atlas = 'bgn_joker_sprites',
     attributes = {
+        'generation',
+        'enhancement'
     },
     pos = {
         x = 0,
-        y = 0
+        y = 9
     },
     config = {
         extra = {

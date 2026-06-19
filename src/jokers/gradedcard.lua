@@ -21,6 +21,7 @@ SMODS.Joker {
     config = {
         extra = {
             mult_per_dollar = 3,
+            current_mult = 0, 
         }
     },
     rarity = 2,
@@ -36,6 +37,7 @@ SMODS.Joker {
         end
         return {
             vars = {
+                card.ability.extra.mult_per_dollar,
                 card.ability.extra.mult_per_dollar * sell_cost
             }
         }

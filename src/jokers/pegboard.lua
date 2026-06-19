@@ -56,8 +56,9 @@ SMODS.Joker {
 
             if total_combos > 0 then
                 card.ability.extra.chips = card.ability.extra.chips + (card.ability.extra.chips_gain * total_combos)
+                local upgrade_text = '+' .. (card.ability.extra.chips_gain * total_combos) .. ' Chips'
                 return {
-                    message = localize('k_upgrade_ex'),
+                    message = upgrade_text,
                     colour = G.C.CHIPS,
                 }
             end
