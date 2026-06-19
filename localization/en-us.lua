@@ -16,7 +16,7 @@ return {
                 name = 'Draw 4 Wild',
                 text = {
                     '{C:attention}+#1#{} hand size',
-                    'for every {C:attention}#2#{} Wild{} cards',
+                    'for every {C:attention}#2#{} Wild Cards',
                     'in your full deck',
                     "{C:inactive}(Currently {C:attention}+#3#{C:inactive} hand size){}",
                     '{C:inactive}(Max of {C:attention}+#4#{C:inactive}){}'
@@ -107,9 +107,10 @@ return {
                 name = "New Rule",
                 text = {
                     'Adds {C:green}#1# and #2#',
-                    'to the left and right sides',
-                    'of all {C:green}probabilities',
-                    '{C:inactive}(ex: {C:green}1 in 4{} -> {C:green}#3# in #4#{})'
+                    'to the left and right',
+                    'sides of all {C:green}probabilities,',
+                    'values change each ante',
+                    '{C:inactive}(ex: {C:green}1 in 4{} -> {C:green}#3# in #4#{})',
                 }
             },
             j_bgn_mermaid = {
@@ -118,8 +119,8 @@ return {
                     'Earn {C:money}$#1#{} for each',
                     'card {C:attention}held in hand',
                     'of the {C:attention}suit{} you have',
-                    'the {C:attention}most{} of in your hand',
-                    'at the end of round'
+                    'the {C:attention}most{} of at',
+                    'the end of round'
                 }
             },
             j_bgn_dominanttrait = {
@@ -130,7 +131,7 @@ return {
                     },{
                         'All Jokers gain',
                         'Eternal stickers',
-                        '{s:0.8}(restrictions apply)'
+                        '{C:inactive,s:0.8}(restrictions apply)'
                     }
                 }
             },
@@ -260,7 +261,8 @@ return {
                 text = {
                     'Debuffs Joker on the {C:attention}right,',
                     'Gives {C:mult}Mult{} equal to',
-                    'triple its sell value'
+                    'triple its {C:attention}sell value',
+                    '{C:inactive}(Currently {C:mult}+#2#{C:inactive} Mult)'
                 }
             },
             j_bgn_memory = {
@@ -282,10 +284,9 @@ return {
             j_bgn_mancala = {
                 name = 'Mancala',
                 text = {
-                    'Each {C:attention}Stone Card{} held in hand',
-                    'gives {C:chips}+#1#{} chips {C:attention}multiplied',
-                    'by the total number of',
-                    '{C:attention}Stone Cards{} held in hand',
+                    'All {C:attention}Stone Cards{}',
+                    'held in hand count',
+                    'in scoring'
                 }
             },
             j_bgn_detective = {
@@ -370,13 +371,12 @@ return {
                     }
                 }
             },
-            j_bgn_phase = {
-                name = 'Phase',
+            j_bgn_phases = {
+                name = 'Phases',
                 text = {
                     'This Joker gains {C:mult}+#2#{} Mult',
                     'for each {C:attention}unique{} poker hand',
-                    'played this ante, resets',
-                    'when Boss Blind is defeated',
+                    'played this ante',
                     '{C:inactive}(Currently {C:mult}+#1#{C:inactive} Mult)',
                 }
             },
@@ -393,15 +393,16 @@ return {
             j_bgn_yacht = {
                 name = 'Yacht',
                 text = {
-                    'Earn {C:money}$#1#{} if shop',
-                    'is not rerolled'
+                    'Earn {C:money}$#1#{} if shop is left',
+                    'without being {C:attention}rerolled'
                 }
             },
-            j_bgn_genrebonus = {
-                name = 'Genre Bonus',
+            j_bgn_timelessclassic = {
+                name = 'Timeless Classic',
                 text = {
-                    'Scored cards with the',
-                    'same {C:attention}enhancement{} give {C:money}$#1#{}'
+                    'Scoring cards with the',
+                    'same {C:attention}enhancement{}',
+                    'each give {C:money}$#1#{}'
                 }
             },
             j_bgn_patolli = {
@@ -410,6 +411,14 @@ return {
                     'Earn {C:money}money{} equal to',
                     'the base {C:mult}Mult{} of',
                     'your played hand'
+                }
+            },
+            j_bgn_crazyeights = {
+                name = 'Crazy 8s',
+                text = {
+                    'Each scoring {C:attention}8{} adds a random',
+                    '{C:attention}playing card{} with a random',
+                    '{C:attention}enhancement{} to your deck',
                 }
             }
         },

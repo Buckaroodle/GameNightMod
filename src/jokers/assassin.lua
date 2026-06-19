@@ -1,6 +1,12 @@
 SMODS.Joker {
     key = 'assassin',
     atlas = 'bgn_joker_sprites',
+    attributes = {
+        'mult',
+        'rank',
+        'scaling',
+        'reset'
+    },
     pos = {
         x = 4,
         y = 0

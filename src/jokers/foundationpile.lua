@@ -1,6 +1,12 @@
 SMODS.Joker {
     key = 'foundationpile',
     atlas = 'bgn_joker_sprites',
+    attributes = {
+        'mult',
+        'scaling',
+        'discard',
+        'rank'
+    },
     pos = {
         x = 3,
         y = 5

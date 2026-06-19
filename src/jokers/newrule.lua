@@ -1,6 +1,10 @@
 SMODS.Joker {
     key = 'newrule',
     atlas = 'bgn_joker_sprites',
+    attributes = {
+        'mod_chance',
+        'passive'
+    },
     pos = {
         x = 2,
         y = 1
@@ -33,11 +37,21 @@ SMODS.Joker {
                 denominator = context.denominator + card.ability.extra.denom_inc
             }
         end
+        if context.end_of_round and context.game_over == false and context.main_eval and not context.blueprint then
+            if context.beat_boss then
+                local num_table = {0, 1, 2, 3}
+                local denom_table = {0, 1, 2, 3, 4}
+                card.ability.extra.num_inc = pseudorandom_element(num_table, 'vremade_to_do')
+                card.ability.extra.denom_inc = pseudorandom_element(denom_table, 'vremade_to_do')
+                card.ability.extra.num_ex = card.ability.extra.num_inc + 1
+                card.ability.extra.denom_ex = card.ability.extra.denom_inc + 4
+            end
+        end
     end,
     
     set_ability = function(self, card, initial, delay_sprites)
         local num_table = {0, 1, 2, 3}
-        local denom_table = {0, 1, 2, 3}
+        local denom_table = {0, 1, 2, 3, 4}
         card.ability.extra.num_inc = pseudorandom_element(num_table, 'vremade_to_do')
         card.ability.extra.denom_inc = pseudorandom_element(denom_table, 'vremade_to_do')
         card.ability.extra.num_ex = card.ability.extra.num_inc + 1

@@ -1,6 +1,12 @@
 SMODS.Joker {
     key = 'scoundrel',
     atlas = 'bgn_joker_sprites',
+    attributes = {
+        'xmult',
+        'scaling',
+        'reset',
+        'hand_type'
+    },
     pos = {
         x = 0,
         y = 3

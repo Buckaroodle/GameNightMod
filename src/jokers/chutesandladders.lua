@@ -13,9 +13,9 @@ SMODS.Joker {
     config = {
         extra = {
             numerator = 1,
-            denominator = 6,
+            denominator = 5,
             chips = 0,
-            chips_inc = 2
+            chips_inc = 3
         }
     },
     rarity = 1,
@@ -32,11 +32,12 @@ SMODS.Joker {
         }
     end,
     calculate = function(self, card, context)
-        if context.before and not context.blueprint then
-            card.ability.extra.chips = card.ability.extra.chips + (#context.scoring_hand * card.ability.extra.chips_inc)
+        if context.individual and context.cardarea == G.play then
+            card.ability.extra.chips = card.ability.extra.chips + card.ability.extra.chips_inc
             return {
                 message = localize('k_upgrade_ex'),
                 colour = G.C.CHIPS,
+                message_card = card
             }
         end
         if context.joker_main then

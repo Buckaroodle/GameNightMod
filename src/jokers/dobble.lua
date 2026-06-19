@@ -1,6 +1,9 @@
 SMODS.Joker {
     key = 'dobble',
     atlas = 'bgn_joker_sprites',
+    attributes = {
+        'passive'
+    },
     pos = {
         x = 3,
         y = 3

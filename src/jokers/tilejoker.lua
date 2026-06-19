@@ -1,6 +1,11 @@
 SMODS.Joker {
     key = 'tilejoker',
     atlas = 'bgn_joker_sprites',
+    attributes = {
+        'hand_type',
+        'rank',
+        'hands'
+    },
     pos = {
         x = 2,
         y = 4

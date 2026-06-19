@@ -1,6 +1,9 @@
 SMODS.Joker {
     key = 'palace',
     atlas = 'bgn_joker_sprites',
+    attributes = {
+        'discard',
+    },
     pos = {
         x = 2,
         y = 2

@@ -11,6 +11,12 @@ end
 SMODS.Joker {
     key = 'routecard',
     atlas = 'bgn_joker_sprites',
+    attributes = {
+        'xmult',
+        'hand_type',
+        'rank',
+        'scaling'
+    },
     pos = {
         x = 3,
         y = 4

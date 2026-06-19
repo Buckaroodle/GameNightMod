@@ -1,6 +1,9 @@
 SMODS.Joker {
     key = 'doubleletterscore',
     atlas = 'bgn_joker_sprites',
+    attributes = {
+        'chips'
+    },
     pos = {
         x = 2,
         y = 3
@@ -8,7 +11,7 @@ SMODS.Joker {
     pixel_size = { h = 71 },
     config = {
         extra = {
-            chips = 34,
+            chips = 0,
             chips_gain = 2,
             --total_letters = 0
         }
