@@ -420,6 +420,15 @@ return {
                     '{C:attention}playing card{} with a random',
                     '{C:attention}enhancement{} to your deck',
                 }
+            },
+            j_bgn_twister = {
+                name = 'Twister',
+                text = {
+                    '{C:purple}Purple{} and {C:blue}Blue{} Tag effects',
+                    'trigger when scored,',
+                    '{C:red}Red{} and {C:gold}Gold{} Tag effects',
+                    'trigger while held in hand'
+                }
             }
         },
 
