@@ -88,8 +88,8 @@ SMODS.Joker {
             end
             local detective_card = pseudorandom_element(valid_detective_cards, 'bgn_detective')
             if detective_card then
-                card.ability.extra.chosen_rank = detective_card.rank
-                card.ability.extra.chosen_suit = detective_card.suit
+                card.ability.extra.chosen_rank = detective_card:get_id()
+                card.ability.extra.chosen_suit = detective_card.base.suit
             end
             local detective_hands = {}
             for handname, _ in pairs(G.GAME.hands) do
