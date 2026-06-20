@@ -79,7 +79,8 @@ SMODS.Joker {
     end,
 
     set_ability = function(self, card, initial, delay_sprites)
-        if not G.playing_cards == nil then
+        if G.playing_cards ~= nil then
+            local valid_detective_cards = {}
             for _, playing_card in ipairs(G.playing_cards) do
                 if not SMODS.has_no_suit(playing_card) and not SMODS.has_no_rank(playing_card) then
                     valid_detective_cards[#valid_detective_cards + 1] = playing_card
@@ -87,8 +88,8 @@ SMODS.Joker {
             end
             local detective_card = pseudorandom_element(valid_detective_cards, 'bgn_detective')
             if detective_card then
-                card.extra.chosen_rank = detective_card.rank
-                card.extra.chosen_suit = detective_card.suit
+                card.ability.extra.chosen_rank = detective_card.rank
+                card.ability.extra.chosen_suit = detective_card.suit
             end
             local detective_hands = {}
             for handname, _ in pairs(G.GAME.hands) do

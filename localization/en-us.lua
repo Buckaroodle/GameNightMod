@@ -16,7 +16,7 @@ return {
                 name = 'Draw 4 Wild',
                 text = {
                     '{C:attention}+#1#{} hand size',
-                    'for every {C:attention}#2#{} Wild Cards',
+                    'for every {C:attention}#2# Wild Cards',
                     'in your full deck',
                     "{C:inactive}(Currently {C:attention}+#3#{C:inactive} hand size){}",
                     '{C:inactive}(Max of {C:attention}+#4#{C:inactive}){}'
@@ -428,6 +428,14 @@ return {
                     'trigger when scored,',
                     '{C:red}Red{} and {C:gold}Gold{} Tag effects',
                     'trigger while held in hand'
+                }
+            },
+            j_bgn_poorlydrawnjoker = {
+                name = 'Poorly Drawn Joker',
+                text = {
+                    '{C:attention}+1{} hand size',
+                    'for each empty {C:attention}Joker{} slot',
+                    '{C:inactive}(Currently {C:attention}+#1#{C:inactive} hand size){}'
                 }
             }
         },
