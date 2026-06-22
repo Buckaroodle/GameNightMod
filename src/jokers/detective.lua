@@ -48,25 +48,25 @@ SMODS.Joker {
 
     calculate = function(self, card, context)
         if context.before and not context.blueprint then
+            local update = false
             if context.scoring_name == card.ability.extra.chosen_hand_type and card.ability.extra.poker_hand_string == '???' then
                 card.ability.extra.poker_hand_string = context.scoring_name
-                return {
-                    message = "Updated!",
-                }
+                update = true
             end
             for _, playing_card in ipairs(context.scoring_hand) do
                 if playing_card:get_id() == card.ability.extra.chosen_rank and card.ability.extra.rank_string == '???' then
                     card.ability.extra.rank_string = integer_to_rank(card.ability.extra.chosen_rank)
-                    return {
-                        message = "Updated!",
-                    }
+                    update = true
                 end
                 if playing_card:is_suit(card.ability.extra.chosen_suit) and card.ability.extra.suit_string == '???' then
                     card.ability.extra.suit_string = card.ability.extra.chosen_suit
-                    return {
-                        message = "Updated!",
-                    }
+                    update = true
                 end
+            end
+            if update then
+                return {
+                    message = "Updated!",
+                }
             end
         end
         if context.individual and context.cardarea == G.play and context.scoring_name == card.ability.extra.chosen_hand_type and
