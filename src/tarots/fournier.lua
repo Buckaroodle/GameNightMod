@@ -1,10 +1,10 @@
 SMODS.Consumable {
     key = 'fournier',
-    atlas = 'placeholders',
+    atlas = 'bgn_consumables',
     set = 'Tarot',
     pos = {
-        x = 1,
-        y = 2
+        x = 3,
+        y = 0
     },
     cost = 3,
     config = { max_highlighted = 3 },

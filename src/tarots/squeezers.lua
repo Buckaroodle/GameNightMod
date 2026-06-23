@@ -1,10 +1,10 @@
 SMODS.Consumable {
     key = 'squeezers',
-    atlas = 'placeholders',
+    atlas = 'bgn_consumables',
     set = 'Tarot',
     pos = {
-        x = 1,
-        y = 2
+        x = 5,
+        y = 0
     },
     cost = 3,
     config = { req_highlighted = 2, },

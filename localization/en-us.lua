@@ -480,13 +480,32 @@ return {
                 }
             },
             c_bgn_aristocrat = {
-                name = 'Aristocrat',
+                name = 'The Aristocrat',
                 text = {
                     'Gives {C:money}$#2#{} per card of',
-                    'the most prevalent rank in your hand',
+                    'the {C:attention}most prevalent rank{} in your hand',
                     '{C:inactive}(Currently {C:money}$#1#{C:inactive})'
                 }
+            },
+            c_bgn_bee = {
+                name = 'The Bee',
+                text = {
+                    'Enhances {C:attention}#1#{} selected cards',
+                    'to {C:attention}Hole Punched Cards'
+                }
             }
-        }
+        },
+
+        Enhanced = {
+            m_bgn_holepunched = {
+                name = 'Hole Punched Card',
+                text = {
+                    'After being {C:attention}played{}',
+                    'or {C:attention}discarded{}, returns',
+                    'to your deck after',
+                    '{C:attention}Boss Blind{} is defeated'
+                }
+            }
+        },
     }
 }

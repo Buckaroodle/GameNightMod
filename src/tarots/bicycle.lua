@@ -1,10 +1,10 @@
 SMODS.Consumable {
     key = 'bicycle',
-    atlas = 'placeholders',
+    atlas = 'bgn_consumables',
     set = 'Tarot',
     pos = {
         x = 1,
-        y = 2
+        y = 0
     },
     cost = 3,
     config = { extra = { numerator = 1, denominator = 2 } },

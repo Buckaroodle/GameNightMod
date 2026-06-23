@@ -1,10 +1,10 @@
 SMODS.Consumable {
     key = 'congress',
-    atlas = 'placeholders',
+    atlas = 'bgn_consumables',
     set = 'Tarot',
     pos = {
-        x = 1,
-        y = 2
+        x = 4,
+        y = 0
     },
     cost = 3,
     use = function(self, card, area, copier)

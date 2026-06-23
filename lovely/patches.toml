@@ -35,3 +35,59 @@ if context.joker_main and next(SMODS.find_card("j_bgn_taboo")) and not context.b
     end
 end
 '''
+
+[[patches]] #add hole punched card discard area, adapted from AIJ's line in the sand
+[patches.pattern]
+target = "game.lua"
+pattern = "self.discard = CardArea("
+position = "before"
+match_indent = true
+payload = '''
+self.bgn_holepunched_discard = CardArea(
+        0, 0,
+        CAI.discard_W,CAI.discard_H,
+        {card_limit = 1e308, type = 'discard'})
+'''
+
+[[patches]] 
+[patches.pattern]
+target = "functions/state_events.lua"
+pattern = "draw_card(G.hand, G.discard, i*100/highlighted_count, 'down', false, G.hand.highlighted[i])"
+position = "at"
+payload = '''
+if SMODS.has_enhancement(G.hand.highlighted[i], "m_bgn_holepunched") then
+    draw_card(G.hand, G.bgn_holepunched_discard, i*100/highlighted_count, 'down', false, G.hand.highlighted[i])
+else
+    draw_card(G.hand, G.discard, i*100/highlighted_count, 'down', false, G.hand.highlighted[i])
+end
+'''
+match_indent = true
+
+[[patches]] 
+[patches.pattern]
+target = "functions/state_events.lua"
+pattern = "draw_card(G.play,G.discard, it*100/play_count,'down', false, v)"
+position = "at"
+payload = '''
+if SMODS.has_enhancement(v, "m_bgn_holepunched") then
+    draw_card(G.play, G.bgn_holepunched_discard, it*100/play_count,'down', false, v)
+else
+    draw_card(G.play,G.discard, it*100/play_count,'down', false, v)
+end
+'''
+match_indent = true
+
+[[patches]] 
+[patches.pattern]
+target = "functions/state_events.lua"
+pattern = "local discard_count = #G.discard.cards"
+position = "before"
+payload = '''
+if #G.bgn_holepunched_discard.cards > 0 and G.GAME.blind.boss then
+    local holepunched_discard_count = #G.bgn_holepunched_discard.cards
+    for i=1, holepunched_discard_count do --draw cards from deck
+        draw_card(G.bgn_holepunched_discard, G.deck, i*100/holepunched_discard_count,'up', nil ,nil, 0.005, i%2==0, nil, math.max((21-i)/20,0.7))
+    end
+end
+'''
+match_indent = true
