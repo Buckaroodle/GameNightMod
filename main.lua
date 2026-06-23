@@ -23,3 +23,8 @@ local backs_src = SMODS.NFS.getDirectoryItems(SMODS.current_mod.path .. "src/bac
 for _, file in ipairs(backs_src) do
     assert(SMODS.load_file("src/backs/" .. file))()
 end
+
+local tarots_src = SMODS.NFS.getDirectoryItems(SMODS.current_mod.path .. "src/tarots")
+for _, file in ipairs(tarots_src) do
+    assert(SMODS.load_file("src/tarots/" .. file))()
+end

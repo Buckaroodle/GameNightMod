@@ -447,6 +447,46 @@ return {
                     'Reroll cost does not reset each shop'
                 }
             }
+        },
+
+        Tarot = {
+            c_bgn_bicycle = {
+                name = 'The Bicycle',
+                text = {
+                    '{C:green}#1# in #2#{} chance to add {C:dark_edition}Foil{}, {C:dark_edition}Holographic{},',
+                    'or {C:dark_edition}Polychrome{} edition to',
+                    'a random {C:attention}card{} in your hand'
+                }
+            },
+            c_bgn_fournier = {
+                name = 'Fournier',
+                text = {
+                    'Enhances {C:attention}#1#{} selected cards',
+                    'with a {C:attention}random enhancement'
+                }
+            },
+            c_bgn_congress = {
+                name = 'Congress',
+                text = {
+                    'Fills all consumable slots',
+                    'with random {C:tarot}Tarot{} and {C:planet}Planet{} cards'
+                }
+            },
+            c_bgn_squeezers = {
+                name = 'Squeezers',
+                text = {
+                    'Changes rank of {C:attention}2{} selected cards',
+                    'to the {C:attention}average{} of both ranks'
+                }
+            },
+            c_bgn_aristocrat = {
+                name = 'Aristocrat',
+                text = {
+                    'Gives {C:money}$#2#{} per card of',
+                    'the most prevalent rank in your hand',
+                    '{C:inactive}(Currently {C:money}$#1#{C:inactive})'
+                }
+            }
         }
     }
 }
