@@ -416,9 +416,10 @@ return {
             j_bgn_crazyeights = {
                 name = 'Crazy 8s',
                 text = {
-                    'Each scoring {C:attention}8{} adds a random',
-                    '{C:attention}playing card{} with a random',
-                    '{C:attention}enhancement{} to your deck',
+                    '{C:green}#1# in #2#{} chance',
+                    'for each scoring {C:attention}8{}',
+                    'to add a random {C:attention}enhanced',
+                    '{C:attention}playing card{} to your hand'
                 }
             },
             j_bgn_twister = {
@@ -436,6 +437,22 @@ return {
                     '{C:attention}+1{} hand size',
                     'for each empty {C:attention}Joker{} slot',
                     '{C:inactive}(Currently {C:attention}+#1#{C:inactive} hand size){}'
+                }
+            },
+            j_bgn_defuse = {
+                name = 'Defuse',
+                text = {
+                    'After {C:attention}#1#{} rounds, sell this card to',
+                    'instantly {C:attention}win{} the blind,',
+                    '{C:attention}-#3#{} Ante',
+                    '{C:inactive}(Currently {C:attention}#2#{C:inactive}/#1#)'
+                }
+            },
+            j_bgn_handandfoot = {
+                name = 'Hand and Foot',
+                text = {
+                    '{C:blue}+#1#{} hand',
+                    '{C:attention}+#2#{} consumable slot'
                 }
             }
         },
