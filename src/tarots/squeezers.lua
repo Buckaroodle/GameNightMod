@@ -16,7 +16,17 @@ SMODS.Consumable {
         for i = 1, #G.hand.highlighted do
             sum = sum + G.hand.highlighted[i]:get_id()
         end
-        local average_rank = tostring(math.ceil(sum / 2))
+        local average_rank = math.ceil(sum / 2)
+        local average_rank_string = tostring(average_rank)
+        if average_rank == 11 then
+            average_rank_string = 'Jack'
+        elseif average_rank == 12 then
+            average_rank_string = 'Queen'
+        elseif average_rank == 13 then
+            average_rank_string = 'King'
+        elseif average_rank == 14 then
+            average_rank_string = 'Ace'
+        end
         G.E_MANAGER:add_event(Event({
             trigger = 'after',
             delay = 0.4,
@@ -46,7 +56,7 @@ SMODS.Consumable {
                 delay = 0.1,
                 func = function()
                     -- SMODS.modify_rank will increment/decrement a given card's rank by a given amount
-                    assert(SMODS.change_base(G.hand.highlighted[i], G.hand.highlighted[i].base.suit, average_rank))
+                    assert(SMODS.change_base(G.hand.highlighted[i], G.hand.highlighted[i].base.suit, average_rank_string))
                     return true
                 end
             }))
