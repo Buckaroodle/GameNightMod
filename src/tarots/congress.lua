@@ -7,27 +7,44 @@ SMODS.Consumable {
         y = 0
     },
     cost = 3,
-    use = function(self, card, area, copier)
-        for i = 1, (G.consumeables.config.card_limit - #G.consumeables.cards) do
-            G.E_MANAGER:add_event(Event({
-                trigger = 'after',
-                delay = 0.4,
-                func = function()
-                    if G.consumeables.config.card_limit > #G.consumeables.cards then
-                        local card_types = {'Tarot', 'Planet'}
-                        local chosen_type = pseudorandom_element(card_types, 'bgn_congress')
-                        play_sound('timpani')
-                        SMODS.add_card({ set = chosen_type, key_append = "bgn_congress" })
-                        card:juice_up(0.3, 0.5)
-                    end
-                    return true
+    config = { extra = { money = 0, money_per_card = 5 } },
+    loc_vars = function(self, info_queue, card)
+        local ranks_list = {}
+        local max_card_count = 0
+        if G.hand then
+            for _, playing_card in ipairs(G.hand.cards) do
+                ranks_list[playing_card:get_id()] = (ranks_list[playing_card:get_id()] or 0) + 1
+                if ranks_list[playing_card:get_id()] > max_card_count then
+                    max_card_count = ranks_list[playing_card:get_id()]
                 end
-            }))
+            end
         end
+        card.ability.extra.money = card.ability.extra.money_per_card * (max_card_count or 0)
+        return { vars = { card.ability.extra.money, card.ability.extra.money_per_card } }
+    end,
+    use = function(self, card, area, copier)
+        local ranks_list = {}
+        local max_card_count = 0
+        for _, playing_card in ipairs(G.hand.cards) do
+            ranks_list[playing_card:get_id()] = (ranks_list[playing_card:get_id()] or 0) + 1
+            if ranks_list[playing_card:get_id()] > max_card_count then
+                max_card_count = ranks_list[playing_card:get_id()]
+            end
+        end
+        card.ability.extra.money = card.ability.extra.money_per_card * max_card_count
+        G.E_MANAGER:add_event(Event({
+            trigger = 'after',
+            delay = 0.4,
+            func = function()
+                play_sound('timpani')
+                card:juice_up(0.3, 0.5)
+                ease_dollars(card.ability.extra.money, true)
+                return true
+            end
+        }))
         delay(0.6)
     end,
     can_use = function(self, card)
-         return G.consumeables and #G.consumeables.cards < G.consumeables.config.card_limit or
-            (card.area == G.consumeables)
+        return G.hand and #G.hand.cards > 1
     end
 }

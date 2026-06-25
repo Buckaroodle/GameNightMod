@@ -413,6 +413,15 @@ return {
                     'your played hand'
                 }
             },
+            j_bgn_battleship = {
+                name = 'Battleship',
+                text = {
+                    'This Joker gains {X:mult,C:white}X#1#{} Mult',
+                    'per {C:attention}Hole Punched Card{} not',
+                    'currently in your deck or hand',
+                    '{C:inactive}(Currently {X:mult,C:white}X#2#{C:inactive} Mult)'
+                }
+            },
             j_bgn_crazyeights = {
                 name = 'Crazy 8s',
                 text = {
@@ -468,8 +477,9 @@ return {
             c_bgn_congress = {
                 name = 'Congress',
                 text = {
-                    'Fills all consumable slots',
-                    'with random {C:tarot}Tarot{} and {C:planet}Planet{} cards'
+                    'Creates up to 1 random',
+                    '{C:tarot}Tarot{} or {C:planet}Planet{} card',
+                    'with {C:dark_edition}Foil{} or {C:dark_edition}Holographic{} edition',
                 }
             },
             c_bgn_squeezers = {
@@ -500,10 +510,10 @@ return {
             m_bgn_holepunched = {
                 name = 'Hole Punched Card',
                 text = {
-                    'After being {C:attention}played{}',
-                    'or {C:attention}discarded{}, returns',
-                    'to your deck after',
-                    '{C:attention}Boss Blind{} is defeated'
+                    'Gives {C:money}$#1#{}',
+                    'when discarded,',
+                    'only returns to your deck',
+                    'after {C:attention}Boss Blind{} is defeated'
                 }
             }
         },
