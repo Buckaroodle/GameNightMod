@@ -510,10 +510,10 @@ return {
             m_bgn_holepunched = {
                 name = 'Hole Punched Card',
                 text = {
-                    'Gives {C:money}$#1#{}',
-                    'when discarded,',
-                    'only returns to your deck',
-                    'after {C:attention}Boss Blind{} is defeated'
+                    'When {C:attention}discarded{}, this card is',
+                    'removed for the rest of the {C:attention}Ante',
+                    'Earn {C:money}$2{} per removed card',
+                    'at end of round'
                 }
             }
         },

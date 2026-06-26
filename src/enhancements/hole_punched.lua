@@ -3,7 +3,7 @@ SMODS.Enhancement {
     atlas = 'placeholders',
     --atlas = 'bgn_enhancements',
     pos = { x = 3, y = 2 },
-    config = { money = 4 },
+    --[[config = { money = 4 },
     loc_vars = function(self, info_queue, card)
         return { vars = { card.ability.money } }
     end,
@@ -16,5 +16,5 @@ SMODS.Enhancement {
                 card = card
             }
         end
-    end,
+    end,]]
 }
