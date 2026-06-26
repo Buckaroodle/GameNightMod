@@ -474,8 +474,8 @@ return {
                     'with a {C:attention}random enhancement'
                 }
             },
-            c_bgn_congress = {
-                name = 'Congress',
+            c_bgn_aristocrat = {
+                name = 'The Aristocrat',
                 text = {
                     'Creates up to 1 random',
                     '{C:tarot}Tarot{} or {C:planet}Planet{} card',
@@ -489,8 +489,8 @@ return {
                     'to the {C:attention}average{} of both ranks'
                 }
             },
-            c_bgn_aristocrat = {
-                name = 'The Aristocrat',
+            c_bgn_congress = {
+                name = 'Congress',
                 text = {
                     'Gives {C:money}$#2#{} per card of',
                     'the {C:attention}most prevalent rank{} in your hand',
