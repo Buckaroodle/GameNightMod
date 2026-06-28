@@ -13,9 +13,11 @@ SMODS.Consumable {
         local max_card_count = 0
         if G.hand then
             for _, playing_card in ipairs(G.hand.cards) do
-                ranks_list[playing_card:get_id()] = (ranks_list[playing_card:get_id()] or 0) + 1
-                if ranks_list[playing_card:get_id()] > max_card_count then
-                    max_card_count = ranks_list[playing_card:get_id()]
+                if not SMODS.has_no_rank(playing_card) then
+                    ranks_list[playing_card:get_id()] = (ranks_list[playing_card:get_id()] or 0) + 1
+                    if ranks_list[playing_card:get_id()] > max_card_count then
+                        max_card_count = ranks_list[playing_card:get_id()]
+                    end
                 end
             end
         end
@@ -26,9 +28,11 @@ SMODS.Consumable {
         local ranks_list = {}
         local max_card_count = 0
         for _, playing_card in ipairs(G.hand.cards) do
-            ranks_list[playing_card:get_id()] = (ranks_list[playing_card:get_id()] or 0) + 1
-            if ranks_list[playing_card:get_id()] > max_card_count then
-                max_card_count = ranks_list[playing_card:get_id()]
+            if not SMODS.has_no_rank(playing_card) then
+                ranks_list[playing_card:get_id()] = (ranks_list[playing_card:get_id()] or 0) + 1
+                if ranks_list[playing_card:get_id()] > max_card_count then
+                    max_card_count = ranks_list[playing_card:get_id()]
+                end
             end
         end
         card.ability.extra.money = card.ability.extra.money_per_card * max_card_count
