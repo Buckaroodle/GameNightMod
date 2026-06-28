@@ -101,7 +101,7 @@ position = "before"
 payload = '''
 if G.GAME.bgn_holepunchedtotal then
     if G.GAME.bgn_holepunchedtotal > 0 then
-        add_round_eval_row({dollars = (G.GAME.bgn_holepunchedtotal * 2), number = tostring(G.GAME.bgn_holepunchedtotal), number_colour = G.C.YELLOW, text = 'Hole Punched Bonus', text_colour = G.C.WHITE, bonus = true, name='m_bgn_holepunched'..i, pitch = pitch })
+        add_round_eval_row({dollars = (G.GAME.bgn_holepunchedtotal * 2), text = 'Hole Punched Cards ($2 each)', text_colour = G.C.WHITE, number = 1, number_colour = G.C.RED, bonus = true, name = 'other'..i , pitch = pitch })
         pitch = pitch + 0.06
         dollars = dollars + (G.GAME.bgn_holepunchedtotal * 2)
     end
@@ -109,5 +109,17 @@ end
 if G.GAME.blind:get_type() == 'Boss' then
     G.GAME.bgn_holepunchedtotal = 0
 end
+'''
+match_indent = true
+
+[[patches]]
+[patches.pattern]
+target = "functions/common_events.lua"
+pattern = "elseif string.find(config.name, 'joker') then"
+position = "before"
+payload = '''
+elseif string.find(config.name, 'other') then
+    local loc_opts = config.loc_opts or {}
+    table.insert(left_text, {n=G.UIT.O, config={object = DynaText({string = {""..config.text}, colours = {loc_opts.text_colour or G.C.WHITE}, shadow = true, pop_in = 0, scale = 0.4*scale, silent = true})}})
 '''
 match_indent = true
