@@ -409,8 +409,8 @@ return {
                 name = 'Patolli',
                 text = {
                     'Earn {C:money}money{} equal to',
-                    'the base {C:mult}Mult{} of',
-                    'your played hand'
+                    'the {C:attention}level{} of your',
+                    'played hand'
                 }
             },
             j_bgn_battleship = {

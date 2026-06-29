@@ -18,6 +18,7 @@ SMODS.Joker {
         return {
         }
     end,
+    blueprint_compat = false,
     calculate = function(self, card, context)
         -- if the hand played is EXACTLY a pair
         if context.after and context.scoring_hand then
