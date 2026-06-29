@@ -17,7 +17,7 @@ SMODS.Joker {
             handsize_max = 4,
         }
     },
-    rarity = 2,
+    rarity = 1,
     cost = 5,
     blueprint_compat = false,
     loc_vars = function(self, info_queue, card)

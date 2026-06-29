@@ -1,4 +1,4 @@
---[[SMODS.Joker {
+SMODS.Joker {
     key = 'slamwich',
     atlas = 'bgn_joker_sprites',
     attributes = {
@@ -55,4 +55,4 @@
         end
         
     end
-}]]
+}

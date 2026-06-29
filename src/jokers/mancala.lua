@@ -91,5 +91,12 @@ function SMODS.score_card(card, context)
 		G.scorehand = nil
 		context.cardarea = G.hand
 	end
+    if not G.scorehand and context.cardarea == G.hand and next(SMODS.find_card("j_bgn_twister")) and card:get_seal() == 'Red' then
+        G.scorehand = true
+		context.cardarea = G.play
+		SMODS.score_card(card, context)
+		G.scorehand = nil
+		context.cardarea = G.hand
+    end
 	return score_card_ref(card, context)
 end

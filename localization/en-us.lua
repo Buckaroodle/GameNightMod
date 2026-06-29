@@ -16,7 +16,7 @@ return {
                 name = 'Draw 4 Wild',
                 text = {
                     '{C:attention}+#1#{} hand size',
-                    'for every {C:attention}#2#{} Wild Cards',
+                    'for every {C:attention}#2# Wild Cards',
                     'in your full deck',
                     "{C:inactive}(Currently {C:attention}+#3#{C:inactive} hand size){}",
                     '{C:inactive}(Max of {C:attention}+#4#{C:inactive}){}'
@@ -425,9 +425,43 @@ return {
             j_bgn_crazyeights = {
                 name = 'Crazy 8s',
                 text = {
-                    'Each scoring {C:attention}8{} adds a random',
-                    '{C:attention}playing card{} with a random',
-                    '{C:attention}enhancement{} to your deck',
+                    '{C:green}#1# in #2#{} chance',
+                    'for each scoring {C:attention}8{}',
+                    'to add a random {C:attention}enhanced',
+                    '{C:attention}playing card{} to your hand'
+                }
+            },
+            j_bgn_twister = {
+                name = 'Twister',
+                text = {
+                    '{C:purple}Purple{} and {C:blue}Blue{} Tag effects',
+                    'trigger when scored,',
+                    '{C:red}Red{} and {C:gold}Gold{} Tag effects',
+                    'trigger while held in hand'
+                }
+            },
+            j_bgn_poorlydrawnjoker = {
+                name = 'Poorly Drawn Joker',
+                text = {
+                    '{C:attention}+1{} hand size',
+                    'for each empty {C:attention}Joker{} slot',
+                    '{C:inactive}(Currently {C:attention}+#1#{C:inactive} hand size){}'
+                }
+            },
+            j_bgn_defuse = {
+                name = 'Defuse',
+                text = {
+                    'After {C:attention}#1#{} rounds, sell this card to',
+                    'instantly {C:attention}win{} the blind,',
+                    '{C:attention}-#3#{} Ante',
+                    '{C:inactive}(Currently {C:attention}#2#{C:inactive}/#1#)'
+                }
+            },
+            j_bgn_handandfoot = {
+                name = 'Hand and Foot',
+                text = {
+                    '{C:blue}+#1#{} hand',
+                    '{C:attention}+#2#{} consumable slot'
                 }
             }
         },
