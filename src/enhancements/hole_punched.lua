@@ -6,15 +6,15 @@ SMODS.Enhancement {
     --[[config = { money = 4 },
     loc_vars = function(self, info_queue, card)
         return { vars = { card.ability.money } }
-    end,
+    end,]]
     calculate = function(self, card, context)
         if context.discard and context.other_card == card then
-            ease_dollars(card.ability.money)
-            return {
-                message = localize('$')..card.ability.money,
-                colour = G.C.MONEY,
-                card = card
-            }
+            --G.GAME.consumeable_buffer = G.GAME.consumeable_buffer + 1
+            G.E_MANAGER:add_event(Event({
+                trigger = 'before',
+                delay = 0.0,
+            }))
+            return { message = 'Removed!', colour = G.C.YELLOW }
         end
-    end,]]
+    end,
 }
