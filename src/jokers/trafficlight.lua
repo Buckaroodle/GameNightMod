@@ -15,7 +15,7 @@ SMODS.Joker {
             numerator = 1,
             denominator = 5,
             Xmult = 2,
-            poker_hand = '[poker hand]',
+            poker_hand = 'poker hand',
             green_light = true
         }
     },
