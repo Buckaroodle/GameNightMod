@@ -40,3 +40,8 @@ local enhancements_src = SMODS.NFS.getDirectoryItems(SMODS.current_mod.path .. "
 for _, file in ipairs(enhancements_src) do
     assert(SMODS.load_file("src/enhancements/" .. file))()
 end
+
+local skins_src = SMODS.NFS.getDirectoryItems(SMODS.current_mod.path .. "src/skins")
+for _, file in ipairs(skins_src) do
+    assert(SMODS.load_file("src/skins/" .. file))()
+end
