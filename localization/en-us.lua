@@ -321,11 +321,15 @@ return {
             j_bgn_slamwich = {
                 name = 'Slamwich',
                 text = {
-                    'If played hand is a {C:attention}Pair,',
-                    'both scoring cards',
-                    'retrigger additional times',
-                    '{C:attention}equal{} to the number of',
-                    '{C:attention}unscoring cards{} between them'
+                    {
+                        'If played hand is a {C:attention}Pair,',
+                        'both scoring cards',
+                        'retrigger additional times',
+                        '{C:attention}equal{} to the number of',
+                        '{C:attention}unscoring cards{} between them'
+                    },{
+                        '{C:inactive}Art by Polar'
+                    }
                 }
             },
             j_bgn_ur = {

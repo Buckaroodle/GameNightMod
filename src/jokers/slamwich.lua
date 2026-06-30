@@ -1,4 +1,4 @@
---[[SMODS.Joker {
+SMODS.Joker {
     key = 'slamwich',
     atlas = 'bgn_joker_sprites',
     attributes = {
@@ -9,6 +9,7 @@
         x = 0,
         y = 0
     },
+    pixel_size = { h = 93 },
     config = {
         extra = {
         }
@@ -55,4 +56,4 @@
         end
         
     end
-}]]
+}

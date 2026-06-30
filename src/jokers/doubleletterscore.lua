@@ -19,6 +19,15 @@ SMODS.Joker {
     rarity = 2,
     cost = 7,
     loc_vars = function(self, info_queue, card)
+        local total_letters = 0
+        if G.jokers then
+            for i = 1, #G.jokers.cards do
+                local text = localize({ type = 'name_text', set = "Joker", key = G.jokers.cards[i].config.center.key }) 
+                local _, letterCount = text:gsub("%a", "")
+                total_letters = total_letters + letterCount
+            end
+        end
+        card.ability.extra.chips = card.ability.extra.chips_gain * total_letters
         return {
             vars = {
                 card.ability.extra.chips,

@@ -46,5 +46,13 @@ SMODS.Joker {
                 Xmult = card.ability.extra.Xmult
             }
         end
+    end,
+
+    in_pool = function(self, args)
+        if args.source == 'sho' then
+            return true
+        else
+            return false
+        end
     end
 }
