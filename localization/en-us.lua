@@ -561,6 +561,14 @@ return {
                     'Earn {C:money}$2{} per removed card',
                     'at end of round'
                 }
+            },
+            m_bgn_chance = {
+                name = 'Chance Card',
+                text = {
+                    '{C:green}+#1#{} to all {C:green}probabilities',
+                    'while this card',
+                    'stays in hand'
+                }
             }
         },
     }

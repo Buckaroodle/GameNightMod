@@ -1,8 +1,8 @@
 SMODS.Enhancement {
     key = 'holepunched',
-    atlas = 'placeholders',
-    --atlas = 'bgn_enhancements',
-    pos = { x = 3, y = 2 },
+    --atlas = 'placeholders',
+    atlas = 'bgn_consumables',
+    pos = { x = 3, y = 0 },
     --[[config = { money = 4 },
     loc_vars = function(self, info_queue, card)
         return { vars = { card.ability.money } }
