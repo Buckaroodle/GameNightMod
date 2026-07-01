@@ -1,7 +1,7 @@
 SMODS.Back {
     key = "stocked",
-    atlas = 'bgn_joker_sprites',
-    pos = { x = 3, y = 6 },
+    atlas = 'bgn_consumables',
+    pos = { x = 1, y = 0 },
     config = {
         current_reroll_cost = 0
     },

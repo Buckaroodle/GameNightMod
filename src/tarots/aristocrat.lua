@@ -4,7 +4,7 @@ SMODS.Consumable {
     set = 'Tarot',
     pos = {
         x = 2,
-        y = 0
+        y = 1
     },
     cost = 3,
     config = { extra = { consumeables = 1 } },

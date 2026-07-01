@@ -493,6 +493,14 @@ return {
                     '',
                     'Reroll cost does not reset each shop'
                 }
+            },
+            b_bgn_onlyhands = {
+                name = 'Freestyle Deck',
+                text = {
+                    '{C:purple}6{} Hands/Discards',
+                    'Hands and discards use',
+                    'the same counter'
+                }
             }
         },
 

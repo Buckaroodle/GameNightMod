@@ -2,7 +2,7 @@ SMODS.Consumable {
     key = 'bee',
     atlas = 'bgn_consumables',
     set = 'Tarot',
-    pos = { x = 0, y = 0 },
+    pos = { x = 0, y = 1 },
     cost = 3,
     config = { max_highlighted = 2, mod_conv = 'm_bgn_holepunched' },
     loc_vars = function(self, info_queue, card)
