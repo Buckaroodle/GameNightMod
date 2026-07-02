@@ -572,7 +572,8 @@ return {
             m_bgn_chance = {
                 name = 'Chance Card',
                 text = {
-                    '{C:green}+#1#{} to all {C:green}probabilities',
+                    '{C:green}+#1#{} to both sides',
+                    'of all {C:green}probabilities',
                     'while this card',
                     'stays in hand'
                 }
