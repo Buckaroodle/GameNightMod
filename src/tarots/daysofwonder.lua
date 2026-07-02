@@ -19,8 +19,7 @@
                 trigger = 'before',
                 delay = 0.4,
                 func = function()
-                    local copied_joker = SMODS.copy_card(chosen_joker,
-                    { strip_edition = chosen_joker.edition and chosen_joker.edition.negative })
+                    local copied_joker = SMODS.copy_card(chosen_joker)
                     copied_joker:start_materialize()
                     return true
                 end

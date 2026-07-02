@@ -523,7 +523,7 @@ return {
             c_bgn_aristocrat = {
                 name = 'The Aristocrat',
                 text = {
-                    'Creates up to 1 random',
+                    'Creates 1 random',
                     '{C:tarot}Tarot{} or {C:planet}Planet{} card',
                     'with {C:dark_edition}Foil{} or {C:dark_edition}Holographic{} edition',
                 }
@@ -548,6 +548,13 @@ return {
                 text = {
                     'Enhances {C:attention}#1#{} selected cards',
                     'to {C:attention}Hole Punched Cards'
+                }
+            },
+            c_bgn_hoyle = {
+                name = 'Hoyle',
+                text = {
+                    'Enhances {C:attention}#1#{} selected card',
+                    'to {C:attention}Chance Cards'
                 }
             }
         },
