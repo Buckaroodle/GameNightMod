@@ -517,7 +517,7 @@ return {
                 name = 'Fournier',
                 text = {
                     'Enhances {C:attention}#1#{} selected cards',
-                    'with a {C:attention}random enhancement'
+                    'with the same {C:attention}random enhancement'
                 }
             },
             c_bgn_aristocrat = {
@@ -559,6 +559,40 @@ return {
             }
         },
 
+        Spectral = {
+            c_bgn_oink = {
+                name = 'Oink',
+                text = {
+                    "Add a {C:green}Chance Seal{}",
+                    "to {C:attention}1{} selected",
+                    "card in your hand",
+                }
+            },
+            c_bgn_asmodee = {
+                name = 'Asmodee',
+                text = {
+                    "Destroys {C:attention}3{} random cards in hand,",
+                    "enhances all remaining cards",
+                    "with a {C:attention}random enhancement"
+                }
+            },
+            c_bgn_kosmos = {
+                name = 'Kosmos',
+                text = {
+                    "Select up to {C:attention}5{} cards,",
+                    "convert all selected cards into",
+                    "a {C:attention}random{} selected card"
+                }
+            },
+            c_bgn_daysofwonder = {
+                name = 'Days of Wonder',
+                text = {
+                    "{C:green}#1# in #2#{} chance to create",
+                    "a {C:dark_edition}Negative{} copy of a random Joker"
+                }
+            }
+        },
+
         Enhanced = {
             m_bgn_holepunched = {
                 name = 'Hole Punched Card',
@@ -569,7 +603,7 @@ return {
                     'at end of round'
                 }
             },
-            m_bgn_chance = {
+            --[[m_bgn_chance = {
                 name = 'Chance Card',
                 text = {
                     '{C:green}+#1#{} to both sides',
@@ -577,7 +611,30 @@ return {
                     'while this card',
                     'stays in hand'
                 }
-            }
+            }]]
         },
+
+        Other = {
+            bgn_chance_seal = {
+                name = 'Chance Seal',
+                text = {
+                    '{C:green}+#1#{} to both sides',
+                    'of all {C:green}probabilities',
+                    'while this card',
+                    'stays in hand'
+                },
+                --label = misc.labels[chance:lower()..'_seal']
+            }
+            --[[bgn_chance_seal = {
+                name = 'Chance Seal',
+                description = descriptions.Other[key:lower()..'_seal']
+            }]]
+        }
+    },
+
+    misc = {
+        labels = {
+            bgn_chance_seal = 'Chance Seal'
+        }
     }
 }

@@ -1,4 +1,4 @@
---[[SMODS.Consumable {
+SMODS.Consumable {
     key = 'daysofwonder',
     atlas = 'bgn_consumables',
     set = 'Spectral',
@@ -21,6 +21,7 @@
                 func = function()
                     local copied_joker = SMODS.copy_card(chosen_joker)
                     copied_joker:start_materialize()
+                    copied_joker:set_edition("e_negative")
                     return true
                 end
             }))
@@ -60,4 +61,4 @@
     can_use = function(self, card)
         return G.jokers and #G.jokers.cards > 0
     end
-}]]
+}

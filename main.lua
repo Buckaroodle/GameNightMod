@@ -45,3 +45,13 @@ local skins_src = SMODS.NFS.getDirectoryItems(SMODS.current_mod.path .. "src/ski
 for _, file in ipairs(skins_src) do
     assert(SMODS.load_file("src/skins/" .. file))()
 end
+
+local seals_src = SMODS.NFS.getDirectoryItems(SMODS.current_mod.path .. "src/seals")
+for _, file in ipairs(seals_src) do
+    assert(SMODS.load_file("src/seals/" .. file))()
+end
+
+local spectrals_src = SMODS.NFS.getDirectoryItems(SMODS.current_mod.path .. "src/spectrals")
+for _, file in ipairs(spectrals_src) do
+    assert(SMODS.load_file("src/spectrals/" .. file))()
+end
