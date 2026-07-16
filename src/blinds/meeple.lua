@@ -1,4 +1,4 @@
-SMODS.Blind {
+--[[SMODS.Blind {
     key = 'meeple',
     atlas = 'bgn_blinds',
     --atlas_table = 'ANIMATION_ATLAS',
@@ -12,4 +12,4 @@ SMODS.Blind {
             context.other_card.debuff = true
         end
     end
-}
+}]]
