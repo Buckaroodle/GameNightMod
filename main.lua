@@ -21,6 +21,13 @@ SMODS.Atlas {
   py = 95
 }
 
+SMODS.Atlas {
+  key = "bgn_blinds",
+  path = "bgn_blinds.png",
+  px = 34,
+  py = 34
+}
+
 local jokers_src = SMODS.NFS.getDirectoryItems(SMODS.current_mod.path .. "src/jokers")
 for _, file in ipairs(jokers_src) do
     assert(SMODS.load_file("src/jokers/" .. file))()
@@ -54,4 +61,9 @@ end
 local spectrals_src = SMODS.NFS.getDirectoryItems(SMODS.current_mod.path .. "src/spectrals")
 for _, file in ipairs(spectrals_src) do
     assert(SMODS.load_file("src/spectrals/" .. file))()
+end
+
+local blinds_src = SMODS.NFS.getDirectoryItems(SMODS.current_mod.path .. "src/blinds")
+for _, file in ipairs(blinds_src) do
+    assert(SMODS.load_file("src/blinds/" .. file))()
 end

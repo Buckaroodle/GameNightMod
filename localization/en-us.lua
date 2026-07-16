@@ -629,6 +629,30 @@ return {
                 name = 'Chance Seal',
                 description = descriptions.Other[key:lower()..'_seal']
             }]]
+        },
+
+        Blind = {
+            bl_bgn_disc = {
+                name = 'The Disc',
+                text = {
+                    'Played cards are shuffled',
+                    'before scoring'
+                }
+            },
+            bl_bgn_die = {
+                name = 'The Die',
+                text = {
+                    'All probabilities',
+                    'are set to 0'
+                }
+            },
+            bl_bgn_meeple = {
+                name = 'The Meeple',
+                text = {
+                    'Cards immediately get',
+                    'debuffed after scoring'
+                }
+            }
         }
     },
 
