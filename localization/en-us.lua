@@ -632,8 +632,8 @@ return {
         },
 
         Blind = {
-            bl_bgn_disc = {
-                name = 'The Disc',
+            bl_bgn_meeple = {
+                name = 'The Meeple',
                 text = {
                     'Played cards are shuffled',
                     'before scoring'
@@ -646,8 +646,8 @@ return {
                     'are set to 0'
                 }
             },
-            bl_bgn_meeple = {
-                name = 'The Meeple',
+            bl_bgn_fix = {
+                name = 'The ???',
                 text = {
                     'Cards immediately get',
                     'debuffed after scoring'

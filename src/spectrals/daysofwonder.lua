@@ -7,7 +7,7 @@ SMODS.Consumable {
         y = 2
     },
     cost = 4,
-    config = { extra = { numerator = 1, denominator = 4 } },
+    config = { extra = { numerator = 1, denominator = 6 } },
     loc_vars = function(self, info_queue, card)
         local num, denom = SMODS.get_probability_vars(card, card.ability.extra.numerator, card.ability.extra.denominator)
         return { vars = { num, denom } }
