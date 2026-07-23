@@ -31,7 +31,7 @@ SMODS.Joker {
             ease_ante(-card.ability.extra.deduction)
             G.GAME.round_resets.blind_ante = G.GAME.round_resets.blind_ante or G.GAME.round_resets.ante
             G.GAME.round_resets.blind_ante = G.GAME.round_resets.blind_ante - card.ability.extra.deduction
-            if G.GAME.blind and not G.GAME.blind.disabled and G.GAME.blind.boss then
+            if G.GAME.blind and not G.GAME.blind.disabled then
                 G.E_MANAGER:add_event(Event({
                 blocking = false,
                 func = function()

@@ -81,23 +81,25 @@ SMODS.Joker {
             }
         end
         if context.card_added or context.joker_type_destroyed or context.selling_card then
-            G.E_MANAGER:add_event(Event({
-                func = function() 
-                    local total_letters = 0
-                    if G.jokers then
-                        for i = 1, #G.jokers.cards do
-                            --if G.jokers.cards[i] ~= card then
-                                local text = localize({ type = 'name_text', set = "Joker", key = G.jokers.cards[i].config.center.key }) 
-                                --local text = G.jokers.cards[i].center.name
-                                local _, letterCount = text:gsub("%a", "")
-                                total_letters = total_letters + letterCount
-                            --end
+            if not card.ability.extra.chips == nil then
+                G.E_MANAGER:add_event(Event({
+                    func = function() 
+                        local total_letters = 0
+                        if G.jokers then
+                            for i = 1, #G.jokers.cards do
+                                --if G.jokers.cards[i] ~= card then
+                                    local text = localize({ type = 'name_text', set = "Joker", key = G.jokers.cards[i].config.center.key }) 
+                                    --local text = G.jokers.cards[i].center.name
+                                    local _, letterCount = text:gsub("%a", "")
+                                    total_letters = total_letters + letterCount
+                                --end
+                            end
                         end
-                    end
-                    card.ability.extra.chips = card.ability.extra.chips_gain * total_letters
-                    return true 
-                end,
-            }))
+                        card.ability.extra.chips = card.ability.extra.chips_gain * total_letters
+                        return true 
+                    end,
+                }))
+            end
         end
     end
 }

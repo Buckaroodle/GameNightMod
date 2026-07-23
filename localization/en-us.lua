@@ -646,11 +646,33 @@ return {
                     'are set to 0'
                 }
             },
-            bl_bgn_fix = {
-                name = 'The ???',
+            bl_bgn_domino = {
+                name = 'The Domino',
+                text = {
+                    'All Aces and 2s',
+                    'are debuffed'
+                }
+            },
+            bl_bgn_checker = {
+                name = 'The Checker',
                 text = {
                     'Cards immediately get',
                     'debuffed after scoring'
+                }
+            },
+            bl_bgn_pawn = {
+                name = 'The Pawn',
+                text = {
+                    'All enhanced cards',
+                    'are drawn face down'
+                }
+            },
+            bl_bgn_robber = {
+                name = 'The Robber',
+                text = {
+                    'One third of the',
+                    'cards in the deck',
+                    'are temporarily removed'
                 }
             }
         }
