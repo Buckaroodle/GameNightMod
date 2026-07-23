@@ -8,7 +8,11 @@ SMODS.Blind {
     boss = { min = 3, max = 10 },
     boss_colour = HEX('FFFD82'),
     calculate = function(self, blind, context)
-        if context.individual and context.cardarea == G.play then
+        local temp = G.GAME.blind and G.GAME.blind.disabled
+        if temp then
+            return
+        end
+        if context.individual and context.cardarea == G.play and not temp then
             local target_card = context.other_card
             target_card.ability = target_card.ability or {}
             target_card.ability.delay_debuff_draw = true
@@ -25,6 +29,16 @@ SMODS.Blind {
             return {
                 message = "Debuffed!",
             }
+        end
+    end,
+    disable = function(self)
+        for k, v in pairs(G.playing_cards) do
+            SMODS.debuff_card(v, false, 'bgn_checker')
+        end
+    end,
+    defeat = function(self)
+        for k, v in pairs(G.playing_cards) do
+            SMODS.debuff_card(v, false, 'bgn_checker')
         end
     end
 }

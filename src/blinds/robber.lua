@@ -9,14 +9,18 @@
     boss_colour = HEX('FFFD82'),
     set_blind = function(self)
         for i = 1, math.floor(#G.playing_cards / 3) do
-            G.E_MANAGER:add_event(Event({
-                func = function()
+            --G.E_MANAGER:add_event(Event({
+                --func = function()
                     local chosen_card = pseudorandom_element(G.playing_cards, 'bgn_robber')
                     --blind.ability.extra.discarded_cards = {}
+                    G.E_MANAGER:add_event(Event({
+                        func = function()
                     draw_card(G.deck, G.discard, 90, 'up', nil, chosen_card)
                     return true
-                end,
-            }))
+                        end,
+                    }))
+                --end,
+            --}))
         end
     end,
 }]]

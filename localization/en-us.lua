@@ -467,6 +467,13 @@ return {
                     '{C:blue}+#1#{} hand',
                     '{C:attention}+#2#{} consumable slot'
                 }
+            },
+            j_bgn_root = {
+                name = 'Root',
+                text = {
+                    'Gives {C:mult}Mult{} equal to the',
+                    '{C:attention}square root{} of current chips',
+                }
             }
         },
 
