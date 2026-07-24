@@ -47,10 +47,6 @@ self.bgn_holepunched_discard = CardArea(
     0, 0,
     CAI.discard_W,CAI.discard_H,
     {card_limit = 1e308, type = 'discard'})
-self.bgn_robber_discard = CardArea(
-    0, 0,
-    CAI.discard_W,CAI.discard_H,
-    {card_limit = 1e308, type = 'discard'})
 '''
 
 [[patches]] 
