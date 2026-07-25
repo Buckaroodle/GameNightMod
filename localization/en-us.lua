@@ -474,6 +474,22 @@ return {
                     'Gives {C:mult}Mult{} equal to the',
                     '{C:attention}square root{} of current chips',
                 }
+            },
+            j_bgn_queensgambit = {
+                name = "Queen's Gambit",
+                text = {
+                    'If played hand contains',
+                    'a single scoring {C:attention}Queen{},',
+                    'destroy a random card held in hand',
+                }
+            },
+            j_bgn_theora = {
+                name = 'Theora',
+                text = {
+                    'If all cards held in hand',
+                    'are {C:attention}face{} cards, add a random {C:attention}seal{}',
+                    'to a randomly held card'
+                }
             }
         },
 

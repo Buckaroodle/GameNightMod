@@ -1,4 +1,4 @@
---[[SMODS.Joker {
+SMODS.Joker {
     key = 'battleship',
     atlas = 'bgn_joker_sprites',
     attributes = {
@@ -6,8 +6,8 @@
         'enhancement'
     },
     pos = {
-        x = 0,
-        y = 0
+        x = 4,
+        y = 3
     },
     rarity = 2,
     cost = 6,
@@ -45,4 +45,4 @@
             }
         end
     end
-}]]
+}

@@ -1,6 +1,6 @@
 SMODS.Joker {
     key = 'root',
-    atlas = 'bgn_joker_sprites',
+    atlas = 'placeholders',
     attributes = {
         'mult',
     },
@@ -8,7 +8,7 @@ SMODS.Joker {
         x = 0,
         y = 0
     },
-    rarity = 2,
+    rarity = 1,
     cost = 5,
     calculate = function(self, card, context)
         if context.joker_main then
