@@ -1,14 +1,14 @@
 SMODS.Joker {
     key = 'queensgambit',
-    atlas = 'placeholders',
+    atlas = 'bgn_joker_sprites',
     attributes = {
         'rank',
         'queen',
         'destroy_card'
     },
     pos = {
-        x = 0,
-        y = 0
+        x = 3,
+        y = 6
     },
     rarity = 2,
     cost = 6,
