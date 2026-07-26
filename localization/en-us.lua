@@ -382,6 +382,7 @@ return {
                     'for each {C:attention}unique{} poker hand',
                     'played this ante',
                     '{C:inactive}(Currently {C:mult}+#1#{C:inactive} Mult)',
+                    '{s:0.8,C:inactive}Poker hands played this ante:'
                 }
             },
             j_bgn_chancellor = {
@@ -489,6 +490,14 @@ return {
                     'If all cards held in hand',
                     'are {C:attention}face{} cards, add a random {C:attention}seal{}',
                     'to a randomly held card'
+                }
+            },
+            j_bgn_shutthebox = {
+                name = 'Shut The Box',
+                text = {
+                    'Create a random {C:attention}Tag{} when all',
+                    'card {C:attention}ranks{} have scored',
+                    'Unscored ranks:'
                 }
             }
         },
@@ -702,6 +711,9 @@ return {
     },
 
     misc = {
+        dictionary = {
+            bgn_plus_tag = '+1 Tag'
+        },
         labels = {
             bgn_chance_seal = 'Chance Seal'
         }

@@ -21,11 +21,23 @@ SMODS.Joker {
     rarity = 1,
     cost = 5,
     loc_vars = function(self, info_queue, card)
+        local nodes = {}
+        local index = 0
+        for i = #card.ability.extra.hand_types_this_ante, 1, -1 do
+            local key = card.ability.extra.hand_types_this_ante[i]
+            nodes[#nodes+1] = {n = G.UIT.R, config = {align = "cm", padding = 0.02}, nodes = {
+                {n = G.UIT.T, config = {text = key, colour = G.C.UI.TEXT_INACTIVE, scale = 0.25}}
+            }} 
+            index = index + 1
+        end
         return {
             vars = {
                 card.ability.extra.mult,
                 card.ability.extra.mult_gain,
-            }
+            },
+            main_end = {
+                {n = G.UIT.R, config = {align = "cm"}, nodes = nodes}
+            },
         }
     end,
     calculate = function(self, card, context)
