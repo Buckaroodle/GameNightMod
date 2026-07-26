@@ -11,7 +11,7 @@ SMODS.Joker {
         y = 0
     },
     rarity = 2,
-    cost = 5,
+    cost = 6,
     calculate = function(self, card, context)
         if context.final_scoring_step then
             local queen_found = false

@@ -16,7 +16,7 @@ SMODS.Joker {
         }
     },
     rarity = 2,
-    cost = 8,
+    cost = 7,
     loc_vars = function(self, info_queue, card)
         local concat_ranks = {}
         local max_characters = 15

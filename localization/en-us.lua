@@ -419,7 +419,7 @@ return {
                 }
             },
             j_bgn_battleship = {
-                name = 'Battleship',
+                name = 'The Admiral',
                 text = {
                     'This Joker gains {X:mult,C:white}X#1#{} Mult',
                     'per {C:attention}Hole Punched Card{} not',
@@ -470,7 +470,7 @@ return {
                 }
             },
             j_bgn_root = {
-                name = 'Root',
+                name = 'Law of Root',
                 text = {
                     'Gives {C:mult}Mult{} equal to the',
                     '{C:attention}square root{} of current chips',

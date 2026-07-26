@@ -9,7 +9,7 @@ SMODS.Joker {
         y = 0
     },
     rarity = 1,
-    cost = 5,
+    cost = 4,
     calculate = function(self, card, context)
         if context.joker_main then
             return {
