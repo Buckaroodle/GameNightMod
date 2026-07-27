@@ -1,12 +1,12 @@
 SMODS.Joker {
     key = 'root',
-    atlas = 'placeholders',
+    atlas = 'bgn_joker_sprites',
     attributes = {
         'mult',
     },
     pos = {
         x = 0,
-        y = 0
+        y = 10
     },
     rarity = 1,
     cost = 4,

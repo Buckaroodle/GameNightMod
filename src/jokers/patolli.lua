@@ -27,7 +27,7 @@ SMODS.Joker {
     calculate = function(self, card, context)
         if context.before then
             return {
-                dollars = to_number(G.GAME.hands[context.scoring_name].level),
+                dollars = G.GAME.hands[context.scoring_name].level,
                 func = function() -- This is for timing purposes, it runs after the dollar manipulation
                     G.E_MANAGER:add_event(Event({
                         func = function()

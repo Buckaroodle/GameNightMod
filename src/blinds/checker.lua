@@ -5,7 +5,7 @@ SMODS.Blind {
     pos = { x = 0, y = 4 },
     dollars = 5,
     mult = 2,
-    boss = { min = 3, max = 10 },
+    boss = { min = 1, max = 10 },
     boss_colour = HEX('FFFD82'),
     calculate = function(self, blind, context)
         local temp = G.GAME.blind and G.GAME.blind.disabled
@@ -32,13 +32,13 @@ SMODS.Blind {
         end
     end,
     disable = function(self)
-        for k, v in pairs(G.playing_cards) do
-            SMODS.debuff_card(v, false, 'bgn_checker')
+        for k, v in ipairs(G.playing_cards) do
+            SMODS.debuff_card(v, false, 'bgn_fix')
         end
     end,
     defeat = function(self)
-        for k, v in pairs(G.playing_cards) do
-            SMODS.debuff_card(v, false, 'bgn_checker')
+        for k, v in ipairs(G.playing_cards) do
+            SMODS.debuff_card(v, false, 'bgn_fix')
         end
     end
 }

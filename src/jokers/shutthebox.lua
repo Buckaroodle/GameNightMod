@@ -1,14 +1,14 @@
 SMODS.Joker {
     key = 'shutthebox',
-    atlas = 'placeholders',
+    atlas = 'bgn_joker_sprites',
     attributes = {
         'rank',
         'tag',
         'generation',
     },
     pos = {
-        x = 0,
-        y = 0
+        x = 1,
+        y = 10
     },
     config = {
         extra = {
