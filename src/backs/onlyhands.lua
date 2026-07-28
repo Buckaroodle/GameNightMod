@@ -7,6 +7,8 @@ SMODS.Back {
         G.GAME.starting_params.hands = (G.GAME.starting_params.hands + G.GAME.starting_params.discards) - 1
         G.GAME.starting_params.discards = 0
         G.GAME.bgn_onlyhands = true
+        G.GAME.banned_keys['bl_needle'] = true
+        G.GAME.banned_keys['bl_water'] = true
     end,
 }
 
@@ -14,6 +16,7 @@ local ease_discard_ref = ease_discard
 function ease_discard(mod, instant, silent, ...)
     if G.GAME.bgn_onlyhands == true then
         local _mod = function(mod)
+            print(mod)
         local hand_UI = G.HUD:get_UIE_by_ID('hand_UI_count')
         mod = mod or 0
         local text = '+'
@@ -23,8 +26,14 @@ function ease_discard(mod, instant, silent, ...)
             col = G.C.RED
         end
         --Ease from current chips to the new number of chips
+        --print('discards left: ' .. G.GAME.current_round.discards_left)
+        --print('hands left: ' .. G.GAME.current_round.hands_left)
+        --G.GAME.current_round.discards_left = G.GAME.current_round.discards_left + mod
+        --G.GAME.current_round.hands_left = G.GAME.current_round.discards_left
         G.GAME.current_round.hands_left = G.GAME.current_round.hands_left + mod
-        G.GAME.current_round.discards_left = G.GAME.current_round.hands_left + mod
+        G.GAME.current_round.discards_left = G.GAME.current_round.hands_left
+        --print(G.GAME.current_round.discards_left)
+        --print(G.GAME.current_round.hands_left)
         hand_UI.config.object:update()
         G.HUD:recalculate()
         --Popup text next to the chips in UI showing number of chips gained/lost

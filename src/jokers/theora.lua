@@ -1,13 +1,13 @@
 SMODS.Joker {
     key = 'theora',
-    atlas = 'placeholders',
+    atlas = 'bgn_joker_sprites',
     attributes = {
         'face',
         'seals',
     },
     pos = {
-        x = 0,
-        y = 0
+        x = 2,
+        y = 10
     },
     rarity = 3,
     cost = 8,

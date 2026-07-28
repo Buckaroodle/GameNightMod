@@ -11,7 +11,7 @@ SMODS.Joker {
     },
     config = {
         extra = {
-            money = 10,
+            money = 8,
         }
     },
     rarity = 2,
@@ -24,16 +24,23 @@ SMODS.Joker {
         }
     end,
     calculate = function(self, card, context)
-        if context.starting_shop then
-            card.ability.extra.rerolled_shop = false
+        --[[if context.starting_shop then
+            card.ability.extra.reroll_count = G.GAME.round_scores.times_rerolled.amt
         end
-        if context.reroll_shop then
+        --[[if context.reroll_shop then
             card.ability.extra.rerolled_shop = true
         end
         if context.ending_shop and not card.ability.extra.rerolled_shop then
             return {
                 dollars = card.ability.extra.money
             }
+        end]]
+        if context.ending_shop and G.GAME.round_scores.times_rerolled.amt == G.GAME.total_rerolls_on_shop_entry then
+            return {
+                dollars = card.ability.extra.money
+            }
         end
-    end
+    end,
+
+    --G.GAME.total_rerolls_on_shop_entry
 }

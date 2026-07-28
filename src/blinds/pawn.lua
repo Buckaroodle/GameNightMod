@@ -6,7 +6,7 @@ SMODS.Blind {
     dollars = 5,
     mult = 2,
     boss = { min = 3, max = 10 },
-    boss_colour = HEX('FFFD82'),
+    boss_colour = HEX('E696B0'),
     
     stay_flipped = function(self, area, card)
         if area == G.hand then

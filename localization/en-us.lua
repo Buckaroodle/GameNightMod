@@ -418,7 +418,7 @@ return {
                     'played hand'
                 }
             },
-            j_bgn_battleship = {
+            j_bgn_admiral = {
                 name = 'The Admiral',
                 text = {
                     'This Joker gains {X:mult,C:white}X#1#{} Mult',

@@ -21,6 +21,29 @@ SMODS.Joker {
     rarity = 1,
     cost = 5,
     loc_vars = function(self, info_queue, card)
+        --if G.hand_list then
+        --print('test')
+        --print(G.handlist)
+            for i, poker_hand in ipairs(G.handlist) do
+                if G.GAME.hands[poker_hand].played_this_ante > 0 then
+                    local match_found = false
+                    for i, hand in ipairs(card.ability.extra.hand_types_this_ante) do
+                        if poker_hand == hand then
+                            match_found = true
+                        end
+                    end
+                    if match_found == false then
+                        card.ability.extra.hand_types_this_ante[#card.ability.extra.hand_types_this_ante+1] = poker_hand
+                    end
+                else
+                    for i, hand in ipairs(card.ability.extra.hand_types_this_ante) do
+                        if poker_hand == hand then
+                            table.remove(card.ability.extra.hand_types_this_ante, i)
+                        end
+                    end
+                end
+            end
+        --end
         local nodes = {}
         local index = 0
         for i = #card.ability.extra.hand_types_this_ante, 1, -1 do
@@ -32,7 +55,7 @@ SMODS.Joker {
         end
         return {
             vars = {
-                card.ability.extra.mult,
+                card.ability.extra.mult_gain * #card.ability.extra.hand_types_this_ante,
                 card.ability.extra.mult_gain,
             },
             main_end = {
@@ -50,7 +73,7 @@ SMODS.Joker {
             end
             if not already_played then
                 card.ability.extra.hand_types_this_ante[#card.ability.extra.hand_types_this_ante + 1] = context.scoring_name
-                card.ability.extra.mult = card.ability.extra.mult + card.ability.extra.mult_gain
+                --card.ability.extra.mult = card.ability.extra.mult + card.ability.extra.mult_gain
                 return {
                     message = localize('k_upgrade_ex'),
                     colour = G.C.MULT,
@@ -59,12 +82,12 @@ SMODS.Joker {
         end
         if context.joker_main then
             return {
-                mult = card.ability.extra.mult
+                mult = card.ability.extra.mult_gain * #card.ability.extra.hand_types_this_ante
             }
         end
         if context.end_of_round and context.game_over == false and context.main_eval and not context.blueprint then
-            if context.beat_boss and card.ability.extra.mult > 1 then
-                card.ability.extra.mult = 0
+            if context.beat_boss then
+                --card.ability.extra.mult = 0
                 card.ability.extra.hand_types_this_ante = {}
                 return {
                     message = localize('k_reset'),
@@ -74,3 +97,5 @@ SMODS.Joker {
         end
     end
 }
+
+--G.GAME.hands[text].played_this_ante

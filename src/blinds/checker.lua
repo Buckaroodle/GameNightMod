@@ -6,7 +6,7 @@ SMODS.Blind {
     dollars = 5,
     mult = 2,
     boss = { min = 3, max = 10 },
-    boss_colour = HEX('FFFD82'),
+    boss_colour = HEX('E58366'),
     calculate = function(self, blind, context)
         local temp = G.GAME.blind and G.GAME.blind.disabled
         if temp then

@@ -158,7 +158,93 @@ pattern = "G.GAME.current_round.hands_left = G.GAME.current_round.hands_left + m
 position = "after"
 payload = '''
 if G.GAME.bgn_onlyhands then
-    G.GAME.current_round.discards_left = G.GAME.current_round.hands_left + mod
+    G.GAME.current_round.discards_left = G.GAME.current_round.hands_left
 end
 '''
 match_indent = true
+
+[[patches]]
+[patches.pattern]
+target = "functions/state_events.lua"
+pattern = '''
+G.GAME.current_round.discards_left = math.max(0, G.GAME.round_resets.discards + G.GAME.round_bonus.discards)
+G.GAME.current_round.hands_left = (math.max(1, G.GAME.round_resets.hands + G.GAME.round_bonus.next_hands))
+'''
+position = "at"
+payload = '''
+if G.GAME.bgn_onlyhands then
+    G.GAME.current_round.hands_left = (math.max(1, G.GAME.round_resets.hands + G.GAME.round_bonus.next_hands + G.GAME.round_resets.discards + G.GAME.round_bonus.discards))
+    G.GAME.current_round.discards_left = G.GAME.current_round.hands_left
+else
+    G.GAME.current_round.discards_left = math.max(0, G.GAME.round_resets.discards + G.GAME.round_bonus.discards)
+    G.GAME.current_round.hands_left = (math.max(1, G.GAME.round_resets.hands + G.GAME.round_bonus.next_hands))
+end
+'''
+match_indent = true
+
+[[patches]]
+[patches.pattern]
+target = "game.lua"
+pattern = "if not nosave_shop then SMODS.calculate_context({starting_shop = true}) end"
+position = "at"
+payload = '''
+if not nosave_shop then
+SMODS.calculate_context({starting_shop = true})
+G.GAME.total_rerolls_on_shop_entry = G.GAME.round_scores.times_rerolled.amt
+end
+'''
+match_indent = true
+
+#[[patches]]
+#[patches.pattern]
+#target = "functions/common_events.lua"
+#pattern = "G.GAME.current_round.discards_left = G.GAME.current_round.discards_left + mod"
+#position = "after"
+#payload = '''
+#if G.GAME.bgn_onlyhands then
+#    G.GAME.current_round.hands_left = G.GAME.current_round.discards_left
+#end
+#'''
+#match_indent = true
+
+#[[patches]]
+#[patches.pattern]
+#target = "functions/common_events.lua"
+#pattern = "local discard_UI = G.HUD:get_UIE_by_ID('discard_UI_count')"
+#position = "at"
+#payload = '''
+#if G.GAME.bgn_onlyhands then
+#    local hand_UI = G.HUD:get_UIE_by_ID('hand_UI_count')
+#else
+#    local discard_UI = G.HUD:get_UIE_by_ID('discard_UI_count')
+#end
+#'''
+#match_indent = true
+
+#[[patches]]
+#[patches.pattern]
+#target = "functions/common_events.lua"
+#pattern = "discard_UI.config.object:update()"
+#position = "at"
+#payload = '''
+#if G.GAME.bgn_onlyhands then
+#    hand_UI.config.object:update()
+#else
+#    discard_UI.config.object:update()
+#end
+#'''
+#match_indent = true
+
+#[[patches]]
+#[patches.pattern]
+#target = "functions/common_events.lua"
+#pattern = "cover = discard_UI.parent,"
+#position = "at"
+#payload = '''
+#if G.GAME.bgn_onlyhands then
+#    cover = hand_UI.parent,
+#else
+#    cover = discard_UI.parent,
+#end
+#'''
+#match_indent = true
