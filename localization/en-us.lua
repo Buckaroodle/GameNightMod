@@ -422,8 +422,8 @@ return {
                 name = 'The Admiral',
                 text = {
                     'This Joker gains {X:mult,C:white}X#1#{} Mult',
-                    'per {C:attention}Hole Punched Card{} not',
-                    'currently in your deck or hand',
+                    'per {C:attention}Hole Punched Card{}',
+                    'removed from your deck',
                     '{C:inactive}(Currently {X:mult,C:white}X#2#{C:inactive} Mult)'
                 }
             },
