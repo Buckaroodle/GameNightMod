@@ -439,9 +439,9 @@ return {
             j_bgn_twister = {
                 name = 'Twister',
                 text = {
-                    '{C:purple}Purple{} and {C:blue}Blue{} Tag effects',
+                    '{C:purple}Purple{} and {C:blue}Blue{} Seal effects',
                     'trigger when scored,',
-                    '{C:red}Red{} and {C:gold}Gold{} Tag effects',
+                    '{C:red}Red{} and {C:gold}Gold{} Seal effects',
                     'trigger while held in hand'
                 }
             },
@@ -499,6 +499,58 @@ return {
                     'card {C:attention}ranks{} have scored',
                     'Unscored ranks:'
                 }
+            },
+            j_bgn_safetyzone = {
+                name = 'Safety Zone',
+                text = {
+                    'The {C:attention}leftmost 2{} Jokers',
+                    'cannot be destroyed'
+                }
+            },
+            j_bgn_inagrove = {
+                name = 'In A Grove',
+                text = {
+                    'Scoring cards give {C:chips}chips',
+                    'equal to the {C:attention}highest-scoring rank,',
+                    'if scoring hand contains a {C:attention}5,',
+                    'scoring cards instead give {C:mult}Mult',
+                    'equal to the {C:attention}lowest-scoring rank.'
+                }
+            },
+            j_bgn_blackjack = {
+                name = 'Blackjack',
+                text = {
+                    {
+                        'If sum of played cards',
+                        'is {C:attention}21 or under{}, this Joker',
+                        'gains {C:chips}chips{} equal to the',
+                        'value of played cards, {C:red}resets',
+                        'if sum of cards is {C:red}22 or over.',
+                        '{C:inactive}(Currently {C:chips}+#1#{C:inactive} chips)'
+                    },{
+                        '{C:attention}Jacks, Queens, and',
+                        '{C:attention}Kings{}{C:inactive} are each worth {C:attention}10,',
+                        '{C:attention}Aces{}{C:inactive} are worth {C:attention}1 or 11'
+                    }
+                }
+            },
+            j_bgn_fishwish = {
+                name = 'Fish Wish',
+                text = {
+                    '{C:green}#1# in #2#{} chance for cards',
+                    'in {C:attention}Standard Packs{} to be',
+                    'the same rank as the most',
+                    '{C:attention}prevalent rank{} in your deck'
+                }
+            },
+            j_bgn_omen = {
+                name = 'Omen',
+                text = {
+                    'Create a {C:spectral}Spectral{} card when',
+                    '{C:attention}Blind{} is selected, {C:green}#1# in #2#{} chance',
+                    'this card is {C:red}destroyed{} at end of round',
+                    '{C:green}Odds{} increase by {C:attention}#3#{} each round'
+                }
             }
         },
 
@@ -533,7 +585,7 @@ return {
                     'Hands and discards use',
                     'the same counter'
                 }
-            }
+            },
         },
 
         Tarot = {

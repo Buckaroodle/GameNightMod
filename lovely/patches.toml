@@ -195,6 +195,21 @@ end
 '''
 match_indent = true
 
+# taken from AIJ's patches
+[[patches]]
+[patches.pattern]
+target = "card.lua"
+pattern = '''
+for k, v in ipairs(pack_cards) do
+    G.pack_cards:emplace(v)
+end
+'''
+position = "after"
+match_indent = true
+payload = '''
+SMODS.calculate_context({bucksgamenight = {modify_booster_cards = true, card = self, pack_cards = pack_cards}}) 
+'''
+
 #[[patches]]
 #[patches.pattern]
 #target = "functions/common_events.lua"
