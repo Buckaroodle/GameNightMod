@@ -2,47 +2,24 @@ SMODS.Joker {
     key = 'admiral',
     atlas = 'bgn_joker_sprites',
     attributes = {
-        'xmult',
+        'destroy_card',
         'enhancement'
     },
     pos = {
         x = 4,
         y = 3
     },
-    rarity = 2,
-    cost = 6,
-    config = {
-        extra = {
-            Xmult_gain = 0.25,
-            Xmult = 1
-        }
-    },
+    rarity = 1,
+    cost = 5,
     enhancement_gate = 'bgn_m_holepunched',
     loc_vars = function(self, info_queue, card)
         info_queue[#info_queue + 1] = G.P_CENTERS.m_bgn_holepunched
-        if G.bgn_holepunched_discard ~= nil then
-            local cards_in_limbo = #G.bgn_holepunched_discard.cards or 0
-            card.ability.extra.Xmult = 1 + (cards_in_limbo * card.ability.extra.Xmult_gain)
-        else
-            card.ability.extra.Xmult = 1
-        end
-        return {
-            vars = {
-                card.ability.extra.Xmult_gain,
-                card.ability.extra.Xmult
-            }
-        }
     end,
     calculate = function(self, card, context)
-        if context.joker_main then
-            if G.bgn_holepunched_discard ~= nil then
-                local cards_in_limbo = #G.bgn_holepunched_discard.cards or 0
-                card.ability.extra.Xmult = 1 + (cards_in_limbo * card.ability.extra.Xmult_gain)
-            else
-                card.ability.extra.Xmult = 1
-            end
+        if context.discard and not context.blueprint and not context.other_card.debuff and SMODS.has_enhancement(context.other_card, "m_bgn_holepunched") then
             return {
-                Xmult = card.ability.extra.Xmult
+                remove = true,
+                delay = 0.45
             }
         end
     end

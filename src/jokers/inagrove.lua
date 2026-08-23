@@ -1,12 +1,12 @@
 SMODS.Joker {
     key = 'inagrove',
-    atlas = 'placeholders',
+    atlas = 'bgn_joker_sprites',
     attributes = {
-        'chips', 'mult'
+        'chips', 'mult', 'five'
     },
     pos = {
-        x = 0,
-        y = 0
+        x = 5,
+        y = 2
     },
     rarity = 1,
     cost = 4,

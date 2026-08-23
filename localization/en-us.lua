@@ -418,8 +418,8 @@ return {
                     'played hand'
                 }
             },
-            j_bgn_admiral = {
-                name = 'The Admiral',
+            j_bgn_cavitysam = {
+                name = 'Cavity Sam',
                 text = {
                     'This Joker gains {X:mult,C:white}X#1#{} Mult',
                     'per {C:attention}Hole Punched Card{}',
@@ -530,7 +530,7 @@ return {
                     },{
                         '{C:attention}Jacks, Queens, and',
                         '{C:attention}Kings{}{C:inactive} are each worth {C:attention}10,',
-                        '{C:attention}Aces{}{C:inactive} are worth {C:attention}1 or 11'
+                        '{C:attention}Aces{}{C:inactive} are worth {C:attention}1{} or {C:attention}11'
                     }
                 }
             },
@@ -550,6 +550,47 @@ return {
                     '{C:attention}Blind{} is selected, {C:green}#1# in #2#{} chance',
                     'this card is {C:red}destroyed{} at end of round',
                     '{C:green}Odds{} increase by {C:attention}#3#{} each round'
+                }
+            },
+            j_bgn_oldmaid = {
+                name = 'Old Maid',
+                text = {
+                    'Creates a {C:legendary}Legendary{} Joker',
+                    'when {C:attention}destroyed{}. This Joker',
+                    '{C:red}cannot{} be sold'
+                }
+            },
+            j_bgn_admiral = {
+                name = 'The Admiral',
+                text = {
+                    '{C:red}Destroys{} all scoring',
+                    '{C:attention}Hole-Punched{} cards'
+                }
+            },
+            j_bgn_kingme = {
+                name = 'King Me!',
+                text = {
+                    'Converts all scoring cards',
+                    'to {C:attention}Kings{} on {C:attention}last{} hand of round'
+                }
+            },
+            j_bgn_azulejos = {
+                name = 'Azulejos',
+                text = {
+                    '{C:red}-#1#{} discard each round,',
+                    'draw all {C:attention}discarded{} cards',
+                    'to your hand on',
+                    '{C:attention}last{} hand of round'
+                }
+            },
+            j_bgn_revolution = {
+                name = 'Revolution',
+                text = {
+                    'If a {C:attention}Four of a Kind{} has',
+                    'been played this round, each',
+                    'played {C:attention}2, 3, 4,{} and {C:attention}5',
+                    'gives {X:mult,C:white}X#1#{} Mult',
+                    '{C:inactive}#2#{}'
                 }
             }
         },
@@ -623,7 +664,7 @@ return {
                 name = 'Congress',
                 text = {
                     'Gives {C:money}$#2#{} per card of',
-                    'the {C:attention}most prevalent rank{} in your hand',
+                    'the {C:attention}most prevalent rank{} in your deck',
                     '{C:inactive}(Currently {C:money}$#1#{C:inactive})'
                 }
             },
@@ -764,7 +805,9 @@ return {
 
     misc = {
         dictionary = {
-            bgn_plus_tag = '+1 Tag'
+            bgn_plus_tag = '+1 Tag',
+            bgn_inactive = 'Currently inactive',
+            bgn_active = 'Active!'
         },
         labels = {
             bgn_chance_seal = 'Chance Seal'

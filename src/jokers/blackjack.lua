@@ -1,14 +1,14 @@
 SMODS.Joker {
     key = 'blackjack',
-    atlas = 'placeholders',
+    atlas = 'bgn_joker_sprites',
     attributes = {
         'chips',
         'scaling',
         'reset',
     },
     pos = {
-        x = 2,
-        y = 0
+        x = 5,
+        y = 4
     },
     config = {
         extra = {

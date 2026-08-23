@@ -8,7 +8,7 @@ SMODS.Enhancement {
         return { vars = { card.ability.money } }
     end,]]
     calculate = function(self, card, context)
-        if context.discard and context.other_card == card then
+        if context.discard and context.other_card == card and not next(SMODS.find_card("j_bgn_admiral")) then
             --G.GAME.consumeable_buffer = G.GAME.consumeable_buffer + 1
             G.E_MANAGER:add_event(Event({
                 trigger = 'before',

@@ -210,6 +210,28 @@ payload = '''
 SMODS.calculate_context({bucksgamenight = {modify_booster_cards = true, card = self, pack_cards = pack_cards}}) 
 '''
 
+[[patches]]
+[patches.pattern]
+target = "functions/state_events.lua"
+pattern = 'G.hand.highlighted[i]:calculate_seal({discard = true})'
+position = 'after'
+match_indent = true
+payload = '''
+G.hand.highlighted[i].ability.was_discarded = true
+'''
+
+[[patches]]
+[patches.pattern]
+target = "functions/state_events.lua"
+pattern = 'total_cashout_rows = 0'
+position = 'before'
+match_indent = true
+payload = '''
+for i, card in ipairs(G.playing_cards) do
+    card.ability.was_discarded = false
+end
+'''
+
 #[[patches]]
 #[patches.pattern]
 #target = "functions/common_events.lua"
