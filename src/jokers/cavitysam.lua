@@ -17,7 +17,7 @@ SMODS.Joker {
             Xmult = 1
         }
     },
-    enhancement_gate = 'bgn_m_holepunched',
+    enhancement_gate = 'm_bgn_holepunched',
     loc_vars = function(self, info_queue, card)
         info_queue[#info_queue + 1] = G.P_CENTERS.m_bgn_holepunched
         if G.bgn_holepunched_discard ~= nil then
