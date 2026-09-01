@@ -2,7 +2,7 @@ SMODS.Joker {
     key = 'omen',
     atlas = 'bgn_joker_sprites',
     attributes = {
-        'generation', 'chance'
+        'generation', 'chance', 'mod_chance'
     },
     pos = {
         x = 5,
@@ -18,6 +18,7 @@ SMODS.Joker {
     },
     rarity = 2,
     cost = 6,
+    eternal_compat = false,
     loc_vars = function(self, info_queue, card)
         local num, denom = SMODS.get_probability_vars(card, card.ability.extra.numerator, card.ability.extra.denominator)
         return {

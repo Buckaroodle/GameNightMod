@@ -484,12 +484,14 @@ return {
                     'destroy a random card held in hand',
                 }
             },
-            j_bgn_theora = {
-                name = 'Theora',
+            j_bgn_guesswho = {
+                name = 'Guess Who?',
                 text = {
-                    'If all cards held in hand',
-                    'are {C:attention}face{} cards, add a random {C:attention}seal{}',
-                    'to a randomly held card'
+                    'Does your Joker',
+                    '#2#{C:attention}#3#{}#4#?',
+                    'If so, that Joker',
+                    'gives {X:mult,C:white}X#1#{} Mult,',
+                    '{s:0.8}question changes every round'
                 }
             },
             j_bgn_shutthebox = {
@@ -537,10 +539,14 @@ return {
             j_bgn_fishwish = {
                 name = 'Fish Wish',
                 text = {
-                    '{C:green}#1# in #2#{} chance for cards',
-                    'in {C:attention}Standard Packs{} to be',
-                    'the same rank as the most',
-                    '{C:attention}prevalent rank{} in your deck'
+                    {
+                        '{C:green}#1# in #2#{} chance for cards',
+                        'in {C:attention}Standard Packs{} to be',
+                        'the same rank as the most',
+                        '{C:attention}prevalent rank{} in your deck'
+                    },{
+                        '{C:inactive}Art by F404'
+                    }
                 }
             },
             j_bgn_omen = {

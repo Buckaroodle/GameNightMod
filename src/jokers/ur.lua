@@ -2,7 +2,7 @@ SMODS.Joker {
     key = 'ur',
     atlas = 'bgn_joker_sprites',
     attributes = {
-        'xmult'
+        'xmult', 'chance'
     },
     pos = {
         x = 1,

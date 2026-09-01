@@ -10,6 +10,9 @@ end]]
 SMODS.Joker {
     key = 'safetyzone',
     atlas = 'bgn_joker_sprites',
+    attributes = {
+        'passive', 'position'
+    },
     pos = {
         x = 5,
         y = 0

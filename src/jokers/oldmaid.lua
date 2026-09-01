@@ -10,6 +10,7 @@ SMODS.Joker {
     },
     rarity = 3,
     cost = 10,
+    eternal_compat = false,
     calculate = function(self, card, context)
         if context.joker_type_destroyed then
             print('almost!')

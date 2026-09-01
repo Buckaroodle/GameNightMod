@@ -4,7 +4,8 @@ SMODS.Joker {
     attributes = {
         'modify_card',
         'suit',
-        'hand_type'
+        'hand_type',
+        'position'
     },
     pos = {
         x = 3,

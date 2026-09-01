@@ -3,7 +3,8 @@ SMODS.Joker {
     atlas = 'bgn_joker_sprites',
     attributes = {
         'xmult',
-        'joker'
+        'joker',
+        'debuff',
     },
     pos = {
         x = 2,

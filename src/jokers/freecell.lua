@@ -3,7 +3,8 @@ SMODS.Joker {
     atlas = 'bgn_joker_sprites',
     attributes = {
         'joker_slot',
-        'joker'
+        'joker',
+        'on_sell',
     },
     pos = {
         x = 3,
@@ -41,6 +42,9 @@ SMODS.Joker {
         --[[if context.selling_self then
             G.jokers:change_size(-card.ability.extra.extra_slots_given)
         end]]
+    end,
+    add_to_deck = function(self, card, from_debuff)
+        G.jokers:change_size(card.ability.extra.extra_slots_given)
     end,
     remove_from_deck = function(self, card, from_debuff)
         G.jokers:change_size(-card.ability.extra.extra_slots_given)

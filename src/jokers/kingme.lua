@@ -1,12 +1,12 @@
 SMODS.Joker {
     key = 'kingme',
-    atlas = 'placeholders',
+    atlas = 'bgn_joker_sprites',
     attributes = {
-        'king', 'generation', 'hands'
+        'king', 'modify_card', 'hands', 'rank'
     },
     pos = {
-        x = 1,
-        y = 0
+        x = 5,
+        y = 6
     },
     rarity = 2,
     cost = 7,

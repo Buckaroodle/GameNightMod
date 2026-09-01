@@ -1,12 +1,12 @@
 SMODS.Joker {
     key = 'revolution',
-    atlas = 'placeholders',
+    atlas = 'bgn_joker_sprites',
     attributes = {
         'xmult', 'hand_type', 'two', 'three', 'four', 'five'
     },
     pos = {
-        x = 1,
-        y = 0
+        x = 5,
+        y = 8
     },
     config = {
         extra = {

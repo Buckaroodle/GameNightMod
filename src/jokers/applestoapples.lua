@@ -2,7 +2,8 @@ SMODS.Joker {
     key = 'applestoapples',
     atlas = 'bgn_joker_sprites',
     attributes = {
-        'modify_card'
+        'modify_card',
+        'hand_type',
     },
     pos = {
         x = 3,

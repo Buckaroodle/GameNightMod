@@ -1,12 +1,15 @@
 SMODS.Joker {
     key = 'fishwish',
-    atlas = 'placeholders',
+    atlas = 'bgn_joker_sprites',
     attributes = {
-        'passive'
+        'passive',
+        'booster',
+        'full_deck',
+        'rank'
     },
     pos = {
-        x = 0,
-        y = 0
+        x = 5,
+        y = 9
     },
     config = {
         extra = {

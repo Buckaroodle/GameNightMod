@@ -2,7 +2,7 @@ SMODS.Joker {
     key = 'patolli',
     atlas = 'bgn_joker_sprites',
     attributes = {
-        'economy'
+        'economy',
     },
     pos = {
         x = 1,

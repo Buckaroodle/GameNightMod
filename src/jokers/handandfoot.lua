@@ -4,6 +4,7 @@ SMODS.Joker {
     attributes = {
         'hands',
         'passive',
+        'consumable_slot',
     },
     pos = {
         x = 4,

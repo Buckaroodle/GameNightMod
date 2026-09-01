@@ -1,13 +1,14 @@
 SMODS.Joker {
     key = 'cavitysam',
-    atlas = 'placeholders',
+    atlas = 'bgn_joker_sprites',
     attributes = {
         'xmult',
-        'enhancement'
+        'enhancement',
+        'discard'
     },
     pos = {
-        x = 1,
-        y = 0
+        x = 5,
+        y = 7
     },
     rarity = 2,
     cost = 6,

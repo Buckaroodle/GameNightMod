@@ -2,7 +2,8 @@ SMODS.Joker {
     key = 'doubleletterscore',
     atlas = 'bgn_joker_sprites',
     attributes = {
-        'chips'
+        'chips',
+        'joker'
     },
     pos = {
         x = 2,

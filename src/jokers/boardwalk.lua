@@ -4,6 +4,7 @@ SMODS.Joker {
     attributes = {
         'mult',
         'xmult',
+        'joker',
     },
     pos = {
         x = 0,

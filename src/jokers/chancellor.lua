@@ -5,6 +5,7 @@ SMODS.Joker {
         'chips',
         'scaling',
         'reset',
+        'booster',
     },
     pos = {
         x = 4,
