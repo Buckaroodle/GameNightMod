@@ -4,7 +4,8 @@ SMODS.Joker {
     attributes = {
         'rank',
         'queen',
-        'destroy_card'
+        'destroy_card',
+        'position'
     },
     pos = {
         x = 3,
