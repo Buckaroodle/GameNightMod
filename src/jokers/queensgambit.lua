@@ -10,8 +10,8 @@ SMODS.Joker {
         x = 3,
         y = 6
     },
-    rarity = 2,
-    cost = 6,
+    rarity = 1,
+    cost = 5,
     calculate = function(self, card, context)
         if context.final_scoring_step then
             local queen_found = false
@@ -26,7 +26,8 @@ SMODS.Joker {
                 end
             end
             if #G.hand.cards >= 1 and queen_found and not too_many_queens then
-                local card_to_destroy = pseudorandom_element(G.hand.cards, 'bgn_queensgambit')
+                --local card_to_destroy = pseudorandom_element(G.hand.cards, 'bgn_queensgambit')
+                local card_to_destroy = G.hand.cards[#G.hand.cards]
                 SMODS.destroy_cards(card_to_destroy)
                 G.E_MANAGER:add_event(Event({
                 func = function()

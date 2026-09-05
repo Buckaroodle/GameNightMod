@@ -14,7 +14,7 @@ SMODS.Joker {
     config = {
         extra = {
             Xmult = 1,
-            Xmult_gain = 0.5,
+            Xmult_gain = 1,
             poker_hand = 'N/A'
         }
     },

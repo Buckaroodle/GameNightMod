@@ -5,9 +5,9 @@ SMODS.Blind {
     pos = { x = 0, y = 4 },
     dollars = 5,
     mult = 2,
-    boss = { min = 3, max = 10 },
+    boss = { min = 1--[[3]], max = 10 },
     boss_colour = HEX('E58366'),
-    calculate = function(self, blind, context)
+    --[[calculate = function(self, blind, context)
         local temp = G.GAME.blind and G.GAME.blind.disabled
         if temp then
             return
@@ -40,11 +40,67 @@ SMODS.Blind {
         for k, v in ipairs(G.playing_cards) do
             SMODS.debuff_card(v, false, 'bgn_fix')
         end
-    end
+    end]]
 }
 
-local ref = SMODS.DrawSteps.debuff.func
+local calculate_repetitions_ref = SMODS.calculate_repetitions
+function SMODS.calculate_repetitions(card, context, reps) 
+    if G.GAME.blind.config.blind.key == 'bl_bgn_checker' and context.cardarea == G.play and (card.config.center.set == 'Default' or card.config.center.set == 'Base' or card.config.center.set == 'Enhanced') then
+        return reps
+    end
+    return calculate_repetitions_ref(card, context, reps)
+end
+local calculate_retriggers_ref = SMODS.calculate_retriggers
+function SMODS.calculate_retriggers(card, context, _ret)
+    if G.GAME.blind.config.blind.key == 'bl_bgn_checker' and context.cardarea == G.play and (card.config.center.set == 'Default' or card.config.center.set == 'Base' or card.config.center.set == 'Enhanced') then
+        return {}
+    end
+    return calculate_retriggers_ref(card, context, _ret)
+end
+
+--[[local ref = SMODS.DrawSteps.debuff.func
 function SMODS.DrawSteps.debuff.func(self)
     if self.ability.delay_debuff_draw then return nil end
     return ref(self)
 end
+
+SMODS.Joker:take_ownership('photograph', -- object key (class prefix not required)
+    { -- table of properties to change from the existing object,
+    config = { extra = { xmult = 2 } },
+    loc_vars = function(self, info_queue, card)
+        return { vars = { card.ability.extra.xmult } }
+    end,
+    calculate = function(self, card, context)
+        if context.individual and context.cardarea == G.play and context.other_card:is_face() then
+            if card.ability.first_face == nil then
+                local is_first_face = false
+                for i = 1, #context.scoring_hand do
+                    if context.scoring_hand[i]:is_face() then
+                        is_first_face = context.scoring_hand[i] == context.other_card
+                        card.ability.first_face = context.other_card
+                        break
+                    end
+                end
+                if is_first_face then
+                    --card.ability.first_face = context.other_card
+                    print('first!')
+                    return {
+                        xmult = card.ability.extra.xmult
+                    }
+                end
+            else
+                if context.other_card == card.ability.first_face then
+                    print('second!')
+                    return {
+                        xmult = card.ability.extra.xmult
+                    }
+                end
+            end
+        end
+        if context.after then
+            card.ability.first_face = nil
+        end
+    end
+    },
+    true -- silent | suppresses mod badge
+)]]

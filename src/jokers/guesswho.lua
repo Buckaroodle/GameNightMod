@@ -175,7 +175,7 @@ SMODS.Joker {
         'xmult',
     },
     pos = {
-        x = 2,
+        x = 4,
         y = 10
     },
     config = {
@@ -254,5 +254,9 @@ SMODS.Joker {
         card.ability.extra.string_one = attributeStringOneTable[card.ability.extra.chosen_attribute] or ''
         card.ability.extra.string_two = attributeStringTwoTable[card.ability.extra.chosen_attribute] or ''
         card.ability.extra.string_three = attributeStringThreeTable[card.ability.extra.chosen_attribute] or ''
+        if card.ability.extra.string_one == '' and card.ability.extra.string_two == '' and card.ability.extra.string_three == '' then
+            card.ability.extra.string_one = 'have the attribute of '
+            card.ability.extra.string_two = card.ability.extra.chosen_attribute
+        end
     end
 }

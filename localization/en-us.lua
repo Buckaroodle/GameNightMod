@@ -456,9 +456,9 @@ return {
             j_bgn_defuse = {
                 name = 'Defuse',
                 text = {
-                    'After {C:attention}#1#{} rounds, sell this card to',
-                    'instantly {C:attention}win{} the blind,',
-                    '{C:attention}-#3#{} Ante',
+                    'After skipping {C:attention}#1#{} blinds,',
+                    'sell this card to instantly',
+                    '{C:attention}win{} the blind,',
                     '{C:inactive}(Currently {C:attention}#2#{C:inactive}/#1#)'
                 }
             },
@@ -787,8 +787,8 @@ return {
             bl_bgn_checker = {
                 name = 'The Checker',
                 text = {
-                    'Cards immediately get',
-                    'debuffed after scoring'
+                    'All cards will',
+                    'only trigger once'
                 }
             },
             bl_bgn_pawn = {

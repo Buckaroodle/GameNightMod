@@ -5,7 +5,8 @@ SMODS.Joker {
         'mult',
         'scaling',
         'reset',
-        'hand_type'
+        'hand_type',
+        'space'
     },
     pos = {
         x = 3,
