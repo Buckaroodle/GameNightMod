@@ -802,8 +802,131 @@ return {
                 name = 'The Robber',
                 text = {
                     'One third of the',
-                    'cards in the deck',
-                    'are temporarily removed'
+                    'cards in the deck are',
+                    'automatically discarded'
+                }
+            },
+            bl_bgn_auburnhourglass = {
+                name = 'Auburn Hourglass',
+                text = {
+                    'Debuffs an additional',
+                    'random Joker after',
+                    'every hand'
+                }
+            },
+            bl_bgn_man = {
+                name = 'The Man',
+                text = {
+                    'Applies a random sticker',
+                    'to a random Joker',
+                    'after each hand played'
+                }
+            },
+            bl_bgn_tile = {
+                name = 'The Tile',
+                text = {
+                    'All face cards are',
+                    'considered to be rankless',
+                    'and always score'
+                }
+            },
+            bl_bgn_ship = {
+                name = 'The Ship',
+                text = {
+                    'On even hands, set',
+                    'base Chips to 1,',
+                    'On odd hands, set',
+                    'base Mult to 1'
+                }
+            },
+            bl_bgn_hotel = {
+                name = 'The Hotel',
+                text = {
+                    'Lose $1 per level',
+                    'of poker hand played'
+                }
+            },
+            bl_bgn_miniature = {
+                name = 'The Miniature',
+                text = {
+                    'Decreases the rank of',
+                    '3 random cards held in hand',
+                    'after every played hand'
+                }
+            },
+            bl_bgn_peg = {
+                name = 'The Peg',
+                text = {
+                    'Enhanced cards have',
+                    'a #1# in #2# chance to',
+                    'lose their enhancement'
+                }
+            },
+            bl_bgn_counter = {
+                name = 'The Counter',
+                text = {
+                    'If card value is',
+                    '30 or above,',
+                    'hand will not score',
+                    '(J-Q-K = 10, A = 1)'
+                }
+            },
+            bl_bgn_troop = {
+                name = 'The Troop',
+                text = {
+                    'Even cards are drawn',
+                    'face down on even hands,',
+                    'Odd cards are drawn',
+                    'face down on odd hands',
+                }
+            },
+            bl_bgn_icterinerack = {
+                name = 'Icterine Rack',
+                text = {
+                    'Draw twice',
+                    'your hand size,',
+                    'you cannot draw',
+                    'any more cards'
+                }
+            },
+            bl_bgn_spinner = {
+                name = 'The Spinner',
+                text = {
+                    '+0.25X Base blind size',
+                    'when any probability',
+                    'fails'
+                }
+            },
+            bl_bgn_wink = {
+                name = 'The Wink',
+                text = {
+                    'Cards with seals',
+                    'are drawn last'
+                }
+            },
+            bl_bgn_wisteriawedge = {
+                name = 'Wisteria Wedge',
+                text = {
+                    'Before each hand,',
+                    '5 cards will be',
+                    'automatically played,',
+                    'adding to Blind requirement'
+                }
+            },
+            bl_bgn_stone = {
+                name = 'The Stone',
+                text = {
+                    '1 in 3 chance for',
+                    'scoring cards to',
+                    'turn into Stone cards'
+                }
+            },
+            bl_bgn_buzzer = {
+                name = 'The Buzzer',
+                text = {
+                    'Only hand types that',
+                    'have been discarded',
+                    'this round'
                 }
             }
         }

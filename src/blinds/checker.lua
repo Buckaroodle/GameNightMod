@@ -5,7 +5,7 @@ SMODS.Blind {
     pos = { x = 0, y = 4 },
     dollars = 5,
     mult = 2,
-    boss = { min = 1--[[3]], max = 10 },
+    boss = { min = 3, max = 10 },
     boss_colour = HEX('E58366'),
     --[[calculate = function(self, blind, context)
         local temp = G.GAME.blind and G.GAME.blind.disabled
@@ -45,14 +45,14 @@ SMODS.Blind {
 
 local calculate_repetitions_ref = SMODS.calculate_repetitions
 function SMODS.calculate_repetitions(card, context, reps) 
-    if G.GAME.blind.config.blind.key == 'bl_bgn_checker' and context.cardarea == G.play and (card.config.center.set == 'Default' or card.config.center.set == 'Base' or card.config.center.set == 'Enhanced') then
+    if G.GAME.blind.config.blind.key == 'bl_bgn_checker' and not G.GAME.blind.disabled and context.cardarea == G.play and (card.config.center.set == 'Default' or card.config.center.set == 'Base' or card.config.center.set == 'Enhanced') then
         return reps
     end
     return calculate_repetitions_ref(card, context, reps)
 end
 local calculate_retriggers_ref = SMODS.calculate_retriggers
 function SMODS.calculate_retriggers(card, context, _ret)
-    if G.GAME.blind.config.blind.key == 'bl_bgn_checker' and context.cardarea == G.play and (card.config.center.set == 'Default' or card.config.center.set == 'Base' or card.config.center.set == 'Enhanced') then
+    if G.GAME.blind.config.blind.key == 'bl_bgn_checker' and not G.GAME.blind.disabled and context.cardarea == G.play and (card.config.center.set == 'Default' or card.config.center.set == 'Base' or card.config.center.set == 'Enhanced') then
         return {}
     end
     return calculate_retriggers_ref(card, context, _ret)
