@@ -481,7 +481,7 @@ return {
                 text = {
                     'If played hand contains',
                     'a single scoring {C:attention}Queen{},',
-                    '{C:red}destroy{} the {C:attention}leftmost{} card held in hand',
+                    '{C:red}destroy{} the {C:attention}rightmost{} card held in hand',
                 }
             },
             j_bgn_guesswho = {
