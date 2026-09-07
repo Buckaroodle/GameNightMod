@@ -481,7 +481,7 @@ return {
                 text = {
                     'If played hand contains',
                     'a single scoring {C:attention}Queen{},',
-                    '{C:red}destroy{} the {C:attention}leftmost{} card held in hand',
+                    '{C:red}destroy{} the {C:attention}rightmost{} card held in hand',
                 }
             },
             j_bgn_guesswho = {
@@ -532,7 +532,7 @@ return {
                     },{
                         '{C:attention}Jacks, Queens, and',
                         '{C:attention}Kings{}{C:inactive} are each worth {C:attention}10,',
-                        '{C:attention}Aces{}{C:inactive} are worth {C:attention}1{} or {C:attention}11'
+                        '{C:attention}Aces{}{C:inactive} are worth {C:attention}1{} {C:inactive}or{} {C:attention}11'
                     }
                 }
             },
