@@ -10,6 +10,10 @@ SMODS.Blind {
     calculate = function(self, blind, context)
         if blind.disabled then return end
 
+        if context.debuff_hand then
+            blind.triggered = true
+        end
+
         if context.modify_hand then
             --print(G.GAME.current_round.hands_left)
             if G.GAME.current_round.hands_left % 2 == 0 then

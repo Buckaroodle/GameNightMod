@@ -5,7 +5,7 @@ SMODS.Blind {
     pos = { x = 0, y = 8 },
     dollars = 8,
     mult = 2,
-    boss = { showdown = true },
+    boss = { --[[showdown = true]] min = 1, max = 10 },
     boss_colour = HEX('A33E12'),
     calculate = function(self, blind, context)
         if context.blind_disabled or context.blind_defeated then
@@ -50,7 +50,8 @@ SMODS.Blind {
                     --end
                 end
                 if #jokers == 0 then jokers = fallback_jokers end
-                local _card = pseudorandom_element(jokers, 'bgn_auburn_hourglass')
+                --local _card = pseudorandom_element(jokers, 'bgn_auburn_hourglass')
+                _card = jokers[1]
                 if _card then
                     _card.ability.auburn_hourglass_chosen = true
                     SMODS.recalc_debuff(_card)

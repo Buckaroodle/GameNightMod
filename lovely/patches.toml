@@ -232,6 +232,36 @@ for i, card in ipairs(G.playing_cards) do
 end
 '''
 
+# for _,v in ipairs(SMODS.get_card_areas('playing_cards', 'end_of_round')) do
+
+[[patches]]
+[patches.pattern]
+target = 'functions/state_events.lua'
+pattern = 'if G.CONTROLLER.focused.target and G.CONTROLLER.focused.target.area == G.hand then G.card_area_focus_reset = {area = G.hand, rank = G.CONTROLLER.focused.target.rank} end'
+position = 'before'
+match_indent = true
+payload = '''
+local text,disp_text,poker_hands,scoring_hand,non_loc_disp_text = G.FUNCS.get_poker_hand_info(G.hand.highlighted)
+if G.GAME.hands[text].discarded_this_ante == nil then
+    G.GAME.hands[text].discarded_this_ante = 0
+end
+G.GAME.hands[text].discarded_this_ante = G.GAME.hands[text].discarded_this_ante + 1
+'''
+
+[[patches]]
+[patches.pattern]
+target = 'functions/state_events.lua'
+pattern = "for _,v in ipairs(SMODS.get_card_areas('playing_cards', 'end_of_round')) do"
+position = 'before'
+match_indent = true
+payload = '''
+if G.GAME.blind:get_type() == 'Boss' then
+    for i, hand_type in pairs(G.GAME.hands) do
+        hand_type.discarded_this_ante = 0
+    end
+end
+'''
+
 #[[patches]]
 #[patches.pattern]
 #target = "functions/common_events.lua"

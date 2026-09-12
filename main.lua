@@ -24,6 +24,8 @@ SMODS.Atlas {
 SMODS.Atlas {
   key = "bgn_blinds",
   path = "bgn_blinds.png",
+  atlas_table = 'ANIMATION_ATLAS',
+    frames = 21,
   px = 34,
   py = 34
 }

@@ -10,6 +10,10 @@ SMODS.Blind {
     calculate = function(self, blind, context)
         if blind.disabled then return end
 
+        if context.debuff_hand then
+            blind.triggered = true
+        end
+
         if context.before then
             return {
                 dollars = -(G.GAME.hands[context.scoring_name].level)

@@ -14,7 +14,7 @@ SMODS.Blind {
                 --local rank_number = scoring_card:get_id()
                 if not scoring_card.debuff then
                     if scoring_card:get_id() == 14 then
-                        card_total = card_total + 1
+                        card_total = card_total + 11
                     elseif scoring_card:get_id() == 13 or scoring_card:get_id() == 12 or scoring_card:get_id() == 11 then
                         card_total = card_total + 10
                     else
@@ -26,7 +26,7 @@ SMODS.Blind {
         if card_total < 30 then
             return false
         else
-            G.GAME.blind.triggered = true
+            blind.triggered = true
             return true
         end
     end,

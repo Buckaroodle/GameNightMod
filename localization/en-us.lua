@@ -810,33 +810,30 @@ return {
                 name = 'Auburn Hourglass',
                 text = {
                     'Debuffs an additional',
-                    'random Joker after',
-                    'every hand'
+                    'Joker after each hand,',
+                    'left to right'
                 }
             },
             bl_bgn_man = {
                 name = 'The Man',
                 text = {
                     'Applies a random sticker',
-                    'to a random Joker',
-                    'after each hand played'
+                    'to a Joker each hand',
                 }
             },
             bl_bgn_tile = {
                 name = 'The Tile',
                 text = {
                     'All face cards are',
-                    'considered to be rankless',
-                    'and always score'
+                    'rankless and',
+                    'always score'
                 }
             },
             bl_bgn_ship = {
                 name = 'The Ship',
                 text = {
-                    'On even hands, set',
-                    'base Chips to 1,',
-                    'On odd hands, set',
-                    'base Mult to 1'
+                    'On even/odd hands, set',
+                    'base Chips/Mult to 1,',
                 }
             },
             bl_bgn_hotel = {
@@ -850,8 +847,8 @@ return {
                 name = 'The Miniature',
                 text = {
                     'Decreases the rank of',
-                    '3 random cards held in hand',
-                    'after every played hand'
+                    '3 cards held in hand',
+                    'after each hand'
                 }
             },
             bl_bgn_peg = {
@@ -868,16 +865,14 @@ return {
                     'If card value is',
                     '30 or above,',
                     'hand will not score',
-                    '(J-Q-K = 10, A = 1)'
+                    '(JQK = 10, A = 11)'
                 }
             },
             bl_bgn_troop = {
                 name = 'The Troop',
                 text = {
-                    'Even cards are drawn',
-                    'face down on even hands,',
-                    'Odd cards are drawn',
-                    'face down on odd hands',
+                    'Even/odd cards are drawn',
+                    'face down on even/odd hands,',
                 }
             },
             bl_bgn_icterinerack = {
@@ -892,7 +887,7 @@ return {
             bl_bgn_spinner = {
                 name = 'The Spinner',
                 text = {
-                    '+0.25X Base blind size',
+                    'Lose half of money',
                     'when any probability',
                     'fails'
                 }
@@ -926,7 +921,36 @@ return {
                 text = {
                     'Only hand types that',
                     'have been discarded',
-                    'this round'
+                    'this Ante'
+                }
+            },
+            bl_bgn_token = {
+                name = 'The Token',
+                text = {
+                    'Debuffs a Joker',
+                    'for every $20 you have',
+                    'entering this Blind'
+                }
+            },
+            bl_bgn_marble = {
+                name = 'The Marble',
+                text = {
+                    'Cards played this Ante',
+                    'are drawn face down'
+                }
+            },
+            bl_bgn_car = {
+                name = 'The Car',
+                text = {
+                    'All cards held in hand',
+                    'get debuffed'
+                }
+            },
+            bl_bgn_block = {
+                name = 'The Block',
+                text = {
+                    'Each hand type must be',
+                    'stronger than the last',
                 }
             }
         }
