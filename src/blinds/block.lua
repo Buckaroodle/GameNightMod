@@ -3,6 +3,7 @@ SMODS.Blind {
     atlas = 'bgn_blinds',
     --atlas_table = 'ANIMATION_ATLAS',
     pos = { x = 0, y = 24 },
+    attributes = { 'hand_type' },
     dollars = 5,
     mult = 2,
     boss = { min = 3, max = 10 },

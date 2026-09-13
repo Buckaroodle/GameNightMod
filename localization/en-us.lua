@@ -633,6 +633,12 @@ return {
                     'the same counter'
                 }
             },
+            b_bgn_antique = {
+                name = 'Antique Deck',
+                text = {
+                    'Start run with {C:attention}Old Maid'
+                }
+            }
         },
 
         Tarot = {
