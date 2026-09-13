@@ -506,7 +506,8 @@ return {
                 name = 'Safety Zone',
                 text = {
                     'The {C:attention}leftmost 2{} Jokers',
-                    'cannot be destroyed'
+                    'cannot be debuffed',
+                    'or destroyed'
                 }
             },
             j_bgn_inagrove = {
