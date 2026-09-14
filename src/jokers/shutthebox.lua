@@ -49,7 +49,7 @@ SMODS.Joker {
         return {main_end = {{n = G.UIT.R, config = {align = "cm"}, nodes = nodes}},}
     end,
     calculate = function(self, card, context)
-        if context.individual and context.cardarea == G.play then
+        if context.individual and context.cardarea == G.play and not SMODS.has_no_rank(context.other_card) then
             local id = context.other_card.base.value
             for i, rank in ipairs(card.ability.extra.needed_ranks) do
                 if id == card.ability.extra.needed_ranks[i] then

@@ -50,10 +50,12 @@ SMODS.Joker {
             local first_rank = false
             local second_rank = false
             for _, scoring_card in ipairs(context.scoring_hand) do
-                if scoring_card:get_id() == card.ability.extra.rank_1 then
-                    first_rank = true
-                elseif scoring_card:get_id() == card.ability.extra.rank_2 then
-                    second_rank = true
+                if not SMODS.has_no_rank(scoring_card) then
+                    if scoring_card:get_id() == card.ability.extra.rank_1 then
+                        first_rank = true
+                    elseif scoring_card:get_id() == card.ability.extra.rank_2 then
+                        second_rank = true
+                    end
                 end
             end
             if first_rank and second_rank then

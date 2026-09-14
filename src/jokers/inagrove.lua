@@ -16,11 +16,11 @@ SMODS.Joker {
             local chips_value = 0
             local mult_value = 5
             for i, playing_card in ipairs(context.scoring_hand) do
-                if playing_card:get_id() ~= nil then
+                if SMODS.has_no_rank(playing_card) == false then
                     chips_value = math.max(playing_card:get_id(), chips_value, 0)
                     mult_value = math.min(playing_card:get_id(), mult_value, 5)
                 end
-                if playing_card:get_id() == 5 then
+                if not SMODS.has_no_rank(playing_card) and playing_card:get_id() == 5 then
                     give_mult = true
                 end
             end

@@ -14,7 +14,9 @@ SMODS.Consumable {
     use = function(self, card, area, copier)
         local sum = 0
         for i = 1, #G.hand.highlighted do
-            sum = sum + G.hand.highlighted[i]:get_id()
+            if not SMODS.has_no_rank(G.hand.highlighted[i]) then
+                sum = sum + G.hand.highlighted[i]:get_id()
+            end
         end
         local average_rank = math.ceil(sum / 2)
         local average_rank_string = tostring(average_rank)

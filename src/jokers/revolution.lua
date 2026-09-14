@@ -34,7 +34,7 @@ SMODS.Joker {
             end
         end
         if context.individual and context.cardarea == G.play then
-            if context.other_card:get_id() == (2 or 3 or 4 or 5) and card.ability.extra.active then
+            if not SMODS.has_no_rank(context.other_card) and context.other_card:get_id() == (2 or 3 or 4 or 5) and card.ability.extra.active then
                 return {
                     xmult = card.ability.extra.xmult
                 }

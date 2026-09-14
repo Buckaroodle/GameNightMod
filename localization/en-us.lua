@@ -506,7 +506,8 @@ return {
                 name = 'Safety Zone',
                 text = {
                     'The {C:attention}leftmost 2{} Jokers',
-                    'cannot be destroyed'
+                    'cannot be {C:attention}debuffed',
+                    'or {C:red}destroyed'
                 }
             },
             j_bgn_inagrove = {
@@ -633,6 +634,12 @@ return {
                     'the same counter'
                 }
             },
+            b_bgn_antique = {
+                name = 'Antique Deck',
+                text = {
+                    'Start run with {C:attention}Old Maid'
+                }
+            }
         },
 
         Tarot = {
@@ -670,8 +677,9 @@ return {
                 name = 'Congress',
                 text = {
                     'Gives {C:money}$#2#{} per card of',
-                    'the {C:attention}most prevalent rank{} in your deck',
-                    '{C:inactive}(Currently {C:money}$#1#{C:inactive})'
+                    'the {C:attention}most prevalent rank{} in',
+                    'your deck {C:inactive}(Max of {C:money}$#3#{C:inactive})',
+                    '{C:inactive}(Currently {C:money}$#1#{C:inactive})',
                 }
             },
             c_bgn_bee = {
@@ -802,8 +810,155 @@ return {
                 name = 'The Robber',
                 text = {
                     'One third of the',
-                    'cards in the deck',
-                    'are temporarily removed'
+                    'cards in your deck are',
+                    'automatically discarded'
+                }
+            },
+            bl_bgn_auburnhourglass = {
+                name = 'Auburn Hourglass',
+                text = {
+                    'Debuffs an additional',
+                    'Joker after each hand,',
+                    'left to right'
+                }
+            },
+            bl_bgn_man = {
+                name = 'The Man',
+                text = {
+                    'Applies a random sticker',
+                    'to a Joker each hand',
+                }
+            },
+            bl_bgn_tile = {
+                name = 'The Tile',
+                text = {
+                    'All face cards are',
+                    'rankless and',
+                    'always score'
+                }
+            },
+            bl_bgn_ship = {
+                name = 'The Ship',
+                text = {
+                    'On even/odd hands, set',
+                    'base Chips/Mult to 1,',
+                }
+            },
+            bl_bgn_hotel = {
+                name = 'The Hotel',
+                text = {
+                    'Lose $1 per level',
+                    'of poker hand played'
+                }
+            },
+            bl_bgn_miniature = {
+                name = 'The Miniature',
+                text = {
+                    'Decreases the rank of',
+                    '3 cards held in hand',
+                    'after each hand'
+                }
+            },
+            bl_bgn_peg = {
+                name = 'The Peg',
+                text = {
+                    'Enhanced cards have',
+                    'a #1# in #2# chance to',
+                    'lose their enhancement'
+                }
+            },
+            bl_bgn_counter = {
+                name = 'The Counter',
+                text = {
+                    'If card value is',
+                    '30 or above,',
+                    'hand will not score',
+                    '(JQK = 10, A = 11)'
+                }
+            },
+            bl_bgn_troop = {
+                name = 'The Troop',
+                text = {
+                    'Even/odd cards are drawn',
+                    'face down on even/odd hands,',
+                }
+            },
+            bl_bgn_icterinerack = {
+                name = 'Icterine Rack',
+                text = {
+                    'Draw twice',
+                    'your hand size,',
+                    'you cannot draw',
+                    'any more cards'
+                }
+            },
+            bl_bgn_spinner = {
+                name = 'The Spinner',
+                text = {
+                    'Lose half of money',
+                    'when any probability',
+                    'fails'
+                }
+            },
+            bl_bgn_wink = {
+                name = 'The Wink',
+                text = {
+                    'Cards with seals',
+                    'are drawn last'
+                }
+            },
+            bl_bgn_wisteriawedge = {
+                name = 'Wisteria Wedge',
+                text = {
+                    'Before each hand,',
+                    '5 cards will be',
+                    'automatically played,',
+                    'adding to Blind requirement'
+                }
+            },
+            bl_bgn_stone = {
+                name = 'The Stone',
+                text = {
+                    '1 in 3 chance for',
+                    'scoring cards to',
+                    'turn into Stone cards'
+                }
+            },
+            bl_bgn_buzzer = {
+                name = 'The Buzzer',
+                text = {
+                    'Only hand types that',
+                    'have been discarded',
+                    'this Ante'
+                }
+            },
+            bl_bgn_token = {
+                name = 'The Token',
+                text = {
+                    'Debuffs a Joker',
+                    'for every $20 you have',
+                    'entering this Blind'
+                }
+            },
+            bl_bgn_marble = {
+                name = 'The Marble',
+                text = {
+                    'Cards played this Ante',
+                    'are drawn face down'
+                }
+            },
+            bl_bgn_car = {
+                name = 'The Car',
+                text = {
+                    'All cards held in hand',
+                    'get debuffed'
+                }
+            },
+            bl_bgn_block = {
+                name = 'The Block',
+                text = {
+                    'Each hand type must be',
+                    'stronger than the last',
                 }
             }
         }

@@ -28,5 +28,13 @@ SMODS.Joker {
                 }
             end
         end
+        if context.debuff_card and context.debuff_card.area == G.jokers then
+            local card_to_be_debuffed = context.debuff_card
+            if card_to_be_debuffed == G.jokers.cards[1] or card_to_be_debuffed == G.jokers.cards[2] then
+                return {
+                    prevent_debuff = true
+                }
+            end
+        end
     end
 }

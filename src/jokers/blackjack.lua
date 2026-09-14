@@ -29,8 +29,8 @@ SMODS.Joker {
         if context.before and not context.blueprint then
             local chip_total = 0
             local ace_count = 0
-            for i, playing_card in ipairs(context.full_hand) do
-                if playing_card:get_id() ~= nil then
+            for i, playing_card in ipairs(context.scoring_hand) do
+                if SMODS.has_no_rank(playing_card) == false then
                     local id = playing_card:get_id()
                     if id == 14 then -- count aces separately
                         ace_count = ace_count + 1
