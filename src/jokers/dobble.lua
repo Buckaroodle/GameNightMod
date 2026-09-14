@@ -25,9 +25,11 @@ SMODS.Joker {
         if context.drawing_cards then
             local ranks = {}
             for k, v in pairs(G.hand.cards) do -- go through all cards held in hand
-                local id = v:get_id()
-                if id then
-                    ranks[id] = true 
+                if not SMODS.has_no_rank(v) then
+                    local id = v:get_id()
+                    if id then
+                        ranks[id] = true 
+                    end
                 end
             end
             local chosen_cards = {}
@@ -37,11 +39,13 @@ SMODS.Joker {
                     break 
                 end
                 local card = G.deck.cards[i]
-                local id = card:get_id()
-                if not ranks[id] then -- check if it's in dict. if so ...
-                    table.insert(chosen_cards, 1, card) -- add it to new table
-                    table.remove(G.deck.cards, i)  -- remove it from deck (temp)
-                    ranks[id] = true
+                if not SMODS.has_no_rank(card) then
+                    local id = card:get_id()
+                    if not ranks[id] then -- check if it's in dict. if so ...
+                        table.insert(chosen_cards, 1, card) -- add it to new table
+                        table.remove(G.deck.cards, i)  -- remove it from deck (temp)
+                        ranks[id] = true
+                    end
                 end
             end
             for _, card in ipairs(chosen_cards) do

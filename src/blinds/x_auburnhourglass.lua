@@ -3,9 +3,10 @@ SMODS.Blind {
     atlas = 'bgn_blinds',
     --atlas_table = 'ANIMATION_ATLAS',
     pos = { x = 0, y = 8 },
+    attributes = { 'debuff', 'joker', 'position' },
     dollars = 8,
     mult = 2,
-    boss = { --[[showdown = true]] min = 1, max = 10 },
+    boss = { showdown = true },
     boss_colour = HEX('A33E12'),
     calculate = function(self, blind, context)
         if context.blind_disabled or context.blind_defeated then

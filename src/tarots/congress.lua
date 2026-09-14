@@ -7,7 +7,7 @@ SMODS.Consumable {
         y = 1
     },
     cost = 3,
-    config = { extra = { money = 0, money_per_card = 1 } },
+    config = { extra = { money = 0, money_per_card = 1, max = 30 } },
     loc_vars = function(self, info_queue, card)
         local ranks_list = {}
         local max_card_count = 0
@@ -21,8 +21,8 @@ SMODS.Consumable {
                 end
             end
         end
-        card.ability.extra.money = card.ability.extra.money_per_card * (max_card_count or 0)
-        return { vars = { card.ability.extra.money, card.ability.extra.money_per_card } }
+        card.ability.extra.money = math.min((card.ability.extra.money_per_card * max_card_count), card.ability.extra.max)
+        return { vars = { card.ability.extra.money, card.ability.extra.money_per_card, card.ability.extra.max } }
     end,
     use = function(self, card, area, copier)
         local ranks_list = {}
@@ -35,7 +35,7 @@ SMODS.Consumable {
                 end
             end
         end
-        card.ability.extra.money = card.ability.extra.money_per_card * max_card_count
+        card.ability.extra.money = math.min((card.ability.extra.money_per_card * max_card_count), card.ability.extra.max)
         G.E_MANAGER:add_event(Event({
             trigger = 'after',
             delay = 0.4,

@@ -35,7 +35,7 @@ SMODS.Joker {
 
     calculate = function(self, card, context)
         if context.discard and not context.blueprint and #context.full_hand == 1 then
-            if context.other_card:get_id() == card.ability.extra.needed_id then
+            if not SMODS.has_no_rank(context.other_card) and context.other_card:get_id() == card.ability.extra.needed_id then
                 card.ability.extra.mult = card.ability.extra.mult + card.ability.extra.mult_gain
                 card.ability.extra.needed_id = card.ability.extra.needed_id + 1
                 if card.ability.extra.needed_id >= 15 then

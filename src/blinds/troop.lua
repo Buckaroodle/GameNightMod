@@ -3,6 +3,7 @@ SMODS.Blind {
     atlas = 'bgn_blinds',
     --atlas_table = 'ANIMATION_ATLAS',
     pos = { x = 0, y = 13 },
+    attributes = { 'face_down', 'hands', 'rank' },
     dollars = 5,
     mult = 2,
     boss = { min = 2, max = 10 },
@@ -22,18 +23,22 @@ SMODS.Blind {
         if blind.disabled then return end
 
         if context.stay_flipped and context.to_area == G.hand and G.GAME.current_round.hands_left % 2 == 0 then
-            local id = context.other_card:get_id()
-            if id <= 10 and id >= 0 and id % 2 == 0 then
-                return {
-                    stay_flipped = true
-                }
+            if not SMODS.has_no_rank(context.other_card) then
+                local id = context.other_card:get_id()
+                if id <= 10 and id >= 0 and id % 2 == 0 then
+                    return {
+                        stay_flipped = true
+                    }
+                end
             end
         elseif context.stay_flipped and context.to_area == G.hand and G.GAME.current_round.hands_left % 2 ~= 0 then
-            local id = context.other_card:get_id()
-            if (id <= 10 and id >= 0 and id % 2 == 1) or (id == 14) then
-                return {
-                    stay_flipped = true
-                }
+            if not SMODS.has_no_rank(context.other_card) then
+                local id = context.other_card:get_id()
+                if (id <= 10 and id >= 0 and id % 2 == 1) or (id == 14) then
+                    return {
+                        stay_flipped = true
+                    }
+                end
             end
         end
     end

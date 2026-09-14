@@ -43,10 +43,12 @@ SMODS.Joker {
         if context.individual and context.cardarea == G.hand and not context.end_of_round then
             local ranks, bust = {}, false
             for k, v in pairs(G.hand.cards) do -- go through all cards held in hand
-                if ranks[v:get_id()] then -- does this rank have an entry in the dictionary?
-                    bust = true -- if so, it's a repeat rank. BUST!
+                if not SMODS.has_no_rank(v) then
+                    if ranks[v:get_id()] then -- does this rank have an entry in the dictionary?
+                        bust = true -- if so, it's a repeat rank. BUST!
+                    end
+                    ranks[v:get_id()] = true -- now we add it to the dictionary
                 end
-                ranks[v:get_id()] = true -- now we add it to the dictionary
             end
             --card.ability.extra.mult = #G.hand.cards
             if context.other_card and bust == false then

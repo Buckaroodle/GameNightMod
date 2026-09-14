@@ -506,8 +506,8 @@ return {
                 name = 'Safety Zone',
                 text = {
                     'The {C:attention}leftmost 2{} Jokers',
-                    'cannot be debuffed',
-                    'or destroyed'
+                    'cannot be {C:attention}debuffed',
+                    'or {C:red}destroyed'
                 }
             },
             j_bgn_inagrove = {
@@ -533,7 +533,7 @@ return {
                     },{
                         '{C:attention}Jacks, Queens, and',
                         '{C:attention}Kings{}{C:inactive} are each worth {C:attention}10,',
-                        '{C:attention}Aces{}{C:inactive} are worth {C:attention}1{} or {C:attention}11'
+                        '{C:attention}Aces{}{C:inactive} are worth {C:attention}1{} {C:inactive}or{} {C:attention}11'
                     }
                 }
             },
@@ -677,8 +677,9 @@ return {
                 name = 'Congress',
                 text = {
                     'Gives {C:money}$#2#{} per card of',
-                    'the {C:attention}most prevalent rank{} in your deck',
-                    '{C:inactive}(Currently {C:money}$#1#{C:inactive})'
+                    'the {C:attention}most prevalent rank{} in',
+                    'your deck {C:inactive}(Max of {C:money}$#3#{C:inactive})',
+                    '{C:inactive}(Currently {C:money}$#1#{C:inactive})',
                 }
             },
             c_bgn_bee = {

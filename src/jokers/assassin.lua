@@ -36,7 +36,7 @@ SMODS.Joker {
         if context.before and not context.blueprint then -- check to see if assassin_card was scored BEFORE cards score
         local assassin_triggered = false
         for _, playing_card in ipairs(context.scoring_hand) do
-            if playing_card:get_id() == G.GAME.current_round.assassin_card.id --[[and -- NOTE: get_id() returns a rank, and we're doing a rank == rank comparison
+            if not SMODS.has_no_rank(playing_card) and playing_card:get_id() == G.GAME.current_round.assassin_card.id --[[and -- NOTE: get_id() returns a rank, and we're doing a rank == rank comparison
             playing_card:is_suit(G.GAME.current_round.assassin_card.suit)]] then -- HOWEVER here, we're asking "is the card's suit the same as the other suit), returning a true/false value"
                 assassin_triggered = true
                 break

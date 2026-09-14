@@ -31,13 +31,15 @@ SMODS.Joker {
             local total_combos = 0
             local values = {}
             for _, scoring_card in ipairs(context.full_hand) do
-                local rank_number = scoring_card:get_id()
-                if rank_number == 14 then
-                    values[#values + 1] = 1
-                elseif rank_number == 13 or rank_number == 12 or rank_number == 11 then
-                    values[#values + 1] = 10
-                else
-                    values[#values + 1] = rank_number
+                if not SMODS.has_no_rank(scoring_card) then
+                    local rank_number = scoring_card:get_id()
+                    if rank_number == 14 then
+                        values[#values + 1] = 1
+                    elseif rank_number == 13 or rank_number == 12 or rank_number == 11 then
+                        values[#values + 1] = 10
+                    else
+                        values[#values + 1] = rank_number
+                    end
                 end
             end
 

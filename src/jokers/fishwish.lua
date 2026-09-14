@@ -35,7 +35,7 @@ SMODS.Joker {
                     --if context.index:get_id() ~= 4 then
                         local ranks_list = {}
                         for i, playing_card in ipairs(G.playing_cards) do
-                            if playing_card:get_id() ~= nil then
+                            if SMODS.has_no_rank(playing_card) == false then
                                 ranks_list[playing_card:get_id()] = (ranks_list[playing_card:get_id()] or 0) + 1
                             end
                         end

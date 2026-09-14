@@ -54,11 +54,11 @@ SMODS.Joker {
                 update = true
             end
             for _, playing_card in ipairs(context.scoring_hand) do
-                if playing_card:get_id() == card.ability.extra.chosen_rank and card.ability.extra.rank_string == '???' then
+                if not SMODS.has_no_rank(playing_card) and playing_card:get_id() == card.ability.extra.chosen_rank and card.ability.extra.rank_string == '???' then
                     card.ability.extra.rank_string = integer_to_rank(card.ability.extra.chosen_rank)
                     update = true
                 end
-                if playing_card:is_suit(card.ability.extra.chosen_suit) and card.ability.extra.suit_string == '???' then
+                if not SMODS.has_no_suit(playing_card) and playing_card:is_suit(card.ability.extra.chosen_suit) and card.ability.extra.suit_string == '???' then
                     card.ability.extra.suit_string = card.ability.extra.chosen_suit
                     update = true
                 end
@@ -69,7 +69,7 @@ SMODS.Joker {
                 }
             end
         end
-        if context.individual and context.cardarea == G.play and context.scoring_name == card.ability.extra.chosen_hand_type and
+        if context.individual and context.cardarea == G.play and context.scoring_name == card.ability.extra.chosen_hand_type and not SMODS.has_no_rank(context.other_card) and
             context.other_card:get_id() == card.ability.extra.chosen_rank and
             context.other_card:is_suit(card.ability.extra.chosen_suit) then
                 return {

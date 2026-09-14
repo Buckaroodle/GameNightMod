@@ -6,7 +6,7 @@ SMODS.Blind {
     attributes = { 'hand_type', 'discard' },
     dollars = 5,
     mult = 2,
-    boss = { min = 1--[[4]], max = 10 },
+    boss = { min = 4, max = 10 },
     boss_colour = HEX('B1695B'),
     calculate = function(self, blind, context)
         local temp = G.GAME.blind and G.GAME.blind.disabled

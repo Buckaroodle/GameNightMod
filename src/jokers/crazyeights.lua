@@ -30,7 +30,7 @@ SMODS.Joker {
     end,
     calculate = function(self, card, context)
         if context.individual and context.cardarea == G.play then
-            if (context.other_card:get_id() == 8) and SMODS.pseudorandom_probability(card, 'bgn_crazyeights', card.ability.extra.numerator, card.ability.extra.denominator) then
+            if not SMODS.has_no_rank(context.other_card) and context.other_card:get_id() == 8 and SMODS.pseudorandom_probability(card, 'bgn_crazyeights', card.ability.extra.numerator, card.ability.extra.denominator) then
                 --SMODS.add_card { set = "Enhanced" }
                 local _card = SMODS.create_card { set = "Enhanced", area = G.discard, key_append = "bgn_crazyeights" }
                 G.playing_card = (G.playing_card and G.playing_card + 1) or 1
