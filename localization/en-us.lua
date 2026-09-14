@@ -810,7 +810,7 @@ return {
                 name = 'The Robber',
                 text = {
                     'One third of the',
-                    'cards in the deck are',
+                    'cards in your deck are',
                     'automatically discarded'
                 }
             },
