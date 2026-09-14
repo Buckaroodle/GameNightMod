@@ -1,6 +1,6 @@
 <img width="800" height="614" alt="bgn preview" src="https://buckscrosswords.xyz/portfolio/portfolio_bgnbalatro1.png" />
 
-Buck's Game Night is a vanilla-adjacent Balatro mod that adds 60 (as of now) new Jokers inspired by various board and card games. This mod also includes 3 new decks, 6 new Tarot cards, 4 new Spectral cards, 5 new Boss Blinds, 1 new seal, and one new card enhancement!
+Buck's Game Night is a vanilla-adjacent Balatro mod that adds 60 (as of now) new Jokers inspired by various board and card games. This mod also includes 4 new decks, 6 new Tarot cards, 4 new Spectral cards, 25 new Boss Blinds, 1 new seal, and one new card enhancement!
 
 All code was written by me, Buck, as well as most of the sprite artwork.  Thank you to voxdafox, Hackakat, F404, and mintycreamfluff for lending their art skills for a couple sprites!
 
