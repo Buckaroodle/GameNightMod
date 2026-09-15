@@ -50,7 +50,7 @@ SMODS.Joker {
     end,
 
     in_pool = function(self, args)
-        if args.source == 'sho' then
+        if args.source == 'sho' or args.source == 'buf' then
             return true
         else
             return false

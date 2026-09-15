@@ -30,6 +30,13 @@ SMODS.Joker {
                 delay(0.6)
             end
         end
+    end,
+    in_pool = function(self, args)
+        if args.source == 'sho' or args.source == 'buf' then
+            return true
+        else
+            return false
+        end
     end
 }
 
