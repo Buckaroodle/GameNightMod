@@ -5,7 +5,7 @@ SMODS.Back {
     config = {
         current_reroll_cost = 0
     },
-    unlocked = true,
+    unlocked = false,
     loc_vars = function(self, info_queue, back)
         return {
             vars = {
@@ -35,6 +35,18 @@ SMODS.Back {
             G.GAME.round_resets.reroll_cost = self.config.current_reroll_cost
         end
     end]]
+    locked_loc_vars = function(self, info_queue, back)
+        local other_name = localize('k_unknown')
+        if G.P_CENTERS['b_bgn_pinochle'].unlocked then
+            other_name = localize { type = 'name_text', set = 'Back', key = 'b_bgn_pinochle' }
+        end
+
+        return { vars = { other_name } }
+    end,
+    check_for_unlock = function(self, args)
+        return args.type == 'win_deck' and get_deck_win_stake('b_bgn_pinochle') > 0
+    end
+
 }
 
 local calculate_reroll_cost_ref = calculate_reroll_cost -- this is a hook, basically we're creating a variable equivalent to an existing function

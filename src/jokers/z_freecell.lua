@@ -6,6 +6,7 @@ SMODS.Joker {
         'joker',
         'on_sell',
     },
+    unlocked = false,
     pos = {
         x = 3,
         y = 2
@@ -48,5 +49,19 @@ SMODS.Joker {
     end,
     remove_from_deck = function(self, card, from_debuff)
         G.jokers:change_size(-card.ability.extra.extra_slots_given)
+    end,
+    check_for_unlock = function(self, args)
+        if args.type == 'modify_jokers' and G.jokers then
+            for _, joker in ipairs(G.jokers.cards) do
+                if joker.ability.set == 'Joker' and joker.edition and joker.edition.negative then
+                    if joker.config.center.mod then
+                        if joker.config.center.mod.id == 'BucksGameNightMod' then
+                            return true
+                        end
+                    end
+                end
+            end
+        end
+        return false
     end
 }

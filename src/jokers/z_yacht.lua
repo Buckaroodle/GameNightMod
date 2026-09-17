@@ -5,6 +5,7 @@ SMODS.Joker {
         'reroll',
         'economy'
     },
+    unlocked = false,
     pos = {
         x = 4,
         y = 8
@@ -41,6 +42,14 @@ SMODS.Joker {
             }
         end
     end,
+    check_for_unlock = function(self, args)
+        if args.type == 'win' then
+            if G.GAME.round_scores.times_rerolled.amt == 0 then
+                return true
+            end
+        end
+        return false
+    end
 
     --G.GAME.total_rerolls_on_shop_entry
 }

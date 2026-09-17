@@ -4,6 +4,7 @@ SMODS.Joker {
     attributes = {
         'xmult', 'chance'
     },
+    unlocked = false,
     pos = {
         x = 1,
         y = 7

@@ -174,6 +174,7 @@ SMODS.Joker {
         'joker',
         'xmult',
     },
+    unlocked = false,
     pos = {
         x = 4,
         y = 10
@@ -258,5 +259,21 @@ SMODS.Joker {
             card.ability.extra.string_one = 'have the attribute of '
             card.ability.extra.string_two = card.ability.extra.chosen_attribute
         end
+    end,
+    check_for_unlock = function(self, args)
+        if args.type == 'win' then
+            local tally = 0
+            for j = 1, #G.jokers.cards do
+                if G.jokers.cards[j].config.center.mod then
+                    if G.jokers.cards[j].config.center.mod.id == 'BucksGameNightMod' then
+                        tally = tally + 1
+                        if tally == 3 then
+                            return true
+                        end
+                    end
+                end
+            end
+        end
+        return false
     end
 }

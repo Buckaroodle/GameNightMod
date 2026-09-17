@@ -13,9 +13,9 @@ SMODS.Joker {
     eternal_compat = false,
     calculate = function(self, card, context)
         if context.joker_type_destroyed then
-            print('almost!')
+            --print('almost!')
             if context.card == card then
-                print('done!')
+                --print('done!')
                 G.E_MANAGER:add_event(Event({
                 trigger = 'after',
                 delay = 0.4,

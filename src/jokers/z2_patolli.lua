@@ -4,6 +4,7 @@ SMODS.Joker {
     attributes = {
         'economy',
     },
+    unlocked = false,
     pos = {
         x = 1,
         y = 8

@@ -34,5 +34,5 @@ SMODS.Joker {
                 chips = card.ability.extra.chips
             }
         end
-    end
+    end,
 }

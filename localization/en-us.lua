@@ -152,6 +152,11 @@ return {
                     'is sold or destroyed',
                     '{C:inactive}(Currently {C:dark_edition}+#2#{C:inactive} slots)',
                     '{C:inactive}(Max of {C:dark_edition}+#3#{C:inactive}){}'
+                },
+                unlock = {
+                    'Have at least',
+                    '{C:attention}1{} {C:dark_edition}Negative{} Joker',
+                    "from {C:attention}Buck's Game Night"
                 }
             },
             j_bgn_palace = {
@@ -308,6 +313,11 @@ return {
                     '{C:attention}Debuffed{} Jokers',
                     'and playing cards',
                     'give {X:mult,C:white}X#1#{} Mult'
+                },
+                unlock = {
+                    'Play a hand',
+                    'consisting of',
+                    '{C:attention}5 debuffed{} cards'
                 }
             },
             j_bgn_storedenergy = {
@@ -340,6 +350,9 @@ return {
                     'to gain {X:mult,C:white}X#3#{} Mult',
                     'at end of round',
                     '{C:inactive}(Currently {X:mult,C:white}X#4#{C:inactive} Mult)'
+                },
+                unlock = {
+                    "{E:1,s:1.3}?????",
                 }
             },
             j_bgn_bananasplit = {
@@ -359,6 +372,11 @@ return {
                     '{C:green}#1# in #2#{} chance to {C:attention}halve',
                     'chips each hand played',
                     '{C:inactive}(Currently {C:chips}+#3#{C:inactive} chips)'
+                },
+                unlock = {
+                    'Win a run with',
+                    "at least {C:attention}1{} Joker",
+                    "from {C:attention}Buck's Game Night"
                 }
             },
             j_bgn_othello = {
@@ -400,6 +418,10 @@ return {
                 text = {
                     'Earn {C:money}$#1#{} if shop is left',
                     'without being {C:attention}rerolled'
+                },
+                unlock = {
+                    'Win a run {C:red}without',
+                    '{C:attention}rerolling{} the shop'
                 }
             },
             j_bgn_timelessclassic = {
@@ -416,6 +438,9 @@ return {
                     'Earn {C:money}money{} equal to',
                     'the {C:attention}level{} of your',
                     'played hand'
+                },
+                unlock = {
+                    "{E:1,s:1.3}?????",
                 }
             },
             j_bgn_cavitysam = {
@@ -443,6 +468,11 @@ return {
                     'trigger when scored,',
                     '{C:red}Red{} and {C:gold}Gold{} Seal effects',
                     'trigger while held in hand'
+                },
+                unlock = {
+                    'Have at least {C:attention}1{} of',
+                    'each base game {C:attention}Seal',
+                    'in your deck'
                 }
             },
             j_bgn_poorlydrawnjoker = {
@@ -492,6 +522,11 @@ return {
                     'If so, that Joker',
                     'gives {X:mult,C:white}X#1#{} Mult,',
                     '{s:0.8}question changes every round'
+                },
+                unlock = {
+                    'Win a run with at least',
+                    "at least {C:attention}3{} Jokers",
+                    "from {C:attention}Buck's Game Night"
                 }
             },
             j_bgn_shutthebox = {
@@ -535,6 +570,11 @@ return {
                         '{C:attention}Kings{}{C:inactive} are each worth {C:attention}10,',
                         '{C:attention}Aces{}{C:inactive} are worth {C:attention}1{} {C:inactive}or{} {C:attention}11'
                     }
+                },
+                unlock = {
+                    'Play a {C:attention}5-card{} hand',
+                    'that contains only',
+                    '{C:attention}Jacks{} of {C:spades}Spades{} or {C:clubs}Clubs{}'
                 }
             },
             j_bgn_fishwish = {
@@ -572,6 +612,12 @@ return {
                 text = {
                     '{C:red}Destroys{} all scoring',
                     '{C:attention}Hole-Punched{} cards'
+                },
+                unlock = {
+                    'Have at least',
+                    '{C:attention}5 Hole-Punched{} cards',
+                    'removed from your deck',
+                    'at the same time'
                 }
             },
             j_bgn_kingme = {
@@ -624,6 +670,11 @@ return {
                     '{C:attention}+1{} pack slot in shop',
                     '',
                     'Reroll cost does not reset each shop'
+                },
+                unlock = {
+                    "Win a run with",
+                    "{C:attention}#1#{}",
+                    "on any difficulty",
                 }
             },
             b_bgn_onlyhands = {
@@ -632,12 +683,21 @@ return {
                     '{C:purple}6{} Hands/Discards',
                     'Hands and discards use',
                     'the same counter'
+                },
+                unlock = {
+                    "Win a run with",
+                    "{C:attention}#1#{}",
+                    "on any difficulty",
                 }
             },
             b_bgn_antique = {
                 name = 'Antique Deck',
                 text = {
                     'Start run with {C:attention}Old Maid'
+                },
+                unlock = {
+                    "Destroy the",
+                    "{C:attention}Old Maid{}"
                 }
             }
         },

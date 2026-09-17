@@ -69,3 +69,10 @@ local blinds_src = SMODS.NFS.getDirectoryItems(SMODS.current_mod.path .. "src/bl
 for _, file in ipairs(blinds_src) do
     assert(SMODS.load_file("src/blinds/" .. file))()
 end
+
+function SMODS.current_mod.calculate(self, context)
+    if context.joker_type_destroyed then
+        local cxt = context
+        check_for_unlock({ type = 'maid_destruction', context = cxt })
+    end
+end

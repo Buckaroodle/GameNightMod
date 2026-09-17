@@ -6,6 +6,7 @@ SMODS.Joker {
         'chance',
         'scaling'
     },
+    unlocked = false,
     pos = {
         x = 4,
         y = 6
@@ -52,5 +53,21 @@ SMODS.Joker {
                 message = "Halved!",
             }
         end
+    end,
+    check_for_unlock = function(self, args)
+        if args.type == 'win' then
+            local tally = 0
+            for j = 1, #G.jokers.cards do
+                if G.jokers.cards[j].config.center.mod then
+                    if G.jokers.cards[j].config.center.mod.id == 'BucksGameNightMod' then
+                        tally = tally + 1
+                        if tally == 1 then
+                            return true
+                        end
+                    end
+                end
+            end
+        end
+        return false
     end
 }

@@ -2,7 +2,7 @@ SMODS.Back {
     key = "onlyhands",
     atlas = 'bgn_consumables',
     pos = { x = 2, y = 0 },
-    unlocked = true,
+    unlocked = false,
     apply = function(self, back)
         G.GAME.starting_params.hands = (G.GAME.starting_params.hands + G.GAME.starting_params.discards) - 1
         G.GAME.starting_params.discards = 0
@@ -10,6 +10,17 @@ SMODS.Back {
         G.GAME.banned_keys['bl_needle'] = true
         G.GAME.banned_keys['bl_water'] = true
     end,
+    locked_loc_vars = function(self, info_queue, back)
+        local other_name = localize('k_unknown')
+        if G.P_CENTERS['b_bgn_stocked'].unlocked then
+            other_name = localize { type = 'name_text', set = 'Back', key = 'b_bgn_stocked' }
+        end
+
+        return { vars = { other_name } }
+    end,
+    check_for_unlock = function(self, args)
+        return args.type == 'win_deck' and get_deck_win_stake('b_bgn_stocked') > 0
+    end
 }
 
 local ease_discard_ref = ease_discard

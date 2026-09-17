@@ -5,6 +5,7 @@ SMODS.Joker {
         'seals',
         'passive'
     },
+    unlocked = false,
     pos = {
         x = 1,
         y = 9
@@ -84,6 +85,24 @@ SMODS.Joker {
         for _, playing_card in ipairs(G.playing_cards or {}) do
             if playing_card.seal then
                 return true
+            end
+        end
+        return false
+    end,
+    check_for_unlock = function(self, args) -- equivalent to `unlock_condition = { type = 'modify_deck', extra = { count = 5, enhancement = 'Glass Card', e_key = 'm_glass' } }`
+        if args.type == 'modify_deck' then
+            local red = false
+            local blue = false
+            local gold = false
+            local purple = false
+            for _, playing_card in ipairs(G.playing_cards or {}) do
+                if playing_card:get_seal('Red') then red = true end
+                if playing_card:get_seal('Blue') then blue = true end
+                if playing_card:get_seal('Gold') then gold = true end
+                if playing_card:get_seal('Purple') then purple = true end
+                if red and blue and purple and gold then
+                    return true
+                end
             end
         end
         return false

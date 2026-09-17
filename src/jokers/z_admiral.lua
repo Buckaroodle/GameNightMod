@@ -5,6 +5,7 @@ SMODS.Joker {
         'destroy_card',
         'enhancement'
     },
+    unlocked = false,
     pos = {
         x = 4,
         y = 3
@@ -22,5 +23,13 @@ SMODS.Joker {
                 delay = 0.45
             }
         end
+    end,
+    check_for_unlock = function(self, args)
+        if args.type == 'discard_custom' then
+            if #G.bgn_holepunched_discard.cards >= 5 then
+                return true
+            end
+        end
+        return false
     end
 }
