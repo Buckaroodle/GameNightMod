@@ -8,6 +8,7 @@ SMODS.Joker {
         x = 3,
         y = 9
     },
+    unlocked = false,
     config = {
         extra = {
             total_rounds = 2,
@@ -56,5 +57,15 @@ SMODS.Joker {
                 colour = G.C.FILTER
             }
         end
+    end,
+    check_for_unlock = function(self, args)
+        if args and args.type and args.type == 'game_lose' and args.context and next(args.context) then
+            if G.GAME.blind.config.blind.mod then
+                if G.GAME.blind.config.blind.mod.id == 'BucksGameNightMod' then
+                    return true
+                end
+            end
+        end
+        return false
     end
 }

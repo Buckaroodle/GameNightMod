@@ -5,6 +5,7 @@ SMODS.Joker {
         'retrigger',
         'hand_type'
     },
+    unlocked = false,
     pos = {
         x = 0,
         y = 0
@@ -55,5 +56,15 @@ SMODS.Joker {
             }
         end
         
+    end,
+    locked_loc_vars = function(self, info_queue, card)
+        return { vars = { G.PROFILES[G.SETTINGS.profile].career_stats.c_bgn_unscoring_cards } }
+    end,
+    check_for_unlock = function(self, args) -- equivalent to `unlock_condition = { type = 'c_face_cards_played', extra = 300 }`
+        if args.type == 'career_stat' and args.statname == 'c_bgn_unscoring_cards' then
+            print(G.PROFILES[G.SETTINGS.profile].career_stats.c_bgn_unscoring_cards)
+            return G.PROFILES[G.SETTINGS.profile].career_stats[args.statname] >= 40
+        end
+        return false
     end
 }

@@ -75,4 +75,16 @@ function SMODS.current_mod.calculate(self, context)
         local cxt = context
         check_for_unlock({ type = 'maid_destruction', context = cxt })
     end
+    if context.pseudorandom_result then
+        local cxt = context
+        check_for_unlock({ type = 'probability', context = cxt })
+    end
+    if context.game_over then
+        local cxt = context
+        check_for_unlock({ type = 'game_lose', context = cxt })
+    end
+    if context.open_booster then
+        local cxt = context
+        check_for_unlock({ type = 'booster', context = cxt })
+    end
 end

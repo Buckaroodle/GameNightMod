@@ -262,6 +262,75 @@ if G.GAME.blind:get_type() == 'Boss' then
 end
 '''
 
+[[patches]]
+[patches.pattern]
+target = 'game.lua'
+pattern = 'c_single_hand_round_streak = 0,'
+position = 'after'
+match_indent = true
+payload = '''
+c_bgn_probability_win_streak = 0,
+c_bgn_booster_packs = 0,
+c_bgn_discarded_gold_steel_cards = 0,
+c_bgn_unscoring_cards = 0,
+'''
+
+[[patches]]
+[patches.pattern]
+target = '=[SMODS _ "src/utils.lua"]'
+pattern = 'SMODS.post_prob[#SMODS.post_prob+1] = {pseudorandom_result = true, result = result, trigger_obj = trigger_obj, numerator = numerator, denominator = denominator, identifier = identifier or seed}'
+position = 'after'
+match_indent = true
+payload = '''
+if result == true then
+    inc_career_stat('c_bgn_probability_win_streak', 1)
+else
+    if not G.GAME.seeded and not G.GAME.challenge  then
+        G.PROFILES[G.SETTINGS.profile].career_stats.c_bgn_probability_win_streak = 0
+        G:save_settings()
+    end
+end
+'''
+
+[[patches]]
+[patches.pattern]
+target = 'card.lua'
+pattern = 'SMODS.calculate_context({open_booster = true, card = self, booster = booster_obj})'
+position = 'before'
+match_indent = true
+payload = '''
+inc_career_stat('c_bgn_booster_packs', 1)
+
+'''
+
+[[patches]]
+[patches.pattern]
+target = 'functions/state_events.lua'
+pattern = "check_for_unlock({type = 'discard_custom', cards = cards})"
+position = 'before'
+match_indent = true
+payload = '''
+for j = 1, #cards do
+    if SMODS.has_enhancement(cards[j], "m_gold") or SMODS.has_enhancement(cards[j], "m_steel") then
+        inc_career_stat('c_bgn_discarded_gold_steel_cards', 1)
+    end
+end
+
+'''
+
+[[patches]]
+[patches.pattern]
+target = 'functions/state_events.lua'
+pattern = "scoring_hand = final_scoring_hand"
+position = 'after'
+match_indent = true
+payload = '''
+local how_many_unscoring_cards = #G.play.cards - #scoring_hand
+for j = 1, how_many_unscoring_cards do
+    inc_career_stat('c_bgn_unscoring_cards', 1)
+end
+'''
+
 #[[patches]]
 #[patches.pattern]
 #target = "functions/common_events.lua"

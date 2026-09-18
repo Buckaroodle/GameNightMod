@@ -4,6 +4,7 @@ SMODS.Joker {
     attributes = {
         'generation', 'chance', 'mod_chance'
     },
+    unlocked = false,
     pos = {
         x = 5,
         y = 1
@@ -60,5 +61,12 @@ SMODS.Joker {
                 }
             end
         end
+    end,
+    check_for_unlock = function(self, args)
+        if args and args.type and args.type == 'probability' and args.context and next(args.context) then
+            --print('test!')
+            return G.PROFILES[G.SETTINGS.profile].career_stats.c_bgn_probability_win_streak >= 5
+        end
+        return false
     end
 }

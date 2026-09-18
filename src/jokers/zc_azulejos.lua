@@ -5,6 +5,7 @@ SMODS.Joker {
         'discard',
         'hand',
     },
+    unlocked = false,
     pos = {
         x = 5,
         y = 3
@@ -53,4 +54,14 @@ SMODS.Joker {
         G.GAME.round_resets.discards = G.GAME.round_resets.discards + card.ability.extra.discards
         ease_discard(card.ability.extra.discards)
     end,
+    locked_loc_vars = function(self, info_queue, card)
+        return { vars = { G.PROFILES[G.SETTINGS.profile].career_stats.c_bgn_discarded_gold_steel_cards } }
+    end,
+    check_for_unlock = function(self, args)
+        if args.type == 'discard_custom' then
+            print(G.PROFILES[G.SETTINGS.profile].career_stats.c_bgn_discarded_gold_steel_cards)
+            return G.PROFILES[G.SETTINGS.profile].career_stats.c_bgn_discarded_gold_steel_cards >= 50
+        end
+        return false
+    end
 }

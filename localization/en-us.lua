@@ -340,6 +340,11 @@ return {
                     },{
                         '{C:inactive}Art by Polar'
                     }
+                },
+                unlock = {
+                    'Play {C:attention}40{} cards',
+                    'that do not score',
+                    '{C:inactive}[#1#]'
                 }
             },
             j_bgn_ur = {
@@ -411,6 +416,10 @@ return {
                     'from a {C:attention}Booster Pack{}, resets',
                     'when a pack is {C:attention}skipped',
                     '{C:inactive}(Currently {C:chips}+#1#{C:inactive} chips)'
+                },
+                unlock = {
+                    'Open {C:attention}25{} Booster Packs',
+                    '{C:inactive}[#1#]'
                 }
             },
             j_bgn_yacht = {
@@ -490,6 +499,10 @@ return {
                     'sell this card to instantly',
                     '{C:attention}win{} the blind,',
                     '{C:inactive}(Currently {C:attention}#2#{C:inactive}/#1#)'
+                },
+                unlock = {
+                    "{C:red}Lose{} a run to a {C:attention}Boss Blind",
+                    "from {C:attention}Buck's Game Night"
                 }
             },
             j_bgn_handandfoot = {
@@ -597,6 +610,10 @@ return {
                     '{C:attention}Blind{} is selected, {C:green}#1# in #2#{} chance',
                     'this card is {C:red}destroyed{} at end of round',
                     '{C:green}Odds{} increase by {C:attention}#3#{} each round'
+                },
+                unlock = {
+                    'Succeed in {C:attention}5{} {C:green}probabilities',
+                    'in a row'
                 }
             },
             j_bgn_oldmaid = {
@@ -608,7 +625,7 @@ return {
                 }
             },
             j_bgn_admiral = {
-                name = 'The Admiral',
+                name = 'Admiral',
                 text = {
                     '{C:red}Destroys{} all scoring',
                     '{C:attention}Hole-Punched{} cards'
@@ -634,6 +651,11 @@ return {
                     'draw all {C:attention}discarded{} cards',
                     'to your hand on',
                     '{C:attention}last{} hand of round'
+                },
+                unlock = {
+                    'Discard {C:attention}50',
+                    '{C:attention}Gold{} and {C:attention}Steel{} cards',
+                    '{C:inactive}[#1#]'
                 }
             },
             j_bgn_revolution = {

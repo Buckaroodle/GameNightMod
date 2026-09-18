@@ -7,6 +7,7 @@ SMODS.Joker {
         'reset',
         'booster',
     },
+    unlocked = false,
     pos = {
         x = 4,
         y = 7
@@ -47,8 +48,19 @@ SMODS.Joker {
                 colour = G.C.BLUE
             }
         end
+    end,
+    locked_loc_vars = function(self, info_queue, card)
+        return { vars = { G.PROFILES[G.SETTINGS.profile].career_stats.c_bgn_booster_packs } }
+    end,
+    check_for_unlock = function(self, args)
+        if args and args.type and args.type == 'booster' and args.context and next(args.context) then
+            print(G.PROFILES[G.SETTINGS.profile].career_stats.c_bgn_booster_packs)
+            return G.PROFILES[G.SETTINGS.profile].career_stats.c_bgn_booster_packs >= 25
+        end
+        return false
     end
 }
+
 
 local use_card_ref = G.FUNCS.use_card
 function G.FUNCS.use_card(e, mute, nosave, ...)
