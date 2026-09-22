@@ -14,12 +14,12 @@ SMODS.Blind {
             local eligible_cards = {}
             local chosen_cards = {}
             for i, playing_card in ipairs(G.hand.cards) do
-                print(playing_card:get_id())
+                --print(playing_card:get_id())
                 if not SMODS.has_no_rank(playing_card) and playing_card:get_id() ~= 2 then
-                    print('HELO')
+                    --print('HELO')
                     eligible_cards[#eligible_cards+1] = playing_card
                     --table.insert(eligible_cards, playing_card) 
-                    print(#eligible_cards)
+                    --print(#eligible_cards)
                 end
             end
             --print(#eligible_cards)

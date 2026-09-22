@@ -32,7 +32,7 @@ SMODS.Blind {
                     --end
                 --}))
             else
-                print('oops!')
+                --print('oops!')
             end
         end
     end

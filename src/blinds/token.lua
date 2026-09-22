@@ -34,7 +34,7 @@ SMODS.Blind {
                 for i = 1, math.floor(G.GAME.dollars / 20) do
                     local _card, index = pseudorandom_element(jokers, 'bgn_token')
                     if _card then
-                        print('card debuffed!')
+                        --print('card debuffed!')
                         table.remove(jokers, index)
                         _card.ability.token_chosen = true
                         SMODS.recalc_debuff(_card)

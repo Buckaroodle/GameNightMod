@@ -44,7 +44,7 @@ SMODS.Blind {
         elseif G.GAME.hands[handname].discarded_this_ante > 0 then
             bool = false
         end
-        blind.triggered = bool
+        G.GAME.blind.triggered = bool
         return bool
     end,
 }

@@ -109,7 +109,7 @@ return {
                     'Adds {C:green}#1# and #2#',
                     'to the left and right',
                     'sides of all {C:green}probabilities,',
-                    'values change each ante',
+                    'values change each Ante',
                     '{C:inactive}(ex: {C:green}1 in 4{} -> {C:green}#3# in #4#{})',
                 }
             },

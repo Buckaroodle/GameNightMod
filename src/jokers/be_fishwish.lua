@@ -49,8 +49,8 @@ SMODS.Joker {
                                 highest_value[#highest_value+1] = i
                             end
                         end
-                        print(highest_rank)
-                        print(highest_value)
+                        --print(highest_rank)
+                        --print(highest_value)
                         local chosen_rank = pseudorandom_element(highest_value, 'bgn_fishwish')
                         --local chosen_rank = 4
                         if chosen_rank == 14 then

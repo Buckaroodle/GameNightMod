@@ -27,7 +27,7 @@ SMODS.Blind {
         if card_total < 30 then
             return false
         else
-            blind.triggered = true
+            G.GAME.blind.triggered = true
             return true
         end
     end,

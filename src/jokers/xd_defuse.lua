@@ -29,7 +29,7 @@ SMODS.Joker {
     calculate = function(self, card, context)
         if context.selling_self and (card.ability.extra.defuse_rounds >= card.ability.extra.total_rounds) and not context.blueprint then
             if G.GAME.blind.in_blind then
-                print('test')
+                --print('test')
                 G.E_MANAGER:add_event(Event({
                 blocking = false,
                 func = function()

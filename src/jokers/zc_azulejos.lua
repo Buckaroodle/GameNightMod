@@ -59,7 +59,7 @@ SMODS.Joker {
     end,
     check_for_unlock = function(self, args)
         if args.type == 'discard_custom' then
-            print(G.PROFILES[G.SETTINGS.profile].career_stats.c_bgn_discarded_gold_steel_cards)
+            --print(G.PROFILES[G.SETTINGS.profile].career_stats.c_bgn_discarded_gold_steel_cards)
             return G.PROFILES[G.SETTINGS.profile].career_stats.c_bgn_discarded_gold_steel_cards >= 50
         end
         return false

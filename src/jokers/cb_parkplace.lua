@@ -41,7 +41,7 @@ SMODS.Joker {
             end
             if monopoly == true then
                 return {
-                    mult = card.ability.extra.mult,
+                    --mult = card.ability.extra.mult,
                     Xmult = card.ability.extra.Xmult
                 }
             else

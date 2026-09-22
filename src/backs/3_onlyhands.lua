@@ -27,7 +27,7 @@ local ease_discard_ref = ease_discard
 function ease_discard(mod, instant, silent, ...)
     if G.GAME.bgn_onlyhands == true then
         local _mod = function(mod)
-            print(mod)
+            --print(mod)
         local hand_UI = G.HUD:get_UIE_by_ID('hand_UI_count')
         mod = mod or 0
         local text = '+'

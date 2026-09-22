@@ -70,6 +70,10 @@ for _, file in ipairs(blinds_src) do
     assert(SMODS.load_file("src/blinds/" .. file))()
 end
 
+if JokerDisplay then
+    assert(SMODS.load_file("joker_display_definitions.lua"))()
+end
+
 function SMODS.current_mod.calculate(self, context)
     if context.joker_type_destroyed then
         local cxt = context
