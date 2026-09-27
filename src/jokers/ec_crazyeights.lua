@@ -6,6 +6,7 @@ SMODS.Joker {
         'enhancement',
         'rank',
         'eight',
+        'chance'
     },
     pos = {
         x = 0,

@@ -1,0 +1,58 @@
+SMODS.Joker {
+    key = 'landlord',
+    atlas = 'placeholders',
+    attributes = {
+        'xmult',
+        'joker',
+        'lose_economy'
+    },
+    pos = {
+        x = 2,
+        y = 0
+    },
+    config = {
+        extra = {
+            Xmult = 3
+        }
+    },
+    rarity = 3,
+    cost = 7,
+    --blueprint_compat = false,
+    loc_vars = function(self, info_queue, card)
+        return {
+            vars = {
+                card.ability.extra.Xmult
+            }
+        }
+    end,
+
+    set_ability = function(self, card, initial)
+        card:set_rental(true)
+    end,
+
+    calculate = function(self, card, context)
+        if context.card_added or context.buying_self then
+            G.E_MANAGER:add_event(Event({
+            func = function() 
+                for _, jokers in ipairs(G.jokers.cards) do
+                    jokers:add_sticker("rental", true)
+                end
+                return true 
+            end,
+            }))
+        end
+        if context.joker_main then
+            return {
+                Xmult = card.ability.extra.Xmult
+            }
+        end
+    end,
+
+    in_pool = function(self, args)
+        if args.source == 'sho' or args.source == 'buf' then
+            return true
+        else
+            return false
+        end
+    end
+}

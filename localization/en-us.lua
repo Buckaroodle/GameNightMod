@@ -534,7 +534,7 @@ return {
                     '#2#{C:attention}#3#{}#4#?',
                     'If so, that Joker',
                     'gives {X:mult,C:white}X#1#{} Mult,',
-                    '{s:0.8}question changes every round'
+                    '{s:0.8}Question changes every round'
                 },
                 unlock = {
                     'Win a run with at least',
@@ -666,6 +666,69 @@ return {
                     'played {C:attention}2, 3, 4,{} and {C:attention}5',
                     'gives {X:mult,C:white}X#1#{} Mult',
                     '{C:inactive}#2#{}'
+                }
+            },
+            j_bgn_hazard = {
+                name = 'Hazard',
+                text = {
+                    'Retrigger all',
+                    'played {C:attention}#2#s',
+                    '{s:0.8}Rank changes every round,',
+                    '{s:0.8}decided by pair of dice'
+                }
+            },
+            j_bgn_dance = {
+                name = 'Dance!',
+                text = {
+                    'Earn {C:money}$#1#{} if',
+                    'your hand of cards',
+                    'does {C:red}not{} contain your',
+                    'most played {C:attention}hand type'
+                }
+            },
+            j_bgn_morris = {
+                name = 'Morris',
+                text = {
+                    'If hand contains {C:attention}#1# Jacks,',
+                    '{C:red}destroy{} the {C:attention}rightmost{} card',
+                    'held in hand and all cards',
+                    'in your deck of that {C:attention}rank'
+                }
+            },
+            j_bgn_polygon = {
+                name = 'Polygon',
+                text = {
+                    'If hand contains only {C:attention}6s,',
+                    'scoring cards have a',
+                    '{C:green}#1# in #2#{} chance to',
+                    'gain {C:dark_edition}Polychrome'
+                }
+            },
+            j_bgn_landlord = {
+                name = 'Landlord',
+                text = {
+                    {
+                      '{X:mult,C:white}X#1#{} Mult'
+                    },{
+                        'All Jokers gain',
+                        'Rental stickers',
+                    }
+                }
+            },
+            j_bgn_maj = {
+                name = 'Maj',
+                text = {
+                    '{C:attention}+#1#{} hand size,',
+                    'discard limit',
+                    'set to {C:attention}1'
+                }
+            },
+            j_bgn_catgoatnarwhalgorilla = {
+                name = 'Cat Goat Narwhal Gorilla',
+                text = {
+                    'Scoring {C:attention}#2#{} give {C:chips}+#1#{} chips',
+                    '{s:0.8}Suit rotates after any card scores',
+                    '{C:inactive,s:0.8}Spades -> Hearts -> Clubs -> Diamonds'
                 }
             }
         },
