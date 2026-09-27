@@ -93,12 +93,51 @@ jd_def["j_bgn_storedenergy"] = {
 }]]
 --[[jd_def["j_bgn_boardwalk"] = {
     text = {
-        { text = "+" },
-        { ref_table = "card.ability.extra", ref_value = "mult", retrigger_type = "mult" },
+        { ref_table = "card.joker_display_values", ref_value = "symbol" },
+        { ref_table = "card.joker_display_values", ref_value = "mult", retrigger_type = "mult" },
+        { ref_table = "card.joker_display_values", ref_value = "Xmult", retrigger_type = "exp" },
+        {
+            border_nodes = {
+                { ref_table = "card.joker_display_values", ref_value = "monopoly" }
+            }
+        }
     },
-    --text_config = { colour = G.C.MULT },
     calc_function = function(card)
-        
+        local monopoly = false
+        if G.jokers then
+            for i = 1, #G.jokers.cards do
+                if G.jokers.cards[i] ~= card then
+                    local text = localize({ type = 'name_text', set = "Joker", key = G.jokers.cards[i].config.center.key })   
+                    if text == 'Park Place' then
+                        monopoly = true
+                    end
+                end
+            end
+        end
+        if monopoly then
+            card.joker_display_values.symbol = "X"
+            card.joker_display_values.number = card.ability.extra.Xmult
+        else
+            card.joker_display_values.symbol = "+"
+            card.joker_display_values.number = card.ability.extra.mult
+        end
+    end,
+    style_function = function(card, text, reminder_text, extra)
+        local monopoly = false
+        if G.jokers then
+            for i = 1, #G.jokers.cards do
+                if G.jokers.cards[i] ~= card then
+                    local text = localize({ type = 'name_text', set = "Joker", key = G.jokers.cards[i].config.center.key })   
+                    if text == 'Park Place' then
+                        monopoly = true
+                    end
+                end
+            end
+        end
+        if text and text.children[2] then
+            text.children[2].config.colour = monopoly and G.C.XMULT or G.C.CLEAR
+        end
+        return false
     end
 }]]
 --[[jd_def["j_bgn_parkplace"] = {
