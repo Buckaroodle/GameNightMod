@@ -1,11 +1,11 @@
 SMODS.Joker {
     key = 'maj',
-    atlas = 'placeholders',
+    atlas = 'bgn_joker_sprites',
     attributes = {
         'hand_size'
     },
     pos = {
-        x = 2,
+        x = 6,
         y = 0
     },
     config = {

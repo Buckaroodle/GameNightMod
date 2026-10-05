@@ -14,7 +14,7 @@ end
 
 SMODS.Joker {
     key = 'catgoatnarwhalgorilla',
-    atlas = 'placeholders',
+    atlas = 'bgn_joker_sprites',
     attributes = {
         'chips',
         'suit',
@@ -24,8 +24,8 @@ SMODS.Joker {
         'diamonds'
     },
     pos = {
-        x = 0,
-        y = 0
+        x = 6,
+        y = 2
     },
     config = {
         extra = {

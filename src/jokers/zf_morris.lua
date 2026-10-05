@@ -1,12 +1,18 @@
 SMODS.Joker {
     key = 'morris',
-    atlas = 'placeholders',
+    atlas = 'bgn_joker_sprites',
     attributes = {
-        'hand_size',
+        'destroy_card',
+        'jack',
+        'rank'
     },
     pos = {
-        x = 3,
-        y = 0
+        x = 5,
+        y = 10
+    },
+    soul_pos = {
+        x = 6,
+        y = 10
     },
     config = {
         extra = {

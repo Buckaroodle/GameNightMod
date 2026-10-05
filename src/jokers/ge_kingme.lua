@@ -8,7 +8,7 @@ SMODS.Joker {
         x = 5,
         y = 6
     },
-    rarity = 2,
+    rarity = 3,
     cost = 7,
     calculate = function(self, card, context)
         if context.after and not context.blueprint and G.GAME.current_round.hands_left == 0 then

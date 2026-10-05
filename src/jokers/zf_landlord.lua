@@ -1,14 +1,14 @@
 SMODS.Joker {
     key = 'landlord',
-    atlas = 'placeholders',
+    atlas = 'bgn_joker_sprites',
     attributes = {
         'xmult',
         'joker',
         'lose_economy'
     },
     pos = {
-        x = 2,
-        y = 0
+        x = 6,
+        y = 1
     },
     config = {
         extra = {

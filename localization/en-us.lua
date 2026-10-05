@@ -627,7 +627,7 @@ return {
             j_bgn_admiral = {
                 name = 'Admiral',
                 text = {
-                    '{C:red}Destroys{} all scoring',
+                    '{C:red}Destroys{} all discarded',
                     '{C:attention}Hole-Punched{} cards'
                 },
                 unlock = {
@@ -719,7 +719,7 @@ return {
                 name = 'Maj',
                 text = {
                     '{C:attention}+#1#{} hand size,',
-                    'discard limit',
+                    '{C:red}discard limit',
                     'set to {C:attention}1'
                 }
             },
@@ -729,6 +729,40 @@ return {
                     'Scoring {C:attention}#2#{} give {C:chips}+#1#{} chips',
                     '{s:0.8}Suit rotates after any card scores',
                     '{C:inactive,s:0.8}Spades -> Hearts -> Clubs -> Diamonds'
+                }
+            },
+            j_bgn_cootie = {
+                name = 'Cootie',
+                text = {
+                    'When {C:attention}Blind{} is selected,',
+                    'gives one of these at random:',
+                    '{C:blue}+#1#{} Hand',
+                    '{C:red}+#1#{} Discard',
+                    '{C:attention}+#1#{} hand size'
+                }
+            },
+            j_bgn_cherryo = {
+                name = 'Cherry-O',
+                text = {
+                    '{X:mult,C:white}X#1#{} Mult',
+                    'If a playing card',
+                    'is {C:red}destroyed{},',
+                    'this card is {C:red}destroyed'
+                }
+            },
+            j_bgn_conveyorbeltsushi = {
+                name = 'Conveyor Belt Sushi',
+                text = {
+                    '{C:attention}#1#{} free {C:green}Rerolls',
+                    'in the shop'
+                }
+            },
+            j_bgn_wavelength = {
+                name = 'Wavelength',
+                text = {
+                    'Each played {C:attention}#5#{} gives {C:mult}+#1#{} Mult,',
+                    'nearby ranks give {C:mult}+#2#{} or {C:mult}+#3#{} Mult',
+                    '{C:inactive,s:0.8}Rank changes every round',
                 }
             }
         },
@@ -883,7 +917,7 @@ return {
                 text = {
                     'When {C:attention}discarded{}, this card is',
                     'removed for the rest of the {C:attention}Ante',
-                    'Earn {C:money}$2{} per removed card',
+                    'Earn {C:money}$1{} per removed card',
                     'at end of round'
                 }
             },

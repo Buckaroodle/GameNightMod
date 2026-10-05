@@ -1,6 +1,6 @@
 SMODS.Joker {
     key = 'polygon',
-    atlas = 'placeholders',
+    atlas = 'bgn_joker_sprites',
     attributes = {
         'chance',
         'edition',
@@ -8,8 +8,8 @@ SMODS.Joker {
         'six',
     },
     pos = {
-        x = 0,
-        y = 0
+        x = 2,
+        y = 10
     },
     config = {
         extra = {

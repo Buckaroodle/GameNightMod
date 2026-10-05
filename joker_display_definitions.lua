@@ -258,16 +258,38 @@ jd_def["j_bgn_chutesandladders"] = {
     end
 }
 jd_def["j_bgn_guesswho"] = {
+    text = {
+            { ref_table = "card.joker_display_values", ref_value = "count", retrigger_type = "mult" },
+            { text = "x",                              scale = 0.35 },
+            {
+                border_nodes = {
+                    { text = "X" },
+                    { ref_table = "card.ability.extra", ref_value = "Xmult" }
+                }
+            }
+        },
+    reminder_text = {
+        { text = "(" },
+        { ref_table = "card.ability.extra", ref_value = "string_two", colour = G.C.ORANGE },
+        { text = ")" }
+    },
+    calc_function = function(card)
+        local count = 0
+        for i, joker in ipairs(G.jokers.cards) do
+            if joker:has_attribute(card.ability.extra.chosen_attribute) then
+                count = count + 1
+            end
+        end
+        card.joker_display_values.count = count
+    end
 }
 jd_def["j_bgn_freecell"] = {
 }
---[[jd_def["j_bgn_defuse"] = {
+jd_def["j_bgn_defuse"] = {
     reminder_text = {
-        {
-            { text = "("},
-            { ref_table = "card.joker_display_values", ref_value = "active"},
-            { text = ")"}
-        }
+        { text = "("},
+        { ref_table = "card.joker_display_values", ref_value = "active"},
+        { text = ")"}
     },
     calc_function = function(card)
         card.joker_display_values.is_active = card.ability.extra.defuse_rounds >= card.ability.extra.total_rounds
@@ -281,7 +303,7 @@ jd_def["j_bgn_freecell"] = {
                 G.C.UI.TEXT_INACTIVE
         end
     end
-}]]
+}
 jd_def["j_bgn_yacht"] = {
     text = {
         { text = "+$" },
@@ -338,6 +360,19 @@ jd_def["j_bgn_slamwich"] = {
 }
 jd_def["j_bgn_azulejos"] = {
 }
+--[[jd_def["j_bgn_patolli"] = {
+    text = {
+            { text = "+$" },
+            { ref_table = "card.joker_display_values", ref_value = "dollars", retrigger_type = "mult" },
+        },
+        text_config = { colour = G.C.GOLD },
+        calc_function = function(card)
+            local text, _, _ = JokerDisplay.evaluate_hand()
+            local is_to_do_poker_hand = text == card.ability.to_do_poker_hand
+            card.joker_display_values.dollars = is_to_do_poker_hand and card.ability.extra.dollars or 0
+            card.joker_display_values.to_do_poker_hand = localize(card.ability.to_do_poker_hand, 'poker_hands')
+        end
+}]]
 jd_def["j_bgn_ur"] = {
     text = {
         {
@@ -360,4 +395,14 @@ jd_def["j_bgn_ur"] = {
         if SMODS then num, denom = SMODS.get_probability_vars(card, num, denom) end
         card.joker_display_values.odds = localize { type = 'variable', key = "jdis_odds", vars = { num, denom } }
     end
+}
+jd_def["j_bgn_landlord"] = {
+    text = {
+        {
+            border_nodes = {
+                { text = "X" },
+                { ref_table = "card.ability.extra", ref_value = "Xmult", retrigger_type = "exp" }
+            }
+        }
+    },
 }

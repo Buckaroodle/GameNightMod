@@ -1,13 +1,13 @@
 SMODS.Joker {
     key = 'hazard',
-    atlas = 'placeholders',
+    atlas = 'bgn_joker_sprites',
     attributes = {
         'retrigger',
         'rank'
     },
     pos = {
-        x = 0,
-        y = 0
+        x = 6,
+        y = 4
     },
     config = {
         extra = {

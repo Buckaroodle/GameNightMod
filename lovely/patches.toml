@@ -101,9 +101,9 @@ position = "before"
 payload = '''
 if G.GAME.bgn_holepunchedtotal then
     if G.GAME.bgn_holepunchedtotal > 0 then
-        add_round_eval_row({dollars = (G.GAME.bgn_holepunchedtotal * 2), text = ' Hole Punched Cards ($2 each)', text_colour = G.C.WHITE, disp = G.GAME.bgn_holepunchedtotal, number = 1, number_colour = G.C.RED, bonus = true, name = 'other'..i , pitch = pitch })
+        add_round_eval_row({dollars = (G.GAME.bgn_holepunchedtotal * 1), text = ' Hole Punched Cards ($1 each)', text_colour = G.C.WHITE, disp = G.GAME.bgn_holepunchedtotal, number = 1, number_colour = G.C.RED, bonus = true, name = 'other'..i , pitch = pitch })
         pitch = pitch + 0.06
-        dollars = dollars + (G.GAME.bgn_holepunchedtotal * 2)
+        dollars = dollars + (G.GAME.bgn_holepunchedtotal * 1)
     end
 end
 if G.GAME.blind:get_type() == 'Boss' then
