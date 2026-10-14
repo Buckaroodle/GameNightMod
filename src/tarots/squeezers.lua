@@ -9,6 +9,11 @@ SMODS.Consumable {
     cost = 3,
     config = { req_highlighted = 2, },
     loc_vars = function(self, info_queue, card)
+        if G.jokers and next(SMODS.find_card("j_bgn_tinder")) then
+                card.ability.req_highlighted = 3
+            else
+                card.ability.req_highlighted = 2
+            end
         return { vars = { card.ability.req_highlighted } }
     end,
     use = function(self, card, area, copier)
@@ -18,7 +23,7 @@ SMODS.Consumable {
                 sum = sum + G.hand.highlighted[i]:get_id()
             end
         end
-        local average_rank = math.ceil(sum / 2)
+        local average_rank = math.ceil(sum / #G.hand.highlighted)
         local average_rank_string = tostring(average_rank)
         if average_rank == 11 then
             average_rank_string = 'Jack'
@@ -87,6 +92,6 @@ SMODS.Consumable {
         delay(0.5)
     end,
     can_use = function(self, card)
-        return G.hand and #G.hand.highlighted > 0 and #G.hand.highlighted == card.ability.req_highlighted
+        return G.hand and #G.hand.highlighted > 1 and #G.hand.highlighted <= (G.jokers and next(SMODS.find_card("j_bgn_tinder")) and 3 or card.ability.req_highlighted)
     end
 }

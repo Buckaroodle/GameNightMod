@@ -17,6 +17,7 @@ SMODS.Joker {
 		}
 	},
     blueprint_compat = false,
+	eternal_compat = false,
     rarity = 2,
     cost = 6,
     loc_vars = function(self, info_queue, card)

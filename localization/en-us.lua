@@ -673,8 +673,8 @@ return {
                 text = {
                     'Retrigger all',
                     'played {C:attention}#2#s',
-                    '{s:0.8}Rank changes every round,',
-                    '{s:0.8}decided by pair of dice'
+                    '{C:inactive,s:0.8}Rank changes every round,',
+                    '{C:inactive,s:0.8}decided by pair of dice'
                 }
             },
             j_bgn_dance = {
@@ -764,7 +764,71 @@ return {
                     'nearby ranks give {C:mult}+#2#{} or {C:mult}+#3#{} Mult',
                     '{C:inactive,s:0.8}Rank changes every round',
                 }
-            }
+            },
+            j_bgn_simonsays = {
+                name = 'Simon Says',
+                text = {
+                    'Copies the ability of',
+                    'adjacent {C:attention}Jokers{} if',
+                    'Joker slots are {C:red}not{} full',
+                }
+            },
+            j_bgn_hangman = {
+                name = 'Hangman',
+                text = {
+                    {
+                        'Increases the',
+                        'selection limit for',
+                        '{C:attention}The Hanged Man{} by {C:attention}1'
+                    },{
+                        'Creates {C:attention}The Hanged Man',
+                        'when {C:attention}Boss Blind{} is defeated',
+                        '{C:inactive}(Must have room)'
+                    }
+                }
+            },
+            j_bgn_redrocker = {
+                name = 'Red Rocker',
+                text = {
+                    {
+                        'Increases the',
+                        'selection limit',
+                        'for {C:attention}Strength{} by {C:attention}2'
+                    },{
+                        'Creates {C:attention}Strength{} when',
+                        '{C:attention}Boss Blind{} is defeated',
+                        '{C:inactive}(Must have room)'
+                    }
+                }
+            },
+            j_bgn_dysentery = {
+                name = 'Dysentery',
+                text = {
+                    {
+                        'Increases the',
+                        'selection limit',
+                        'for {C:attention}Death{} by {C:attention}1'
+                    },{
+                        'Creates {C:attention}Death{} when',
+                        '{C:attention}Boss Blind{} is defeated',
+                        '{C:inactive}(Must have room)'
+                    }
+                }
+            },
+            j_bgn_tinder = {
+                name = 'Tinder',
+                text = {
+                    {
+                        'Increases the',
+                        'selection limit',
+                        'for {C:attention}Squeezers{} by {C:attention}1'
+                    },{
+                        'Creates {C:attention}Squeezers{} when',
+                        '{C:attention}Boss Blind{} is defeated',
+                        '{C:inactive}(Must have room)'
+                    }
+                }
+            },
         },
 
         Back = {
@@ -848,7 +912,7 @@ return {
             c_bgn_squeezers = {
                 name = 'Squeezers',
                 text = {
-                    'Changes rank of {C:attention}2{} selected cards',
+                    'Changes rank of {C:attention}#1#{} selected cards',
                     'to the {C:attention}average{} of both ranks'
                 }
             },
@@ -930,6 +994,17 @@ return {
                     'stays in hand'
                 }
             }]]
+        },
+
+        Edition = {
+            e_bgn_lenticular = {
+                name = 'Lenticular',
+                text = {
+                    '{X:2,C:1}#6##5#{}#7#',
+                    '{C:inactive,s:0.85}Effect changes with',
+                    '{C:inactive,s:0.85}card position'
+                }
+            }
         },
 
         Other = {
@@ -1074,9 +1149,8 @@ return {
             bl_bgn_spinner = {
                 name = 'The Spinner',
                 text = {
-                    'Lose half of money',
-                    'when any probability',
-                    'fails'
+                    'Lose $5 when any',
+                    'probability fails'
                 }
             },
             bl_bgn_wink = {
@@ -1147,7 +1221,11 @@ return {
         dictionary = {
             bgn_plus_tag = '+1 Tag',
             bgn_inactive = 'Currently inactive',
-            bgn_active = 'Active!'
+            bgn_active = 'Active!',
+            bgn_leftcompat = '< compatible',
+            bgn_leftincompat = '< incompatible',
+            bgn_rightcompat = 'compatible >',
+            bgn_rightincompat = 'incompatible >'
         },
         labels = {
             bgn_chance_seal = 'Chance Seal'

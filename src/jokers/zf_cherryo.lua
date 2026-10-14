@@ -16,6 +16,7 @@ SMODS.Joker {
     },
     rarity = 1,
     cost = 5,
+    eternal_compat = false,
     loc_vars = function(self, info_queue, card)
         return {
             vars = {

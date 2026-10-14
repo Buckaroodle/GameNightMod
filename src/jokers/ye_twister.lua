@@ -96,10 +96,10 @@ SMODS.Joker {
             local gold = false
             local purple = false
             for _, playing_card in ipairs(G.playing_cards or {}) do
-                if playing_card:get_seal('Red') then red = true end
-                if playing_card:get_seal('Blue') then blue = true end
-                if playing_card:get_seal('Gold') then gold = true end
-                if playing_card:get_seal('Purple') then purple = true end
+                if playing_card.seal == "Red" then red = true end
+                if playing_card.seal == "Blue" then blue = true end
+                if playing_card.seal == "Gold" then gold = true end
+                if playing_card.seal == "Purple" then purple = true end
                 if red and blue and purple and gold then
                     return true
                 end

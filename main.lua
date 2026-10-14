@@ -30,6 +30,11 @@ SMODS.Atlas {
   py = 34
 }
 
+SMODS.Shader {
+    key = 'lenticular',
+    path = 'lenticular.fs',
+}
+
 local jokers_src = SMODS.NFS.getDirectoryItems(SMODS.current_mod.path .. "src/jokers")
 for _, file in ipairs(jokers_src) do
     assert(SMODS.load_file("src/jokers/" .. file))()
@@ -68,6 +73,11 @@ end
 local blinds_src = SMODS.NFS.getDirectoryItems(SMODS.current_mod.path .. "src/blinds")
 for _, file in ipairs(blinds_src) do
     assert(SMODS.load_file("src/blinds/" .. file))()
+end
+
+local editions_src = SMODS.NFS.getDirectoryItems(SMODS.current_mod.path .. "src/editions")
+for _, file in ipairs(editions_src) do
+    assert(SMODS.load_file("src/editions/" .. file))()
 end
 
 if JokerDisplay then
