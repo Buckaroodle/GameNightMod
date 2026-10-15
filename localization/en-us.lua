@@ -889,9 +889,10 @@ return {
             c_bgn_bicycle = {
                 name = 'The Bicycle',
                 text = {
-                    '{C:green}#1# in #2#{} chance to add {C:dark_edition}Foil{}, {C:dark_edition}Holographic{},',
-                    'or {C:dark_edition}Polychrome{} edition to',
-                    'a random {C:attention}card{} in your hand'
+                    '{C:green}#1# in #2#{} chance to add',
+                    'a random {C:dark_edition}Edition{} to',
+                    'a random {C:attention}card{} in your hand',
+                    '{C:inactive,s:0.85}(Negative excluded)'
                 }
             },
             c_bgn_fournier = {
@@ -938,6 +939,15 @@ return {
                     'Enhances {C:attention}#1#{} selected card',
                     'to {C:attention}Chance Cards'
                 }
+            },
+            c_wheel_of_fortune = {
+                name = 'The Wheel of Fortune',
+                text = {
+                    "{C:green}#1# in #2#{} chance to add",
+                    "a random {C:dark_edition}Edition",
+                    "to a random {C:attention}Joker",
+                    "{C:inactive,s:0.85}(Negative excluded)"
+                }
             }
         },
 
@@ -972,6 +982,14 @@ return {
                     "{C:green}#1# in #2#{} chance to create",
                     "a {C:dark_edition}Negative{} copy of a random Joker"
                 }
+            },
+            c_aura = {
+                name = 'Aura',
+                text = {
+                    "Add a random {C:dark_edition}Edition{} to",
+                    "{C:attention}#1#{} selected card in hand",
+                    "{C:inactive,s:0.85}(Negative excluded)",
+                }
             }
         },
 
@@ -1003,6 +1021,17 @@ return {
                     '{X:2,C:1}#6##5#{}#7#',
                     '{C:inactive,s:0.85}Effect changes with',
                     '{C:inactive,s:0.85}card position'
+                }
+            }
+        },
+
+        Tag = {
+            tag_bgn_lenticular = {
+                name = 'Lenticular Tag',
+                text = {
+                    'Next base edition shop',
+                    'Joker is free and',
+                    'becomes {C:dark_edition}Lenticular'
                 }
             }
         },
@@ -1228,7 +1257,8 @@ return {
             bgn_rightincompat = 'incompatible >'
         },
         labels = {
-            bgn_chance_seal = 'Chance Seal'
+            bgn_chance_seal = 'Chance Seal',
+            bgn_lenticular = 'Lenticular'
         }
     }
 }

@@ -30,6 +30,13 @@ SMODS.Atlas {
   py = 34
 }
 
+SMODS.Atlas {
+  key = "bgn_tags",
+  path = "bgn_tags.png",
+  px = 34,
+  py = 34
+}
+
 SMODS.Shader {
     key = 'lenticular',
     path = 'lenticular.fs',
@@ -78,6 +85,11 @@ end
 local editions_src = SMODS.NFS.getDirectoryItems(SMODS.current_mod.path .. "src/editions")
 for _, file in ipairs(editions_src) do
     assert(SMODS.load_file("src/editions/" .. file))()
+end
+
+local tags_src = SMODS.NFS.getDirectoryItems(SMODS.current_mod.path .. "src/tags")
+for _, file in ipairs(tags_src) do
+    assert(SMODS.load_file("src/tags/" .. file))()
 end
 
 if JokerDisplay then

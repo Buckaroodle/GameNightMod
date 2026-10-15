@@ -10,6 +10,10 @@ SMODS.Consumable {
     config = { extra = { numerator = 1, denominator = 2 } },
     loc_vars = function(self, info_queue, card)
         local num, denom = SMODS.get_probability_vars(card, card.ability.extra.numerator, card.ability.extra.denominator)
+        info_queue[#info_queue + 1] = G.P_CENTERS.e_foil
+        info_queue[#info_queue + 1] = G.P_CENTERS.e_holo
+        info_queue[#info_queue + 1] = G.P_CENTERS.e_polychrome
+        info_queue[#info_queue + 1] = G.P_CENTERS.e_bgn_lenticular
         return { vars = { num, denom } }
     end,
     use = function(self, card, area, copier)
@@ -21,7 +25,7 @@ SMODS.Consumable {
                 end
             end
             local eligible_card = pseudorandom_element(valid_cards, 'bgn_bicycle')
-            local edition = SMODS.poll_edition { key = "bgn_bicycle", guaranteed = true, no_negative = true, options = { 'e_polychrome', 'e_holo', 'e_foil' } }
+            local edition = SMODS.poll_edition { key = "bgn_bicycle", guaranteed = true, no_negative = true, options = { 'e_polychrome', 'e_holo', 'e_foil', 'e_bgn_lenticular' } }
             eligible_card:set_edition(edition, true)
         else
             G.E_MANAGER:add_event(Event({
