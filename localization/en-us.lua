@@ -275,7 +275,8 @@ return {
                 text = {
                     'All scoring cards',
                     'played {C:attention}face down',
-                    'gain a {C:attention}random edition'
+                    'gain a {C:attention}random {C:dark_edition}Edition',
+                    '{C:inactive,s:0.85}(Negative excluded)'
                 }
             },
             j_bgn_hungryhippo = {
