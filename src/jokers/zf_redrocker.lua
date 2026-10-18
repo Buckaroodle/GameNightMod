@@ -1,6 +1,6 @@
 SMODS.Joker {
     key = 'redrocker',
-    atlas = 'placeholders',
+    atlas = 'bgn_joker_sprites',
     attributes = {
         'generation',
         'consumable',
@@ -8,8 +8,8 @@ SMODS.Joker {
         'passive'
     },
     pos = {
-        x = 1,
-        y = 0
+        x = 6,
+        y = 7
     },
     config = {
         extra = {
