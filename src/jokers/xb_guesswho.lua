@@ -225,6 +225,24 @@ SMODS.Joker {
                     end
                 end
             end
+            for i = 1, #G.consumeables.cards do --add compat to mini edition
+                if G.consumeables.cards[i].ability.set == 'Joker' then
+                    for i, thing in pairs(G.consumeables.cards[i].config.center.attributes) do
+                        local value = i
+                        if type(value) == 'string' then
+                            local dupe = false
+                            for i, attribute in ipairs(total_attributes) do
+                                if attribute == value then
+                                    dupe = true
+                                end
+                            end
+                            if not dupe then
+                                table.insert(total_attributes, value)
+                            end
+                        end
+                    end
+                end
+            end
             card.ability.extra.chosen_attribute = pseudorandom_element(total_attributes, 'bgn_guesswho')
             card.ability.extra.string_one = attributeStringOneTable[card.ability.extra.chosen_attribute] or ''
             card.ability.extra.string_two = attributeStringTwoTable[card.ability.extra.chosen_attribute] or ''
@@ -237,7 +255,7 @@ SMODS.Joker {
             for i, joker in ipairs(G.jokers.cards) do
                 for i, thing in pairs(joker.config.center.attributes) do
                     local value = i
-                    if type(value) == 'string' and not card.ability.extra.chosen_attribute then
+                    if type(value) == 'string' then
                         local dupe = false
                         for i, attribute in ipairs(total_attributes) do
                             if attribute == value then
@@ -246,6 +264,26 @@ SMODS.Joker {
                         end
                         if not dupe then
                             table.insert(total_attributes, value)
+                        end
+                    end
+                end
+            end
+        end
+        if G.consumeables then --add compat to mini edition
+            for i = 1, #G.consumeables.cards do
+                if G.consumeables.cards[i].ability.set == 'Joker' then
+                    for i, thing in pairs(G.consumeables.cards[i].config.center.attributes) do
+                        local value = i
+                        if type(value) == 'string' then
+                            local dupe = false
+                            for i, attribute in ipairs(total_attributes) do
+                                if attribute == value then
+                                    dupe = true
+                                end
+                            end
+                            if not dupe then
+                                table.insert(total_attributes, value)
+                            end
                         end
                     end
                 end

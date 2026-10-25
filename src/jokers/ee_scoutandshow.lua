@@ -12,8 +12,8 @@ SMODS.Joker {
         extra = {
         }
     },
-    rarity = 3,
-    cost = 8,
+    rarity = 2,
+    cost = 6,
     blueprint_compat = false,
     loc_vars = function(self, info_queue, card)
         return {

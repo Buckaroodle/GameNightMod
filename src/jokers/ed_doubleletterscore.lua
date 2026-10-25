@@ -12,9 +12,7 @@ SMODS.Joker {
     pixel_size = { h = 71 },
     config = {
         extra = {
-            chips = 0,
             chips_gain = 2,
-            --total_letters = 0
         }
     },
     rarity = 2,
@@ -28,79 +26,45 @@ SMODS.Joker {
                 total_letters = total_letters + letterCount
             end
         end
-        card.ability.extra.chips = card.ability.extra.chips_gain * total_letters
+        if G.consumeables then --check for mini edition
+            for i = 1, #G.consumeables.cards do
+                if G.consumeables.cards[i].ability.set == 'Joker' then
+                    local text = localize({ type = 'name_text', set = "Joker", key = G.consumeables.cards[i].config.center.key }) 
+                    local _, letterCount = text:gsub("%a", "")
+                    total_letters = total_letters + letterCount
+                end
+            end
+        end
         return {
             vars = {
-                card.ability.extra.chips,
                 card.ability.extra.chips_gain,
-                --card.ability.extra.total_letters
+                card.ability.extra.chips_gain * (G.jokers and G.consumeables and total_letters or 0)
             }
         }
     end,
-    add_to_deck = function(self, card, from_debuff)
-        G.E_MANAGER:add_event(Event({
-                func = function() 
-                    local total_letters = 0
-                    if G.jokers then
-                        for i = 1, #G.jokers.cards do
-                            --if G.jokers.cards[i] ~= card then
-                                local text = localize({ type = 'name_text', set = "Joker", key = G.jokers.cards[i].config.center.key }) 
-                                --local text = G.jokers.cards[i].center.name
-                                local _, letterCount = text:gsub("%a", "")
-                                total_letters = total_letters + letterCount
-                            --end
-                        end
-                    end
-                    card.ability.extra.chips = card.ability.extra.chips_gain * total_letters
-                    return true 
-                end,
-            }))
-    end,
     calculate = function(self, card, context)
         if context.joker_main then
-            --local total_letters = 0
-            G.E_MANAGER:add_event(Event({
-                func = function() 
-                    local total_letters = 0
-                    if G.jokers then
-                        for i = 1, #G.jokers.cards do
-                            --if G.jokers.cards[i] ~= card then
-                                local text = localize({ type = 'name_text', set = "Joker", key = G.jokers.cards[i].config.center.key }) 
-                                --local text = G.jokers.cards[i].center.name
-                                local _, letterCount = text:gsub("%a", "")
-                                total_letters = total_letters + letterCount
-                            --end
+                local total_letters = 0
+                if G.jokers then
+                    for i = 1, #G.jokers.cards do
+                            local text = localize({ type = 'name_text', set = "Joker", key = G.jokers.cards[i].config.center.key }) 
+                            local _, letterCount = text:gsub("%a", "")
+                            total_letters = total_letters + letterCount
+                    end
+                end
+                if G.consumeables then --check for mini edition
+                    for i = 1, #G.consumeables.cards do
+                        if G.consumeables.cards[i].ability.set == 'Joker' then
+                            local text = localize({ type = 'name_text', set = "Joker", key = G.consumeables.cards[i].config.center.key }) 
+                            local _, letterCount = text:gsub("%a", "")
+                            total_letters = total_letters + letterCount
                         end
                     end
-                    card.ability.extra.chips = card.ability.extra.chips_gain * total_letters
-                    return true 
-                end,
-            }))
+                end
             return
             {
-                chips = card.ability.extra.chips
+                chips = card.ability.extra.chips_gain * (G.jokers and G.consumeables and total_letters or 0)
             }
-        end
-        if context.card_added or context.joker_type_destroyed or context.selling_card then
-            if not card.ability.extra.chips == nil then
-                G.E_MANAGER:add_event(Event({
-                    func = function() 
-                        local total_letters = 0
-                        if G.jokers then
-                            for i = 1, #G.jokers.cards do
-                                --if G.jokers.cards[i] ~= card then
-                                    local text = localize({ type = 'name_text', set = "Joker", key = G.jokers.cards[i].config.center.key }) 
-                                    --local text = G.jokers.cards[i].center.name
-                                    local _, letterCount = text:gsub("%a", "")
-                                    total_letters = total_letters + letterCount
-                                --end
-                            end
-                        end
-                        card.ability.extra.chips = card.ability.extra.chips_gain * total_letters
-                        return true 
-                    end,
-                }))
-            end
         end
     end
 }

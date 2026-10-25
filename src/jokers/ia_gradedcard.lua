@@ -30,7 +30,13 @@ SMODS.Joker {
     cost = 6,
     loc_vars = function(self, info_queue, card)
         local sell_cost = 0
-        if G.jokers ~= nil then
+        if card.area == G.consumeables then
+            for i = 1, #G.consumeables.cards do
+                if G.consumeables.cards[i] == card and G.consumeables.cards[i+1] ~= nil and G.consumeables.cards[i+1].ability.set == 'Joker' then
+                    sell_cost = G.consumeables.cards[i+1].sell_cost
+                end
+            end
+        else
             for i = 1, #G.jokers.cards do
                 if G.jokers.cards[i] == card and G.jokers.cards[i+1] ~= nil then
                     sell_cost = G.jokers.cards[i+1].sell_cost
@@ -40,7 +46,7 @@ SMODS.Joker {
         return {
             vars = {
                 card.ability.extra.mult_per_dollar,
-                card.ability.extra.mult_per_dollar * sell_cost
+                card.ability.extra.mult_per_dollar * (sell_cost or 0)
             }
         }
     end,
@@ -79,6 +85,40 @@ SMODS.Joker {
                 end
             end
         end
+        if G.consumeables then --compat for mini edition
+            local sleeves = SMODS.find_card("j_bgn_gradedcard")
+            if #sleeves > 0 then
+                for i = 1, #G.consumeables.cards do
+                    if G.consumeables.cards[i] == card and not G.consumeables.cards[i].debuff then
+                        if G.consumeables.cards[i+1] and not G.consumeables.cards[i+1].debuff and G.consumeables.cards[i+1].ability.set == 'Joker' then
+                            G.consumeables.cards[i+1].debuff = true
+                            G.consumeables.cards[i+1].ability.bgn_cardsleeve_debuff = true
+                        end
+                    end
+                end
+                for i = 1, #G.consumeables.cards do
+                    if G.consumeables.cards[i] ~= card and G.consumeables.cards[i].ability.set == 'Joker' then
+                        if G.consumeables.cards[i-1] or G.consumeables.cards[i-1] == nil then
+                            if not contains(sleeves, G.consumeables.cards[i-1]) and G.consumeables.cards[i].ability.bgn_cardsleeve_debuff then
+                                if G.consumeables.cards[i].debuff then
+                                    G.consumeables.cards[i].debuff = false
+                                    G.consumeables.cards[i].ability.bgn_cardsleeve_debuff = false
+                                end
+                            end
+                        end
+                    end
+                end
+            else
+                for i = 1, #G.consumeables.cards do
+                    if G.consumeables.cards[i].ability.set == 'Joker' and G.consumeables.cards[i].ability.bgn_cardsleeve_debuff then
+                        if G.consumeables.cards[i].debuff then
+                            G.consumeables.cards[i].debuff = false
+                            G.consumeables.cards[i].ability.bgn_cardsleeve_debuff = false
+                        end
+                    end
+                end
+            end
+        end
     end,
 
     remove_from_deck = function(self, card, from_debuff)
@@ -90,14 +130,30 @@ SMODS.Joker {
                 end
             end
         end
+        for i = 1, #G.consumeables.cards do --compat for mini edition
+            if G.consumeables.cards[i].ability.set == 'Joker' and G.consumeables.cards[i].ability.bgn_cardsleeve_debuff then
+                if G.consumeables.cards[i].debuff then
+                    G.consumeables.cards[i].debuff = false
+                    G.consumeables.cards[i].ability.bgn_cardsleeve_debuff = false
+                end
+            end
+        end
     end,
     
     calculate = function(self, card, context)
         if context.joker_main then
             local sell_cost = 0
-            for i = 1, #G.jokers.cards do
-                if G.jokers.cards[i] == card and G.jokers.cards[i+1] ~= nil then
-                    sell_cost = G.jokers.cards[i+1].sell_cost
+            if card.area == G.consumeables then
+                for i = 1, #G.consumeables.cards do
+                    if G.consumeables.cards[i] == card and G.consumeables.cards[i+1] ~= nil and G.consumeables.cards[i+1].ability.set == 'Joker' then
+                        sell_cost = G.consumeables.cards[i+1].sell_cost
+                    end
+                end
+            else
+                for i = 1, #G.jokers.cards do
+                    if G.jokers.cards[i] == card and G.jokers.cards[i+1] ~= nil then
+                        sell_cost = G.jokers.cards[i+1].sell_cost
+                    end
                 end
             end
             return {

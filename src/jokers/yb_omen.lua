@@ -54,6 +54,10 @@ SMODS.Joker {
         if context.end_of_round and context.game_over == false and context.main_eval and not context.blueprint then
             if SMODS.pseudorandom_probability(card, 'vremade_gros_michel', card.ability.extra.numerator, card.ability.extra.denominator) then
                 SMODS.destroy_cards(card, nil, nil, true)
+                return {
+                    message = 'Boo!',
+                    colour = G.C.RED
+                }
             else
                 card.ability.extra.numerator = card.ability.extra.numerator + card.ability.extra.inc
                 return {

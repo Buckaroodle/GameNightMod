@@ -331,6 +331,20 @@ for j = 1, how_many_unscoring_cards do
 end
 '''
 
+[[patches]] 
+[patches.pattern]
+target = "cardarea.lua"
+pattern = '''
+if location == 'front' or self.config.type == 'deck' then 
+'''
+position = "before"
+payload = '''
+if (location ~= 'front' or self.config.type ~= 'deck') and card.edition and card.edition.key == "e_bgn_wee" then
+    self = G.consumeables
+end
+'''
+match_indent = true
+
 #[[patches]]
 #[patches.pattern]
 #target = "functions/common_events.lua"

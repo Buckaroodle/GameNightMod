@@ -10,10 +10,10 @@ SMODS.Consumable {
     config = { extra = { numerator = 1, denominator = 2 } },
     loc_vars = function(self, info_queue, card)
         local num, denom = SMODS.get_probability_vars(card, card.ability.extra.numerator, card.ability.extra.denominator)
-        info_queue[#info_queue + 1] = G.P_CENTERS.e_foil
-        info_queue[#info_queue + 1] = G.P_CENTERS.e_holo
-        info_queue[#info_queue + 1] = G.P_CENTERS.e_polychrome
-        info_queue[#info_queue + 1] = G.P_CENTERS.e_bgn_lenticular
+        --info_queue[#info_queue + 1] = G.P_CENTERS.e_foil
+        --info_queue[#info_queue + 1] = G.P_CENTERS.e_holo
+        --info_queue[#info_queue + 1] = G.P_CENTERS.e_polychrome
+        --info_queue[#info_queue + 1] = G.P_CENTERS.e_bgn_lenticular
         return { vars = { num, denom } }
     end,
     use = function(self, card, area, copier)

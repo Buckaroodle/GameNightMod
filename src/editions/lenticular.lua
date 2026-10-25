@@ -144,10 +144,10 @@ SMODS.Consumable:take_ownership('wheel_of_fortune',
         loc_vars = function(self, info_queue, card)
             local numerator, denominator = SMODS.get_probability_vars(card, 1, card.ability.extra.odds,
                 'vremade_wheel_of_fortune')
-                info_queue[#info_queue + 1] = G.P_CENTERS.e_foil
-                info_queue[#info_queue + 1] = G.P_CENTERS.e_holo
-                info_queue[#info_queue + 1] = G.P_CENTERS.e_polychrome
-                info_queue[#info_queue + 1] = G.P_CENTERS.e_bgn_lenticular
+                --info_queue[#info_queue + 1] = G.P_CENTERS.e_foil
+                --info_queue[#info_queue + 1] = G.P_CENTERS.e_holo
+                --info_queue[#info_queue + 1] = G.P_CENTERS.e_polychrome
+                --info_queue[#info_queue + 1] = G.P_CENTERS.e_bgn_lenticular
             return { vars = { numerator, denominator } }
         end,
         use = function(self, card, area, copier)
@@ -199,10 +199,10 @@ SMODS.Consumable:take_ownership('aura',
     {
         config = { max_highlighted = 1 },
         loc_vars = function(self, info_queue, card)
-            info_queue[#info_queue + 1] = G.P_CENTERS.e_foil
-            info_queue[#info_queue + 1] = G.P_CENTERS.e_holo
-            info_queue[#info_queue + 1] = G.P_CENTERS.e_polychrome
-            info_queue[#info_queue + 1] = G.P_CENTERS.e_bgn_lenticular
+            --info_queue[#info_queue + 1] = G.P_CENTERS.e_foil
+            --info_queue[#info_queue + 1] = G.P_CENTERS.e_holo
+            --info_queue[#info_queue + 1] = G.P_CENTERS.e_polychrome
+            --info_queue[#info_queue + 1] = G.P_CENTERS.e_bgn_lenticular
             return { vars = { card.ability.max_highlighted } }
         end,
         use = function(self, card, area, copier)

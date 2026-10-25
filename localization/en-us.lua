@@ -171,9 +171,9 @@ return {
             j_bgn_doubleletterscore = {
                 name = "Double Letter Score",
                 text = {
-                    '{C:chips}+#2#{} chips for each',
+                    '{C:chips}+#1#{} chips for each',
                     '{C:attention}letter{} in all Joker {C:attention}names',
-                    '{C:inactive}(Currently {C:chips}+#1#{C:inactive} chips)'
+                    '{C:inactive}(Currently {C:chips}+#2#{C:inactive} chips)'
                 }
             },
             j_bgn_foundationpile = {
@@ -745,10 +745,14 @@ return {
             j_bgn_cherryo = {
                 name = 'Cherry-O',
                 text = {
-                    '{X:mult,C:white}X#1#{} Mult',
-                    'If a playing card',
-                    'is {C:red}destroyed{},',
-                    'this card is {C:red}destroyed'
+                    {
+                        '{X:mult,C:white}X#1#{} Mult',
+                        'If a playing card',
+                        'is {C:red}destroyed{},',
+                        'this card is {C:red}destroyed'
+                    },{
+                        '{C:inactive}Art by Clankk'
+                    }
                 }
             },
             j_bgn_conveyorbeltsushi = {
@@ -1023,6 +1027,13 @@ return {
                     '{C:inactive,s:0.85}Effect changes with',
                     '{C:inactive,s:0.85}card position'
                 }
+            },
+            e_bgn_wee = {
+                name = 'Mini',
+                text = {
+                    'Goes in a',
+                    'consumable slot'
+                }
             }
         },
 
@@ -1033,6 +1044,14 @@ return {
                     'Next base edition shop',
                     'Joker is free and',
                     'becomes {C:dark_edition}Lenticular'
+                }
+            },
+            tag_bgn_mini = {
+                name = 'Mini Tag',
+                text = {
+                    'Next base edition shop',
+                    'Joker is free and',
+                    'becomes {C:dark_edition}Mini'
                 }
             }
         },
@@ -1259,7 +1278,8 @@ return {
         },
         labels = {
             bgn_chance_seal = 'Chance Seal',
-            bgn_lenticular = 'Lenticular'
+            bgn_lenticular = 'Lenticular',
+            bgn_wee = 'Mini'
         }
     }
 }

@@ -1,13 +1,13 @@
 SMODS.Joker {
     key = 'cherryo',
-    atlas = 'placeholders',
+    atlas = 'bgn_joker_sprites',
     attributes = {
         'xmult',
         'food',
     },
     pos = {
-        x = 0,
-        y = 0
+        x = 6,
+        y = 9
     },
     config = {
         extra = {
