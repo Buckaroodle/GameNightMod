@@ -73,7 +73,7 @@ end
 
 -- provided below are code changes to all the vanilla jokers, tarots, and blinds that the mini edition completely fuck with
 
-SMODS.Joker:take_ownership('j_abstract',
+--[[SMODS.Joker:take_ownership('j_abstract',
     {
 config = { extra = { mult = 3 } },
 loc_vars = function(self, info_queue, card)
@@ -118,7 +118,7 @@ calculate = function(self, card, context)
 end
     },
     true -- silent | suppresses mod badge
-)
+)]]
 
 SMODS.Joker:take_ownership('j_madness',
     {
@@ -335,3 +335,37 @@ SMODS.Joker:take_ownership('j_perkeo',
     }
 )
 
+SMODS.Blind:take_ownership('final_heart',
+    {
+        calculate = function(self, card, context)
+            if context.ending_shop and G.consumeables.cards[1] then
+                local can_trigger = false
+                for i = 1, #G.consumeables.cards do
+                    if G.consumeables.cards[i].ability.set ~= 'Joker' then
+                        can_trigger = true
+                    end
+                end
+                if can_trigger then
+                    G.E_MANAGER:add_event(Event({
+                        func = function()
+                            local valid_consumeables = {}
+                            for i = 1, #G.consumeables.cards do
+                                if G.consumeables.cards[i].ability.set == 'Joker' then
+                                else
+                                    valid_consumeables[#valid_consumeables+1] = G.consumeables.cards[i]
+                                end
+                            end
+                            local card_to_copy = pseudorandom_element(valid_consumeables, 'perkeo')
+                            local copied_card = SMODS.copy_card(card_to_copy)
+                            copied_card:set_edition("e_negative", true)
+                            return true
+                        end
+                    }))
+                    return { message = localize('k_duplicated_ex') }
+                else
+                    return { message = ':)' } -- if a message isn't returned, the code gets a mind of its own for some reason idk
+                end
+            end
+        end,
+    }
+)
