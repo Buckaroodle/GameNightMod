@@ -18,6 +18,8 @@ SMODS.Edition {
         if card.config.center.key == "j_wee" then
             card.T.h = card.original_T.h*(0.4)
             card.T.w = card.original_T.w*(0.4)
+        elseif card.config.center.key == 'j_square' then
+
         else
             card.T.h = card.original_T.h*(0.7)
             card.T.w = card.original_T.w*(0.7)
@@ -42,6 +44,11 @@ SMODS.Edition {
                 return true
             end
         }))
+    end,
+    calculate = function(self, card, context)
+        if context.buying_self then
+            G.consumeables:emplace(card)
+        end
     end
 }
 
@@ -168,34 +175,18 @@ SMODS.Joker:take_ownership('j_madness',
 SMODS.Joker:take_ownership('j_blueprint',
     {
         loc_vars = function(self, info_queue, card)
-            if card.area and card.area == G.jokers then
+            if card.area then
                 local other_joker
-                for i = 1, #G.jokers.cards do
-                    if G.jokers.cards[i] == card then other_joker = G.jokers.cards[i + 1] end
+                if card.area == G.jokers then
+                    for i = 1, #G.jokers.cards do
+                        if G.jokers.cards[i] == card then other_joker = G.jokers.cards[i + 1] end
+                    end
+                elseif card.area == G.consumeables then
+                    for i = 1, #G.consumeables.cards do
+                        if G.consumeables.cards[i] == card then other_joker = G.consumeables.cards[i+1] end
+                    end
                 end
                 local compatible = other_joker and other_joker ~= card and other_joker.config.center.blueprint_compat
-                local main_end = {
-                    {
-                        n = G.UIT.C,
-                        config = { align = "bm", minh = 0.4 },
-                        nodes = {
-                            {
-                                n = G.UIT.C,
-                                config = { ref_table = card, align = "m", colour = compatible and mix_colours(G.C.GREEN, G.C.JOKER_GREY, 0.8) or mix_colours(G.C.RED, G.C.JOKER_GREY, 0.8), r = 0.05, padding = 0.06 },
-                                nodes = {
-                                    { n = G.UIT.T, config = { text = ' ' .. localize('k_' .. (compatible and 'compatible' or 'incompatible')) .. ' ', colour = G.C.UI.TEXT_LIGHT, scale = 0.32 * 0.8 } },
-                                }
-                            }
-                        }
-                    }
-                }
-                return { main_end = main_end }
-            elseif card.area and card.area == G.consumeables then
-                local other_joker
-                for i = 1, #G.consumeables.cards do
-                    if G.consumeables.cards[i] == card then other_joker = G.consumeables.cards[i + 1] end
-                end
-                local compatible = other_joker and other_joker ~= card and other_joker.ability.set == 'Joker' and other_joker.config.center.blueprint_compat
                 local main_end = {
                     {
                         n = G.UIT.C,
@@ -234,21 +225,8 @@ SMODS.Joker:take_ownership('j_blueprint',
 
 SMODS.Joker:take_ownership('j_invisible',
     {
-        config = { extra = { invis_rounds = 0, total_rounds = 2 } },
-        loc_vars = function(self, info_queue, card)
-            local main_end = {}
-            if G.jokers and G.jokers.cards then
-                for _, joker in ipairs(G.jokers.cards) do
-                    if joker.edition and joker.edition.negative then
-                        localize { type = 'other', key = 'remove_negative', nodes = main_end, vars = {} }
-                        break
-                    end
-                end
-            end
-            return { vars = { card.ability.extra.total_rounds, card.ability.extra.invis_rounds }, main_end = main_end[1] }
-        end,
         calculate = function(self, card, context)
-            if context.selling_self and (card.ability.extra.invis_rounds >= card.ability.extra.total_rounds) and not context.blueprint then
+            if context.selling_self and (card.ability.invis_rounds >= card.ability.extra) and not context.blueprint then
                 local jokers = {}
                 for i = 1, #G.jokers.cards do
                     if G.jokers.cards[i] ~= card then
@@ -268,7 +246,7 @@ SMODS.Joker:take_ownership('j_invisible',
                         local copied_joker = SMODS.copy_card(chosen_joker,
                             { strip_edition = chosen_joker.edition and chosen_joker.edition.negative })
                         if copied_joker.ability.invis_rounds then copied_joker.ability.invis_rounds = 0 end
-                        if type(copied_joker.ability.extra) == "table" and copied_joker.ability.extra.invis_rounds then copied_joker.ability.extra.invis_rounds = 0 end
+                        if type(copied_joker.ability) == "table" and copied_joker.ability.invis_rounds then copied_joker.ability.invis_rounds = 0 end
                         return { message = localize('k_duplicated_ex') }
                     else
                         return { message = localize('k_no_room_ex') }
@@ -281,16 +259,17 @@ SMODS.Joker:take_ownership('j_invisible',
                     end
                     return { message = localize('k_no_other_jokers') }
                 end
+                return nil, true
             end
             if context.end_of_round and context.game_over == false and context.main_eval and not context.blueprint then
-                card.ability.extra.invis_rounds = card.ability.extra.invis_rounds + 1
-                if card.ability.extra.invis_rounds == card.ability.extra.total_rounds then
+                card.ability.invis_rounds = card.ability.invis_rounds + 1
+                if card.ability.invis_rounds == card.ability.extra then
                     local eval = function(card) return not card.REMOVED end
                     juice_card_until(card, eval, true)
                 end
                 return {
-                    message = (card.ability.extra.invis_rounds < card.ability.extra.total_rounds) and
-                        (card.ability.extra.invis_rounds .. '/' .. card.ability.extra.total_rounds) or
+                    message = (card.ability.invis_rounds < card.ability.extra) and
+                        (card.ability.invis_rounds .. '/' .. card.ability.extra) or
                         localize('k_active_ex'),
                     colour = G.C.FILTER
                 }

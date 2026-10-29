@@ -13,7 +13,7 @@ SMODS.Edition {
     config = {
         chips = 40,
         mult = 8,
-        money = 2,
+        money = 3,
         xmult = 1.4,
         number = 40,
         pre_number = '+',
@@ -155,7 +155,10 @@ SMODS.Consumable:take_ownership('wheel_of_fortune',
                 local editionless_jokers = SMODS.Edition:get_edition_cards(G.jokers, true)
 
                 local eligible_card = pseudorandom_element(editionless_jokers, 'vremade_wheel_of_fortune')
-                local edition = SMODS.poll_edition { key = "vremade_wheel_of_fortune", guaranteed = true, no_negative = true, options = { 'e_polychrome', 'e_holo', 'e_foil', 'e_bgn_lenticular' } }
+                local edition = SMODS.poll_edition { key = "vremade_wheel_of_fortune", guaranteed = true, no_negative = true }
+                if edition == 'e_bgn_wee' then
+                    edition = 'e_polychrome'
+                end
                 eligible_card:set_edition(edition, true)
                 check_for_unlock({ type = 'have_edition' })
             else

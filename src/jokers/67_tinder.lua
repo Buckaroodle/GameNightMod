@@ -1,5 +1,5 @@
 SMODS.Joker {
-    key = 'hangman',
+    key = 'tinder',
     atlas = 'bgn_joker_sprites',
     attributes = {
         'generation',
@@ -9,8 +9,9 @@ SMODS.Joker {
     },
     pos = {
         x = 6,
-        y = 6
+        y = 8
     },
+    unlocked = false,
     config = {
         extra = {
         }
@@ -18,7 +19,7 @@ SMODS.Joker {
     rarity = 2,
     cost = 5,
     loc_vars = function(self, info_queue, card)
-        info_queue[#info_queue + 1] = G.P_CENTERS.c_hanged_man
+        info_queue[#info_queue + 1] = G.P_CENTERS.c_bgn_squeezers
         return {
             vars = {
             }
@@ -31,7 +32,7 @@ SMODS.Joker {
                 func = (function()
                     G.E_MANAGER:add_event(Event({
                         func = function()
-                            SMODS.add_card {key = 'c_hanged_man'}
+                            SMODS.add_card {key = 'c_bgn_squeezers'}
                             return true
                         end
                     }))
@@ -43,25 +44,13 @@ SMODS.Joker {
             return nil, true
         end
     end,
-}
-
-SMODS.Consumable:take_ownership('hanged_man',
-    {
-        loc_vars = function(self, info_queue, card)
-            if G.jokers and next(SMODS.find_card("j_bgn_hangman")) then
-                card.ability.max_highlighted = 3
-            else
-                card.ability.max_highlighted = 2
-            end
-            return {
-                vars = {
-                    card.ability.max_highlighted
-                }
-            }
-        end,
-        can_use = function(self, card)
-        return G.hand and #G.hand.highlighted > 0 and #G.hand.highlighted <= (G.jokers and next(SMODS.find_card("j_bgn_hangman")) and 3 or card.ability.max_highlighted)
+    locked_loc_vars = function(self, info_queue, card)
+        return { vars = { (G.PROFILES[G.SETTINGS.profile].consumeable_usage['c_bgn_squeezers'] or {count = 0}).count } }
+    end,
+    check_for_unlock = function(self, args)
+        if args and args.type and args.type == 'consumeable' and args.context and next(args.context) then
+            return G.PROFILES[G.SETTINGS.profile].consumeable_usage['c_bgn_squeezers'].count >= 5
+        end
+        return false
     end
-    },
-    true
-)
+}

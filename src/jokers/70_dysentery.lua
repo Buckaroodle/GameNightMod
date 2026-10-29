@@ -7,6 +7,7 @@ SMODS.Joker {
         'tarot',
         'passive'
     },
+    unlocked = false,
     pos = {
         x = 6,
         y = 5
@@ -43,6 +44,15 @@ SMODS.Joker {
             return nil, true
         end
     end,
+    locked_loc_vars = function(self, info_queue, card)
+        return { vars = { (G.PROFILES[G.SETTINGS.profile].consumeable_usage['c_death'] or {count = 0}).count } }
+    end,
+    check_for_unlock = function(self, args)
+        if args and args.type and args.type == 'consumeable' and args.context and next(args.context) then
+            return G.PROFILES[G.SETTINGS.profile].consumeable_usage['c_death'].count >= 20
+        end
+        return false
+    end
 }
 
 SMODS.Consumable:take_ownership('death',

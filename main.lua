@@ -113,4 +113,8 @@ function SMODS.current_mod.calculate(self, context)
         local cxt = context
         check_for_unlock({ type = 'booster', context = cxt })
     end
+    if context.using_consumeable then
+        local cxt = context
+        check_for_unlock({ type = 'consumeable', context = cxt })
+    end
 end

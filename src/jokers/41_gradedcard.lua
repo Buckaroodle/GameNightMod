@@ -36,7 +36,7 @@ SMODS.Joker {
                     sell_cost = G.consumeables.cards[i+1].sell_cost
                 end
             end
-        else
+        elseif card.area == G.jokers then
             for i = 1, #G.jokers.cards do
                 if G.jokers.cards[i] == card and G.jokers.cards[i+1] ~= nil then
                     sell_cost = G.jokers.cards[i+1].sell_cost

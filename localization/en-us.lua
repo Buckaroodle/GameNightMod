@@ -695,6 +695,9 @@ return {
                     '{C:red}destroy{} the {C:attention}rightmost{} card',
                     'held in hand and all cards',
                     'in your deck of that {C:attention}rank'
+                },
+                unlock = {
+                    "{E:1,s:1.3}?????",
                 }
             },
             j_bgn_polygon = {
@@ -791,6 +794,11 @@ return {
                         'when {C:attention}Boss Blind{} is defeated',
                         '{C:inactive}(Must have room)'
                     }
+                },
+                unlock = {
+                    'Use {C:attention}The Hanged Man{}',
+                    'a total of {C:attention}15{} times',
+                    '{C:inactive}[#1#]'
                 }
             },
             j_bgn_redrocker = {
@@ -805,6 +813,11 @@ return {
                         '{C:attention}Boss Blind{} is defeated',
                         '{C:inactive}(Must have room)'
                     }
+                },
+                unlock = {
+                    'Use {C:attention}Strength{} a total',
+                    'of {C:attention}10{} times',
+                    '{C:inactive}[#1#]'
                 }
             },
             j_bgn_dysentery = {
@@ -819,6 +832,11 @@ return {
                         '{C:attention}Boss Blind{} is defeated',
                         '{C:inactive}(Must have room)'
                     }
+                },
+                unlock = {
+                    'Use {C:attention}Death{} a total',
+                    'of {C:attention}20{} times',
+                    '{C:inactive}[#1#]'
                 }
             },
             j_bgn_tinder = {
@@ -833,6 +851,11 @@ return {
                         '{C:attention}Boss Blind{} is defeated',
                         '{C:inactive}(Must have room)'
                     }
+                },
+                unlock = {
+                    'Use {C:attention}Squeezers{} a total',
+                    'of {C:attention}5{} times',
+                    '{C:inactive}[#1#]'
                 }
             },
         },
@@ -952,7 +975,7 @@ return {
                     "{C:green}#1# in #2#{} chance to add",
                     "a random {C:dark_edition}Edition",
                     "to a random {C:attention}Joker",
-                    "{C:inactive,s:0.85}(Negative excluded)"
+                    "{C:inactive,s:0.85}(Negative and Mini excluded)"
                 }
             }
         },
@@ -987,6 +1010,13 @@ return {
                 text = {
                     "{C:green}#1# in #2#{} chance to create",
                     "a {C:dark_edition}Negative{} copy of a random Joker"
+                }
+            },
+            c_bgn_hasbro = {
+                name = 'Hasbro',
+                text = {
+                    'Add {C:dark_edition}Mini{} to',
+                    'a random {C:attention}Joker'
                 }
             },
             c_aura = {

@@ -19,6 +19,7 @@ SMODS.Joker {
     rarity = 2,
     cost = 6,
     loc_vars = function(self, info_queue, card)
+        print(SMODS.Edition.obj_buffer)
         return {
             vars = {
                 card.ability.extra.flipped_cards
@@ -64,6 +65,9 @@ SMODS.Joker {
                         if flipped_card == scoring_card then
                             local target_card = scoring_card
                             local random_edition = SMODS.poll_edition { key = "modprefix_seed", guaranteed = true, no_negative = true }
+                            if random_edition == 'e_bgn_wee' then
+                                random_edition = 'e_polychrome'
+                            end
                             --G.E_MANAGER:add_event(Event({
                                 --func = function()
                                     if target_card ~= nil then

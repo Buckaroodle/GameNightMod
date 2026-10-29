@@ -6,6 +6,7 @@ SMODS.Joker {
         'jack',
         'rank'
     },
+    unlocked = false,
     pos = {
         x = 5,
         y = 10

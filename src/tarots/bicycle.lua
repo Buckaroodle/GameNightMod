@@ -25,7 +25,10 @@ SMODS.Consumable {
                 end
             end
             local eligible_card = pseudorandom_element(valid_cards, 'bgn_bicycle')
-            local edition = SMODS.poll_edition { key = "bgn_bicycle", guaranteed = true, no_negative = true, options = { 'e_polychrome', 'e_holo', 'e_foil', 'e_bgn_lenticular' } }
+            local edition = SMODS.poll_edition { key = "bgn_bicycle", guaranteed = true, no_negative = true }
+            if edition == 'e_bgn_wee' then
+                edition = 'e_polychrome'
+            end
             eligible_card:set_edition(edition, true)
         else
             G.E_MANAGER:add_event(Event({
