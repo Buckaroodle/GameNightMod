@@ -13,6 +13,11 @@ SMODS.Blind {
             for _, joker in ipairs(G.jokers.cards) do
                 joker.ability.token_chosen = nil
             end
+            for _, consumeable in ipairs(G.consumeables.cards) do
+                if consumeable.ability.set == 'Joker' then
+                    consumeable.ability.token_chosen = nil
+                end
+            end
         end
 
         if blind.disabled then return end
@@ -23,14 +28,31 @@ SMODS.Blind {
                     debuff = true
                 }
             end
+        elseif context.debuff_card and context.debuff_card.area == G.consumeables then
+            if context.debuff_card.ability.token_chosen then
+                return {
+                    debuff = true
+                }
+            end
         end
 
         if context.first_hand_drawn then
+            local mini_jokers = 0
+            for i = 1, #G.consumeables.cards do
+                if G.consumeables.cards[i].ability.set == 'Joker' then
+                    mini_jokers = mini_jokers + 1
+                end
+            end
             --print(blind.prepped)
-            if G.jokers.cards[1] and G.GAME.dollars >= 20 then
+            if (G.jokers.cards[1] or mini_jokers >= 2) and G.GAME.dollars >= 20 then
                 blind.triggered = true
                 --print('2')
                 local jokers = SMODS.shallow_copy(G.jokers.cards)
+                for i = 1, #G.consumeables.cards do
+                    if G.consumeables.cards[i].ability.set == 'Joker' then
+                        jokers[#jokers+1] = G.consumeables.cards[i]
+                    end
+                end
                 for i = 1, math.floor(G.GAME.dollars / 20) do
                     local _card, index = pseudorandom_element(jokers, 'bgn_token')
                     if _card then

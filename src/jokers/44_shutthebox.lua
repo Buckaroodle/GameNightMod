@@ -42,7 +42,7 @@ SMODS.Joker {
         for i = #concat_ranks, 1, -1 do
             local key = concat_ranks[i]
             nodes[#nodes+1] = {n = G.UIT.R, config = {align = "cm", padding = 0.02}, nodes = {
-                {n = G.UIT.T, config = {text = key, colour = G.C.FILTER, scale = 0.32}}
+                {n = G.UIT.T, config = {text = key, colour = G.C.UI.TEXT_INACTIVE, scale = 0.32}}
             }} 
             index = index + 1
         end
@@ -59,7 +59,7 @@ SMODS.Joker {
             end
             if #card.ability.extra.needed_ranks == 0 then
                 card.ability.extra.needed_ranks = {'Ace', 'King', 'Queen', 'Jack', '10', '9', '8', '7', '6', '5', '4', '3', '2'}
-                return {
+                --[[return {
                     focus = card,
                     message = localize('bgn_plus_tag'),
                     func = function()
@@ -68,6 +68,21 @@ SMODS.Joker {
                             delay = 0.0,
                             func = (function()
                                 bgn_add_tag(bgn_poll_tag("bgn_shutthebox"))
+                                return true
+                            end)
+                        }))
+                    end,
+                    card = card
+                }]]
+                return {
+                    focus = card,
+                    message = localize('bgn_plus_tag'),
+                    func = function()
+                        G.E_MANAGER:add_event(Event({
+                            trigger = 'before',
+                            delay = 0.0,
+                            func = (function()
+                                add_tag({ key = 'tag_voucher' })
                                 return true
                             end)
                         }))

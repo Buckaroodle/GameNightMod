@@ -330,16 +330,13 @@ return {
                 }
             },
             j_bgn_slamwich = {
-                name = 'Slamwich',
+                name = 'Ratscrew',
                 text = {
                     {
-                        'If played hand is a {C:attention}Pair,',
-                        'both scoring cards',
-                        'retrigger additional times',
-                        '{C:attention}equal{} to the number of',
-                        '{C:attention}unscoring cards{} between them'
-                    },{
-                        '{C:inactive}Art by Polar'
+                        'Scoring cards retrigger',
+                        'additional times equal to',
+                        'the number of {C:attention}unscoring{} cards',
+                        'next to them'
                     }
                 },
                 unlock = {
@@ -547,9 +544,9 @@ return {
             j_bgn_shutthebox = {
                 name = 'Shut The Box',
                 text = {
-                    'Create a random {C:attention}Tag{} when all',
+                    'Create a {C:attention}Voucher Tag{} when all',
                     'card {C:attention}ranks{} have scored',
-                    'Unscored ranks:'
+                    '{C:inactive}Unscored ranks:'
                 }
             },
             j_bgn_safetyzone = {
@@ -574,12 +571,10 @@ return {
                 name = 'Blackjack',
                 text = {
                     {
-                        'If sum of played cards',
-                        'is {C:attention}21 or under{}, this Joker',
-                        'gains {C:chips}chips{} equal to the',
-                        'value of played cards, {C:red}resets',
-                        'if sum of cards is {C:red}22 or over.',
-                        '{C:inactive}(Currently {C:chips}+#1#{C:inactive} chips)'
+                        'This Joker gains {C:chips}+#1#{} chips',
+                        'if sum of scoring cards',
+                        'is exactly {C:attention}21',
+                        '{C:inactive}(Currently {C:chips}+#2#{C:inactive} chips)',
                     },{
                         '{C:attention}Jacks, Queens, and',
                         '{C:attention}Kings{}{C:inactive} are each worth {C:attention}10,',
@@ -663,7 +658,8 @@ return {
             j_bgn_revolution = {
                 name = 'Revolution',
                 text = {
-                    'If a {C:attention}Four of a Kind{} has',
+                    'If a hand containing',
+                    'a {C:attention}Four of a Kind{} has',
                     'been played this round, each',
                     'played {C:attention}2, 3, 4,{} and {C:attention}5',
                     'gives {X:mult,C:white}X#1#{} Mult',
@@ -1009,14 +1005,16 @@ return {
                 name = 'Days of Wonder',
                 text = {
                     "{C:green}#1# in #2#{} chance to create",
-                    "a {C:dark_edition}Negative{} copy of a random Joker"
+                    "a {C:dark_edition}Negative{} copy of a random {C:attention}Joker"
                 }
             },
             c_bgn_hasbro = {
                 name = 'Hasbro',
                 text = {
                     'Add {C:dark_edition}Mini{} to',
-                    'a random {C:attention}Joker'
+                    'a random {C:attention}Joker{},',
+                    '{C:red}destroys{} a random',
+                    'card in your consumables'
                 }
             },
             c_aura = {

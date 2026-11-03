@@ -19,7 +19,6 @@ SMODS.Joker {
     rarity = 2,
     cost = 6,
     loc_vars = function(self, info_queue, card)
-        print(SMODS.Edition.obj_buffer)
         return {
             vars = {
                 card.ability.extra.flipped_cards

@@ -119,6 +119,7 @@ SMODS.Joker {
                 end
             }))
             delay(0.5)]]
+            card.ability.extra.convert_suits = false
         end
     end
 }

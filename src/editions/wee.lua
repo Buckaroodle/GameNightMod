@@ -18,17 +18,50 @@ SMODS.Edition {
         if card.config.center.key == "j_wee" then
             card.T.h = card.original_T.h*(0.4)
             card.T.w = card.original_T.w*(0.4)
-        elseif card.config.center.key == 'j_square' then
-
+        elseif card.config.center.key == 'j_half' then
+            card.T.h = card.original_T.h/(2.6)
+            card.T.w = card.original_T.w*(0.7)
+        elseif card.config.center.key == 'j_photograph' then
+            card.T.h = card.original_T.h/(1.7)
+            card.T.w = card.original_T.w*(0.7)
+        elseif card.config.center.key == 'j_bgn_omen' then
+            card.T.h = card.original_T.h*(0.7)
+            card.T.w = card.original_T.w/(2)
+        elseif card.config.center.key == 'j_square'
+        or card.config.center.key == 'j_bgn_doubleletterscore'
+        or card.config.center.key == 'j_bgn_memory'
+        or card.config.center.key == 'j_bgn_dobble' then
+            card.T.h = card.original_T.h/(1.8)
+            card.T.w = card.original_T.w*(0.7)
         else
             card.T.h = card.original_T.h*(0.7)
             card.T.w = card.original_T.w*(0.7)
+        end
+        if card.config.center.soul_pos then
+            card.children.floating_sprite.T.h = card.children.floating_sprite.original_T.h*(0.7)
+            card.children.floating_sprite.T.w = card.children.floating_sprite.original_T.w*(0.7)
+            print('test!')
         end
     end,
     on_remove = function(card)
         if card.config.center.key == "j_wee" then
             card.T.h = card.original_T.h*(0.7)
             card.T.w = card.original_T.w*(0.7)
+        elseif card.config.center.key == 'j_half' then
+            card.T.h = card.original_T.h/(1.7)
+            card.T.w = card.original_T.w
+        elseif card.config.center.key == 'j_photograph' then
+            card.T.h = card.original_T.h/(1.2)
+            card.T.w = card.original_T.w
+        elseif card.config.center.key == 'j_bgn_omen' then
+            card.T.h = card.original_T.h
+            card.T.w = card.original_T.w/(1.5)
+        elseif card.config.center.key == 'j_square'
+        or card.config.center.key == 'j_bgn_doubleletterscore'
+        or card.config.center.key == 'j_bgn_memory'
+        or card.config.center.key == 'j_bgn_dobble' then
+            card.T.h = card.original_T.h/(1.3)
+            card.T.w = card.original_T.w
         else
             card.T.h = card.original_T.h
             card.T.w = card.original_T.w
@@ -78,31 +111,88 @@ G.FUNCS.can_select_card = function(e)
     end
 end
 
+local bgn_poll_edition_ref = poll_edition
+poll_edition = function(_key, _mod, _no_neg, _guaranteed)
+    if _key:sub(1, 16) == 'standard_edition' or _key:sub(1, 8) == 'illusion' then
+        if not _options and (_key == "wheel_of_fortune" or _key == "aura") then -- set base game edition polling
+            _options = { 'e_negative', 'e_polychrome', 'e_holo', 'e_foil' }
+        end
+
+        -- Use SMODS object weight system when enabled
+        if SMODS.optional_features.object_weights then return SMODS.poll_object({type = 'Edition', seed = _key, guaranteed = _guaranteed, pool = _options, no_negative = _no_neg, mod = _mod}) end
+
+        
+        local _modifier = 1
+        local edition_poll = pseudorandom(pseudoseed(_key or 'edition_generic')) -- Generate the poll value
+        local available_editions = {}                                          -- Table containing a list of editions and their weights
+
+        if not _options then
+            if _key == "wheel_of_fortune" or _key == "aura" then -- set base game edition polling
+                _options = { 'e_negative', 'e_polychrome', 'e_holo', 'e_foil' }
+            else
+                local unordered_options = get_current_pool("Edition", nil, nil, _key or 'edition_generic')
+                _options = {}
+                for _, edition in ipairs(unordered_options) do -- Flip the order of vanilla editions
+                    if G.P_CENTERS[edition] and G.P_CENTERS[edition].vanilla then
+                        table.insert(_options, 1, edition)
+                    else
+                        table.insert(_options, edition)
+                    end
+                end
+            end
+        end
+        for _, v in ipairs(_options) do
+            local edition_option = {}
+            if type(v) == 'string' then
+                if v ~= 'UNAVAILABLE' then
+                    assert(string.sub(v, 1, 2) == 'e_', ("Edition \"%s\" is missing \"e_\" prefix."):format(v))
+                    edition_option = { name = v, weight = G.P_CENTERS[v].weight }
+                    table.insert(available_editions, edition_option)
+                end
+            elseif type(v) == 'table' then
+                assert(string.sub(v.name, 1, 2) == 'e_', ("Edition \"%s\" is missing \"e_\" prefix."):format(v.name))
+                edition_option = { name = v.name, weight = v.weight }
+                table.insert(available_editions, edition_option)
+            end
+        end
+
+        -- Calculate total weight of editions
+        local total_weight = 0
+        for _, v in ipairs(available_editions) do
+            total_weight = total_weight + (v.weight) -- total all the weights of the polled editions
+        end
+
+        -- If not guaranteed, calculate the base card rate to maintain base 4% chance of editions
+        if not _guaranteed then
+            _modifier = _mod or 1
+            total_weight = total_weight + (total_weight / 4 * 96) -- Find total weight with base_card_rate as 96%
+            for _, v in ipairs(available_editions) do
+                v.weight = G.P_CENTERS[v.name]:get_weight()   -- Apply game modifiers where appropriate (defined in edition declaration)
+            end
+        end
+
+        -- Calculate whether edition is selected
+        local weight_i = 0
+        for _, v in ipairs(available_editions) do
+            weight_i = weight_i + v.weight * _modifier
+            if edition_poll > 1 - (weight_i) / total_weight then
+                if not (v.name == 'e_negative' and _no_neg) and not (v.name == 'e_bgn_wee') then -- skip return if negative is selected and _no_neg is true (this line was edited by buck)
+                    return v.name
+                end
+            end
+        end
+
+        return nil
+    else
+        return bgn_poll_edition_ref(_key, _mod, _no_neg, _guaranteed)
+    end
+end
+
 -- provided below are code changes to all the vanilla jokers, tarots, and blinds that the mini edition completely fuck with
 
---[[SMODS.Joker:take_ownership('j_abstract',
+SMODS.Joker:take_ownership('j_abstract',
     {
-config = { extra = { mult = 3 } },
-loc_vars = function(self, info_queue, card)
-    local joker_count = 0
-    if G.jokers then
-        for i = 1, #G.jokers.cards do
-            if G.jokers.cards[i].ability.set == 'Joker' then
-                joker_count = joker_count + 1
-            end
-        end
-    end
-    if G.consumeables then
-        for i = 1, #G.consumeables.cards do
-            if G.consumeables.cards[i].ability.set == 'Joker' then
-                joker_count = joker_count + 1
-            end
-        end
-    end
-    return { vars = { card.ability.extra.mult, card.ability.extra.mult * (G.jokers and G.consumeables and joker_count or 0) } }
-end,
-calculate = function(self, card, context)
-    if context.joker_main then
+    loc_vars = function(self, info_queue, card)
         local joker_count = 0
         if G.jokers then
             for i = 1, #G.jokers.cards do
@@ -118,14 +208,74 @@ calculate = function(self, card, context)
                 end
             end
         end
-        return {
-            mult = card.ability.extra.mult * joker_count
-        }
+        return { vars = { card.ability.extra, card.ability.extra * (G.jokers and G.consumeables and joker_count or 0) } }
+    end,
+    calculate = function(self, card, context)
+        if context.joker_main then
+            local joker_count = 0
+            if G.jokers then
+                for i = 1, #G.jokers.cards do
+                    if G.jokers.cards[i].ability.set == 'Joker' then
+                        joker_count = joker_count + 1
+                    end
+                end
+            end
+            if G.consumeables then
+                for i = 1, #G.consumeables.cards do
+                    if G.consumeables.cards[i].ability.set == 'Joker' then
+                        joker_count = joker_count + 1
+                    end
+                end
+            end
+            return {
+                mult = card.ability.extra * joker_count
+            }
+        end
     end
-end
     },
     true -- silent | suppresses mod badge
-)]]
+)
+
+SMODS.Joker:take_ownership('j_swashbuckler',
+    {
+    loc_vars = function(self, info_queue, card)
+        local sell_cost = 0
+        for _, joker in ipairs(G.jokers and G.jokers.cards or {}) do
+            if joker ~= card then
+                sell_cost = sell_cost + joker.sell_cost
+            end
+        end
+        for _, item in ipairs(G.consumeables and G.consumeables.cards or {}) do
+            if item.ability.set == 'Joker' and item ~= card then
+                print(item.sell_cost)
+                sell_cost = sell_cost + item.sell_cost
+            end
+        end
+        card.ability.mult = sell_cost
+        return { vars = { card.ability.mult } }
+    end,
+    calculate = function(self, card, context)
+        if context.joker_main then
+            local sell_cost = 0
+            for _, joker in ipairs(G.jokers and G.jokers.cards or {}) do
+                if joker ~= card then
+                    sell_cost = sell_cost + joker.sell_cost
+                end
+            end
+            for _, item in ipairs(G.consumeables and G.consumeables.cards or {}) do
+                if item.ability.set == 'Joker' and item ~= card then
+                    sell_cost = sell_cost + item.sell_cost
+                end
+            end
+            card.ability.mult = sell_cost
+            return {
+                mult = card.ability.mult
+            }
+        end
+    end,
+    },
+    true -- silent | suppresses mod badge
+)
 
 SMODS.Joker:take_ownership('j_madness',
     {
@@ -174,6 +324,7 @@ SMODS.Joker:take_ownership('j_madness',
 
 SMODS.Joker:take_ownership('j_blueprint',
     {
+        name = 'bgn_blueprint',
         loc_vars = function(self, info_queue, card)
             if card.area then
                 local other_joker
@@ -316,35 +467,177 @@ SMODS.Joker:take_ownership('j_perkeo',
 
 SMODS.Blind:take_ownership('final_heart',
     {
-        calculate = function(self, card, context)
-            if context.ending_shop and G.consumeables.cards[1] then
-                local can_trigger = false
-                for i = 1, #G.consumeables.cards do
-                    if G.consumeables.cards[i].ability.set ~= 'Joker' then
-                        can_trigger = true
+        calculate = function(self, blind, context)
+            if context.blind_disabled or context.blind_defeated then
+                for _, joker in ipairs(G.jokers.cards) do
+                    joker.ability.crimson_heart_chosen = nil
+                end
+                for _, consumeable in ipairs(G.consumeables.cards) do
+                    if consumeable.ability.set == 'Joker' then
+                        consumeable.ability.crimson_heart_chosen = nil
                     end
                 end
-                if can_trigger then
-                    G.E_MANAGER:add_event(Event({
-                        func = function()
-                            local valid_consumeables = {}
-                            for i = 1, #G.consumeables.cards do
-                                if G.consumeables.cards[i].ability.set == 'Joker' then
-                                else
-                                    valid_consumeables[#valid_consumeables+1] = G.consumeables.cards[i]
-                                end
+            end
+
+            if blind.disabled then return end
+
+            if context.debuff_card and context.debuff_card.area == G.jokers then
+                if context.debuff_card.ability.crimson_heart_chosen then
+                    return {
+                        debuff = true
+                    }
+                end
+            elseif context.debuff_card and context.debuff_card.area == G.consumeables then
+                if context.debuff_card.ability.crimson_heart_chosen then
+                    return {
+                        debuff = true
+                    }
+                end
+            end
+            if context.press_play then
+                local mini_jokers = 0
+                for i = 1, #G.consumeables.cards do
+                    if G.consumeables.cards[i].ability.set == 'Joker' then
+                        mini_jokers = mini_jokers + 1
+                    end
+                end
+                if (G.jokers.cards[1] or mini_jokers >= 2) then
+                    blind.triggered = true -- This won't trigger Matador in this context due to a Vanilla bug (a workaround is setting it in context.debuff_hand)
+                    blind.prepped = true
+                end
+            end
+            if context.hand_drawn then
+                local mini_jokers = 0
+                for i = 1, #G.consumeables.cards do
+                    if G.consumeables.cards[i].ability.set == 'Joker' then
+                        mini_jokers = mini_jokers + 1
+                    end
+                end
+                if blind.prepped and (G.jokers.cards[1] or mini_jokers >= 2) then
+                    local prev_chosen_set = {}
+                    local fallback_jokers = {}
+                    local jokers = {}
+                    for i = 1, #G.jokers.cards do
+                        if G.jokers.cards[i].ability.crimson_heart_chosen then
+                            prev_chosen_set[G.jokers.cards[i]] = true
+                            G.jokers.cards[i].ability.crimson_heart_chosen = nil
+                            if G.jokers.cards[i].debuff then SMODS.recalc_debuff(G.jokers.cards[i]) end
+                        end
+                    end
+                    for i = 1, #G.consumeables.cards do
+                        if G.consumeables.cards[i].ability.crimson_heart_chosen then
+                            prev_chosen_set[G.jokers.cards[i]] = true
+                            G.jokers.cards[i].ability.crimson_heart_chosen = nil
+                            if G.jokers.cards[i].debuff then SMODS.recalc_debuff(G.consumeables.cards[i]) end
+                        end
+                    end
+                    for i = 1, #G.jokers.cards do
+                        if not G.jokers.cards[i].debuff then
+                            if not prev_chosen_set[G.jokers.cards[i]] then
+                                jokers[#jokers + 1] = G.jokers.cards[i]
                             end
-                            local card_to_copy = pseudorandom_element(valid_consumeables, 'perkeo')
-                            local copied_card = SMODS.copy_card(card_to_copy)
-                            copied_card:set_edition("e_negative", true)
+                            table.insert(fallback_jokers, G.jokers.cards[i])
+                        end
+                    end
+                    for i = 1, #G.consumeables.cards do
+                        if not G.consumeables.cards[i].debuff then
+                            if G.consumeables.cards[i].set.ability == 'Joker' then
+                                if not prev_chosen_set[G.consumeables.cards[i]] then
+                                    jokers[#jokers + 1] = G.consumeables.cards[i]
+                                end
+                                table.insert(fallback_jokers, G.consumeables.cards[i])
+                            end
+                        end
+                    end
+                    if #jokers == 0 then jokers = fallback_jokers end
+                    local _card = pseudorandom_element(jokers, 'vremade_crimson_heart')
+                    if _card then
+                        _card.ability.crimson_heart_chosen = true
+                        SMODS.recalc_debuff(_card)
+                        _card:juice_up()
+                        blind:wiggle()
+                    end
+                end
+                blind.prepped = nil
+            end
+        end
+    }
+)
+
+SMODS.Blind:take_ownership('final_acorn',
+    {
+        name = 'bgn_acorn',
+        calculate = function(self, blind, context)
+        if blind.disabled then return end
+
+        if context.setting_blind then
+            local mini_jokers = 0
+            local shuffle_consumeables = false
+            for i = 1, #G.consumeables.cards do
+                if G.consumeables.cards[i].ability.set == 'Joker' then
+                    mini_jokers = mini_jokers + 1
+                    if mini_jokers >= 2 then
+                        shuffle_consumeables = true
+                    end
+                end
+            end
+            if #G.jokers.cards > 0 or shuffle_consumeables then
+                G.jokers:unhighlight_all()
+                if shuffle_consumeables then
+                    G.consumeables:unhighlight_all()
+                end
+                for i = 1, #G.jokers.cards do
+                    G.jokers.cards[i]:flip()
+                end
+                if shuffle_consumeables then
+                    for i = 1, #G.consumeables.cards do
+                        G.consumeables.cards[i]:flip()
+                    end
+                end
+                if #G.jokers.cards > 1 or shuffle_consumeables then
+                    G.E_MANAGER:add_event(Event({
+                        trigger = 'after',
+                        delay = 0.2,
+                        func = function()
+                            G.E_MANAGER:add_event(Event({
+                                func = function()
+                                    G.jokers:shuffle('aajk')
+                                    if shuffle_consumeables then
+                                        G.consumeables:shuffle('aajk')
+                                    end
+                                    play_sound('cardSlide1', 0.85)
+                                    return true
+                                end,
+                            }))
+                            delay(0.15)
+                            G.E_MANAGER:add_event(Event({
+                                func = function()
+                                    G.jokers:shuffle('aajk')
+                                    if shuffle_consumeables then
+                                        G.consumeables:shuffle('aajk')
+                                    end
+                                    play_sound('cardSlide1', 1.15)
+                                    return true
+                                end
+                            }))
+                            delay(0.15)
+                            G.E_MANAGER:add_event(Event({
+                                func = function()
+                                    G.jokers:shuffle('aajk')
+                                    if shuffle_consumeables then
+                                        G.consumeables:shuffle('aajk')
+                                    end
+                                    play_sound('cardSlide1', 1)
+                                    return true
+                                end
+                            }))
+                            delay(0.5)
                             return true
                         end
                     }))
-                    return { message = localize('k_duplicated_ex') }
-                else
-                    return { message = ':)' } -- if a message isn't returned, the code gets a mind of its own for some reason idk
                 end
             end
-        end,
+        end
+    end
     }
 )

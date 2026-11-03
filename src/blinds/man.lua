@@ -13,6 +13,11 @@ SMODS.Blind {
 
         if context.after then
             local all_jokers = SMODS.shallow_copy(G.jokers.cards)
+            for i = 1, #G.consumeables.cards do
+                if G.consumeables.cards[i].ability.set == 'Joker' then
+                    all_jokers[#all_jokers+1] = G.consumeables.cards[i]
+                end
+            end
             local all_stickers = {'eternal', 'perishable', 'rental'}
             pseudoshuffle(all_jokers, 'bgn_man')
             pseudoshuffle(all_stickers, 'bgn_man')

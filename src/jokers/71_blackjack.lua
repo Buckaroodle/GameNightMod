@@ -14,7 +14,8 @@ SMODS.Joker {
     },
     config = {
         extra = {
-            chips = 0,
+            chips_mod = 50,
+            chips = 0
         }
     },
     rarity = 3,
@@ -22,6 +23,7 @@ SMODS.Joker {
     loc_vars = function(self, info_queue, card)
         return {
             vars = {
+                card.ability.extra.chips_mod,
                 card.ability.extra.chips,
             }
         }
@@ -51,17 +53,11 @@ SMODS.Joker {
                     end
                 end
             end
-            if chip_total <= 21 then
-                card.ability.extra.chips = card.ability.extra.chips + chip_total
+            if chip_total == 21 then
+                card.ability.extra.chips = card.ability.extra.chips + card.ability.extra.chips_mod
                 return {
                     message = localize('k_upgrade_ex'),
                     colour = G.C.CHIPS,
-                }
-            else
-                card.ability.extra.chips = 0
-                return {
-                    message = 'Bust!',
-                    colour = G.C.BLUE
                 }
             end
         end

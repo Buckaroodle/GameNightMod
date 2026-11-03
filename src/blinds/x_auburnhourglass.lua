@@ -13,6 +13,11 @@ SMODS.Blind {
             for _, joker in ipairs(G.jokers.cards) do
                 joker.ability.auburn_hourglass_chosen = nil
             end
+            for _, consumeable in ipairs(G.consumeables.cards) do
+                if consumeable.ability.set == 'Joker' then
+                    consumeable.ability.auburn_hourglass_chosen = nil
+                end
+            end
         end
 
         if blind.disabled then return end
@@ -23,10 +28,24 @@ SMODS.Blind {
                     debuff = true
                 }
             end
+        elseif context.debuff_card and context.debuff_card.area == G.consumeables then
+            if context.debuff_card.ability.auburn_hourglass_chosen then
+                return {
+                    debuff = true
+                }
+            end
         end
-        if context.press_play and G.jokers.cards[1] then
-            blind.triggered = true -- This won't trigger Matador in this context due to a Vanilla bug (a workaround is setting it in context.debuff_hand)
-            blind.prepped = true
+        if context.press_play then
+            local mini_jokers = 0
+            for i = 1, #G.consumeables.cards do
+                if G.consumeables.cards[i].ability.set == 'Joker' then
+                    mini_jokers = mini_jokers + 1
+                end
+            end
+            if (G.jokers.cards[1] or mini_jokers >= 2) then
+                blind.triggered = true -- This won't trigger Matador in this context due to a Vanilla bug (a workaround is setting it in context.debuff_hand)
+                blind.prepped = true
+            end
         end
         if context.hand_drawn and G.GAME.current_round.hands_played > 0 then
             --print(blind.prepped)
@@ -42,6 +61,11 @@ SMODS.Blind {
                         --if G.jokers.cards[i].debuff then SMODS.recalc_debuff(G.jokers.cards[i]) end
                     end
                 end
+                for i = 1, #G.consumeables.cards do
+                    if G.consumeables.cards[i].ability.auburn_hourglass_chosen and G.consumeables.cards[i].ability.set == 'Joker' then
+                        prev_chosen_set[G.jokers.cards[i]] = true
+                    end
+                end
                 for i = 1, #G.jokers.cards do
                     --if not G.jokers.cards[i].debuff then
                         if not prev_chosen_set[G.jokers.cards[i]] then
@@ -49,6 +73,12 @@ SMODS.Blind {
                         end
                         table.insert(fallback_jokers, G.jokers.cards[i])
                     --end
+                end
+                for i = 1, #G.consumeables.cards do
+                        if not prev_chosen_set[G.jokers.cards[i]] and G.consumeables.cards[i].ability.set == 'Joker' then
+                            jokers[#jokers + 1] = G.jokers.cards[i]
+                        end
+                        table.insert(fallback_jokers, G.jokers.cards[i])
                 end
                 if #jokers == 0 then jokers = fallback_jokers end
                 --local _card = pseudorandom_element(jokers, 'bgn_auburn_hourglass')

@@ -10,7 +10,7 @@ SMODS.Joker {
     },
     config = {
         extra = {
-            xmult = 2,
+            xmult = 1.5,
             active = false
         }
     },
@@ -27,7 +27,6 @@ SMODS.Joker {
     end,
     calculate = function(self, card, context)
         if context.before and next(context.poker_hands['Four of a Kind']) then
-            print('set to true!')
             card.ability.extra.active = true
             if not context.blueprint then
                 local eval = function(card) return card.ability.extra.active == true and not G.RESET_JIGGLES end
@@ -35,9 +34,7 @@ SMODS.Joker {
             end
         end
         if context.individual and context.cardarea == G.play then
-            print(card.ability.extra.active)
             if not SMODS.has_no_rank(context.other_card) and context.other_card:get_id() >= 2 and context.other_card:get_id()<= 5 and card.ability.extra.active then
-                print('eligible card!')
                 return {
                     xmult = card.ability.extra.xmult
                 }

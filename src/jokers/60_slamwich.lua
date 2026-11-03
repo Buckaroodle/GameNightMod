@@ -2,27 +2,21 @@ SMODS.Joker {
     key = 'slamwich',
     atlas = 'bgn_joker_sprites',
     attributes = {
-        'retrigger',
-        'hand_type'
+        'retrigger'
     },
     unlocked = false,
     pos = {
-        x = 0,
-        y = 0
+        x = 7,
+        y = 1
     },
-    pixel_size = { h = 93 },
-    config = {
-        extra = {
-        }
-    },
-    rarity = 3,
+    rarity = 2,
     cost = 7,
     loc_vars = function(self, info_queue, card)
         return {
         }
-    end,
+    end, -- scoring cards retrigger additional times equal to the number of unscoring cards next to them
     calculate = function(self, card, context)
-        if context.before and context.poker_hands and next(context.poker_hands['Pair']) then
+        --[[if context.before and context.poker_hands and next(context.poker_hands['Pair']) then
             card.ability.extra.repetition_amount = 0
             local first_card_found = false
             local second_card_found = false
@@ -54,7 +48,53 @@ SMODS.Joker {
                 repetitions = card.ability.extra.repetition_amount
                 --repetitions = 1
             }
+        end]]
+
+        if context.repetition and context.cardarea == G.play then
+            local retriggers, card_position = 0, 0
+            for i = 1, #context.full_hand do
+                if context.full_hand[i] == context.other_card then
+                    card_position = i
+                end
+            end
+            local left_is_scoring, right_is_scoring = false, false
+            local left_card, right_card = context.full_hand[card_position-1], context.full_hand[card_position+1]
+            if left_card then
+                for i = 1, #context.scoring_hand do
+                    if context.scoring_hand[i] == left_card then
+                        left_is_scoring = true
+                    end 
+                end
+            else
+                left_is_scoring = true
+            end
+            if right_card then
+                for i = 1, #context.scoring_hand do
+                    if context.scoring_hand[i] == right_card then
+                        right_is_scoring = true
+                    end 
+                end
+            else
+                right_is_scoring = true
+            end
+            print(left_is_scoring)
+            print(right_is_scoring)
+            if left_is_scoring == false then
+                retriggers = retriggers + 1
+            end
+            if right_is_scoring == false then
+                retriggers = retriggers + 1
+            end
+            print(retriggers)
+            if retriggers > 0 then
+                return {
+                    repetitions = retriggers
+                }
+            end
         end
+        --in card.individual do the following
+        -- figure out the position of the scoring card
+        -- 
         
     end,
     locked_loc_vars = function(self, info_queue, card)

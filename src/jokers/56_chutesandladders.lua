@@ -46,7 +46,7 @@ SMODS.Joker {
                 chips = card.ability.extra.chips
             }
         end
-        if context.after and SMODS.pseudorandom_probability(card, 'bgn_chutesandladders', card.ability.extra.numerator, card.ability.extra.denominator) and not context.blueprint then
+        if context.after and SMODS.pseudorandom_probability(card, 'bgn_chutesandladders', card.ability.extra.numerator, card.ability.extra.denominator) and not context.blueprint and context.game_over == false then
             card.ability.extra.chips = math.ceil(card.ability.extra.chips / 2)
             math.ceil(card.ability.extra.chips)
             return {
