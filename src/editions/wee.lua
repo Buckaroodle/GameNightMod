@@ -111,7 +111,7 @@ G.FUNCS.can_select_card = function(e)
     end
 end
 
-local bgn_poll_edition_ref = poll_edition
+--[[local bgn_poll_edition_ref = poll_edition
 poll_edition = function(_key, _mod, _no_neg, _guaranteed)
     if _key:sub(1, 16) == 'standard_edition' or _key:sub(1, 8) == 'illusion' then
         if not _options and (_key == "wheel_of_fortune" or _key == "aura") then -- set base game edition polling
@@ -186,7 +186,7 @@ poll_edition = function(_key, _mod, _no_neg, _guaranteed)
     else
         return bgn_poll_edition_ref(_key, _mod, _no_neg, _guaranteed)
     end
-end
+end]]
 
 -- provided below are code changes to all the vanilla jokers, tarots, and blinds that the mini edition completely fuck with
 

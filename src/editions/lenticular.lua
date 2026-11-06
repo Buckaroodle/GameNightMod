@@ -1,6 +1,28 @@
+--local l4_img = love.graphics.newImage("Mods/GameNightMod/bgn_lenticular_sprites_bg.png")
+
+local l4_img = SMODS.Atlas {
+    key = "bgn_lenticular_sprites_bg",
+    path = "bgn_lenticular_sprites_bg.png",
+    px = 71,
+    py = 95
+}
+
 SMODS.Shader {
-    key = 'lenticular',
-    path = 'lenticular.fs',
+    key = "lenticular",
+    path = "lenticular.fs",
+    send_vars = function (sprite, card)
+        if card then
+            return {
+                aux_img = l4_img.image,
+                aux_num = card.rank
+            }
+        else
+            return {
+                aux_img = l4_img.image,
+                aux_num = -1
+            }
+        end
+    end
 }
 
 local function get_cycle_integer(x)

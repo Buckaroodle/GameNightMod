@@ -381,6 +381,20 @@ payload = '''
 '''
 match_indent = true
 
+[[patches]]
+[patches.pattern]
+target = 'src/overrides'
+pattern = "if not (v.name == 'e_negative' and _no_neg) then"
+position = 'before'
+payload = '''
+if _key:sub(1, 16) == 'standard_edition' or _key:sub(1, 8) == 'illusion' then
+    return v.name
+end
+'''
+match_indent = true
+
+
+# if _key:sub(1, 16) == 'standard_edition' or _key:sub(1, 8) == 'illusion' then
 
 #[[patches]]
 #[patches.pattern]
