@@ -24,11 +24,7 @@ SMODS.Joker {
                     give_mult = true
                 end
             end
-                --print(chips_value)
-                --print(mult_value)
-                --print(give_mult)
             if give_mult == true then
-                --print('hello!!!')
                 return {
                     mult = mult_value
                 }

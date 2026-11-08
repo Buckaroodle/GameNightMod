@@ -7,7 +7,7 @@ local function integer_to_rank(id)
     end
     return rank
 end
-
+--
 SMODS.Joker {
     key = 'routecard',
     atlas = 'bgn_joker_sprites',

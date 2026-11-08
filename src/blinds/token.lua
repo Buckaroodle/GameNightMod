@@ -44,7 +44,7 @@ SMODS.Blind {
                 end
             end
             --print(blind.prepped)
-            if (G.jokers.cards[1] or #mini_jokers >= 2) and G.GAME.dollars >= 20 then
+            if (G.jokers.cards[1] or #mini_jokers >= 1) and G.GAME.dollars >= 20 then
                 blind.triggered = true
                 --print('2')
                 local jokers = SMODS.shallow_copy(G.jokers.cards)

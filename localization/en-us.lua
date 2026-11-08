@@ -109,9 +109,9 @@ return {
                 text = {
                     'Adds {C:green}#1# and #2#',
                     'to the left and right',
-                    'sides of all {C:green}probabilities,',
-                    'values change each Ante',
+                    'sides of all {C:green}probabilities',
                     '{C:inactive}(ex: {C:green}1 in 4{} -> {C:green}#3# in #4#{})',
+                    '{C:inactive}Values change each Ante',
                 }
             },
             j_bgn_mermaid = {
@@ -918,7 +918,6 @@ return {
                     '{C:green}#1# in #2#{} chance to add',
                     'a random {C:dark_edition}Edition{} to',
                     'a random {C:attention}card{} in your hand',
-                    '{C:inactive,s:0.85}(Negative excluded)'
                 }
             },
             c_bgn_fournier = {
