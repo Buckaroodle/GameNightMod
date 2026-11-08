@@ -49,7 +49,7 @@ SMODS.Joker {
     end,
     check_for_unlock = function(self, args)
         if args and args.type and args.type == 'consumeable' and args.context and next(args.context) then
-            return G.PROFILES[G.SETTINGS.profile].consumeable_usage['c_strength'].count >= 10
+            return (G.PROFILES[G.SETTINGS.profile].consumeable_usage['c_strength'] or {count = 0}).count >= 10
         end
         return false
     end
