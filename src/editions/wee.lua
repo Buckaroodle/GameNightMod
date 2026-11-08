@@ -529,7 +529,7 @@ SMODS.Blind:take_ownership('final_heart',
                     end
                     for i = 1, #G.consumeables.cards do
                         if not G.consumeables.cards[i].debuff then
-                            if G.consumeables.cards[i].set.ability == 'Joker' then
+                            if G.consumeables.cards[i].ability.set == 'Joker' then
                                 if not prev_chosen_set[G.consumeables.cards[i]] then
                                     jokers[#jokers + 1] = G.consumeables.cards[i]
                                 end
