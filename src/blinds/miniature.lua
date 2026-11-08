@@ -10,7 +10,7 @@ SMODS.Blind {
     calculate = function(self, blind, context)
         if blind.disabled then return end
 
-        if context.after then
+        if context.after and context.game_over == false then
             local eligible_cards = {}
             local chosen_cards = {}
             for i, playing_card in ipairs(G.hand.cards) do

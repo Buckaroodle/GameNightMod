@@ -69,13 +69,23 @@ jd_def["j_bgn_storedenergy"] = {
         card.joker_display_values.chips = chips
     end]]
 }
---[[jd_def["j_bgn_phases"] = {
+jd_def["j_bgn_garbage"] = {
+    text = {
+        { text = "+" },
+        { ref_table = "card.ability.extra", ref_value = "chips", retrigger_type = "mult" },
+    },
+    text_config = { colour = G.C.CHIPS },
+}
+jd_def["j_bgn_phases"] = {
     text = {
         { text = "+" },
         { ref_table = "card.joker_display_values", ref_value = "mult", retrigger_type = "mult" },
     },
     text_config = { colour = G.C.MULT },
-}]]
+    calc_function = function(card)
+        card.joker_display_values.mult = card.ability.extra.mult_gain * #card.ability.extra.hand_types_this_ante
+    end
+}
 --[[jd_def["j_bgn_assassin"] = {
     text = {
         { text = "+" },
@@ -108,7 +118,7 @@ jd_def["j_bgn_storedenergy"] = {
     },
     text_config = { colour = G.C.MULT },
 }]]
---[[jd_def["j_bgn_stand"] = {
+jd_def["j_bgn_stand"] = {
     text = {
         { text = "+" },
         { ref_table = "card.joker_display_values", ref_value = "mult", retrigger_type = "mult" }
@@ -117,28 +127,59 @@ jd_def["j_bgn_storedenergy"] = {
     calc_function = function(card)
         local ranks, bust = {}, false
         local hand = SMODS.shallow_copy(G.hand.cards)
-        for _, playing_card in ipairs(G.hand.highlighted) do
-            for _, playing_card2 in ipairs(G.hand.cards) do
+        --[[for _, playing_card in ipairs(G.hand.highlighted) do
+            for _, playing_card2 in ipairs(hand) do
                 if playing_card == playing_card2 then
-                    table.remove()
+                    table.remove(playing_card)
+                end
+            end
+        end]]
+        --[[for i = 1, #G.hand.highlighted do
+            for _, playing_card in ipairs(hand) do
+                if playing_card == G.hand.highlighted[i] then
+                    table.remove(playing_card, i)
+                end
+            end
+        end]]
+        --[[for _, playing_card in ipairs(hand) do
+            for i = 1, #G.hand.highlighted do
+                if playing_card == G.hand.highlighted[i] then
+                    --print(#hand)
+                    table.remove(hand, i)
+                end
+            end
+        end]]
+        for i = 1, #G.hand.cards do
+            for j = 1, #G.hand.highlighted do
+                if G.hand.cards[i] == G.hand.highlighted[j] then
+                    table.remove(hand, i)
                 end
             end
         end
-        for k, v in pairs(G.hand.cards) do -- go through all cards held in hand
+        print(#hand)
+        --[[for k, v in pairs(hand) do -- go through all cards held in hand
             if not SMODS.has_no_rank(v) then
                 if ranks[v:get_id()] then -- does this rank have an entry in the dictionary?
                     bust = true -- if so, it's a repeat rank. BUST!
                 end
                 ranks[v:get_id()] = true -- now we add it to the dictionary
             end
+        end]]
+        for i = 1, #hand do
+            if not SMODS.has_no_rank(hand[i]) then
+                if ranks[hand[i]:get_id()] then
+                    bust = true
+                end
+                ranks[hand[i]:get_id()] = true
+            end
         end
         if bust then
             card.joker_display_values.mult = 0
         else
-            card.joker_display_values.mult = card.ability.extra.mult * #G.hand.cards
+            card.joker_display_values.mult = card.ability.extra.mult * #hand
         end
     end
-}]]
+}
 jd_def["j_bgn_palace"] = {
 }
 jd_def["j_bgn_bananasplit"] = {

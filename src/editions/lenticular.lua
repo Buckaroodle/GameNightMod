@@ -96,7 +96,7 @@ SMODS.Edition {
             card.edition.x_style = G.C.WHITE
         elseif position_abr == 3 then
             card.edition.number = card.edition.money --money
-            card.edition.pre_number = '$'
+            card.edition.pre_number = '+$'
             card.edition.post_number = ''
             card.edition.style = G.C.MONEY
             card.edition.x_style = G.C.WHITE

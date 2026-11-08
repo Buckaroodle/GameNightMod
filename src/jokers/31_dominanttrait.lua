@@ -38,6 +38,11 @@ SMODS.Joker {
                         jokers:add_sticker("eternal", true)
                     end
                 end
+                for i = 1, #G.consumeables.cards do
+                    if G.consumeables.cards[i].ability.set == 'Joker' and G.consumeables.cards[i].config.center.eternal_compat == true then
+                        G.consumeables.cards[i]:add_sticker("eternal", true)
+                    end
+                end
                 return true 
             end,
             }))

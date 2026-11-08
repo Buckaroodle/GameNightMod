@@ -92,14 +92,15 @@ return {
                 text = {
                     {
                         '{X:mult,C:white}X#3#{} Mult when',
-                        'light is {C:attention}green,',
+                        'light is {C:green}green,',
                         '{C:green}#1# in #2#{} chance',
                         'after each hand played',
-                        'to turn {C:attention}red{}'
+                        'to turn {C:red}red{}',
+                        '{C:inactive}#6#'
                     },{
                         'A {C:attention}#4#{} must be',
                         'played to turn light',
-                        'back to {C:attention}green'
+                        'back to {C:green}green'
                     }
                 }
             },
@@ -532,7 +533,7 @@ return {
                     'Does your Joker',
                     '#2#{C:attention}#3#{}#4#?',
                     'If so, that Joker',
-                    'gives {X:mult,C:white}X#1#{} Mult,',
+                    'gives {X:mult,C:white}X#1#{} Mult',
                     '{s:0.8}Question changes every round'
                 },
                 unlock = {
@@ -1012,9 +1013,8 @@ return {
                 name = 'Hasbro',
                 text = {
                     'Add {C:dark_edition}Mini{} to',
-                    'a random {C:attention}Joker{},',
-                    '{C:red}destroys{} a random',
-                    'card in your consumables'
+                    'a random {C:attention}Joker{}',
+                    '{C:inactive}(Must have room)'
                 }
             },
             c_aura = {
@@ -1303,7 +1303,9 @@ return {
             bgn_leftcompat = '< compatible',
             bgn_leftincompat = '< incompatible',
             bgn_rightcompat = 'compatible >',
-            bgn_rightincompat = 'incompatible >'
+            bgn_rightincompat = 'incompatible >',
+            bgn_greenlight = 'Green Light!',
+            bgn_redlight = 'Red Light!'
         },
         labels = {
             bgn_chance_seal = 'Chance Seal',

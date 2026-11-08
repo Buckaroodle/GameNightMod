@@ -11,7 +11,7 @@ SMODS.Consumable {
         info_queue[#info_queue + 1] = G.P_CENTERS.e_bgn_mini
     end,
     use = function(self, card, area, copier)
-        local destructable_cards = {}
+        --[[local destructable_cards = {}
         for i = 1, #G.consumeables.cards do
             if G.consumeables.cards[i] ~= card and not SMODS.is_eternal(G.consumeables.cards[i], card) then
                 destructable_cards[#destructable_cards+1] = G.consumeables.cards[i]
@@ -28,7 +28,7 @@ SMODS.Consumable {
                     return true
                 end
             }))
-        end
+        end]]
         local editionless_jokers = SMODS.Edition:get_edition_cards(G.jokers, true)
         G.E_MANAGER:add_event(Event({
             trigger = 'after',
@@ -42,6 +42,7 @@ SMODS.Consumable {
         }))
     end,
     can_use = function(self, card)
-        return next(SMODS.Edition:get_edition_cards(G.jokers, true))
+        return (next(SMODS.Edition:get_edition_cards(G.jokers, true)) and
+        ((G.consumeables and #G.consumeables.cards < G.consumeables.config.card_limit) or (card.area == G.consumeables)))
     end
 }

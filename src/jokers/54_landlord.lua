@@ -37,7 +37,12 @@ SMODS.Joker {
                 for _, jokers in ipairs(G.jokers.cards) do
                     jokers:add_sticker("rental", true)
                 end
-                return true 
+                for i = 1, #G.consumeables.cards do
+                    if G.consumeables.cards[i].ability.set == 'Joker' then
+                        G.consumeables.cards[i]:add_sticker('rental', true)
+                    end
+                end
+                return true
             end,
             }))
         end

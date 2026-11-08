@@ -1,13 +1,13 @@
 SMODS.Joker {
     key = 'conveyorbeltsushi',
-    atlas = 'placeholders',
+    atlas = 'bgn_joker_sprites',
     attributes = {
         'reroll',
         'food'
     },
     pos = {
-        x = 1,
-        y = 0
+        x = 7,
+        y = 2
     },
     config = {
 		extra = {

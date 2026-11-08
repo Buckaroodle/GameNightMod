@@ -46,6 +46,7 @@ SMODS.Joker {
             }} 
             index = index + 1
         end
+        info_queue[#info_queue + 1] = { key = 'tag_voucher', set = 'Tag' }
         return {main_end = {{n = G.UIT.R, config = {align = "cm"}, nodes = nodes}},}
     end,
     calculate = function(self, card, context)

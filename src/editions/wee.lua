@@ -1,10 +1,15 @@
+SMODS.Sound {
+  key = 'wee_sfx',
+  path = 'WeeJoker.wav'
+}
+
 SMODS.Edition {
     key = 'wee',
     shader = false,
     in_shop = true,
     weight = 3,
     extra_cost = 3,
-    sound = { sound = "foil1", per = 1.2, vol = 0.4 },
+    sound = { sound = "bgn_wee_sfx", per = 1.2, vol = 0.6 },
     get_weight = function(self)
         return G.GAME.edition_rate * self.weight
     end,
@@ -79,9 +84,9 @@ SMODS.Edition {
         }))
     end,
     calculate = function(self, card, context)
-        if context.buying_self then
+        --[[if context.buying_self then
             G.consumeables:emplace(card)
-        end
+        end]]
     end
 }
 
@@ -110,83 +115,6 @@ G.FUNCS.can_select_card = function(e)
         bgn_can_select_card_ref(e)
     end
 end
-
---[[local bgn_poll_edition_ref = poll_edition
-poll_edition = function(_key, _mod, _no_neg, _guaranteed)
-    if _key:sub(1, 16) == 'standard_edition' or _key:sub(1, 8) == 'illusion' then
-        if not _options and (_key == "wheel_of_fortune" or _key == "aura") then -- set base game edition polling
-            _options = { 'e_negative', 'e_polychrome', 'e_holo', 'e_foil' }
-        end
-
-        -- Use SMODS object weight system when enabled
-        if SMODS.optional_features.object_weights then return SMODS.poll_object({type = 'Edition', seed = _key, guaranteed = _guaranteed, pool = _options, no_negative = _no_neg, mod = _mod}) end
-
-        
-        local _modifier = 1
-        local edition_poll = pseudorandom(pseudoseed(_key or 'edition_generic')) -- Generate the poll value
-        local available_editions = {}                                          -- Table containing a list of editions and their weights
-
-        if not _options then
-            if _key == "wheel_of_fortune" or _key == "aura" then -- set base game edition polling
-                _options = { 'e_negative', 'e_polychrome', 'e_holo', 'e_foil' }
-            else
-                local unordered_options = get_current_pool("Edition", nil, nil, _key or 'edition_generic')
-                _options = {}
-                for _, edition in ipairs(unordered_options) do -- Flip the order of vanilla editions
-                    if G.P_CENTERS[edition] and G.P_CENTERS[edition].vanilla then
-                        table.insert(_options, 1, edition)
-                    else
-                        table.insert(_options, edition)
-                    end
-                end
-            end
-        end
-        for _, v in ipairs(_options) do
-            local edition_option = {}
-            if type(v) == 'string' then
-                if v ~= 'UNAVAILABLE' then
-                    assert(string.sub(v, 1, 2) == 'e_', ("Edition \"%s\" is missing \"e_\" prefix."):format(v))
-                    edition_option = { name = v, weight = G.P_CENTERS[v].weight }
-                    table.insert(available_editions, edition_option)
-                end
-            elseif type(v) == 'table' then
-                assert(string.sub(v.name, 1, 2) == 'e_', ("Edition \"%s\" is missing \"e_\" prefix."):format(v.name))
-                edition_option = { name = v.name, weight = v.weight }
-                table.insert(available_editions, edition_option)
-            end
-        end
-
-        -- Calculate total weight of editions
-        local total_weight = 0
-        for _, v in ipairs(available_editions) do
-            total_weight = total_weight + (v.weight) -- total all the weights of the polled editions
-        end
-
-        -- If not guaranteed, calculate the base card rate to maintain base 4% chance of editions
-        if not _guaranteed then
-            _modifier = _mod or 1
-            total_weight = total_weight + (total_weight / 4 * 96) -- Find total weight with base_card_rate as 96%
-            for _, v in ipairs(available_editions) do
-                v.weight = G.P_CENTERS[v.name]:get_weight()   -- Apply game modifiers where appropriate (defined in edition declaration)
-            end
-        end
-
-        -- Calculate whether edition is selected
-        local weight_i = 0
-        for _, v in ipairs(available_editions) do
-            weight_i = weight_i + v.weight * _modifier
-            if edition_poll > 1 - (weight_i) / total_weight then
-                if not (v.name == 'e_negative' and _no_neg) and not (v.name == 'e_bgn_wee') then -- skip return if negative is selected and _no_neg is true (this line was edited by buck)
-                    return v.name
-                end
-            end
-        end
-
-        return nil
-    else
-        return bgn_poll_edition_ref(_key, _mod, _no_neg, _guaranteed)
-    end
-end]]
 
 -- provided below are code changes to all the vanilla jokers, tarots, and blinds that the mini edition completely fuck with
 
@@ -432,6 +360,7 @@ SMODS.Joker:take_ownership('j_invisible',
 
 SMODS.Joker:take_ownership('j_perkeo',
     {
+        name = 'bgn_perkeo',
         calculate = function(self, card, context)
             if context.ending_shop and G.consumeables.cards[1] then
                 local can_trigger = false
@@ -457,12 +386,71 @@ SMODS.Joker:take_ownership('j_perkeo',
                         end
                     }))
                     return { message = localize('k_duplicated_ex') }
-                else
-                    return { message = ':)' } -- if a message isn't returned, the code gets a mind of its own for some reason idk
+                --[[else
+                    return { message = ':)' } -- if a message isn't returned, the code gets a mind of its own for some reason idk]]
                 end
             end
         end,
-    }
+    },
+    true
+)
+
+SMODS.Consumable:take_ownership('c_temperance',
+    {
+        name = 'bgn_temperance',
+        loc_vars = function(self, info_queue, card)
+            local money = 0
+            if G.jokers then
+                for i = 1, #G.jokers.cards do
+                    if G.jokers.cards[i].ability.set == 'Joker' then
+                        money = money + G.jokers.cards[i].sell_cost
+                    end
+                end
+            end
+            if G.consumeables then
+                for i = 1, #G.consumeables.cards do
+                    if G.consumeables.cards[i].ability.set == 'Joker' then
+                        money = money + G.consumeables.cards[i].sell_cost
+                    end
+                end
+            end
+            card.ability.money = math.min(money, card.ability.extra)
+
+            return { vars = { card.ability.extra, card.ability.money } }
+        end,
+        use = function(self, card, area, copier)
+            local money = 0
+            for i = 1, #G.jokers.cards do
+                if G.jokers.cards[i].ability.set == 'Joker' then
+                    money = money + G.jokers.cards[i].sell_cost
+                end
+            end
+            if G.consumeables then
+                for i = 1, #G.consumeables.cards do
+                    if G.consumeables.cards[i].ability.set == 'Joker' then
+                        money = money + G.consumeables.cards[i].sell_cost
+                    end
+                end
+            end
+            card.ability.money = math.min(money, card.ability.extra)
+
+            G.E_MANAGER:add_event(Event({
+                trigger = 'after',
+                delay = 0.4,
+                func = function()
+                    play_sound('timpani')
+                    card:juice_up(0.3, 0.5)
+                    ease_dollars(card.ability.money, true)
+                    return true
+                end
+            }))
+            delay(0.6)
+        end,
+        can_use = function(self, card)
+            return true
+        end
+    },
+    true
 )
 
 SMODS.Blind:take_ownership('final_heart',
@@ -561,7 +549,8 @@ SMODS.Blind:take_ownership('final_heart',
                 blind.prepped = nil
             end
         end
-    }
+    },
+    true
 )
 
 SMODS.Blind:take_ownership('final_acorn',
@@ -639,5 +628,6 @@ SMODS.Blind:take_ownership('final_acorn',
             end
         end
     end
-    }
+    },
+    true
 )

@@ -37,18 +37,6 @@ SMODS.Atlas {
   py = 34
 }
 
-SMODS.Atlas {
-  key = "bgn_lenticular_sprites_bg",
-  path = "bgn_lenticular_sprites_bg.png",
-  px = 71,
-  py = 95
-}
-
-SMODS.Shader {
-    key = 'lenticular',
-    path = 'lenticular.fs',
-}
-
 local jokers_src = SMODS.NFS.getDirectoryItems(SMODS.current_mod.path .. "src/jokers")
 for _, file in ipairs(jokers_src) do
     assert(SMODS.load_file("src/jokers/" .. file))()

@@ -30,6 +30,8 @@ SMODS.Joker {
                 card.ability.extra.Xmult,
                 card.ability.extra.poker_hand,
                 card.ability.extra.green_light,
+                --localize { type = 'variable', key = (card.ability.extra.green_light == true and 'bgn_greenlight' or 'bgn_redlight') }
+                localize('bgn_' .. (card.ability.extra.green_light and 'greenlight' or 'redlight'))
             }
         }
     end,
