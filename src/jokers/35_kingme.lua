@@ -11,7 +11,7 @@ SMODS.Joker {
     rarity = 3,
     cost = 7,
     calculate = function(self, card, context)
-        if context.after and not context.blueprint and G.GAME.current_round.hands_left == 0 and context.game_over == false then
+        if context.after and not context.blueprint and G.GAME.current_round.hands_left == 0 then
         --print('test')
             G.E_MANAGER:add_event(Event({
                 trigger = 'after',

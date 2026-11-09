@@ -383,7 +383,7 @@ match_indent = true
 
 [[patches]]
 [patches.pattern]
-target = 'src/overrides'
+target = '=[SMODS _ "src/overrides.lua"]'
 pattern = "if not (v.name == 'e_negative' and _no_neg) then"
 position = 'before'
 payload = '''
@@ -395,7 +395,7 @@ match_indent = true
 
 [[patches]]
 [patches.pattern]
-target = 'src/card_draw'
+target = '=[SMODS _ "src/card_draw.lua"]'
 pattern = '''
 local center = self.config.center
 if center.draw and type(center.draw) == 'function' then
@@ -404,8 +404,7 @@ end
 '''
 position = 'after'
 payload = '''
-if self.edition.key == 'e_bgn_wee' then
-    print('test')
+if self.edition and self.edition.key == 'e_bgn_wee' then
     if self.config.center.key == "j_wee" then
         self.T.h = self.original_T.h*(0.4)
         self.T.w = self.original_T.w*(0.4)

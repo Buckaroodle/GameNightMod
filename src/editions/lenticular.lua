@@ -58,7 +58,7 @@ SMODS.Edition {
     loc_vars = function(self, info_queue, card)
         local position_abr
         card.edition.style = G.C.CHIPS
-        card.edition.x_style = G.C.WHITE
+        card.edition.x_style = G.C.CLEAR
         if G.jokers then
             for i = 1, #G.jokers.cards do
                 if card == G.jokers.cards[i] then
@@ -92,19 +92,19 @@ SMODS.Edition {
             card.edition.pre_number = '+'
             card.edition.post_number = ' chips'
             card.edition.style = G.C.CHIPS
-            card.edition.x_style = G.C.WHITE
+            card.edition.x_style = G.C.CLEAR
         elseif position_abr == 2 then
             card.edition.number = card.edition.mult --mult
             card.edition.pre_number = '+'
             card.edition.post_number = ' Mult'
             card.edition.style = G.C.MULT
-            card.edition.x_style = G.C.WHITE
+            card.edition.x_style = G.C.CLEAR
         elseif position_abr == 3 then
             card.edition.number = card.edition.money --money
             card.edition.pre_number = '+$'
             card.edition.post_number = ''
             card.edition.style = G.C.MONEY
-            card.edition.x_style = G.C.WHITE
+            card.edition.x_style = G.C.CLEAR
         elseif position_abr == 4 then
             card.edition.number = card.edition.xmult --xmult
             card.edition.pre_number = 'X'
