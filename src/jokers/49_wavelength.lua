@@ -21,9 +21,9 @@ SMODS.Joker {
     },
     config = {
         extra = {
-            large_mult = 15,
-            medium_mult = 10,
-            small_mult = 5,
+            large_mult = 12,
+            medium_mult = 8,
+            small_mult = 4,
             target_id = 7,
             rank_string = '???'
         }
