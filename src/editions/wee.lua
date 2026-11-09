@@ -42,11 +42,11 @@ SMODS.Edition {
             card.T.h = card.original_T.h*(0.7)
             card.T.w = card.original_T.w*(0.7)
         end
-        if card.config.center.soul_pos then
+        --[[if card.config.center.soul_pos then
             card.children.floating_sprite.T.h = card.children.floating_sprite.original_T.h*(0.7)
             card.children.floating_sprite.T.w = card.children.floating_sprite.original_T.w*(0.7)
             print('test!')
-        end
+        end]]
     end,
     on_remove = function(card)
         if card.config.center.key == "j_wee" then

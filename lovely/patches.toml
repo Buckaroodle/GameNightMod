@@ -393,6 +393,45 @@ end
 '''
 match_indent = true
 
+[[patches]]
+[patches.pattern]
+target = 'src/card_draw'
+pattern = '''
+local center = self.config.center
+if center.draw and type(center.draw) == 'function' then
+    center:draw(self, layer)
+end
+'''
+position = 'after'
+payload = '''
+if self.edition.key == 'e_bgn_wee' then
+    print('test')
+    if self.config.center.key == "j_wee" then
+        self.T.h = self.original_T.h*(0.4)
+        self.T.w = self.original_T.w*(0.4)
+    elseif self.config.center.key == 'j_half' then
+        self.T.h = self.original_T.h/(2.6)
+        self.T.w = self.original_T.w*(0.7)
+    elseif self.config.center.key == 'j_photograph' then
+        self.T.h = self.original_T.h/(1.7)
+        self.T.w = self.original_T.w*(0.7)
+    elseif self.config.center.key == 'j_bgn_omen' then
+        self.T.h = self.original_T.h*(0.7)
+        self.T.w = self.original_T.w/(2)
+    elseif self.config.center.key == 'j_square'
+    or self.config.center.key == 'j_bgn_doubleletterscore'
+    or self.config.center.key == 'j_bgn_memory'
+    or self.config.center.key == 'j_bgn_dobble' then
+        self.T.h = self.original_T.h/(1.8)
+        self.T.w = self.original_T.w*(0.7)
+    else
+        self.T.h = self.original_T.h*(0.7)
+        self.T.w = self.original_T.w*(0.7)
+    end
+end
+'''
+match_indent = true
+
 
 # if _key:sub(1, 16) == 'standard_edition' or _key:sub(1, 8) == 'illusion' then
 

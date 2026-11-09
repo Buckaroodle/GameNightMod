@@ -6,7 +6,7 @@ SMODS.Blind {
     attributes = { 'lose_economy', 'hand_type' },
     dollars = 5,
     mult = 2,
-    boss = { min = 2, max = 10 },
+    boss = { min = 3, max = 10 },
     boss_colour = HEX('E96F6F'),
     calculate = function(self, blind, context)
         if blind.disabled then return end

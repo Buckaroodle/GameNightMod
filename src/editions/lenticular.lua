@@ -29,6 +29,11 @@ local function get_cycle_integer(x)
     return ((x - 1) % 4) + 1
 end
 
+SMODS.Sound {
+  key = 'lent_sfx',
+  path = 'LentJoker.ogg'
+}
+
 SMODS.Edition {
     key = 'lenticular',
     shader = 'lenticular',
@@ -46,7 +51,7 @@ SMODS.Edition {
     in_shop = true,
     weight = 5,
     extra_cost = 3,
-    sound = { sound = "foil1", per = 1.2, vol = 0.4 },
+    sound = { sound = "bgn_lent_sfx", per = 1.2, vol = 0.4 },
     get_weight = function(self)
         return G.GAME.edition_rate * self.weight
     end,

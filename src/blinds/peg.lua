@@ -6,7 +6,7 @@ SMODS.Blind {
     attributes = { 'enhancements', 'chance' },
     dollars = 5,
     mult = 2,
-    boss = { min = 2, max = 10 },
+    boss = { min = 3, max = 10 },
     boss_colour = HEX('767711'),
     config = {
         extra = {
