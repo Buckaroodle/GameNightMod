@@ -1291,6 +1291,22 @@ return {
                     'stronger than the last',
                 }
             }
+        },
+        Voucher = {
+            v_hone = {
+                name = 'Hone',
+                text = {
+                    'Cards with {C:dark_edition}editions',
+                    'appear {C:attention}#1#X{} more often'
+                }
+            },
+            v_glow_up = {
+                name = 'Glow Up',
+                text = {
+                    'Cards with {C:dark_edition}editions',
+                    'appear {C:attention}#1#X{} more often'
+                }
+            }
         }
     },
 

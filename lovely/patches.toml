@@ -384,10 +384,11 @@ match_indent = true
 [[patches]]
 [patches.pattern]
 target = '=[SMODS _ "src/overrides.lua"]'
-pattern = "if not (v.name == 'e_negative' and _no_neg) then"
+pattern = "if not (v.name == 'e_negative' and _no_neg) then -- skip return if negative is selected and _no_neg is tru"
 position = 'before'
 payload = '''
-if _key:sub(1, 16) == 'standard_edition' or _key:sub(1, 8) == 'illusion' then
+print('test')
+if not (v.name == 'e_bgn_wee' and (_key:sub(1, 16) == 'standard_edition' or _key:sub(1, 8) == 'illusion')) then
     return v.name
 end
 '''

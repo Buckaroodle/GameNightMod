@@ -1,3 +1,5 @@
+bucksgamenight = SMODS.current_mod
+
 --#region Atlases
 
 SMODS.Atlas {

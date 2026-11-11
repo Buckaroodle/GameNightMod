@@ -650,7 +650,39 @@ jd_def["j_bgn_shutthebox"] = {
 }
 jd_def["j_bgn_oldmaid"] = {
 }
-jd_def["j_bgn_catgoatnarwhalgorilla"] = { -- tough but probably doable
+jd_def["j_bgn_catgoatnarwhalgorilla"] = {
+    text = {
+        { text = "+" },
+        { ref_table = "card.joker_display_values", ref_value = "chips", retrigger_type = "mult"}
+    },
+    text_config = { colour = G.C.CHIPS },
+    calc_function = function(card)
+        local _, _, scoring_cards = JokerDisplay.evaluate_hand()
+        local trigger_order = {}
+        local chips = 0
+        for _, playing_card in ipairs(scoring_cards) do
+            local triggers = JokerDisplay.calculate_card_triggers(playing_card)
+            for i = 1, triggers do
+                trigger_order[#trigger_order+i] = playing_card
+            end
+        end
+        local suit = card.ability.extra.current_suit
+        for _, playing_card in ipairs(trigger_order) do
+            if playing_card:is_suit(suit) then
+                chips = chips + card.ability.extra.chips
+            end
+            if suit == 'Spades' then
+                suit = 'Hearts'
+            elseif suit == 'Hearts' then
+                suit = 'Clubs'
+            elseif suit == 'Clubs' then
+                suit = 'Diamonds'
+            elseif suit == 'Diamonds' then
+                suit = 'Spades'
+            end
+        end
+        card.joker_display_values.chips = chips
+    end
 }
 jd_def["j_bgn_hazard"] = {
     reminder_text = {

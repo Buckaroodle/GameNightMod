@@ -13,6 +13,13 @@ SMODS.Edition {
     get_weight = function(self)
         return G.GAME.edition_rate * self.weight
     end,
+    in_pool = function(self, args)
+        if args and args.source:sub(1, 16) == 'standard_edition' or args.source:sub(1, 8) == 'illusion' then
+            return false
+        else
+            return true
+        end
+    end,
     on_apply = function(card)
         if G.jokers then
             if card.area == G.jokers then

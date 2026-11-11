@@ -28,13 +28,11 @@ SMODS.Joker {
                 }
             end
         end
-        if context.debuff_card and context.debuff_card.area == G.jokers then
-            local card_to_be_debuffed = context.debuff_card
-            if card_to_be_debuffed == G.jokers.cards[1] or card_to_be_debuffed == G.jokers.cards[2] then
-                return {
-                    prevent_debuff = true
-                }
-            end
-        end
-    end
+    end,
 }
+
+function bucksgamenight.set_debuff(card)
+    if card and card.area == G.jokers and (G.jokers.cards[1] == card or G.jokers.cards[2] == card) and next(SMODS.find_card('j_bgn_safetyzone')) then
+        return 'prevent_debuff'
+    end
+end

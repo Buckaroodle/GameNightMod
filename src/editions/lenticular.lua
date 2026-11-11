@@ -251,3 +251,13 @@ SMODS.Consumable:take_ownership('aura',
     },
     true
 )
+
+SMODS.Voucher:take_ownership('hone',
+    {},
+    true
+)
+
+SMODS.Voucher:take_ownership('glow_up',
+    {},
+    true
+)
