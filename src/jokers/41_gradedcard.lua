@@ -57,8 +57,11 @@ SMODS.Joker {
                 for i = 1, #G.jokers.cards do
                     if G.jokers.cards[i] == card and not G.jokers.cards[i].debuff then
                         if G.jokers.cards[i+1] and not G.jokers.cards[i+1].debuff then
-                            G.jokers.cards[i+1].debuff = true
-                            G.jokers.cards[i+1].ability.bgn_cardsleeve_debuff = true
+                            if not (next(SMODS.find_card('j_bgn_safetyzone')) and i + 1 <= 2) then -- compat with safety zone
+                                --print(i+1)
+                                G.jokers.cards[i+1].debuff = true
+                                G.jokers.cards[i+1].ability.bgn_cardsleeve_debuff = true
+                            end
                         end
                     end
                 end
