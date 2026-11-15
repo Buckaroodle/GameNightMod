@@ -1,6 +1,7 @@
 if not JokerDisplay then return end
 
 local jd_def = JokerDisplay.Definitions -- You can assign it to a variable to use as shorthand
+local jd_edition_def = JokerDisplay.Edition_Definitions
 
 jd_def["j_bgn_bettelmann"] = {
     text = {
@@ -30,6 +31,10 @@ jd_def["j_bgn_pegboard"] = {
     text_config = { colour = G.C.CHIPS },
 }
 jd_def["j_bgn_root"] = {
+    text = {
+        { text = "+Mult" },
+    },
+    text_config = { colour = G.C.MULT },
 }
 jd_def["j_bgn_foundationpile"] = {
     text = {
@@ -511,12 +516,23 @@ jd_def["j_bgn_trafficlight"] = {
     reminder_text = {
         { ref_table = "card.joker_display_values", ref_value = "poker_hand", colour = G.C.ORANGE },
     },
+    extra = {
+        {
+            { text = "(" },
+            { ref_table = "card.joker_display_values", ref_value = "odds" },
+            { text = ")" },
+        }
+    },
+    extra_config = { colour = G.C.GREEN, scale = 0.3 },
     calc_function = function(card)
         if card.ability.extra.green_light == false then
             card.joker_display_values.poker_hand = card.ability.extra.poker_hand
         else
             card.joker_display_values.poker_hand = ''
         end
+        local num, denom = card.ability.extra.numerator, card.ability.extra.denominator
+        if SMODS then num, denom = SMODS.get_probability_vars(card, num, denom) end
+        card.joker_display_values.odds = localize { type = 'variable', key = "jdis_odds", vars = { num, denom } }
     end
 }
 jd_def["j_bgn_hungryhippo"] = {
@@ -922,5 +938,29 @@ jd_def["j_bgn_ur"] = {
         local num, denom = card.ability.extra.numerator, card.ability.extra.denominator
         if SMODS then num, denom = SMODS.get_probability_vars(card, num, denom) end
         card.joker_display_values.odds = localize { type = 'variable', key = "jdis_odds", vars = { num, denom } }
+    end
+}
+jd_edition_def["e_bgn_lenticular"] = {
+    condition_function = function(card)
+        return not card.debuff and card.edition and card.edition.key and card.edition.key == 'e_bgn_lenticular'
+    end,
+    mod_function = function(card)
+        local position_abr
+        if G.jokers then
+            for i = 1, #G.jokers.cards do
+                if card == G.jokers.cards[i] then
+                    position_abr = ((i - 1) % 4) + 1
+                end
+            end
+        end
+        if position_abr == 1 then
+            return { chips = card.edition.chips}
+        elseif position_abr == 2 then
+            return { mult = card.edition.mult}
+        elseif position_abr == 3 then
+            return { dollars = card.edition.money}
+        elseif position_abr == 4 then
+            return { xmult = card.edition.xmult}
+        end
     end
 }

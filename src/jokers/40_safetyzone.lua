@@ -19,6 +19,7 @@ SMODS.Joker {
     },
     rarity = 2,
     cost = 6,
+    blueprint_compat = false,
     calculate = function(self, card, context)
         if context.joker_type_destroyed or (context.check_eternal and not context.trigger.from_sell) and not context.blueprint then
             local card_to_be_destroyed = context.card or context.other_card

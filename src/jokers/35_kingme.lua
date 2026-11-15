@@ -10,6 +10,7 @@ SMODS.Joker {
     },
     rarity = 3,
     cost = 7,
+    blueprint_compat = false,
     calculate = function(self, card, context)
         if context.after and not context.blueprint and G.GAME.current_round.hands_left == 0 then
         --print('test')

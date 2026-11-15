@@ -20,6 +20,7 @@ SMODS.Joker {
     },
     rarity = 3,
     cost = 8,
+    perishable_compat = false,
     loc_vars = function(self, info_queue, card)
         return {
             vars = {

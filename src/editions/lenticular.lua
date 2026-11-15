@@ -7,27 +7,49 @@ local l4_img = SMODS.Atlas {
     py = 95
 }
 
+local function get_cycle_integer(x)
+    return ((x - 1) % 4) + 1
+end
+
 SMODS.Shader {
     key = "lenticular",
     path = "lenticular.fs",
     send_vars = function (sprite, card)
-        if card then
-            return {
-                aux_img = l4_img.image,
-                aux_num = card.rank
-            }
-        else
-            return {
-                aux_img = l4_img.image,
-                aux_num = -1
-            }
+        local position_abr
+        if G.jokers then
+            for i = 1, #G.jokers.cards do
+                if card == G.jokers.cards[i] then
+                    position_abr = get_cycle_integer(i)
+                end
+            end
         end
+        if G.hand then
+            for i = 1, #G.hand.cards do
+                if card == G.hand.cards[i] then
+                    position_abr = get_cycle_integer(i)
+                end
+            end
+        end
+        if G.hand then
+            if G.hand.highlighted then
+                local copy = {}
+                for k, v in pairs(G.hand.highlighted) do
+                    copy[k] = v
+                end
+                table.sort(copy, function(a, b) return a.T.x < b.T.x end)
+                for i = 1, #copy do
+                    if card == copy[i] then
+                        position_abr = get_cycle_integer(i)
+                    end
+                end
+            end
+        end
+        return {
+            aux_img = l4_img.image,
+            aux_num = position_abr or -1
+        }
     end
 }
-
-local function get_cycle_integer(x)
-    return ((x - 1) % 4) + 1
-end
 
 SMODS.Sound {
   key = 'lent_sfx',

@@ -82,7 +82,7 @@ SMODS.Blind {
                 end
                 if #jokers == 0 then jokers = fallback_jokers end
                 --local _card = pseudorandom_element(jokers, 'bgn_auburn_hourglass')
-                _card = jokers[1]
+                local _card = jokers[1]
                 if _card then
                     _card.ability.auburn_hourglass_chosen = true
                     SMODS.recalc_debuff(_card)
@@ -92,5 +92,16 @@ SMODS.Blind {
             end
             blind.prepped = nil
         end
-    end
+    end,
+    --[[update = function(self, blind, dt)
+        if G.jokers then
+            if #G.jokers.cards > 0 then
+                for _, joker in ipairs(G.joker.cards) do
+                    if joker.ability.auburn_hourglass_chosen == true then
+                        SMODS.recalc_debuff(joker)
+                    end
+                end
+            end
+        end
+    end]]
 }

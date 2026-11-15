@@ -17,6 +17,7 @@ SMODS.Joker {
     },
     rarity = 2,
     cost = 6,
+    blueprint_compat = true,
     loc_vars = function(self, info_queue, card)
         local concat_ranks = {}
         local max_characters = 15
@@ -50,33 +51,20 @@ SMODS.Joker {
         return {main_end = {{n = G.UIT.R, config = {align = "cm"}, nodes = nodes}},}
     end,
     calculate = function(self, card, context)
-        if context.individual and context.cardarea == G.play and not SMODS.has_no_rank(context.other_card) then
-            local id = context.other_card.base.value
-            for i, rank in ipairs(card.ability.extra.needed_ranks) do
-                if id == card.ability.extra.needed_ranks[i] then
-                    table.remove(card.ability.extra.needed_ranks, i)
-                    break
+        if context.before and not context.blueprint then
+            for i, scoring_card in ipairs(G.play.cards) do
+                if not SMODS.has_no_rank(scoring_card) then
+                    for j, rank in ipairs(card.ability.extra.needed_ranks) do
+                        if scoring_card.base.value == rank then
+                            table.remove(card.ability.extra.needed_ranks, j)
+                        end
+                    end 
                 end
             end
-            if #card.ability.extra.needed_ranks == 0 then
-                card.ability.extra.needed_ranks = {'Ace', 'King', 'Queen', 'Jack', '10', '9', '8', '7', '6', '5', '4', '3', '2'}
-                --[[return {
-                    focus = card,
-                    message = localize('bgn_plus_tag'),
-                    func = function()
-                        G.E_MANAGER:add_event(Event({
-                            trigger = 'before',
-                            delay = 0.0,
-                            func = (function()
-                                bgn_add_tag(bgn_poll_tag("bgn_shutthebox"))
-                                return true
-                            end)
-                        }))
-                    end,
-                    card = card
-                }]]
+        end
+        if context.joker_main then
+            if #card.ability.extra.needed_ranks <= 0 then
                 return {
-                    focus = card,
                     message = localize('bgn_plus_tag'),
                     func = function()
                         G.E_MANAGER:add_event(Event({
@@ -88,8 +76,12 @@ SMODS.Joker {
                             end)
                         }))
                     end,
-                    card = card
                 }
+            end
+        end
+        if context.after and not context.blueprint then
+            if #card.ability.extra.needed_ranks <= 0 then
+                card.ability.extra.needed_ranks = {'Ace', 'King', 'Queen', 'Jack', '10', '9', '8', '7', '6', '5', '4', '3', '2'}
             end
         end
     end

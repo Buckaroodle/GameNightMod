@@ -16,6 +16,7 @@ SMODS.Joker {
     },
     rarity = 2,
     cost = 6,
+    blueprint_compat = false,
     loc_vars = function(self, info_queue, card)
         return {
             vars = {

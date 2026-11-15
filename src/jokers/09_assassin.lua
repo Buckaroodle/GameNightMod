@@ -19,6 +19,7 @@ SMODS.Joker {
     },
     rarity = 1,
     cost = 6,
+    perishable_compat = false,
     loc_vars = function(self, info_queue, card)
         local assassin_card = G.GAME.current_round.assassin_card or { rank = 'Ace', suit = 'Spades' }
         return {

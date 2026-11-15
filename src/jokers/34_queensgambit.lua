@@ -13,6 +13,7 @@ SMODS.Joker {
     },
     rarity = 1,
     cost = 5,
+    blueprint_compat = false,
     calculate = function(self, card, context)
         if context.final_scoring_step then
             local queen_found = false
