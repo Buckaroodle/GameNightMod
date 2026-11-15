@@ -3,6 +3,7 @@ SMODS.Consumable {
     atlas = 'bgn_consumables',
     set = 'Spectral',
     pos = { x = 3, y = 2 },
+    cost = 4,
     config = { extra = { seal = 'bgn_chance' }, max_highlighted = 1 },
     loc_vars = function(self, info_queue, card)
         info_queue[#info_queue + 1] = G.P_SEALS[card.ability.extra.seal]

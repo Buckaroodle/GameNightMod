@@ -11,7 +11,14 @@ SMODS.Blind {
     calculate = function(self, blind, context)
         local temp = G.GAME.blind and G.GAME.blind.disabled
         if temp then
-            return
+            --print('disabled!')
+            --if blind.added_score == nil then
+            --    blind.added_score = 0
+            --end
+            --G.GAME.blind.chip_text = number_format(G.GAME.blind.chips - blind.added_score)
+            return --{
+            --    blindsize = -blind.added_score
+            --}
         end
         if ((context.hand_drawn and G.GAME.wedge_primed) or (context.first_hand_drawn)) and not temp then
             local cards_in_hand = SMODS.shallow_copy(G.hand.cards)
@@ -46,6 +53,11 @@ SMODS.Blind {
                     }))
                     blind.triggered = true
                     G.GAME.wedge_primed = false
+                    --[[if blind.added_score == nil then
+                        blind.added_score = 0
+                    else
+                        blind.added_score = ((blind.added_score + SMODS.calculate_round_score()) or 0)
+                    end]]
                     return {
                         blindsize = SMODS.calculate_round_score()
                     }
@@ -55,6 +67,13 @@ SMODS.Blind {
         if context.press_play then
             G.GAME.wedge_primed = true
         end
+        --[[if context.blind_disabled then
+            print('test!')
+            G.GAME.blind.chip_text = number_format(G.GAME.blind.chips - blind.added_score)
+            return {
+                blindsize = -blind.added_score
+            }
+        end]]
     end,
 
     --[[disable = function(self)

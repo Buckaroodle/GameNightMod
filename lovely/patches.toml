@@ -101,9 +101,9 @@ position = "before"
 payload = '''
 if G.GAME.bgn_holepunchedtotal then
     if G.GAME.bgn_holepunchedtotal > 0 then
-        add_round_eval_row({dollars = (G.GAME.bgn_holepunchedtotal * 2), text = ' Hole Punched Cards ($2 each)', text_colour = G.C.WHITE, disp = G.GAME.bgn_holepunchedtotal, number = 1, number_colour = G.C.RED, bonus = true, name = 'other'..i , pitch = pitch })
+        add_round_eval_row({dollars = (G.GAME.bgn_holepunchedtotal * 1), text = ' Hole Punched Cards ($1 each)', text_colour = G.C.WHITE, disp = G.GAME.bgn_holepunchedtotal, number = 1, number_colour = G.C.RED, bonus = true, name = 'other'..i , pitch = pitch })
         pitch = pitch + 0.06
-        dollars = dollars + (G.GAME.bgn_holepunchedtotal * 2)
+        dollars = dollars + (G.GAME.bgn_holepunchedtotal * 1)
     end
 end
 if G.GAME.blind:get_type() == 'Boss' then
@@ -330,6 +330,110 @@ for j = 1, how_many_unscoring_cards do
     inc_career_stat('c_bgn_unscoring_cards', 1)
 end
 '''
+
+#[[patches]] 
+#[patches.pattern]
+#target = "cardarea.lua"
+#pattern = '''
+#if location == 'front' or self.config.type == 'deck' then 
+#'''
+#position = "before"
+#payload = '''
+#if (location ~= 'front' or self.config.type ~= 'deck') and card.edition and card.edition.key == "e_bgn_wee" then
+#    self = G.consumeables
+#end
+#'''
+#match_indent = true
+
+[[patches]]
+[patches.pattern]
+target = "functions/button_callbacks.lua"
+pattern = '''
+else
+    G.jokers:emplace(c1)
+'''
+position = 'at'
+payload = '''
+elseif c1.edition and c1.edition.key == 'e_bgn_wee' then
+    G.consumeables:emplace(c1)
+else
+    G.jokers:emplace(c1)
+'''
+match_indent = true
+
+[[patches]]
+[patches.pattern]
+target = 'functions/button_callbacks.lua'
+pattern = '''
+elseif card.ability.set == 'Joker' then
+    card:add_to_deck()
+    G.jokers:emplace(card)
+'''
+position = 'at'
+payload = '''
+    elseif card.ability.set == 'Joker' then
+    card:add_to_deck()
+    if card.edition and card.edition.key == 'e_bgn_wee' then
+        G.consumeables:emplace(card)
+    else
+        G.jokers:emplace(card)
+    end
+'''
+match_indent = true
+
+[[patches]]
+[patches.pattern]
+target = '=[SMODS _ "src/overrides.lua"]'
+pattern = "if not (v.name == 'e_negative' and _no_neg) then -- skip return if negative is selected and _no_neg is tru"
+position = 'before'
+payload = '''
+print('test')
+if not (v.name == 'e_bgn_wee' and (_key:sub(1, 16) == 'standard_edition' or _key:sub(1, 8) == 'illusion')) then
+    return v.name
+end
+'''
+match_indent = true
+
+[[patches]]
+[patches.pattern]
+target = '=[SMODS _ "src/card_draw.lua"]'
+pattern = '''
+local center = self.config.center
+if center.draw and type(center.draw) == 'function' then
+    center:draw(self, layer)
+end
+'''
+position = 'after'
+payload = '''
+if self.edition and self.edition.key == 'e_bgn_wee' then
+    if self.config.center.key == "j_wee" then
+        self.T.h = self.original_T.h*(0.4)
+        self.T.w = self.original_T.w*(0.4)
+    elseif self.config.center.key == 'j_half' then
+        self.T.h = self.original_T.h/(2.6)
+        self.T.w = self.original_T.w*(0.7)
+    elseif self.config.center.key == 'j_photograph' then
+        self.T.h = self.original_T.h/(1.7)
+        self.T.w = self.original_T.w*(0.7)
+    elseif self.config.center.key == 'j_bgn_omen' then
+        self.T.h = self.original_T.h*(0.7)
+        self.T.w = self.original_T.w/(2)
+    elseif self.config.center.key == 'j_square'
+    or self.config.center.key == 'j_bgn_doubleletterscore'
+    or self.config.center.key == 'j_bgn_memory'
+    or self.config.center.key == 'j_bgn_dobble' then
+        self.T.h = self.original_T.h/(1.8)
+        self.T.w = self.original_T.w*(0.7)
+    else
+        self.T.h = self.original_T.h*(0.7)
+        self.T.w = self.original_T.w*(0.7)
+    end
+end
+'''
+match_indent = true
+
+
+# if _key:sub(1, 16) == 'standard_edition' or _key:sub(1, 8) == 'illusion' then
 
 #[[patches]]
 #[patches.pattern]

@@ -1,3 +1,5 @@
+bucksgamenight = SMODS.current_mod
+
 --#region Atlases
 
 SMODS.Atlas {
@@ -26,6 +28,13 @@ SMODS.Atlas {
   path = "bgn_blinds.png",
   atlas_table = 'ANIMATION_ATLAS',
     frames = 21,
+  px = 34,
+  py = 34
+}
+
+SMODS.Atlas {
+  key = "bgn_tags",
+  path = "bgn_tags.png",
   px = 34,
   py = 34
 }
@@ -70,6 +79,16 @@ for _, file in ipairs(blinds_src) do
     assert(SMODS.load_file("src/blinds/" .. file))()
 end
 
+local editions_src = SMODS.NFS.getDirectoryItems(SMODS.current_mod.path .. "src/editions")
+for _, file in ipairs(editions_src) do
+    assert(SMODS.load_file("src/editions/" .. file))()
+end
+
+local tags_src = SMODS.NFS.getDirectoryItems(SMODS.current_mod.path .. "src/tags")
+for _, file in ipairs(tags_src) do
+    assert(SMODS.load_file("src/tags/" .. file))()
+end
+
 if JokerDisplay then
     assert(SMODS.load_file("joker_display_definitions.lua"))()
 end
@@ -90,5 +109,9 @@ function SMODS.current_mod.calculate(self, context)
     if context.open_booster then
         local cxt = context
         check_for_unlock({ type = 'booster', context = cxt })
+    end
+    if context.using_consumeable then
+        local cxt = context
+        check_for_unlock({ type = 'consumeable', context = cxt })
     end
 end

@@ -92,14 +92,15 @@ return {
                 text = {
                     {
                         '{X:mult,C:white}X#3#{} Mult when',
-                        'light is {C:attention}green,',
+                        'light is {C:green}green,',
                         '{C:green}#1# in #2#{} chance',
                         'after each hand played',
-                        'to turn {C:attention}red{}'
+                        'to turn {C:red}red{}',
+                        '{C:inactive}#6#'
                     },{
                         'A {C:attention}#4#{} must be',
                         'played to turn light',
-                        'back to {C:attention}green'
+                        'back to {C:green}green'
                     }
                 }
             },
@@ -108,9 +109,9 @@ return {
                 text = {
                     'Adds {C:green}#1# and #2#',
                     'to the left and right',
-                    'sides of all {C:green}probabilities,',
-                    'values change each Ante',
+                    'sides of all {C:green}probabilities',
                     '{C:inactive}(ex: {C:green}1 in 4{} -> {C:green}#3# in #4#{})',
+                    '{C:inactive}Values change each Ante',
                 }
             },
             j_bgn_mermaid = {
@@ -171,9 +172,9 @@ return {
             j_bgn_doubleletterscore = {
                 name = "Double Letter Score",
                 text = {
-                    '{C:chips}+#2#{} chips for each',
+                    '{C:chips}+#1#{} chips for each',
                     '{C:attention}letter{} in all Joker {C:attention}names',
-                    '{C:inactive}(Currently {C:chips}+#1#{C:inactive} chips)'
+                    '{C:inactive}(Currently {C:chips}+#2#{C:inactive} chips)'
                 }
             },
             j_bgn_foundationpile = {
@@ -275,7 +276,8 @@ return {
                 text = {
                     'All scoring cards',
                     'played {C:attention}face down',
-                    'gain a {C:attention}random edition'
+                    'gain a {C:attention}random {C:dark_edition}Edition',
+                    '{C:inactive,s:0.85}(Negative excluded)'
                 }
             },
             j_bgn_hungryhippo = {
@@ -329,16 +331,13 @@ return {
                 }
             },
             j_bgn_slamwich = {
-                name = 'Slamwich',
+                name = 'Ratscrew',
                 text = {
                     {
-                        'If played hand is a {C:attention}Pair,',
-                        'both scoring cards',
-                        'retrigger additional times',
-                        '{C:attention}equal{} to the number of',
-                        '{C:attention}unscoring cards{} between them'
-                    },{
-                        '{C:inactive}Art by Polar'
+                        'Scoring cards retrigger',
+                        'additional times equal to',
+                        'the number of {C:attention}unscoring{} cards',
+                        'next to them'
                     }
                 },
                 unlock = {
@@ -524,7 +523,8 @@ return {
                 text = {
                     'If played hand contains',
                     'a single scoring {C:attention}Queen{},',
-                    '{C:red}destroy{} the {C:attention}rightmost{} card held in hand',
+                    '{C:red}destroy{} the {C:attention}rightmost{} card',
+                    'held in hand',
                 }
             },
             j_bgn_guesswho = {
@@ -533,8 +533,8 @@ return {
                     'Does your Joker',
                     '#2#{C:attention}#3#{}#4#?',
                     'If so, that Joker',
-                    'gives {X:mult,C:white}X#1#{} Mult,',
-                    '{s:0.8}question changes every round'
+                    'gives {X:mult,C:white}X#1#{} Mult',
+                    '{s:0.8}Question changes every round'
                 },
                 unlock = {
                     'Win a run with at least',
@@ -545,9 +545,9 @@ return {
             j_bgn_shutthebox = {
                 name = 'Shut The Box',
                 text = {
-                    'Create a random {C:attention}Tag{} when all',
+                    'Create a {C:attention}Voucher Tag{} when all',
                     'card {C:attention}ranks{} have scored',
-                    'Unscored ranks:'
+                    '{C:inactive}Unscored ranks:'
                 }
             },
             j_bgn_safetyzone = {
@@ -572,12 +572,10 @@ return {
                 name = 'Blackjack',
                 text = {
                     {
-                        'If sum of played cards',
-                        'is {C:attention}21 or under{}, this Joker',
-                        'gains {C:chips}chips{} equal to the',
-                        'value of played cards, {C:red}resets',
-                        'if sum of cards is {C:red}22 or over.',
-                        '{C:inactive}(Currently {C:chips}+#1#{C:inactive} chips)'
+                        'This Joker gains {C:chips}+#1#{} chips',
+                        'if sum of scoring cards',
+                        'is exactly {C:attention}21',
+                        '{C:inactive}(Currently {C:chips}+#2#{C:inactive} chips)',
                     },{
                         '{C:attention}Jacks, Queens, and',
                         '{C:attention}Kings{}{C:inactive} are each worth {C:attention}10,',
@@ -627,7 +625,7 @@ return {
             j_bgn_admiral = {
                 name = 'Admiral',
                 text = {
-                    '{C:red}Destroys{} all scoring',
+                    '{C:red}Destroys{} all discarded',
                     '{C:attention}Hole-Punched{} cards'
                 },
                 unlock = {
@@ -661,13 +659,202 @@ return {
             j_bgn_revolution = {
                 name = 'Revolution',
                 text = {
-                    'If a {C:attention}Four of a Kind{} has',
+                    'If a hand containing',
+                    'a {C:attention}Four of a Kind{} has',
                     'been played this round, each',
                     'played {C:attention}2, 3, 4,{} and {C:attention}5',
                     'gives {X:mult,C:white}X#1#{} Mult',
                     '{C:inactive}#2#{}'
                 }
-            }
+            },
+            j_bgn_hazard = {
+                name = 'Hazard',
+                text = {
+                    'Retrigger all',
+                    'played {C:attention}#2#s',
+                    '{C:inactive,s:0.8}Rank changes every round,',
+                    '{C:inactive,s:0.8}decided by pair of dice'
+                }
+            },
+            j_bgn_dance = {
+                name = 'Dance!',
+                text = {
+                    'Earn {C:money}$#1#{} if',
+                    'your hand of cards',
+                    'does {C:red}not{} contain your',
+                    'most played {C:attention}hand type'
+                }
+            },
+            j_bgn_morris = {
+                name = 'Morris',
+                text = {
+                    'If hand contains {C:attention}#1# Jacks,',
+                    '{C:red}destroy{} the {C:attention}rightmost{} card',
+                    'held in hand and all cards',
+                    'in your deck of that {C:attention}rank'
+                },
+                unlock = {
+                    "{E:1,s:1.3}?????",
+                }
+            },
+            j_bgn_polygon = {
+                name = 'Polygon',
+                text = {
+                    'If hand contains only {C:attention}6s,',
+                    'scoring cards have a',
+                    '{C:green}#1# in #2#{} chance to',
+                    'gain {C:dark_edition}Polychrome'
+                }
+            },
+            j_bgn_landlord = {
+                name = 'Landlord',
+                text = {
+                    {
+                      '{X:mult,C:white}X#1#{} Mult'
+                    },{
+                        'All Jokers gain',
+                        'Rental stickers',
+                    }
+                }
+            },
+            j_bgn_maj = {
+                name = 'Maj',
+                text = {
+                    '{C:attention}+#1#{} hand size,',
+                    '{C:red}discard limit',
+                    'set to {C:attention}1'
+                }
+            },
+            j_bgn_catgoatnarwhalgorilla = {
+                name = 'Cat Goat Narwhal Gorilla',
+                text = {
+                    'Scoring {C:attention}#2#{} give {C:chips}+#1#{} chips',
+                    '{s:0.8}Suit rotates after any card scores',
+                    '{C:inactive,s:0.8}Spades -> Hearts -> Clubs -> Diamonds'
+                }
+            },
+            j_bgn_cootie = {
+                name = 'Cootie',
+                text = {
+                    'When {C:attention}Blind{} is selected,',
+                    'gives one of these at random:',
+                    '{C:blue}+#1#{} Hand',
+                    '{C:red}+#1#{} Discard',
+                    '{C:attention}+#1#{} hand size'
+                }
+            },
+            j_bgn_cherryo = {
+                name = 'Cherry-O',
+                text = {
+                    {
+                        '{X:mult,C:white}X#1#{} Mult',
+                        'If a playing card',
+                        'is {C:red}destroyed{},',
+                        'this card is {C:red}destroyed'
+                    },{
+                        '{C:inactive}Art by Clankk'
+                    }
+                }
+            },
+            j_bgn_conveyorbeltsushi = {
+                name = 'Conveyor Belt Sushi',
+                text = {
+                    '{C:attention}#1#{} free {C:green}Rerolls',
+                    'in the shop'
+                }
+            },
+            j_bgn_wavelength = {
+                name = 'Wavelength',
+                text = {
+                    'Each played {C:attention}#5#{} gives {C:mult}+#1#{} Mult,',
+                    'nearby ranks give {C:mult}+#2#{} or {C:mult}+#3#{} Mult',
+                    '{C:inactive,s:0.8}Rank changes every round',
+                }
+            },
+            j_bgn_simonsays = {
+                name = 'Simon Says',
+                text = {
+                    'Copies the ability of',
+                    'adjacent {C:attention}Jokers{} if',
+                    'Joker slots are {C:red}not{} full',
+                }
+            },
+            j_bgn_hangman = {
+                name = 'Hangman',
+                text = {
+                    {
+                        'Increases the',
+                        'selection limit for',
+                        '{C:attention}The Hanged Man{} by {C:attention}1'
+                    },{
+                        'Creates {C:attention}The Hanged Man',
+                        'when {C:attention}Boss Blind{} is defeated',
+                        '{C:inactive}(Must have room)'
+                    }
+                },
+                unlock = {
+                    'Use {C:attention}The Hanged Man{}',
+                    'a total of {C:attention}15{} times',
+                    '{C:inactive}[#1#]'
+                }
+            },
+            j_bgn_redrocker = {
+                name = 'Red Rocker',
+                text = {
+                    {
+                        'Increases the',
+                        'selection limit',
+                        'for {C:attention}Strength{} by {C:attention}2'
+                    },{
+                        'Creates {C:attention}Strength{} when',
+                        '{C:attention}Boss Blind{} is defeated',
+                        '{C:inactive}(Must have room)'
+                    }
+                },
+                unlock = {
+                    'Use {C:attention}Strength{} a total',
+                    'of {C:attention}10{} times',
+                    '{C:inactive}[#1#]'
+                }
+            },
+            j_bgn_dysentery = {
+                name = 'Dysentery',
+                text = {
+                    {
+                        'Increases the',
+                        'selection limit',
+                        'for {C:attention}Death{} by {C:attention}1'
+                    },{
+                        'Creates {C:attention}Death{} when',
+                        '{C:attention}Boss Blind{} is defeated',
+                        '{C:inactive}(Must have room)'
+                    }
+                },
+                unlock = {
+                    'Use {C:attention}Death{} a total',
+                    'of {C:attention}20{} times',
+                    '{C:inactive}[#1#]'
+                }
+            },
+            j_bgn_tinder = {
+                name = 'Tinder',
+                text = {
+                    {
+                        'Increases the',
+                        'selection limit',
+                        'for {C:attention}Squeezers{} by {C:attention}1'
+                    },{
+                        'Creates {C:attention}Squeezers{} when',
+                        '{C:attention}Boss Blind{} is defeated',
+                        '{C:inactive}(Must have room)'
+                    }
+                },
+                unlock = {
+                    'Use {C:attention}Squeezers{} a total',
+                    'of {C:attention}5{} times',
+                    '{C:inactive}[#1#]'
+                }
+            },
         },
 
         Back = {
@@ -728,9 +915,9 @@ return {
             c_bgn_bicycle = {
                 name = 'The Bicycle',
                 text = {
-                    '{C:green}#1# in #2#{} chance to add {C:dark_edition}Foil{}, {C:dark_edition}Holographic{},',
-                    'or {C:dark_edition}Polychrome{} edition to',
-                    'a random {C:attention}card{} in your hand'
+                    '{C:green}#1# in #2#{} chance to add',
+                    'a random {C:dark_edition}Edition{} to',
+                    'a random {C:attention}card{} in your hand',
                 }
             },
             c_bgn_fournier = {
@@ -751,7 +938,7 @@ return {
             c_bgn_squeezers = {
                 name = 'Squeezers',
                 text = {
-                    'Changes rank of {C:attention}2{} selected cards',
+                    'Changes rank of {C:attention}#1#{} selected cards',
                     'to the {C:attention}average{} of both ranks'
                 }
             },
@@ -776,6 +963,15 @@ return {
                 text = {
                     'Enhances {C:attention}#1#{} selected card',
                     'to {C:attention}Chance Cards'
+                }
+            },
+            c_wheel_of_fortune = {
+                name = 'The Wheel of Fortune',
+                text = {
+                    "{C:green}#1# in #2#{} chance to add",
+                    "a random {C:dark_edition}Edition",
+                    "to a random {C:attention}Joker",
+                    "{C:inactive,s:0.85}(Negative and Mini excluded)"
                 }
             }
         },
@@ -809,7 +1005,23 @@ return {
                 name = 'Days of Wonder',
                 text = {
                     "{C:green}#1# in #2#{} chance to create",
-                    "a {C:dark_edition}Negative{} copy of a random Joker"
+                    "a {C:dark_edition}Negative{} copy of a random {C:attention}Joker"
+                }
+            },
+            c_bgn_hasbro = {
+                name = 'Hasbro',
+                text = {
+                    'Add {C:dark_edition}Mini{} to',
+                    'a random {C:attention}Joker{}',
+                    '{C:inactive}(Must have room)'
+                }
+            },
+            c_aura = {
+                name = 'Aura',
+                text = {
+                    "Add a random {C:dark_edition}Edition{} to",
+                    "{C:attention}#1#{} selected card in hand",
+                    "{C:inactive,s:0.85}(Negative excluded)",
                 }
             }
         },
@@ -820,7 +1032,7 @@ return {
                 text = {
                     'When {C:attention}discarded{}, this card is',
                     'removed for the rest of the {C:attention}Ante',
-                    'Earn {C:money}$2{} per removed card',
+                    'Earn {C:money}$1{} per removed card',
                     'at end of round'
                 }
             },
@@ -833,6 +1045,43 @@ return {
                     'stays in hand'
                 }
             }]]
+        },
+
+        Edition = {
+            e_bgn_lenticular = {
+                name = 'Lenticular',
+                text = {
+                    '{X:2,C:1}#6##5#{}#7#',
+                    '{C:inactive,s:0.85}Effect changes with',
+                    '{C:inactive,s:0.85}card position'
+                }
+            },
+            e_bgn_wee = {
+                name = 'Mini',
+                text = {
+                    'Goes in a',
+                    'consumable slot'
+                }
+            }
+        },
+
+        Tag = {
+            tag_bgn_lenticular = {
+                name = 'Lenticular Tag',
+                text = {
+                    'Next base edition shop',
+                    'Joker is free and',
+                    'becomes {C:dark_edition}Lenticular'
+                }
+            },
+            tag_bgn_mini = {
+                name = 'Mini Tag',
+                text = {
+                    'Next base edition shop',
+                    'Joker is free and',
+                    'becomes {C:dark_edition}Mini'
+                }
+            }
         },
 
         Other = {
@@ -977,9 +1226,8 @@ return {
             bl_bgn_spinner = {
                 name = 'The Spinner',
                 text = {
-                    'Lose half of money',
-                    'when any probability',
-                    'fails'
+                    'Lose $5 when any',
+                    'probability fails'
                 }
             },
             bl_bgn_wink = {
@@ -1043,6 +1291,22 @@ return {
                     'stronger than the last',
                 }
             }
+        },
+        Voucher = {
+            v_hone = {
+                name = 'Hone',
+                text = {
+                    'Cards with {C:dark_edition}editions',
+                    'appear {C:attention}#1#X{} more often'
+                }
+            },
+            v_glow_up = {
+                name = 'Glow Up',
+                text = {
+                    'Cards with {C:dark_edition}editions',
+                    'appear {C:attention}#1#X{} more often'
+                }
+            }
         }
     },
 
@@ -1050,10 +1314,18 @@ return {
         dictionary = {
             bgn_plus_tag = '+1 Tag',
             bgn_inactive = 'Currently inactive',
-            bgn_active = 'Active!'
+            bgn_active = 'Active!',
+            bgn_leftcompat = '< compatible',
+            bgn_leftincompat = '< incompatible',
+            bgn_rightcompat = 'compatible >',
+            bgn_rightincompat = 'incompatible >',
+            bgn_greenlight = 'Green Light!',
+            bgn_redlight = 'Red Light!'
         },
         labels = {
-            bgn_chance_seal = 'Chance Seal'
+            bgn_chance_seal = 'Chance Seal',
+            bgn_lenticular = 'Lenticular',
+            bgn_wee = 'Mini'
         }
     }
 }
